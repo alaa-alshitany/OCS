@@ -21,6 +21,7 @@
             android:layout_weight="5"
             android:layout_height="0dp">
         </Space>
+        <!--image view for logo-->
         <ImageView
             android:id="@+id/logo"
             android:layout_width="wrap_content"
@@ -35,6 +36,7 @@
             android:layout_weight="4"
             android:layout_height="0dp">
         </Space>
+        <!--text view for app name-->
         <TextView
             android:id="@+id/ocs"
             android:layout_width="match_parent"
@@ -47,9 +49,8 @@
             android:textColor="@color/blue_500"
             android:textStyle="bold"
             >
-
         </TextView>
-
+        <!--text view for full app name-->
         <TextView
             android:id="@+id/ocs_desc"
             android:layout_width="match_parent"
