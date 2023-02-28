@@ -1,4 +1,14 @@
 <resources>
     <string name="app_name">OCS</string>
     <string name="app_desc">Oncology Center Services</string>
+    <string name="slider1_title">Welcome to our Oncology Center</string>
+    <string name="slider1_description">professional doctors,\nmodern methods for examination\nand Fixed and organized appointments</string>
+    <string name="slider2_title">Medical rays</string>
+    <string name="slider2_description">computerized tomography(CT)\nscan, bone scan,\nmagnetic resonance imaging (MRI),\npositron emission tomography(PET) scan,\nultrasound and X-ray,</string>
+    <string name="slider3_title">Medical tests</string>
+    <string name="slider3_description">complete blood count (CBC).\nTumor markers.\nBlood protein testing.\nCirculating tumor cell tests</string>
+<string name="next">Next</string>
+    <string name="get_started">Get Started!</string>
+
+
 </resources>
