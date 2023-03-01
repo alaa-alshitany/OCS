@@ -2,13 +2,22 @@
     <string name="app_name">OCS</string>
     <string name="app_desc">Oncology Center Services</string>
     <string name="slider1_title">Welcome to our Oncology Center</string>
-    <string name="slider1_description">professional doctors,\nmodern methods for examination\nand Fixed and organized appointments</string>
+    <string name="slider1_description">professional doctors,\nmodern methods for examination\n,Fixed and organized appointments</string>
     <string name="slider2_title">Medical rays</string>
     <string name="slider2_description">computerized tomography(CT)\nscan, bone scan,\nmagnetic resonance imaging (MRI),\npositron emission tomography(PET) scan,\nultrasound and X-ray,</string>
     <string name="slider3_title">Medical tests</string>
     <string name="slider3_description">complete blood count (CBC).\nTumor markers.\nBlood protein testing.\nCirculating tumor cell tests</string>
 <string name="next">Next</string>
     <string name="get_started">Get Started!</string>
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="welcome">"Welcome !"</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must be >5 characters</string>
+    <string name="login_failed">"Login failed"</string>
 
 
 </resources>

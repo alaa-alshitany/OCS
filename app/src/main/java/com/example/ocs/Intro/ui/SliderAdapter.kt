@@ -1,4 +1,4 @@
-package com.example.ocs.Intro
+package com.example.ocs.Intro.ui
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager

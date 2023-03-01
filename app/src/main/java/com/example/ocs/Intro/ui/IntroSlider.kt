@@ -1,7 +1,13 @@
-package com.example.ocs.Intro
+package com.example.ocs.Intro.ui
 
+import android.app.Activity
+import android.content.Context
+import android.content.Intent
+import android.content.SharedPreferences
+import android.os.Build
 import android.os.Bundle
 import android.widget.Button
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager.widget.ViewPager
 import com.example.ocs.R
@@ -10,9 +16,16 @@ import androidx.fragment.app.FragmentPagerAdapter as FragmentPagerAdapter1
 
 
 class IntroSlider : AppCompatActivity() {
+    lateinit var prefManager: SharedPreferences
+    lateinit var activity:Activity
+    val pref_show_intro="Intro"
+
+    @RequiresApi(Build.VERSION_CODES.S)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_intro_slider)
+        checkUser()
+
         var viewPager:ViewPager=findViewById(R.id.viewPager)
         var tabLayout:TabLayout=findViewById(R.id.tabLayout)
         var next_btn: Button =findViewById(R.id.next_btn)
@@ -40,7 +53,17 @@ class IntroSlider : AppCompatActivity() {
             }
 
             override fun onPageSelected(position: Int) {
-                if(position==adapter.count-1){ next_btn.setText(R.string.get_started) }
+                if(position==adapter.count-1){
+                    next_btn.setText(R.string.get_started)
+                    next_btn.setOnClickListener {
+                        startActivity(Intent(activity,login::class.java))
+                        finish()
+                        val editor=prefManager.edit()
+                        editor.putBoolean(pref_show_intro,false)
+                        editor.apply()
+                    }
+
+                }
                 else{next_btn.setText(R.string.next)}
             }
 
@@ -50,4 +73,13 @@ class IntroSlider : AppCompatActivity() {
         })
 
         }
+    @RequiresApi(Build.VERSION_CODES.S)
+    fun checkUser() { // Checking for first time launch
+        activity = this
+        prefManager = getSharedPreferences("IntroSlider", Context.MODE_PRIVATE)
+        if (!prefManager.getBoolean(pref_show_intro, true)) {
+            startActivity(Intent(activity, login::class.java))
+            finish()
+        }
+    }
     }

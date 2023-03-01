@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Intro.IntroSlider">
+    tools:context=".Intro.ui.IntroSlider">
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -37,13 +37,13 @@
             android:id="@+id/next_btn"
             android:layout_width="wrap_content"
             android:layout_height="0dp"
-            android:layout_weight=".35"
+            android:layout_weight=".30"
             android:layout_gravity="right"
             android:fontFamily="@font/inter_font"
             android:textStyle="bold"
             android:textColor="@color/black"
             android:layout_margin="10dp"
-            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small"
             android:background="@drawable/round_style"
             android:gravity="center"
             android:textAllCaps="false"

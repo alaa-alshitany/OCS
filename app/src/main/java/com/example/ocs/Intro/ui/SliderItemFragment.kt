@@ -1,4 +1,4 @@
-package com.example.ocs.Intro
+package com.example.ocs.Intro.ui
 
 import android.os.Bundle
 import android.view.LayoutInflater
