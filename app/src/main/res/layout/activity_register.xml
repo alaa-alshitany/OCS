@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".Intro.login.register">
+
+    <LinearLayout
+        android:id="@+id/first_linear"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:orientation="vertical"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="25dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:src="@drawable/baseline_arrow_back_24"
+            android:layout_width="wrap_content">
+
+        </ImageView>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_gravity="center"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_weight="1"
+            android:src="@drawable/logo">
+
+        </ImageView>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_gravity="center"
+            android:layout_weight=".2"
+            android:fontFamily="@font/inter_font"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small"
+            android:gravity="center"
+            android:text="@string/register"
+            android:textColor="@color/black"
+            android:textStyle="bold"></TextView>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:boxStrokeWidth="0dp"
+            app:boxStrokeWidthFocused="0dp"
+            app:hintAnimationEnabled="true"
+            app:hintEnabled="true">
+
+            <EditText
+                android:id="@+id/firstName"
+                style="@style/EditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:drawableStart="@drawable/baseline_user_24"
+                android:ems="10"
+                android:hint="@string/first_name"
+                android:imeOptions="actionNext"
+                android:inputType="textPersonName"
+                android:textColor="@color/black"
+                tools:ignore="VisualLintTextFieldSize" />
+        </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:boxStrokeWidth="0dp"
+            app:boxStrokeWidthFocused="0dp"
+            app:hintAnimationEnabled="true"
+            app:hintEnabled="true">
+
+            <EditText
+                android:id="@+id/lastName"
+                style="@style/EditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:drawableStart="@drawable/baseline_user_24"
+                android:ems="10"
+                android:hint="@string/last_Name"
+                android:imeOptions="actionNext"
+                android:inputType="textPersonName"
+                android:textColor="@color/black"
+                tools:ignore="VisualLintTextFieldSize" />
+        </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:boxStrokeWidth="0dp"
+            app:boxStrokeWidthFocused="0dp"
+            app:hintAnimationEnabled="true"
+            app:hintEnabled="true">
+
+            <EditText
+                android:id="@+id/Email"
+                style="@style/EditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:drawableStart="@drawable/baseline_email_24"
+                android:ems="10"
+                android:hint="@string/email_hint"
+                android:imeOptions="actionNext"
+                android:inputType="textEmailAddress"
+                android:textColor="@color/black"
+                tools:ignore="VisualLintTextFieldSize" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:boxStrokeWidth="0dp"
+            app:boxStrokeWidthFocused="0dp"
+            app:hintAnimationEnabled="true"
+            app:hintEnabled="true"
+            app:passwordToggleTint="@color/black">
+
+            <EditText
+                android:id="@+id/phone"
+                style="@style/EditText"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:autofillHints=""
+                android:drawableStart="@drawable/baseline_phone_24"
+                android:ems="10"
+                android:hint="@string/phone"
+                android:inputType="phone"
+                tools:ignore="VisualLintTextFieldSize" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+    <!--radio buttons for gender-->
+   <RadioGroup
+       android:layout_width="match_parent"
+       android:orientation="horizontal"
+       android:layout_gravity="center"
+       android:layout_marginStart="35dp"
+       android:layout_height="wrap_content">
+
+       <RadioButton
+           android:layout_width="0dp"
+           android:layout_weight="1"
+           android:id="@+id/male"
+           android:text="@string/male"
+           android:textColor="@color/black"
+           android:textStyle="bold"
+           android:layout_height="wrap_content">
+       </RadioButton>
+
+       <RadioButton
+           android:layout_width="0dp"
+           android:layout_weight="1"
+           android:id="@+id/female"
+           android:text="@string/female"
+           android:textColor="@color/black"
+           android:textStyle="bold"
+           android:layout_height="wrap_content">
+
+       </RadioButton>
+   </RadioGroup>
+        <TextView
+                android:id="@+id/continue_register_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:layout_gravity="right"
+                android:drawablePadding="10dp"
+                android:text="@string/cont_register"
+                android:layout_marginTop="20dp"
+                android:clickable="true"
+                android:drawableEnd="@drawable/baseline_arrow_right_alt_24"
+                android:textAllCaps="false"
+                android:textColor="@color/black"
+                tools:ignore="VisualLintButtonSize">
+
+        </TextView>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight=".2">
+
+        </Space>
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,4 +1,5 @@
 <resources>
+    <!-- Strings related to intro slider -->
     <string name="app_name">OCS</string>
     <string name="app_desc">Oncology Center Services</string>
     <string name="slider1_title">Welcome to our Oncology Center</string>
@@ -19,10 +20,24 @@
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">Login failed</string>
     <string name="newUser">Don\'t have an account?</string>
-    <string name="register">\ Register</string>
+
     <!--String for login menu-->
     <string name="menu_doctor">Doctor</string>
     <string name="menu_admin">Admin</string>
+
+    <!-- Strings related to register -->
+    <string name="register">\ Register</string>
+    <string name="first_name">First Name</string>
+    <string name="last_Name">Last Name</string>
+    <string name="phone">Phone</string>
+    <string name="cont_register">Continue</string>
+    <string name="male">Male</string>
+    <string name="female">Female</string>
+    <string name="birthdate">Birth Date</string>
+    <string name="address">Address</string>
+    <string name="passwordConfirm">Confirm Password</string>
+    <string name="oldUser">Already have an account?\ </string>
+
 </resources>
 
 

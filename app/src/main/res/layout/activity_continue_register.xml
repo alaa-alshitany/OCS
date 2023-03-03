@@ -1,35 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    tools:context=".Intro.login.login">
+    tools:context=".Intro.login.continue_register">
 
     <LinearLayout
         android:id="@+id/first_linear"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/white"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
+        android:orientation="vertical"
         android:layout_marginStart="30dp"
         android:layout_marginTop="25dp"
         android:layout_marginEnd="30dp"
         android:layout_marginBottom="25dp"
-        android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="parent">
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight=".3">
+        app:layout_constraintTop_toTopOf="parent">
 
-        </Space>
+       <ImageView
+            android:layout_height="wrap_content"
+           android:layout_marginTop="10dp"
+           android:src="@drawable/baseline_arrow_back_24"
+           android:layout_width="wrap_content">
+
+       </ImageView>
+
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -50,39 +55,57 @@
             android:layout_weight=".2"
             android:fontFamily="@font/inter_font"
             android:gravity="center"
+            android:text="@string/register"
             android:textAppearance="@style/TextAppearance.AppCompat.Small"
-            android:text="@string/login"
             android:textColor="@color/black"
-            android:textStyle="bold"></TextView>
+            android:textStyle="bold">
 
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight=".2">
+        </TextView>
 
-        </Space>
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:boxStrokeWidth="0dp"
             app:boxStrokeWidthFocused="0dp"
-            android:focusableInTouchMode="true"
             app:hintAnimationEnabled="true"
-            app:hintEnabled="true"
-            >
-        <EditText
-            android:id="@+id/Email"
-            style="@style/EditText"
+            app:hintEnabled="true">
+
+            <EditText
+                android:id="@+id/birthdate"
+                style="@style/EditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:drawableStart="@drawable/baseline_calendar_month_24"
+                android:ems="10"
+                android:hint="@string/birthdate"
+                android:imeOptions="actionNext"
+                android:inputType="date"
+                android:textColor="@color/black"
+                tools:ignore="VisualLintTextFieldSize" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:drawableStart="@drawable/baseline_email_24"
-            android:ems="10"
-            android:hint="@string/email_hint"
-            android:imeOptions="actionNext"
-            android:inputType="textEmailAddress"
-            android:textColor="@color/black"
-            tools:ignore="VisualLintTextFieldSize" />
+            app:boxStrokeWidth="0dp"
+            app:boxStrokeWidthFocused="0dp"
+            app:hintAnimationEnabled="true"
+            app:hintEnabled="true">
+
+            <EditText
+                android:id="@+id/address"
+                style="@style/EditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:drawableStart="@drawable/baseline_house_24"
+                android:ems="10"
+                android:hint="@string/address"
+                android:imeOptions="actionNext"
+                android:inputType="textPostalAddress"
+                android:textColor="@color/black"
+                tools:ignore="VisualLintTextFieldSize" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -96,6 +119,7 @@
             app:passwordToggleTint="@color/black">
 
             <EditText
+                android:id="@+id/password"
                 style="@style/EditText"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -105,6 +129,32 @@
                 android:drawableStart="@drawable/baseline_lock_24"
                 android:ems="10"
                 android:hint="@string/prompt_password"
+                android:inputType="textPassword"
+                tools:ignore="VisualLintTextFieldSize" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:boxStrokeWidth="0dp"
+            app:boxStrokeWidthFocused="0dp"
+            app:hintAnimationEnabled="true"
+            app:hintEnabled="true"
+            app:passwordToggleEnabled="true"
+            app:passwordToggleTint="@color/black">
+
+            <EditText
+                android:id="@+id/passwordConfirmation"
+                style="@style/EditText"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:autofillHints=""
+                android:drawableStart="@drawable/baseline_lock_24"
+                android:ems="10"
+                android:hint="@string/passwordConfirm"
                 android:inputType="textPassword"
                 tools:ignore="VisualLintTextFieldSize" />
 
@@ -120,7 +170,7 @@
             android:background="@drawable/button_style"
             android:enabled="true"
             android:fontFamily="@font/inter_font"
-            android:text="@string/action_login_in_short"
+            android:text="@string/register"
             android:textAllCaps="false"
             android:textColor="@color/black"
             android:textStyle="bold"
@@ -139,7 +189,7 @@
                 android:layout_weight="1"
                 android:background="@color/white"
                 android:gravity="right"
-                android:text="@string/newUser"
+                android:text="@string/oldUser"
                 android:textAllCaps="false"
                 android:textColor="@color/black"
                 tools:ignore="NestedWeights">
@@ -153,7 +203,7 @@
                 android:layout_weight=".5"
                 android:background="@color/white"
                 android:gravity="left"
-                android:text="@string/register"
+                android:text="@string/login"
                 android:textAllCaps="false"
                 android:textColor="@color/blue_500"
                 tools:ignore="VisualLintButtonSize">
@@ -161,12 +211,6 @@
             </Button>
         </LinearLayout>
 
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight=".2">
 
-        </Space>
     </LinearLayout>
-
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
