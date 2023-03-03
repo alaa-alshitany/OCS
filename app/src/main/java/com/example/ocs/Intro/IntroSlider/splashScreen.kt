@@ -1,4 +1,4 @@
-package com.example.ocs.Intro.ui
+package com.example.ocs.Intro.IntroSlider
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity

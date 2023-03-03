@@ -1,4 +1,4 @@
-package com.example.ocs.Intro.ui
+package com.example.ocs.Intro.login
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

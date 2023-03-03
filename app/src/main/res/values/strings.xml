@@ -7,17 +7,29 @@
     <string name="slider2_description">computerized tomography(CT)\nscan, bone scan,\nmagnetic resonance imaging (MRI),\npositron emission tomography(PET) scan,\nultrasound and X-ray,</string>
     <string name="slider3_title">Medical tests</string>
     <string name="slider3_description">complete blood count (CBC).\nTumor markers.\nBlood protein testing.\nCirculating tumor cell tests</string>
-<string name="next">Next</string>
+    <string name="next">Next</string>
     <string name="get_started">Get Started!</string>
-    <string name="title_activity_login">LoginActivity</string>
-    <string name="prompt_email">Email</string>
+
+    <!-- Strings related to login -->
+    <string name="login">Login</string>
+    <string name="email_hint">Email</string>
     <string name="prompt_password">Password</string>
-    <string name="action_sign_in">Sign in or register</string>
-    <string name="action_sign_in_short">Sign in</string>
-    <string name="welcome">"Welcome !"</string>
+    <string name="action_login_in_short">Login</string>
     <string name="invalid_username">Not a valid username</string>
     <string name="invalid_password">Password must be >5 characters</string>
-    <string name="login_failed">"Login failed"</string>
-
-
+    <string name="login_failed">Login failed</string>
+    <string name="newUser">Don\'t have an account?</string>
+    <string name="register">\ Register</string>
+    <!--String for login menu-->
+    <string name="menu_doctor">Doctor</string>
+    <string name="menu_admin">Admin</string>
 </resources>
+
+
+
+
+
+
+
+
+

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Intro.ui.IntroSlider">
+    tools:context=".Intro.IntroSlider.IntroSlider">
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -44,7 +44,7 @@
             android:textColor="@color/black"
             android:layout_margin="10dp"
             android:textAppearance="@style/TextAppearance.AppCompat.Small"
-            android:background="@drawable/round_style"
+            android:background="@drawable/button_style"
             android:gravity="center"
             android:textAllCaps="false"
             android:text="@string/next">

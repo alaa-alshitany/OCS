@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" >
+    xmlns:tools="http://schemas.android.com/tools">
 
     <application
         android:allowBackup="true"
@@ -11,18 +11,20 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.OCS"
-        tools:targetApi="31" >
+        tools:targetApi="31">
         <activity
-            android:name=".Intro.ui.login"
-            android:exported="false" />
+            android:name=".Intro.login.login"
+            android:exported="false"
+            android:windowSoftInputMode="adjustPan"
+            android:theme="@style/Theme.OCS" />
         <activity
-            android:name=".Intro.ui.IntroSlider"
+            android:name=".Intro.IntroSlider.IntroSlider"
             android:exported="false"
             android:theme="@style/splash" />
         <activity
-            android:name=".Intro.ui.splashScreen"
+            android:name=".Intro.IntroSlider.splashScreen"
             android:exported="true"
-            android:theme="@style/splash" >
+            android:theme="@style/splash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

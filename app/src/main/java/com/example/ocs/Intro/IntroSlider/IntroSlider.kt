@@ -1,4 +1,4 @@
-package com.example.ocs.Intro.ui
+package com.example.ocs.Intro.IntroSlider
 
 import android.app.Activity
 import android.content.Context
@@ -10,6 +10,7 @@ import android.widget.Button
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager.widget.ViewPager
+import com.example.ocs.Intro.login.login
 import com.example.ocs.R
 import com.google.android.material.tabs.TabLayout
 import androidx.fragment.app.FragmentPagerAdapter as FragmentPagerAdapter1
@@ -55,9 +56,9 @@ class IntroSlider : AppCompatActivity() {
             override fun onPageSelected(position: Int) {
                 if(position==adapter.count-1){
                     next_btn.setText(R.string.get_started)
+
                     next_btn.setOnClickListener {
-                        startActivity(Intent(activity,login::class.java))
-                        finish()
+                       moveToLogin()
                         val editor=prefManager.edit()
                         editor.putBoolean(pref_show_intro,false)
                         editor.apply()
@@ -78,8 +79,11 @@ class IntroSlider : AppCompatActivity() {
         activity = this
         prefManager = getSharedPreferences("IntroSlider", Context.MODE_PRIVATE)
         if (!prefManager.getBoolean(pref_show_intro, true)) {
-            startActivity(Intent(activity, login::class.java))
-            finish()
+           moveToLogin()
         }
+    }
+    fun moveToLogin(){
+        startActivity(Intent(activity, login::class.java))
+        finish()
     }
     }
