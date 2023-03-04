@@ -25,7 +25,7 @@ class SliderItemFragment : Fragment() {
         R.string.slider3_description
     )
     //array for images
-    val pageImage:IntArray= intArrayOf(R.drawable.slider1, R.drawable.slider2, R.drawable.slider3)
+    val pageImage:IntArray= intArrayOf(R.drawable.clinics_service, R.drawable.rays_service, R.drawable.tests_service)
     var position:Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {

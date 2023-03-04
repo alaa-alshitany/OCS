@@ -9,11 +9,17 @@
         <item name="colorSecondary">@color/blue_200</item>
         <item name="colorSecondaryVariant">@color/blue_500</item>
         <item name="colorOnSecondary">@color/blue_500</item>
+
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">@color/white</item>
         <item name="actionBarSize">50dp</item>
         <item name="android:windowLightStatusBar">true</item>
+        <item name="actionOverflowButtonStyle">@style/ThreeDotStyle</item>
 
+    </style>
+
+    <style name="ThreeDotStyle" parent="Widget.AppCompat.Light.ActionButton.Overflow">
+        <item name="tint">@color/blue_500</item>
     </style>
 
     <style name="TextAppearance.AppCompat.Widget.ActionBar.Title" parent="@android:style/TextAppearance">
@@ -44,9 +50,9 @@
         <item name="windowNoTitle">true</item>
     </style>
 
-    <style name="Theme.OCS.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
-    <style name="Theme.OCS.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="Theme.OCS.PopupOverlay" parent="ThemeOverlay.AppCompat.Dark" />
 
     <style name="EditText">
     <item name="android:singleLine">true</item>

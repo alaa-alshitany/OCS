@@ -3,12 +3,16 @@
 <item
     android:id="@+id/doctor"
     android:title="@string/menu_doctor"
-    
     >
 </item>
     <item
         android:id="@+id/admin"
         android:title="@string/menu_admin"
+        >
+    </item>
+    <item
+        android:id="@+id/patient"
+        android:title="@string/menu_patient"
         >
     </item>
 </menu>
