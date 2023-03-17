@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:backgroundTint="#A6CFF5"
+    android:contextClickable="true"
+    android:textAlignment="center"
+    tools:context=".MainActivity">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="25dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.508"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+        <TextView
+            android:id="@+id/textView2"
+            style="@style/TextAppearance.Material3.TitleLarge"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_gravity="center"
+            android:layout_weight=".5"
+            android:fontFamily="@font/acme_regular"
+            android:gravity="center"
+            android:text="@string/book_appointment_title"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small"
+            android:textColor="@color/blue_500"
+            android:textStyle="bold"></TextView>
+
+
+        <EditText
+            android:id="@+id/editTextTextPersonName"
+            style="@style/EditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:autofillHints=""
+            android:drawableStart="@drawable/baseline_user_24"
+            android:ems="10"
+            android:hint="@string/fullName_inp"
+            android:inputType="textPersonName"
+            android:textColor="@color/black"
+            app:boxStrokeWidth="0dp"
+            app:boxStrokeWidthFocused="0dp"
+            app:hintAnimationEnabled="true"
+            app:hintEnabled="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:ignore="VisualLintTextFieldSize"
+            tools:layout_editor_absoluteY="79dp"
+             />
+
+        <EditText
+            android:id="@+id/editTextPhone"
+            style="@style/EditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:autofillHints=""
+            android:drawableStart="@drawable/baseline_phone_24"
+            android:ems="10"
+            android:hint="@string/phone"
+            android:inputType="phone"
+            android:textColor="@color/black"
+            app:boxStrokeWidth="0dp"
+            app:boxStrokeWidthFocused="0dp"
+            app:hintAnimationEnabled="true"
+            app:hintEnabled="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:ignore="VisualLintTextFieldSize"
+            tools:layout_editor_absoluteY="79dp"
+            />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight=".2">
+
+        </Space>
+
+
+        <TextView
+            android:id="@+id/textView37"
+            style="@style/TextAppearance.MaterialComponents.Subtitle1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight=".2"
+            android:fontFamily="@font/inter_font"
+            android:text="TextView"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            tools:text="@string/service_view" />
+
+        <CheckBox
+            android:id="@+id/medical_clinics"
+            android:layout_width="match_parent"
+            android:layout_height="11dp"
+            android:layout_weight="1"
+            android:text="@string/medical_clinics_radiobn"
+            android:textColor="@color/black"
+            android:textStyle="bold">
+
+        </CheckBox>
+
+        <CheckBox
+            android:id="@+id/medical_Rays"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_weight="1"
+            android:text="@string/medical_Rays_radiobn"
+            android:textColor="@color/black"
+            android:textStyle="bold">
+
+        </CheckBox>
+
+        <CheckBox
+            android:id="@+id/medical_tests"
+            android:layout_width="match_parent"
+            android:layout_height="6dp"
+            android:layout_weight="1"
+            android:text="@string/medical_tests_radiobn"
+            android:textColor="@color/black"
+            android:textStyle="bold">
+
+        </CheckBox>
+
+
+        <Button
+            android:id="@+id/button"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:layout_weight=".5"
+            android:background="@drawable/button_style"
+            android:enabled="true"
+            android:fontFamily="@font/inter_font"
+            android:text="@string/send_req_btn"
+            android:textAllCaps="false"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            tools:ignore="VisualLintButtonSize,TouchTargetSizeCheck" />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

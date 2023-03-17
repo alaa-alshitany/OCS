@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="25dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.508"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/textView3"
+            style="@style/TextAppearance.Material3.TitleLarge"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_gravity="center"
+            android:layout_weight="4"
+            android:fontFamily="@font/acme_regular"
+            android:gravity="center"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small"
+            android:textColor="@color/blue_500"
+            android:textStyle="bold"
+            tools:text="@string/doctor_details_title" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight=".5">
+
+        </Space>
+
+
+        <EditText
+            android:id="@+id/editTextNumberDecimal"
+            style="@style/EditText"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:autofillHints=""
+            android:layout_weight="4"
+            android:inputType="numberDecimal"
+            android:textColor="@color/black"
+            app:boxStrokeWidth="0dp"
+            app:boxStrokeWidthFocused="0dp"
+            app:hintAnimationEnabled="true"
+            app:hintEnabled="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:ignore="VisualLintTextFieldSize"
+            tools:layout_editor_absoluteY="79dp"
+            tools:text="@string/doctor_id"  />
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight=".8">
+
+        </Space>
+
+        <EditText
+            android:id="@+id/editTextTextPersonName3"
+            style="@style/EditText"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="4"
+            android:autofillHints=""
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:textColor="@color/black"
+            app:boxStrokeWidth="0dp"
+            app:boxStrokeWidthFocused="0dp"
+            app:hintAnimationEnabled="true"
+            app:hintEnabled="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:ignore="VisualLintTextFieldSize"
+            tools:layout_editor_absoluteY="79dp"
+            tools:text="@string/doctor_name"  />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight=".8">
+
+        </Space>
+
+        <EditText
+            android:id="@+id/editTextTextEmailAddress"
+            style="@style/EditText"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="4"
+            android:autofillHints=""
+            android:inputType="textEmailAddress"
+            android:textColor="@color/black"
+            app:boxStrokeWidth="0dp"
+            app:boxStrokeWidthFocused="0dp"
+            app:hintAnimationEnabled="true"
+            app:hintEnabled="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:ignore="VisualLintTextFieldSize"
+            tools:layout_editor_absoluteY="79dp"
+            tools:text="@string/doctor_email"
+            />
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight=".8">
+
+        </Space>
+
+        <EditText
+            android:id="@+id/editTextPhone2"
+            style="@style/EditText"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="4"
+            android:autofillHints=""
+            android:hint="@string/phone"
+            android:inputType="phone"
+            android:textColor="@color/black"
+            app:boxStrokeWidth="0dp"
+            app:boxStrokeWidthFocused="0dp"
+            app:hintAnimationEnabled="true"
+            app:hintEnabled="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:ignore="VisualLintTextFieldSize"
+            tools:layout_editor_absoluteY="79dp"
+            tools:text="@string/doctor_phone" />
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight=".8">
+
+        </Space>
+
+        <EditText
+            android:id="@+id/editTextTextPersonName4"
+            style="@style/EditText"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="4"
+
+            android:autofillHints=""
+            android:ems="10"
+            android:inputType="text"
+            android:textColor="@color/black"
+            app:boxStrokeWidth="0dp"
+            app:boxStrokeWidthFocused="0dp"
+            app:hintAnimationEnabled="true"
+            app:hintEnabled="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:ignore="VisualLintTextFieldSize"
+            tools:layout_editor_absoluteY="79dp"
+            tools:text="@string/doctor_Specialization" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight=".8">
+
+        </Space>
+
+        <EditText
+            android:id="@+id/editTextDate"
+            style="@style/EditText"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="4"
+            android:autofillHints=""
+            android:ems="10"
+            android:inputType="date"
+            android:textColor="@color/black"
+            app:boxStrokeWidth="0dp"
+            app:boxStrokeWidthFocused="0dp"
+            app:hintAnimationEnabled="true"
+            app:hintEnabled="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:ignore="VisualLintTextFieldSize"
+            tools:layout_editor_absoluteY="79dp"
+            tools:text="@string/doctor_birthdate"  />
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight=".2">
+
+        </Space>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            style="@style/Widget.AppCompat.Button"
+            android:id="@+id/floatingActionButton3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|center"
+            android:layout_margin="16dp"
+            android:contentDescription="save"
+            android:gravity="center"
+            android:src="@drawable/baseline_check_green"
+            app:backgroundTint="#A6CFF5"
+            tools:srcCompat="@tools:sample/avatars[0]"
+            />
+
+    </LinearLayout>
+
+
+</LinearLayout>
