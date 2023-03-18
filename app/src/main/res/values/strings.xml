@@ -21,6 +21,7 @@
     <string name="a_email_hint">Enter your Secret Code</string>
     <string name="prompt_password">Password</string>
     <string name="action_login_in_short">Login</string>
+    <string name="forgetPass"><u>Forgotten Password?</u></string>
     <string name="invalid_username">Not a valid username</string>
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">Login failed</string>
@@ -36,13 +37,14 @@
     <string name="first_name">First Name</string>
     <string name="last_Name">Last Name</string>
     <string name="phone">Phone</string>
-    <string name="cont_register">Continue</string>
+    <string name="Continue">Continue</string>
     <string name="male">Male</string>
     <string name="female">Female</string>
     <string name="birthdate">Birth Date</string>
     <string name="address">Address</string>
     <string name="passwordConfirm">Confirm Password</string>
     <string name="oldUser">Already have an account?\ </string>
+    <string name="cont_register">Continue Register</string>
 
     <!--strings for home -->
     <string name="clinic_service">Oncology Clinics</string>
