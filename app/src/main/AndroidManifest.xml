@@ -16,11 +16,15 @@
             android:name=".Intro.Home.services"
             android:exported="false" />
         <activity
-            android:name=".Intro.login.continue_register"
+            android:name=".Intro.login.register_continue"
+            android:windowSoftInputMode="adjustPan"
+            android:parentActivityName=".Intro.login.register"
             android:exported="false" />
-        <activity
-            android:name=".Intro.login.register"
-            android:exported="false" />
+
+        <activity android:name=".Intro.login.register"
+            android:theme="@style/Theme.OCS"
+            android:windowSoftInputMode="adjustPan"
+            android:exported="false"/>
         <activity
             android:name=".Intro.login.login"
             android:exported="false"

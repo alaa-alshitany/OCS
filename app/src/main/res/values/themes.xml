@@ -16,6 +16,13 @@
         <item name="android:windowLightStatusBar">true</item>
         <item name="actionOverflowButtonStyle">@style/ThreeDotStyle</item>
 
+        <!--back arrow color-->
+        <item name="colorControlNormal">@color/blue_500</item>
+
+    </style>
+
+    <style name="SearchToolbar" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:textColorSecondary">@color/blue_500</item>
     </style>
 
     <style name="ThreeDotStyle" parent="Widget.AppCompat.Light.ActionButton.Overflow">

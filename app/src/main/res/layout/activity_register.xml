@@ -17,30 +17,20 @@
         android:layout_alignParentBottom="true"
         android:orientation="vertical"
         android:layout_marginStart="30dp"
-        android:layout_marginTop="25dp"
         android:layout_marginEnd="30dp"
-        android:layout_marginBottom="25dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
-
-        <ImageView
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:src="@drawable/baseline_arrow_back_24"
-            android:layout_width="wrap_content">
-
-        </ImageView>
-
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight=".3">
+        </Space>
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_gravity="center"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="10dp"
-            android:layout_marginBottom="10dp"
             android:layout_weight="1"
             android:src="@drawable/logo">
 
@@ -71,10 +61,11 @@
                 style="@style/EditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
+                android:layout_marginBottom="5dp"
                 android:drawableStart="@drawable/baseline_user_24"
                 android:ems="10"
                 android:hint="@string/first_name"
+                android:drawablePadding="20dp"
                 android:imeOptions="actionNext"
                 android:inputType="textPersonName"
                 android:textColor="@color/black"
@@ -93,7 +84,7 @@
                 style="@style/EditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
+                android:layout_marginBottom="5dp"
                 android:drawableStart="@drawable/baseline_user_24"
                 android:ems="10"
                 android:hint="@string/last_Name"
@@ -115,7 +106,7 @@
                 style="@style/EditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
+                android:layout_marginBottom="5dp"
                 android:drawableStart="@drawable/baseline_email_24"
                 android:ems="10"
                 android:hint="@string/p_email_hint"
@@ -139,8 +130,7 @@
                 style="@style/EditText"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
+                android:layout_marginBottom="5dp"
                 android:autofillHints=""
                 android:drawableStart="@drawable/baseline_phone_24"
                 android:ems="10"
@@ -154,29 +144,48 @@
        android:layout_width="match_parent"
        android:orientation="horizontal"
        android:layout_gravity="center"
-       android:layout_marginStart="35dp"
        android:layout_height="wrap_content">
 
-       <RadioButton
+       <Space
            android:layout_width="0dp"
-           android:layout_weight="1"
+           android:layout_height="match_parent"
+           android:layout_weight=".6">
+       </Space>
+
+       <RadioButton
+           android:layout_width="wrap_content"
            android:id="@+id/male"
            android:text="@string/male"
+           android:checked="true"
+           android:buttonTint="@color/blue_500"
+           android:backgroundTint="@color/blue_500"
            android:textColor="@color/black"
            android:textStyle="bold"
            android:layout_height="wrap_content">
        </RadioButton>
 
-       <RadioButton
+       <Space
            android:layout_width="0dp"
-           android:layout_weight="1"
+           android:layout_height="match_parent"
+           android:layout_weight=".6">
+       </Space>
+       <RadioButton
+           android:layout_width="wrap_content"
            android:id="@+id/female"
            android:text="@string/female"
            android:textColor="@color/black"
            android:textStyle="bold"
+           android:buttonTint="@color/blue_500"
+           android:backgroundTint="@color/blue_500"
            android:layout_height="wrap_content">
 
        </RadioButton>
+       <Space
+           android:layout_width="0dp"
+           android:layout_height="match_parent"
+           android:layout_weight=".5">
+
+       </Space>
    </RadioGroup>
         <TextView
                 android:id="@+id/continue_register_btn"
@@ -187,7 +196,7 @@
                 android:textStyle="bold"
                 android:layout_gravity="right"
                 android:drawablePadding="10dp"
-                android:text="@string/cont_register"
+                android:text="@string/Continue"
                 android:layout_marginTop="20dp"
                 android:clickable="true"
                 android:drawableEnd="@drawable/baseline_arrow_right_alt_24"

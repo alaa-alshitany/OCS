@@ -7,11 +7,14 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ImageView
 import android.widget.TextView
 import com.example.ocs.Intro.Home.services
 import com.example.ocs.R
+import com.google.android.material.textfield.TextInputLayout
 
 
 class login : AppCompatActivity() {
@@ -21,34 +24,29 @@ class login : AppCompatActivity() {
     lateinit var email_edt:EditText
     lateinit var login_textView:TextView
     lateinit var newUser_textView:TextView
+    lateinit var login_img:ImageView
+    lateinit var email_layout:TextInputLayout
+    lateinit var forgetpass_btn:Button
 
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
-        email_edt=findViewById(R.id.email)
-        login_textView=findViewById(R.id.login_text_view)
-        register_btn=findViewById(R.id.register_btn)
-        login_btn=findViewById(R.id.login_btn)
-        newUser_textView=findViewById(R.id.newUser_txtView)
+        bindingItems()
 
         val intent=intent
         var hint:String =intent.getStringExtra("email_hint").toString()
 
         if (hint != null) {
             if (hint.equals(R.string.d_email_hint.toString())){
-                email_edt.setHint(R.string.d_email_hint)
-                login_textView.setText(R.string.d_login)
-                register_btn.setText(null)
-                newUser_textView.setText(null)
+                doctorLogin()
 
             }else if(hint.equals(R.string.a_email_hint.toString())){
-                email_edt.setHint(R.string.a_email_hint)
-                login_textView.setText(R.string.a_login)
-                register_btn.setText(null)
-                newUser_textView.setText(null)
+                adminLogin()
+
             }else{
-                email_edt.setHint(R.string.p_email_hint)
+                patientLogin()
+
             }
         }
 
@@ -68,6 +66,36 @@ class login : AppCompatActivity() {
         activity=this
         startActivity(Intent(activity,register::class.java))
        finish()
+
+    }
+    private fun doctorLogin(){
+        email_edt.setHint(R.string.d_email_hint)
+        login_textView.setText(R.string.d_login)
+        register_btn.visibility = View.INVISIBLE
+        newUser_textView.visibility = View.INVISIBLE
+    }
+    private fun adminLogin(){
+        email_edt.setHint(R.string.a_email_hint)
+        login_textView.setText(R.string.a_login)
+        register_btn.visibility = View.INVISIBLE
+        newUser_textView.visibility = View.INVISIBLE
+        login_img.setImageResource(R.drawable.baseline_admin_panel_settings_24)
+        forgetpass_btn.visibility=View.INVISIBLE
+        email_layout.isPasswordVisibilityToggleEnabled=true
+        //email_layout.setPasswordVisibilityToggleTintList()
+    }
+    private fun patientLogin(){
+        email_edt.setHint(R.string.p_email_hint)
+    }
+    private fun bindingItems(){
+        email_edt=findViewById(R.id.email)
+        login_textView=findViewById(R.id.login_text_view)
+        register_btn=findViewById(R.id.register_btn)
+        login_btn=findViewById(R.id.login_btn)
+        newUser_textView=findViewById(R.id.newUser_txtView)
+        login_img=findViewById(R.id.login_img)
+        email_layout=findViewById(R.id.email_input_layout)
+        forgetpass_btn=findViewById(R.id.forgetPass_btn)
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {

@@ -32,6 +32,7 @@
         </Space>
 
         <ImageView
+            android:id="@+id/login_img"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_gravity="center"
@@ -64,6 +65,7 @@
 
         </Space>
         <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/email_input_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:boxStrokeWidth="0dp"
@@ -117,7 +119,7 @@
             android:layout_width="wrap_content"
             android:layout_height="0dp"
             android:layout_gravity="center"
-            android:layout_marginTop="10dp"
+
             android:layout_weight=".3"
             android:background="@drawable/button_style"
             android:enabled="true"
@@ -128,10 +130,39 @@
             android:textStyle="bold"
             tools:ignore="VisualLintButtonSize,TouchTargetSizeCheck" />
 
+        <Space
+            android:layout_width="match_parent"
+            android:layout_weight=".1"
+            android:layout_height="0dp">
+
+        </Space>
+
+        <Button
+            android:id="@+id/forgetPass_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight=".3"
+            android:layout_gravity="center"
+            style="?android:attr/borderlessButtonStyle"
+            android:background="@color/white"
+            android:gravity="center"
+            android:text="@string/forgetPass"
+            android:textAllCaps="false"
+            android:textStyle="bold"
+            android:fontFamily="@font/inter_font"
+            android:textColor="@color/blue_500"
+            tools:ignore="VisualLintButtonSize">
+        </Button>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_weight=".1"
+            android:layout_height="0dp">
+
+        </Space>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
             android:orientation="horizontal"
             tools:ignore="NestedWeights">
 
@@ -156,11 +187,12 @@
                 android:layout_weight=".5"
                 android:background="@color/white"
                 android:gravity="left"
+                android:fontFamily="@font/inter_font"
                 android:text="@string/register"
                 android:textAllCaps="false"
+                android:textStyle="bold"
                 android:textColor="@color/blue_500"
                 tools:ignore="VisualLintButtonSize">
-
             </Button>
         </LinearLayout>
 

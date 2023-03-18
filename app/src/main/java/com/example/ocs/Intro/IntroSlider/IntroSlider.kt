@@ -18,6 +18,7 @@ import androidx.fragment.app.FragmentPagerAdapter as FragmentPagerAdapter1
 
 class IntroSlider : AppCompatActivity() {
     lateinit var prefManager: SharedPreferences
+
     lateinit var activity:Activity
     val pref_show_intro="Intro"
 
