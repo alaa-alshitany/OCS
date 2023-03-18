@@ -12,7 +12,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
-import com.example.ocs.Intro.Home.services
+import com.example.ocs.Intro.patient.services.services
 import com.example.ocs.Intro.admin.profile
 import com.example.ocs.R
 import com.google.android.material.textfield.TextInputLayout
@@ -59,7 +59,7 @@ class login : AppCompatActivity() {
 
     private fun moveToHome() {
      activity=this
-        startActivity(Intent(activity,services::class.java))
+        startActivity(Intent(activity, services::class.java))
         finish()
     }
 

@@ -1,49 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:orientation="horizontal"
     android:layout_height="match_parent"
     android:background="@color/white"
     tools:context=".Intro.login.login">
 
-    <LinearLayout
-        android:id="@+id/first_linear"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="25dp"
-        android:layout_marginEnd="30dp"
-        android:layout_marginBottom="25dp"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="parent">
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight=".3">
-
-        </Space>
 
         <ImageView
             android:id="@+id/login_img"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="10dp"
-            android:layout_marginBottom="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="50dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
             android:layout_weight="1"
             android:src="@drawable/logo">
 
         </ImageView>
+    <LinearLayout
+    android:layout_width="0dp"
+        android:layout_margin="20dp"
+    android:layout_weight="2" android:orientation="vertical"
+    android:layout_height="match_parent">
 
         <TextView
             android:id="@+id/login_text_view"
@@ -58,12 +41,7 @@
             android:textColor="@color/black"
             android:textStyle="bold"></TextView>
 
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight=".2">
 
-        </Space>
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/email_input_layout"
             android:layout_width="match_parent"
@@ -195,12 +173,8 @@
             </Button>
         </LinearLayout>
 
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight=".2">
 
-        </Space>
     </LinearLayout>
 
-</RelativeLayout>
+
+</LinearLayout>
