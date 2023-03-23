@@ -88,6 +88,7 @@ class login : AppCompatActivity() {
     }
     private fun patientLogin(){
         email_edt.setHint(R.string.p_email_hint)
+        moveToHome()
     }
     private fun bindingItems(){
         email_edt=findViewById(R.id.email)
