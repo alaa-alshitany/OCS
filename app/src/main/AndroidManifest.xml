@@ -28,7 +28,6 @@
         <activity
             android:name=".Intro.admin.profile"
             android:exported="false"
-            android:parentActivityName=".Intro.login.login"
             />
         <activity
             android:name=".Intro.patient.services.services"
