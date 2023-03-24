@@ -1,101 +1,99 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:backgroundTint="#A6CFF5"
     android:contextClickable="true"
-    android:textAlignment="center"
-    tools:context=".MainActivity">
+    android:background="@color/white"
+    android:orientation="vertical"
+    tools:context=".Intro.patient.booking.BookAppointment">
 
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
         android:layout_margin="25dp"
         android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.508"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+   >
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight=".3">
 
-
+        </Space>
         <TextView
-            android:id="@+id/textView2"
-            style="@style/TextAppearance.Material3.TitleLarge"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_gravity="center"
-            android:layout_weight=".5"
+            android:layout_weight="2"
             android:fontFamily="@font/acme_regular"
             android:gravity="center"
             android:text="@string/book_appointment_title"
-            android:textAppearance="@style/TextAppearance.AppCompat.Small"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
             android:textColor="@color/blue_500"
-            android:textStyle="bold"></TextView>
+           >
 
+        </TextView>
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight=".3">
 
+        </Space>
         <EditText
-            android:id="@+id/editTextTextPersonName"
+            android:id="@+id/fullName_edt"
             style="@style/EditText"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
             android:autofillHints=""
             android:drawableStart="@drawable/baseline_user_24"
             android:ems="10"
             android:hint="@string/fullName_inp"
             android:inputType="textPersonName"
             android:textColor="@color/black"
-            app:boxStrokeWidth="0dp"
-            app:boxStrokeWidthFocused="0dp"
             app:hintAnimationEnabled="true"
             app:hintEnabled="true"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            tools:ignore="VisualLintTextFieldSize"
-            tools:layout_editor_absoluteY="79dp"
-             />
+            />
+    <Space
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+    android:layout_weight=".3">
 
+</Space>
         <EditText
-            android:id="@+id/editTextPhone"
+            android:id="@+id/phone_edt"
             style="@style/EditText"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"
+            android:layout_height="0dp"
+            android:layout_weight="1"
             android:autofillHints=""
             android:drawableStart="@drawable/baseline_phone_24"
             android:ems="10"
             android:hint="@string/phone"
             android:inputType="phone"
             android:textColor="@color/black"
-            app:boxStrokeWidth="0dp"
-            app:boxStrokeWidthFocused="0dp"
             app:hintAnimationEnabled="true"
             app:hintEnabled="true"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            tools:ignore="VisualLintTextFieldSize"
-            tools:layout_editor_absoluteY="79dp"
+
             />
 
         <Space
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight=".2">
+            android:layout_weight=".3">
 
         </Space>
 
+        <com.anurag.multiselectionspinner.MultiSpinner
+            android:layout_width="match_parent"
+            android:id="@+id/service_spinner"
+            android:layout_height="wrap_content"
+            >
 
+        </com.anurag.multiselectionspinner.MultiSpinner>
         <TextView
             android:id="@+id/textView37"
             style="@style/TextAppearance.MaterialComponents.Subtitle1"
@@ -162,4 +160,4 @@
 
     </LinearLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

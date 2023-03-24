@@ -10,26 +10,43 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
+        android:configChanges = "keyboardHidden|orientation|screenSize"
+        android:windowSoftInputMode="adjustPan"
         android:theme="@style/Theme.OCS"
         tools:targetApi="31">
         <activity
-            android:name=".Intro.Home.services"
+            android:name=".Intro.admin.appointments"
+            android:windowSoftInputMode="adjustPan"
+            android:exported="false" />
+        <activity
+            android:name=".Intro.admin.doctors"
+            android:windowSoftInputMode="adjustPan"
+            android:exported="false" />
+        <activity
+            android:name=".Intro.patient.booking.BookAppointment"
+            android:exported="false" />
+        <activity
+            android:name=".Intro.admin.profile"
+            android:exported="false"
+            android:parentActivityName=".Intro.login.login"
+            />
+        <activity
+            android:name=".Intro.patient.services.services"
             android:exported="false" />
         <activity
             android:name=".Intro.login.register_continue"
-            android:windowSoftInputMode="adjustPan"
+            android:exported="false"
             android:parentActivityName=".Intro.login.register"
-            android:exported="false" />
-
-        <activity android:name=".Intro.login.register"
+             />
+        <activity
+            android:name=".Intro.login.register"
+            android:exported="false"
             android:theme="@style/Theme.OCS"
-            android:windowSoftInputMode="adjustPan"
-            android:exported="false"/>
+             />
         <activity
             android:name=".Intro.login.login"
             android:exported="false"
-            android:theme="@style/Theme.OCS"
-            android:windowSoftInputMode="adjustPan" />
+            android:theme="@style/Theme.OCS" />
         <activity
             android:name=".Intro.IntroSlider.IntroSlider"
             android:exported="false"

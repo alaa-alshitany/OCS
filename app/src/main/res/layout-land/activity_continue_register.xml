@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="horizontal"
+    tools:context=".Intro.login.register_continue">
+
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="50dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_weight="1"
+            android:src="@drawable/logo">
+
+        </ImageView>
+    <LinearLayout
+        android:id="@+id/first_linear"
+        android:layout_width="0dp"
+        android:layout_weight="3"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="vertical"
+        android:layout_margin="25dp"
+       >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:fontFamily="@font/inter_font"
+            android:gravity="center"
+            android:text="@string/cont_register"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small"
+            android:textColor="@color/black"
+            android:textStyle="bold">
+
+        </TextView>
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_weight="4"
+    android:orientation="horizontal"
+    android:layout_height="0dp">
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            app:boxStrokeWidth="0dp"
+            app:boxStrokeWidthFocused="0dp"
+            app:hintAnimationEnabled="true"
+            app:hintEnabled="true">
+
+            <EditText
+                android:id="@+id/birthdate"
+                style="@style/EditText"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:drawableStart="@drawable/baseline_calendar_month_24"
+                android:ems="10"
+                android:hint="@string/birthdate"
+                android:imeOptions="actionNext"
+                android:inputType="date"
+                android:textColor="@color/black"
+                tools:ignore="VisualLintTextFieldSize" />
+        </com.google.android.material.textfield.TextInputLayout>
+    <Space
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight=".2">
+
+    </Space>
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            app:boxStrokeWidth="0dp"
+            app:boxStrokeWidthFocused="0dp"
+            app:hintAnimationEnabled="true"
+            app:hintEnabled="true">
+
+            <EditText
+                android:id="@+id/address"
+                style="@style/EditText"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:drawableStart="@drawable/baseline_house_24"
+                android:ems="10"
+                android:hint="@string/address"
+                android:imeOptions="actionNext"
+                android:inputType="textPostalAddress"
+                android:textColor="@color/black"
+                tools:ignore="VisualLintTextFieldSize" />
+        </com.google.android.material.textfield.TextInputLayout>
+</LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="4">
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            app:boxStrokeWidth="0dp"
+            app:boxStrokeWidthFocused="0dp"
+            app:hintAnimationEnabled="true"
+            app:hintEnabled="true"
+            app:passwordToggleEnabled="true"
+            app:passwordToggleTint="@color/black">
+
+            <EditText
+                android:id="@+id/password"
+                style="@style/EditText"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:autofillHints=""
+                android:drawableStart="@drawable/baseline_lock_24"
+                android:ems="10"
+                android:hint="@string/prompt_password"
+                android:inputType="textPassword"
+                tools:ignore="VisualLintTextFieldSize" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight=".2">
+
+            </Space>
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            app:boxStrokeWidth="0dp"
+            app:boxStrokeWidthFocused="0dp"
+            app:hintAnimationEnabled="true"
+            app:hintEnabled="true"
+            app:passwordToggleEnabled="true"
+            app:passwordToggleTint="@color/black">
+
+            <EditText
+                android:id="@+id/passwordConfirmation"
+                style="@style/EditText"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:autofillHints=""
+                android:drawableStart="@drawable/baseline_lock_24"
+                android:ems="10"
+                android:hint="@string/passwordConfirm"
+                android:inputType="textPassword"
+                tools:ignore="VisualLintTextFieldSize" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+        </LinearLayout>
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight=".5">
+
+        </Space>
+        <Button
+            android:id="@+id/login_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="5dp"
+            android:layout_weight="2"
+            android:background="@drawable/button_style"
+            android:enabled="true"
+            android:fontFamily="@font/inter_font"
+            android:text="@string/register"
+            android:textAllCaps="false"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            tools:ignore="VisualLintButtonSize,TouchTargetSizeCheck" />
+<Space
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+    android:layout_weight=".5">
+
+</Space>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            tools:ignore="NestedWeights">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@color/white"
+                android:gravity="right"
+                android:text="@string/oldUser"
+                android:textAllCaps="false"
+                android:textColor="@color/black"
+                tools:ignore="NestedWeights">
+
+            </TextView>
+
+            <Button
+                android:id="@+id/register_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight=".5"
+                android:background="@color/white"
+                android:gravity="left"
+                android:text="@string/login"
+                android:textAllCaps="false"
+                android:textColor="@color/blue_500"
+                tools:ignore="VisualLintButtonSize">
+
+            </Button>
+        </LinearLayout>
+
+    </LinearLayout>
+</LinearLayout>

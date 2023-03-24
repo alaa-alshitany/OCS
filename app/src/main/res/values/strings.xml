@@ -48,9 +48,6 @@
 
     <!--strings for home -->
     <string name="clinic_service">Oncology Clinics</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-
 
     <!--    book appointments-->
     <string name="book_appointment_title">Booking Appointment</string>
@@ -82,11 +79,6 @@
     <string name="doctor_title">Doctor</string>
     <string name="doctors_view_name">DR / Mohammed Alaa</string>
 
-    <!--    admin profile-->
-    <string name="profile_idtitle">25850</string>
-    <string name="profile_id">25850</string>
-    <string name="profile_name">Ahmed Walid</string>
-    <string name="profile_pass">********</string>
     <!--requests-->
     <string name="requests_title">requests</string>
     <string name="requests_name">Mazen Ali</string>
