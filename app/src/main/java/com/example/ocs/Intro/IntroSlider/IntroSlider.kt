@@ -18,21 +18,20 @@ import androidx.fragment.app.FragmentPagerAdapter as FragmentPagerAdapter1
 
 class IntroSlider : AppCompatActivity() {
     lateinit var prefManager: SharedPreferences
-
+    lateinit var viewPager:ViewPager
     lateinit var activity:Activity
+    lateinit var tabLayout:TabLayout
+    lateinit var next_btn: Button
     val pref_show_intro="Intro"
 
     @RequiresApi(Build.VERSION_CODES.S)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_intro_slider)
+        bindingItems()
         checkUser()
 
-        var viewPager:ViewPager=findViewById(R.id.viewPager)
-        var tabLayout:TabLayout=findViewById(R.id.tabLayout)
-        var next_btn: Button =findViewById(R.id.next_btn)
-
-        var adapter: SliderAdapter = SliderAdapter(
+        var adapter = SliderAdapter(
             supportFragmentManager,
             FragmentPagerAdapter1.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT
         )
@@ -43,6 +42,8 @@ class IntroSlider : AppCompatActivity() {
         if (viewPager.currentItem<adapter.count){
             viewPager.currentItem+=1
         }
+            moveToLogin()
+
         }
 
         viewPager?.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
@@ -75,6 +76,12 @@ class IntroSlider : AppCompatActivity() {
         })
 
         }
+    fun bindingItems(){
+        viewPager=findViewById(R.id.viewPager)
+        tabLayout=findViewById(R.id.tabLayout)
+        next_btn=findViewById(R.id.next_btn)
+
+    }
     @RequiresApi(Build.VERSION_CODES.S)
     fun checkUser() { // Checking for first time launch
         activity = this
@@ -84,7 +91,7 @@ class IntroSlider : AppCompatActivity() {
         }
     }
     fun moveToLogin(){
-        startActivity(Intent(activity, login::class.java))
+        startActivity(Intent(this, login::class.java))
         finish()
     }
     }
