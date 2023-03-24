@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:contextClickable="true"
+    android:background="@color/white"
+    android:orientation="vertical"
+    tools:context=".Intro.patient.booking.BookAppointment">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="25dp"
+        android:orientation="vertical"
+   >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_gravity="center"
+            android:layout_weight="2"
+            android:fontFamily="@font/acme_regular"
+            android:gravity="center"
+            android:text="@string/book_appointment_title"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textColor="@color/blue_500"
+           >
+
+        </TextView>
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight=".5">
+
+        </Space>
+        <EditText
+            android:id="@+id/fullName_edt"
+            style="@style/EditText"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:autofillHints=""
+            android:drawableStart="@drawable/baseline_user_24"
+            android:ems="10"
+            android:hint="@string/fullName_inp"
+            android:inputType="textPersonName"
+            android:textColor="@color/black"
+            app:hintAnimationEnabled="true"
+            app:hintEnabled="true"
+            />
+    <Space
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+    android:layout_weight=".3">
+
+</Space>
+        <EditText
+            android:id="@+id/phone_edt"
+            style="@style/EditText"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:autofillHints=""
+            android:drawableStart="@drawable/baseline_phone_24"
+            android:ems="10"
+            android:hint="@string/phone"
+            android:inputType="phone"
+            android:textColor="@color/black"
+            app:hintAnimationEnabled="true"
+            app:hintEnabled="true"
+
+            />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight=".3">
+
+        </Space>
+
+
+        <TextView
+            android:id="@+id/textView37"
+            style="@style/TextAppearance.MaterialComponents.Subtitle1"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight=".5"
+            android:fontFamily="@font/inter_font"
+            android:text="TextView"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            tools:text="@string/service_view" />
+
+        <CheckBox
+            android:id="@+id/medical_clinics"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight=".9"
+            android:text="@string/medical_clinics_radiobn"
+            android:textColor="@color/black"
+            android:textStyle="bold">
+
+        </CheckBox>
+
+        <CheckBox
+            android:id="@+id/medical_Rays"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight=".9"
+            android:text="@string/medical_Rays_radiobn"
+            android:textColor="@color/black"
+            android:textStyle="bold">
+
+        </CheckBox>
+
+        <CheckBox
+            android:id="@+id/medical_tests"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight=".9"
+            android:text="@string/medical_tests_radiobn"
+            android:textColor="@color/black"
+            android:textStyle="bold">
+
+        </CheckBox>
+
+
+        <Button
+            android:id="@+id/button"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_gravity="center"
+            android:layout_weight=".9"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
+            android:background="@drawable/button_style"
+            android:fontFamily="@font/inter_font"
+            android:text="@string/send_req_btn"
+            android:textAllCaps="false"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+      />
+
+    </LinearLayout>
+
+</LinearLayout>

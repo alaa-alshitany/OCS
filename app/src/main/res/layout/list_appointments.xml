@@ -3,24 +3,30 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    app:cardCornerRadius="10dp"
+    android:layout_height="70dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:layout_margin="25dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="5dp"
         >
+<Space
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+    android:layout_weight="2">
 
+</Space>
         <TextView
             android:id="@+id/nameView"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="4"
-
+            android:layout_weight="10"
             android:text="TextView"
             android:textColor="@color/black"
-            android:textSize="20sp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
             android:textStyle="bold"
             tools:text="@string/appointments_name" />
 
@@ -31,27 +37,20 @@
 
         </Space>
 
-
-
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="6"
+            android:layout_weight="10"
             android:orientation="horizontal"
             >
-
-
-            <TextView
+                 <TextView
                 android:id="@+id/dateView"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-
-
                 android:text="TextView"
+                     android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 android:textColor="@color/black"
-                android:textSize="20sp"
                 android:textStyle="bold"
                 tools:text="@string/appointments_date" />
 
@@ -61,15 +60,12 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 android:text="TextView"
                 android:textColor="@color/black"
-                android:textSize="20sp"
                 android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
                 tools:text="@string/appointments_time"
-                android:layout_marginBottom="10dp"
+
                 />
 
         </LinearLayout>

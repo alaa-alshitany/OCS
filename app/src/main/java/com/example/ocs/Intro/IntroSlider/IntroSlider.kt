@@ -42,7 +42,6 @@ class IntroSlider : AppCompatActivity() {
         if (viewPager.currentItem<adapter.count){
             viewPager.currentItem+=1
         }
-            moveToLogin()
 
         }
 
