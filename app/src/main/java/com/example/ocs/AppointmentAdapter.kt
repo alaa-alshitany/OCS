@@ -1,4 +1,4 @@
-package com.example.ocs
+/*package com.example.ocs
 
 import android.view.LayoutInflater
 import android.view.View
@@ -40,3 +40,5 @@ class AppointmentAdapter : RecyclerView.Adapter<AppointmentAdapter.ViewHolder>()
 
     }
 }
+
+ */
