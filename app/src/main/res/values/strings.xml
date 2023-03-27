@@ -60,12 +60,18 @@
     <string name="send_req_btn">Send Request</string>
     <!--    doctor details-->
     <string name="doctor_details_title">Doctor details</string>
-    <string name="doctor_id">Doctor ID:125</string>
-    <string name="doctor_name">Name: DR. Mohammed Alaa</string>
-    <string name="doctor_email">Email: Mohamed2alaa@ocs.com</string>
-    <string name="doctor_phone">Phone: 01209632578</string>
-    <string name="doctor_Specialization">Specialization: Radiation oncology</string>
-    <string name="doctor_birthdate">Birth Date: 20-08-1966</string>
+    <string name="doctordetails_id">Doctor ID:</string>
+    <string name="doctor_ID">125</string>
+    <string name="doctordetails_name">Name:</string>
+    <string name="doctor_name">DR. Mohammed Alaa</string>
+    <string name="doctordetais_email">Email:</string>
+    <string name="doctor_email">Mohamed2alaa@ocs.com</string>
+    <string name="doctordetails_phone">Phone:</string>
+    <string name="doctor_phone">01209632578</string>
+    <string name="doctordetails_Specialization">Specialization:</string>
+    <string name="doctor_Specialization">Radiation oncology</string>
+    <string name="doctordetails_birthdate">Birth Date:</string>
+    <string name="doctor_birthdate">20-08-1966</string>
     <!--approved-->
     <string name="Approved_title">Approved</string>
     <string name="request_button">request</string>
@@ -91,11 +97,16 @@
     <string name="appointments_time"> 1:00 PM</string>
     <!--patient details-->
     <string name="PatientRecord_title"> Patient Record</string>
-    <string name="Patientdetails_name"> Name: Mohammed Alaa</string>
-    <string name="Patientdetails_email"> Email: Mohammed555@yahoo.com</string>
-    <string name="Patientdetails_phone">Phone: 01209632578</string>
-    <string name="Patientdetails_diagnosis"> Diagnosis: Blood Cancer</string>
-    <string name="Patientdetails_medicine"> Medicine: Alectinib 150 mg</string>
+    <string name="Patientdetails_name"> Name:</string>
+    <string name="Patient_name"> Mohammed Alaa</string>
+    <string name="Patientdetails_email"> Email:</string>
+    <string name="Patient_email"> Mohammed555@yahoo.com</string>
+    <string name="Patientdetails_phone">Phone:</string>
+    <string name="Patient_phone"> 01209632578</string>
+    <string name="Patientdetails_diagnosis"> Diagnosis:</string>
+    <string name="Patient_diagnosis">Blood Cancer</string>
+    <string name="Patientdetails_medicine"> Medicine:</string>
+    <string name="Patient_medicine"> Alectinib 150 mg</string>
     <!--model-->
     <string name="Drug_Effectiveness_title"> Drug Effectiveness</string>
     <string name="Drug_Effectiveness_Gene_expression">Gene expression:</string>

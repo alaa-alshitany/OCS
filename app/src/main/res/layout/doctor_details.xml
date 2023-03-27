@@ -26,7 +26,7 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_gravity="center"
-            android:layout_weight="4"
+            android:layout_weight="2"
             android:fontFamily="@font/acme_regular"
             android:gravity="center"
             android:textAppearance="@style/TextAppearance.AppCompat.Small"
@@ -42,163 +42,273 @@
         </Space>
 
 
-        <EditText
-            android:id="@+id/editTextNumberDecimal"
-            style="@style/EditText"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:autofillHints=""
-            android:layout_weight="4"
-            android:inputType="numberDecimal"
-            android:textColor="@color/black"
-            app:boxStrokeWidth="0dp"
-            app:boxStrokeWidthFocused="0dp"
-            app:hintAnimationEnabled="true"
-            app:hintEnabled="true"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            tools:ignore="VisualLintTextFieldSize"
-            tools:layout_editor_absoluteY="79dp"
-            tools:text="@string/doctor_id"  />
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight=".8">
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
 
-        </Space>
+            <EditText
+                android:id="@+id/editTextNumberDecimal"
+                style="@style/EditText"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight=".5"
+                android:autofillHints=""
+                android:inputType="numberDecimal"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                app:boxStrokeWidth="0dp"
+                app:boxStrokeWidthFocused="0dp"
+                app:hintAnimationEnabled="true"
+                app:hintEnabled="true"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:ignore="VisualLintTextFieldSize"
+                tools:layout_editor_absoluteY="79dp"
+                tools:text="@string/doctordetails_id" />
 
-        <EditText
-            android:id="@+id/editTextTextPersonName3"
-            style="@style/EditText"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="4"
-            android:autofillHints=""
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:textColor="@color/black"
-            app:boxStrokeWidth="0dp"
-            app:boxStrokeWidthFocused="0dp"
-            app:hintAnimationEnabled="true"
-            app:hintEnabled="true"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            tools:ignore="VisualLintTextFieldSize"
-            tools:layout_editor_absoluteY="79dp"
-            tools:text="@string/doctor_name"  />
+            <TextView
+                android:id="@+id/textView2"
+                style="@style/EditText"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1.2"
+                android:text="TextView"
+                android:textColor="@color/black"
+                android:textSize="17sp"
+                tools:text="@string/doctor_ID" />
+        </LinearLayout>
 
         <Space
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight=".8">
+            android:layout_weight=".5">
 
         </Space>
 
-        <EditText
-            android:id="@+id/editTextTextEmailAddress"
-            style="@style/EditText"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="4"
-            android:autofillHints=""
-            android:inputType="textEmailAddress"
-            android:textColor="@color/black"
-            app:boxStrokeWidth="0dp"
-            app:boxStrokeWidthFocused="0dp"
-            app:hintAnimationEnabled="true"
-            app:hintEnabled="true"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            tools:ignore="VisualLintTextFieldSize"
-            tools:layout_editor_absoluteY="79dp"
-            tools:text="@string/doctor_email"
-            />
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight=".8">
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
 
-        </Space>
+            <EditText
+                android:id="@+id/editTextTextPersonName3"
+                style="@style/EditText"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight=".5"
+                android:autofillHints=""
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                app:boxStrokeWidth="0dp"
+                app:boxStrokeWidthFocused="0dp"
+                app:hintAnimationEnabled="true"
+                app:hintEnabled="true"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:ignore="VisualLintTextFieldSize"
+                tools:layout_editor_absoluteY="79dp"
+                tools:text="@string/doctordetails_name" />
 
-        <EditText
-            android:id="@+id/editTextPhone2"
-            style="@style/EditText"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="4"
-            android:autofillHints=""
-            android:hint="@string/phone"
-            android:inputType="phone"
-            android:textColor="@color/black"
-            app:boxStrokeWidth="0dp"
-            app:boxStrokeWidthFocused="0dp"
-            app:hintAnimationEnabled="true"
-            app:hintEnabled="true"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            tools:ignore="VisualLintTextFieldSize"
-            tools:layout_editor_absoluteY="79dp"
-            tools:text="@string/doctor_phone" />
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight=".8">
-
-        </Space>
-
-        <EditText
-            android:id="@+id/editTextTextPersonName4"
-            style="@style/EditText"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="4"
-
-            android:autofillHints=""
-            android:ems="10"
-            android:inputType="text"
-            android:textColor="@color/black"
-            app:boxStrokeWidth="0dp"
-            app:boxStrokeWidthFocused="0dp"
-            app:hintAnimationEnabled="true"
-            app:hintEnabled="true"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            tools:ignore="VisualLintTextFieldSize"
-            tools:layout_editor_absoluteY="79dp"
-            tools:text="@string/doctor_Specialization" />
+            <TextView
+                android:id="@+id/textView24"
+                style="@style/EditText"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1.2"
+                android:text="TextView"
+                android:textColor="@color/black"
+                android:textSize="17sp"
+                tools:text="@string/doctor_name" />
+        </LinearLayout>
 
         <Space
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight=".8">
+            android:layout_weight=".5">
 
         </Space>
 
-        <EditText
-            android:id="@+id/editTextDate"
-            style="@style/EditText"
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/editTextTextEmailAddress"
+                style="@style/EditText"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight=".5"
+                android:autofillHints=""
+                android:inputType="textEmailAddress"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                app:boxStrokeWidth="0dp"
+                app:boxStrokeWidthFocused="0dp"
+                app:hintAnimationEnabled="true"
+                app:hintEnabled="true"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:ignore="VisualLintTextFieldSize"
+                tools:layout_editor_absoluteY="79dp"
+                tools:text="@string/doctordetais_email" />
+
+            <TextView
+                android:id="@+id/textView39"
+                style="@style/EditText"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1.2"
+                android:text="TextView"
+                android:textColor="@color/black"
+                android:textSize="17sp"
+                tools:text="@string/doctor_email" />
+        </LinearLayout>
+
+        <Space
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="4"
-            android:autofillHints=""
-            android:ems="10"
-            android:inputType="date"
-            android:textColor="@color/black"
-            app:boxStrokeWidth="0dp"
-            app:boxStrokeWidthFocused="0dp"
-            app:hintAnimationEnabled="true"
-            app:hintEnabled="true"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            tools:ignore="VisualLintTextFieldSize"
-            tools:layout_editor_absoluteY="79dp"
-            tools:text="@string/doctor_birthdate"  />
+            android:layout_weight=".5">
+
+        </Space>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/editTextPhone2"
+                style="@style/EditText"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight=".5"
+                android:autofillHints=""
+                android:hint="@string/phone"
+                android:inputType="phone"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                app:boxStrokeWidth="0dp"
+                app:boxStrokeWidthFocused="0dp"
+                app:hintAnimationEnabled="true"
+                app:hintEnabled="true"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:ignore="VisualLintTextFieldSize"
+                tools:layout_editor_absoluteY="79dp"
+                tools:text="@string/doctordetails_phone" />
+
+            <TextView
+                android:id="@+id/textView40"
+                style="@style/EditText"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1.2"
+                android:text="TextView"
+                android:textColor="@color/black"
+                android:textSize="17sp"
+                tools:text="@string/doctor_phone" />
+        </LinearLayout>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight=".5">
+
+        </Space>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/editTextTextPersonName4"
+                style="@style/EditText"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight=".5"
+                android:autofillHints=""
+                android:ems="10"
+                android:inputType="text"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                app:boxStrokeWidth="0dp"
+                app:boxStrokeWidthFocused="0dp"
+                app:hintAnimationEnabled="true"
+                app:hintEnabled="true"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:ignore="VisualLintTextFieldSize"
+                tools:layout_editor_absoluteY="79dp"
+                tools:text="@string/doctordetails_Specialization" />
+
+            <TextView
+                android:id="@+id/textView41"
+                style="@style/EditText"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight=".7"
+                android:text="TextView"
+                android:textColor="@color/black"
+                android:textSize="17sp"
+                tools:text="@string/doctor_Specialization" />
+        </LinearLayout>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight=".5">
+
+        </Space>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/editTextDate"
+                style="@style/EditText"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight=".5"
+                android:autofillHints=""
+                android:ems="10"
+                android:inputType="date"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                app:boxStrokeWidth="0dp"
+                app:boxStrokeWidthFocused="0dp"
+                app:hintAnimationEnabled="true"
+                app:hintEnabled="true"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:ignore="VisualLintTextFieldSize"
+                tools:layout_editor_absoluteY="79dp"
+                tools:text="@string/doctordetails_birthdate" />
+
+            <TextView
+                android:id="@+id/textView42"
+                style="@style/EditText"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1.2"
+                android:text="TextView"
+                android:textColor="@color/black"
+                android:textSize="17sp"
+                tools:text="@string/doctor_birthdate" />
+        </LinearLayout>
+
         <Space
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -215,7 +325,7 @@
             android:layout_margin="16dp"
             android:contentDescription="save"
             android:gravity="center"
-            android:src="@drawable/baseline_check_green"
+            android:src="@drawable/baseline_check_blue"
             app:backgroundTint="#A6CFF5"
             tools:srcCompat="@tools:sample/avatars[0]"
             />
