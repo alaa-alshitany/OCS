@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "1052905199791",
+    "firebase_url": "https://oncology-center-services-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "oncology-center-services",
+    "storage_bucket": "oncology-center-services.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1052905199791:android:aea2d017b4b7d33578dc5a",
+        "android_client_info": {
+          "package_name": "com.example.ocs"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1052905199791-lhdsquha6t3qbij57e3o90qvq6b8rg7e.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyABzPUDRlrftmQK4k8O10UkHBVojgTbTf0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1052905199791-lhdsquha6t3qbij57e3o90qvq6b8rg7e.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,7 +1,7 @@
 package com.example.ocs.Intro.login
-
 import android.annotation.SuppressLint
 import android.app.Activity
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -17,10 +17,9 @@ import com.example.ocs.Intro.patient.services.services
 import com.example.ocs.Intro.admin.profile
 import com.example.ocs.R
 import com.google.android.material.textfield.TextInputLayout
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.*
-import com.google.firebase.ktx.Firebase
+import com.google.firebase.database.ktx.getValue
+
 
 
 class login : AppCompatActivity() {
@@ -34,8 +33,9 @@ class login : AppCompatActivity() {
     lateinit var email_layout:TextInputLayout
     lateinit var forgetpass_btn:Button
     lateinit var password_edt:EditText
-    lateinit var database:DatabaseReference
-    lateinit var authF: FirebaseAuth
+   private val database:DatabaseReference=FirebaseDatabase.getInstance().reference
+   private lateinit var context: Context
+   private lateinit var pref:Prefrences
 
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -107,42 +107,40 @@ class login : AppCompatActivity() {
     }
 
     private fun readPatientData(email: String,password: String) {
-        authF.signInWithEmailAndPassword(email,password).addOnCompleteListener {
-            task->
-            if(task.isSuccessful){
-                Toast.makeText(applicationContext, R.string.login_success, Toast.LENGTH_LONG)
-            }else{
-                Toast.makeText(applicationContext,"no result",Toast.LENGTH_LONG).show()
-            }
-        }
-
-        var queryPatient: Query = database.orderByChild("1").equalTo(email)
+        var queryPatient: Query = database.child("patient").orderByChild("email").equalTo(email)
         queryPatient.addListenerForSingleValueEvent(object : ValueEventListener {
+
             override fun onDataChange(snapshot: DataSnapshot) {
                 if (snapshot.exists()) {
-                    var passwordFromDB = snapshot.child(email).child("password").value
-                    if (passwordFromDB.toString().equals(password)) {
-
+                    for (item in snapshot.children) {
+                        var patient = item.getValue<PatientData>()
+                        if (patient != null) {
+                            if (patient.password.equals(password)) {
+                                pref.prefStatus = true
+                                Toast.makeText(context,R.string.login_success,Toast.LENGTH_LONG).show()
+                                moveToHome()
+                            } else {
+                                Toast.makeText(context,R.string.login_failed,Toast.LENGTH_LONG).show()
+                            }
+                        }
                     }
+                } else {
+                    Toast.makeText(context, "user not found", Toast.LENGTH_LONG).show()
                 }
             }
 
             override fun onCancelled(error: DatabaseError) {
-
+                Toast.makeText(context, error.message, Toast.LENGTH_LONG).show()
             }
-
-
         })
-    }/*
-        database.child(email).get().addOnSuccessListener {
-            if (it.exists()) {
+    }
+    override fun onStart(){
+        super.onStart()
+        if (pref.prefStatus){
 
-            } else {
-                Toast.makeText(applicationContext,R.string.login_failed,Toast.LENGTH_SHORT)
-            }
         }
     }
-*/
+
     private fun validatePatientData(email: String,password: String) {
 
 
@@ -169,7 +167,9 @@ class login : AppCompatActivity() {
         email_layout=findViewById(R.id.email_input_layout)
         forgetpass_btn=findViewById(R.id.forgetPass_btn)
         password_edt=findViewById(R.id.password_edt)
-        authF= Firebase.auth
+        context=this
+        pref= Prefrences(context)
+
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -200,5 +200,4 @@ class login : AppCompatActivity() {
         }
         return super.onOptionsItemSelected(item)
     }
-
 }
