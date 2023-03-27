@@ -12,10 +12,15 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import com.example.ocs.Intro.patient.services.services
 import com.example.ocs.Intro.admin.profile
 import com.example.ocs.R
 import com.google.android.material.textfield.TextInputLayout
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.database.*
+import com.google.firebase.ktx.Firebase
 
 
 class login : AppCompatActivity() {
@@ -28,6 +33,9 @@ class login : AppCompatActivity() {
     lateinit var login_img:ImageView
     lateinit var email_layout:TextInputLayout
     lateinit var forgetpass_btn:Button
+    lateinit var password_edt:EditText
+    lateinit var database:DatabaseReference
+    lateinit var authF: FirebaseAuth
 
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -45,7 +53,7 @@ class login : AppCompatActivity() {
             }else if(hint.equals(R.string.a_email_hint.toString())){
                 adminLogin()
 
-            }else{
+            }else if (hint.equals(R.string.p_email_hint.toString())){
                 patientLogin()
 
             }
@@ -58,7 +66,7 @@ class login : AppCompatActivity() {
     }
 
     private fun moveToHome() {
-     activity=this
+        activity=this
         startActivity(Intent(activity, services::class.java))
         finish()
     }
@@ -88,7 +96,68 @@ class login : AppCompatActivity() {
     }
     private fun patientLogin(){
         email_edt.setHint(R.string.p_email_hint)
-        moveToHome()
+
+
+        login_btn.setOnClickListener {
+            checkEmptyData(email_edt,password_edt)
+           // validatePatientData(email,password)
+            readPatientData(email_edt.text.toString(),password_edt.text.toString())
+        }
+
+    }
+
+    private fun readPatientData(email: String,password: String) {
+        authF.signInWithEmailAndPassword(email,password).addOnCompleteListener {
+            task->
+            if(task.isSuccessful){
+                Toast.makeText(applicationContext, R.string.login_success, Toast.LENGTH_LONG)
+            }else{
+                Toast.makeText(applicationContext,"no result",Toast.LENGTH_LONG).show()
+            }
+        }
+
+        var queryPatient: Query = database.orderByChild("1").equalTo(email)
+        queryPatient.addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                if (snapshot.exists()) {
+                    var passwordFromDB = snapshot.child(email).child("password").value
+                    if (passwordFromDB.toString().equals(password)) {
+
+                    }
+                }
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+
+            }
+
+
+        })
+    }/*
+        database.child(email).get().addOnSuccessListener {
+            if (it.exists()) {
+
+            } else {
+                Toast.makeText(applicationContext,R.string.login_failed,Toast.LENGTH_SHORT)
+            }
+        }
+    }
+*/
+    private fun validatePatientData(email: String,password: String) {
+
+
+
+    }
+
+
+    private fun checkEmptyData(email:EditText, password:EditText){
+        if (email.text.toString().isEmpty() && password.text.toString().isEmpty())
+            Toast.makeText(applicationContext,R.string.emptyData,Toast.LENGTH_LONG).show()
+        else if (email.text.toString().isEmpty())
+            Toast.makeText(applicationContext,R.string.emptyEmail,Toast.LENGTH_LONG).show()
+        else if(password.text.toString().isEmpty())
+            Toast.makeText(applicationContext,R.string.emptyPassword,Toast.LENGTH_LONG).show()
+
     }
     private fun bindingItems(){
         email_edt=findViewById(R.id.email)
@@ -99,6 +168,8 @@ class login : AppCompatActivity() {
         login_img=findViewById(R.id.login_img)
         email_layout=findViewById(R.id.email_input_layout)
         forgetpass_btn=findViewById(R.id.forgetPass_btn)
+        password_edt=findViewById(R.id.password_edt)
+        authF= Firebase.auth
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {

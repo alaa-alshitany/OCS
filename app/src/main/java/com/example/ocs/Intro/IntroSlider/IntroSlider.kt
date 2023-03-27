@@ -28,10 +28,12 @@ class IntroSlider : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_intro_slider)
-        bindingItems()
-        checkUser()
 
-        var adapter = SliderAdapter(
+        checkUser()
+        bindingItems()
+
+
+        var adapter: SliderAdapter = SliderAdapter(
             supportFragmentManager,
             FragmentPagerAdapter1.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT
         )
@@ -39,10 +41,9 @@ class IntroSlider : AppCompatActivity() {
         tabLayout.setupWithViewPager(viewPager)
 
         next_btn.setOnClickListener{
-        if (viewPager.currentItem<adapter.count){
-            viewPager.currentItem+=1
-        }
-
+            if (viewPager.currentItem<adapter.count){
+                viewPager.currentItem+=1
+            }
         }
 
         viewPager?.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
@@ -59,7 +60,7 @@ class IntroSlider : AppCompatActivity() {
                     next_btn.setText(R.string.get_started)
 
                     next_btn.setOnClickListener {
-                       moveToLogin()
+                        moveToLogin()
                         val editor=prefManager.edit()
                         editor.putBoolean(pref_show_intro,false)
                         editor.apply()
@@ -86,11 +87,11 @@ class IntroSlider : AppCompatActivity() {
         activity = this
         prefManager = getSharedPreferences("IntroSlider", Context.MODE_PRIVATE)
         if (!prefManager.getBoolean(pref_show_intro, true)) {
-           moveToLogin()
+            moveToLogin()
         }
     }
     fun moveToLogin(){
-        startActivity(Intent(this, login::class.java))
+        startActivity(Intent(activity, login::class.java).putExtra("email_hint",R.string.p_email_hint.toString()))
         finish()
     }
-    }
+}

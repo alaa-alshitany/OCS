@@ -23,8 +23,12 @@
     <string name="action_login_in_short">Login</string>
     <string name="forgetPass"><u>Forgotten Password?</u></string>
     <string name="invalid_username">Not a valid username</string>
-    <string name="invalid_password">Password must be >5 characters</string>
+    <string name="invalid_password">Password must be >6 characters</string>
+    <string name="emptyEmail">Please enter your Email</string>
+    <string name="emptyPassword">Please enter your Password</string>
+    <string name="emptyData">Please enter your email \&amp; password</string>
     <string name="login_failed">Login failed</string>
+    <string name="login_success">Login Successful</string>
     <string name="newUser">Don\'t have an account?</string>
 
     <!--String for login menu-->
