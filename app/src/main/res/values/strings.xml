@@ -121,6 +121,9 @@
     <string name="Drug_Effectiveness_drug_name">drug name:</string>
     <string name="Drug_Effectiveness_predict_pn">perdict</string>
 
+    <!--string for drawer-->
+    <string name="close">close</string>
+    <string name="open">open</string>
 
 
 </resources>

@@ -1,48 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
-<uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
     <application
         android:allowBackup="true"
+        android:configChanges="keyboardHidden|orientation|screenSize"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_launcher_round"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:configChanges = "keyboardHidden|orientation|screenSize"
-        android:windowSoftInputMode="adjustPan"
         android:theme="@style/Theme.OCS"
+        android:windowSoftInputMode="adjustPan"
         tools:targetApi="31">
         <activity
-            android:name=".Intro.admin.appointments"
-            android:windowSoftInputMode="adjustPan"
+            android:name=".patient_recycle"
             android:exported="false" />
         <activity
-            android:name=".Intro.admin.doctors"
-            android:windowSoftInputMode="adjustPan"
+            android:name=".MainActivity3"
             android:exported="false" />
+        <activity
+            android:name=".MainActivity2"
+            android:exported="false" />
+        <activity
+            android:name=".MainActivity"
+            android:exported="false" />
+        <activity
+            android:name=".profile_doctor"
+            android:exported="false" />
+        <activity
+            android:name=".profile_patient"
+            android:exported="false" />
+        <activity
+            android:name=".Intro.admin.appointments"
+            android:exported="false"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".Intro.admin.doctors"
+            android:exported="false"
+            android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".Intro.patient.booking.BookAppointment"
             android:exported="false" />
         <activity
             android:name=".Intro.admin.profile"
-            android:exported="false"
-            />
+            android:exported="false" />
         <activity
             android:name=".Intro.patient.services.services"
             android:exported="false" />
         <activity
             android:name=".Intro.login.register_continue"
             android:exported="false"
-            android:parentActivityName=".Intro.login.register"
-             />
+            android:parentActivityName=".Intro.login.register" />
         <activity
             android:name=".Intro.login.register"
             android:exported="false"
-            android:theme="@style/Theme.OCS"
-             />
+            android:theme="@style/Theme.OCS" />
         <activity
             android:name=".Intro.login.login"
             android:exported="false"

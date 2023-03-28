@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="192dp"
+        android:background="@color/blue_200"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="121dp"
+            android:layout_height="127dp"
+            android:layout_margin="20dp"
+            android:src="@drawable/baseline_account_circle_24" />
+
+        <TextView
+            android:layout_width="350dp"
+            android:layout_height="29dp"
+            android:layout_marginHorizontal="40dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="773dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/edt_specialize"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:layout_margin="30dp"
+            android:drawableStart="@drawable/baseline_user_24"
+            android:drawablePadding="20dp"
+            android:hint=" Radiation oncology "
+            android:inputType="text"
+            android:textSize="20dp"
+            style="@style/EditText"
+            android:textStyle="bold"/>
+
+
+        <TextView
+            android:id="@+id/edt_calender"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:layout_marginHorizontal="30dp"
+            android:drawableStart="@drawable/baseline_calendar_month_24"
+            android:drawablePadding="20dp"
+            android:hint=" 6 july 1998 "
+            android:inputType="text"
+            android:textSize="20dp"
+            style="@style/EditText"
+            android:textStyle="bold"/>
+
+
+        <TextView
+            android:id="@+id/edt_call"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:layout_margin="30dp"
+            android:drawableStart="@drawable/baseline_phone_24"
+            android:drawablePadding="20dp"
+            android:hint=" 01125896321 "
+            android:inputType="phone"
+            android:textSize="20dp"
+            style="@style/EditText"
+            android:textStyle="bold"/>
+
+
+        <TextView
+            android:id="@+id/edt_email"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:layout_marginHorizontal="30dp"
+            android:drawableStart="@drawable/baseline_email_24"
+            android:drawablePadding="20dp"
+            android:hint=" mohammed335@gmail.com  "
+            android:inputType="textEmailAddress"
+            android:textSize="20dp"
+            style="@style/EditText"
+            android:textStyle="bold"/>
+
+
+        <TextView
+            android:id="@+id/edt_location"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:layout_margin="30dp"
+            android:drawableStart="@drawable/baseline_location_on_24"
+            android:drawablePadding="20dp"
+            android:hint="Tanta, Al Gharbiyah "
+            android:inputType="text"
+            android:textSize="20dp"
+            style="@style/EditText"
+            android:textStyle="bold"/>
+
+    </LinearLayout>
+</LinearLayout>
