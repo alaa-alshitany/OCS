@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="16dp"
+    android:layout_marginTop="16dp"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:src="@drawable/baseline_user_24" />
+
+    <TextView
+        android:id="@+id/user_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="8dp"
+        android:text="DR.mohammed"
+        android:textSize="20dp"
+        android:textStyle="bold" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="20dp"
+        android:background="@color/underline" />
+
+
+</LinearLayout>

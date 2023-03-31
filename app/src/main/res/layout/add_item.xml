@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:layout_margin="15dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp"
+        android:background="@drawable/shape_background">
+        <TextView
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Add Patient"
+            android:textStyle="bold"
+            android:textSize="19dp"
+            android:textColor="@color/black"
+            android:padding="10dp"
+            android:layout_gravity="center"
+            android:paddingRight="15dp"
+            android:paddingLeft="15dp"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shape_background"
+            android:padding="20dp"
+            android:layout_margin="20dp"
+            android:hint="Name"
+            android:textColor="@color/black"
+            android:textSize="17dp"
+            android:textStyle="bold"
+            android:id="@+id/patientName"
+            android:inputType="textPersonName"/>
+
+
+    </LinearLayout>
+
+</LinearLayout>
