@@ -11,4 +11,6 @@
     <color name="white">#FFFFFFFF</color>
     <color name="colorAccent">#0969C4</color>
     <color name="blue_100">#47A6CFF5</color>
+    <color name="gray">#D9D9D9</color>
+    <color name="underline">#6BB1F1</color>
 </resources>
