@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="horizontal"
     android:background="@color/white"
-    tools:context=".Intro.login.register">
+    tools:context=".Intro.Login.Register">
 
 
         <ImageView

@@ -16,10 +16,12 @@ class services : AppCompatActivity() {
         list.layoutManager=LinearLayoutManager(this)
 
         // ArrayList of class serviceViewModel
-        val data = ArrayList<serviceModel>(3)
+        val data = ArrayList<serviceModel>(4)
         data.add(serviceModel(R.drawable.rays_service,R.string.slider2_title))
+        data.add(serviceModel(R.drawable.booking,R.string.book_appointment_title))
         data.add(serviceModel(R.drawable.tests_service,R.string.slider3_title))
         data.add(serviceModel(R.drawable.clinics_service,R.string.clinic_service))
+
 
         //This will pass the ArrayList to our Adapter
         val adapter = serviceAdapter(this,data)

@@ -8,6 +8,7 @@
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_launcher_round"
+        android:enableOnBackInvokedCallback="true"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
@@ -34,17 +35,18 @@
             android:name=".Intro.patient.services.services"
             android:exported="false" />
         <activity
-            android:name=".Intro.login.register_continue"
+            android:name=".Intro.Login.RegisterContinue"
+            android:theme="@style/Theme.OCS"
             android:exported="false"
-            android:parentActivityName=".Intro.login.register"
+            android:parentActivityName=".Intro.Login.Register"
              />
         <activity
-            android:name=".Intro.login.register"
+            android:name=".Intro.Login.Register"
             android:exported="false"
             android:theme="@style/Theme.OCS"
              />
         <activity
-            android:name=".Intro.login.login"
+            android:name=".Intro.Login.login"
             android:exported="false"
             android:theme="@style/Theme.OCS" />
         <activity

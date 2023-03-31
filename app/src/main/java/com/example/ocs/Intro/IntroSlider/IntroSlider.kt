@@ -10,7 +10,7 @@ import android.widget.Button
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager.widget.ViewPager
-import com.example.ocs.Intro.login.login
+import com.example.ocs.Intro.Login.login
 import com.example.ocs.R
 import com.google.android.material.tabs.TabLayout
 import androidx.fragment.app.FragmentPagerAdapter as FragmentPagerAdapter1
