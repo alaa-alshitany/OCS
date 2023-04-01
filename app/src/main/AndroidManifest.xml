@@ -53,15 +53,15 @@
             android:name=".Intro.patient.services.services"
             android:exported="false" />
         <activity
-            android:name=".Intro.login.register_continue"
+            android:name=".Intro.Login.RegisterContinue"
             android:exported="false"
-            android:parentActivityName=".Intro.login.register" />
+            android:parentActivityName=".Intro.Login.Register" />
         <activity
-            android:name=".Intro.login.register"
+            android:name=".Intro.Login.Register"
             android:exported="false"
             android:theme="@style/Theme.OCS" />
         <activity
-            android:name=".Intro.login.login"
+            android:name=".Intro.Login.login"
             android:exported="false"
             android:theme="@style/Theme.OCS" />
         <activity
