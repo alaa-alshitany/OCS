@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:background="@color/white"
     android:orientation="horizontal"
-    tools:context=".Intro.login.register_continue">
+    tools:context=".Intro.Login.RegisterContinue">
 
 
         <ImageView
