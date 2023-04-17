@@ -18,6 +18,9 @@
         android:windowSoftInputMode="adjustPan"
         tools:targetApi="31">
         <activity
+            android:name=".recycle_approved"
+            android:exported="false" />
+        <activity
             android:name=".patient_recycle"
             android:exported="false" />
         <activity
