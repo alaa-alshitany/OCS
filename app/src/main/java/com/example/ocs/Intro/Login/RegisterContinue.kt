@@ -54,8 +54,7 @@ private fun validateInputData():Boolean{
         } else if (passwordEdt.text.toString().trim().length < 8) {
             Toast.makeText(applicationContext,R.string.notValidPassword,Toast.LENGTH_LONG).show()
         } else if (!passwordEdt.text.toString().equals(passwordConfEdt.text.toString())){
-            Toast.makeText(applicationContext,R.string.passwordNotMach,Toast.LENGTH_LONG).show()}
-
+            Toast.makeText(applicationContext,R.string.passwordNotMatch,Toast.LENGTH_LONG).show()}
         return false
     }
 

@@ -1,5 +1,6 @@
 package com.example.ocs.Intro.patient.services
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -7,11 +8,17 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.ocs.R
 
 class services : AppCompatActivity() {
+    private lateinit var intent2: Intent
+    private lateinit var fullName:String
+    private lateinit var list: RecyclerView
+    private fun bindingItems() {
+       list=findViewById(R.id.recyclerView)
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_services)
-        val list: RecyclerView = findViewById(R.id.recyclerView)
-
+        bindingItems()
         // this creates a vertical layout Manager
         list.layoutManager=LinearLayoutManager(this)
 
@@ -28,5 +35,14 @@ class services : AppCompatActivity() {
 
         // Setting the Adapter with the recyclerview
         list.adapter = adapter
+        getIntentExtra()
+        //adapter.setOnItem
+
+
     }
+    private fun getIntentExtra(){
+        intent2=intent
+        fullName=intent2.getStringExtra("name").toString()
+    }
+
 }

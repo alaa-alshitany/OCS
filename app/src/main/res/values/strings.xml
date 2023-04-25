@@ -31,6 +31,11 @@
     <string name="userNotFound">User Not Found</string>
     <string name="login_failed">Login failed</string>
     <string name="login_success">Logged in Successfully</string>
+    <string name="forgetPassword">Forget Password ? </string>
+    <string name="forgetMessage">Enter Your Phone Number Associated With Your Account.</string>
+    <string name="send">Send</string>
+    <string name="verification">Verification</string>
+    <string name="otpMessage">Enter The OTP code Sent on </string>
 
     <!--String for login menu-->
     <string name="menu_doctor">Doctor</string>
@@ -59,7 +64,7 @@
     <string name="emptyPhone">Enter your Phone</string>
     <string name="notValidNumber">Enter your Valid phone (11 Number)</string>
     <string name="register_success">Registered Successfully</string>
-    <string name="passwordNotMach"></string>
+    <string name="passwordNotMatch">Password don\'t match</string>
     <string name="notValidPassword">Your password must be >8 characters</string>
     <string name="emptyBirthDate">Enter your Birth Date</string>
     <string name="emptyAddress">Enter your Address</string>

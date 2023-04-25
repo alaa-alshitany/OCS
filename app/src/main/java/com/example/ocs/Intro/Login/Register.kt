@@ -1,17 +1,19 @@
 package com.example.ocs.Intro.Login
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.*
+import androidx.appcompat.app.AppCompatActivity
 import com.example.ocs.R
+import java.util.regex.Matcher
+import java.util.regex.Pattern
 
 
 class Register : AppCompatActivity() {
-    lateinit var continue_btn: TextView
-    lateinit var firstName_edt:EditText
-    lateinit var lastName_edt:EditText
-    lateinit var email_edt:EditText
-    lateinit var phone_edt:EditText
+    lateinit var continueBtn: TextView
+    lateinit var firstNameEdt:EditText
+    lateinit var lastNameEdt:EditText
+    lateinit var emailEdt:EditText
+    lateinit var phoneEdt:EditText
     lateinit var genderRadio:RadioGroup
     lateinit var radioButton: RadioButton
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -19,7 +21,7 @@ class Register : AppCompatActivity() {
         setContentView(R.layout.activity_register)
          bindingItems()
 
-        continue_btn.setOnClickListener { moveToContinueRegister() }
+        continueBtn.setOnClickListener { moveToContinueRegister() }
     }
     override fun onBackPressed() {
         onBackPressedDispatcher.onBackPressed()
@@ -29,53 +31,55 @@ class Register : AppCompatActivity() {
         radioButton = findViewById(selectedGender)
         if (validateInputData()){
             val intent = Intent(this,RegisterContinue::class.java)
-            intent.putExtra("first name",firstName_edt.text.toString())
-            intent.putExtra("last name",lastName_edt.text.toString())
-            intent.putExtra("email", email_edt.text.toString())
-            intent.putExtra("phone", phone_edt.text.toString())
+            intent.putExtra("first name",firstNameEdt.text.toString())
+            intent.putExtra("last name",lastNameEdt.text.toString())
+            intent.putExtra("email", emailEdt.text.toString())
+            intent.putExtra("phone", phoneEdt.text.toString())
             intent.putExtra("gender",radioButton.text.toString())
             startActivity(intent)
         }
     }
 
     private fun bindingItems(){
-        continue_btn=findViewById(R.id.continue_register_btn)
-        firstName_edt=findViewById(R.id.firstName)
-        lastName_edt=findViewById(R.id.lastName)
-        email_edt=findViewById(R.id.email)
-        phone_edt=findViewById(R.id.phone)
+        continueBtn=findViewById(R.id.continue_register_btn)
+        firstNameEdt=findViewById(R.id.firstName)
+        lastNameEdt=findViewById(R.id.lastName)
+        emailEdt=findViewById(R.id.email)
+        phoneEdt=findViewById(R.id.phone)
         genderRadio=findViewById(R.id.gender)
 
     }
-     private fun validateInputData() :Boolean{
+
+    private fun validateInputData() :Boolean{
         var emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+"
-         if(firstName_edt.text.toString().isNotEmpty() && lastName_edt.text.toString().isNotEmpty()
-             && email_edt.text.toString().trim().matches(emailPattern.toRegex())
-             && email_edt.text.toString().isNotEmpty() && phone_edt.text.toString().isNotEmpty()
-             && phone_edt.text.toString().length ==11 && genderRadio.getCheckedRadioButtonId() == -1){
+        var phonePattern="^01[0125][0-9]{8}\$"
+         if(firstNameEdt.text.toString().isNotEmpty() && lastNameEdt.text.toString().isNotEmpty()
+             && emailEdt.text.toString().trim().matches(emailPattern.toRegex())
+             && emailEdt.text.toString().isNotEmpty() && phoneEdt.text.toString().isNotEmpty()
+             && phoneEdt.text.toString().length ==11 && phoneEdt.text.toString().trim().matches(phonePattern.toRegex())){
              return true
          }else{
-             if(email_edt.text.toString().trim().isEmpty() && firstName_edt.text.toString().isEmpty()
-                 &&(lastName_edt.text.toString().isEmpty() && phone_edt.text.toString().isEmpty())){
+             if(emailEdt.text.toString().trim().isEmpty() && firstNameEdt.text.toString().isEmpty()
+                 &&(lastNameEdt.text.toString().isEmpty() && phoneEdt.text.toString().isEmpty())){
                  Toast.makeText(this,R.string.emptyFields,Toast.LENGTH_LONG).show()
              }
 
 
-             if (email_edt.text.toString().trim().isEmpty())
+             if (emailEdt.text.toString().trim().isEmpty())
                  Toast.makeText(this, R.string.emptyEmail, Toast.LENGTH_LONG).show()
-             else if (!email_edt.text.toString().trim().matches(emailPattern.toRegex()))
+             else if (!emailEdt.text.toString().trim().matches(emailPattern.toRegex()))
                  Toast.makeText(this, R.string.notValidEmail, Toast.LENGTH_LONG).show()
 
 
-             if (firstName_edt.text.toString().isEmpty())
+             if (firstNameEdt.text.toString().isEmpty())
                  Toast.makeText(this, R.string.emptyFName, Toast.LENGTH_LONG).show()
 
-             if (lastName_edt.text.toString().isEmpty())
+             if (lastNameEdt.text.toString().isEmpty())
                  Toast.makeText(this, R.string.emptyLName, Toast.LENGTH_LONG).show()
 
-             if (phone_edt.text.toString().isEmpty())
+             if (phoneEdt.text.toString().isEmpty())
                  Toast.makeText(this, R.string.emptyPhone, Toast.LENGTH_LONG).show()
-             else if (phone_edt.text.toString().length != 11)
+             else if (phoneEdt.text.toString().length != 11 || !phoneEdt.text.toString().trim().matches(phonePattern.toRegex()))
                  Toast.makeText(this, R.string.notValidNumber, Toast.LENGTH_LONG).show()
 
              return false
