@@ -18,6 +18,15 @@
         android:windowSoftInputMode="adjustPan"
         tools:targetApi="31">
         <activity
+            android:name=".medical_clinic"
+            android:exported="false" />
+        <activity
+            android:name=".medical_tests"
+            android:exported="false" />
+        <activity
+            android:name=".medical_rays"
+            android:exported="false" />
+        <activity
             android:name=".recycle_request"
             android:exported="false" />
         <activity
