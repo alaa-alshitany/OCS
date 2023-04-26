@@ -4,8 +4,6 @@ import android.os.Bundle
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import com.example.ocs.R
-import java.util.regex.Matcher
-import java.util.regex.Pattern
 
 
 class Register : AppCompatActivity() {
@@ -41,7 +39,7 @@ class Register : AppCompatActivity() {
     }
 
     private fun bindingItems(){
-        continueBtn=findViewById(R.id.continue_register_btn)
+        continueBtn=findViewById(R.id.continue_btn)
         firstNameEdt=findViewById(R.id.firstName)
         lastNameEdt=findViewById(R.id.lastName)
         emailEdt=findViewById(R.id.email)

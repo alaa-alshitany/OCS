@@ -42,7 +42,7 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:gravity="right"
+            android:gravity="center"
             android:text="+20"
             android:textStyle="bold"
             android:textColor="@color/black"
@@ -72,7 +72,9 @@
             android:id="@+id/code1"
             android:layout_width="0dp"
             android:layout_height="match_parent"
+            android:gravity="center"
             android:imeOptions="actionNext"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
             android:inputType="number"
             android:textStyle="bold"
             android:maxLength="1"
@@ -84,7 +86,9 @@
             android:id="@+id/code2"
             android:layout_width="0dp"
             android:textStyle="bold"
+            android:gravity="center"
             android:layout_height="match_parent"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
             android:imeOptions="actionNext"
             android:inputType="number"
             android:maxLength="1"
@@ -95,8 +99,10 @@
         <EditText
             android:id="@+id/code3"
             android:textStyle="bold"
+            android:gravity="center"
             android:layout_width="0dp"
             android:layout_height="match_parent"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
             android:imeOptions="actionNext"
             android:inputType="number"
             android:maxLength="1"
@@ -107,9 +113,11 @@
         <EditText
             android:id="@+id/code4"
             android:layout_width="0dp"
+            android:gravity="center"
             android:layout_height="match_parent"
             android:imeOptions="actionNext"
             android:inputType="number"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
             android:textStyle="bold"
             android:maxLength="1"
             tools:ignore="labelFor"
@@ -122,8 +130,10 @@
             android:textStyle="bold"
             android:layout_height="match_parent"
             android:imeOptions="actionNext"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
             android:inputType="number"
             android:maxLength="1"
+            android:gravity="center"
             tools:ignore="labelFor"
             android:layout_weight="1">
 
@@ -134,17 +144,43 @@
             android:layout_height="match_parent"
             android:imeOptions="actionNext"
             android:inputType="number"
+            android:gravity="center"
             android:textStyle="bold"
             android:maxLength="1"
             tools:ignore="labelFor"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
             android:layout_weight="1">
 
         </EditText>
     </LinearLayout>
+
     <Space
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="3">
+        android:layout_weight="2">
+    </Space>
+    <TextView
+        android:id="@+id/continue_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginRight="10dp"
+        android:layout_weight=".5"
+        android:background="@color/white"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:layout_gravity="right"
+        android:drawablePadding="10dp"
+        android:text="@string/Continue"
+        android:clickable="true"
+        android:drawableEnd="@drawable/baseline_arrow_right_alt_24"
+        android:textAllCaps="false"
+        android:textColor="@color/black"
+        tools:ignore="VisualLintButtonSize">
 
+    </TextView>
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight=".5">
     </Space>
 </LinearLayout>

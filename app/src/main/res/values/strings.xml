@@ -36,6 +36,11 @@
     <string name="send">Send</string>
     <string name="verification">Verification</string>
     <string name="otpMessage">Enter The OTP code Sent on </string>
+    <string name="resetPassword">Reset Your Password</string>
+    <string name="newPassword">New Password</string>
+    <string name="resetPasswordMessage">Your Identity has been verified!\n Set Your New Password.</string>
+    <string name="update">Update</string>
+    <string name="codeWrong">Code is incorrect</string>
 
     <!--String for login menu-->
     <string name="menu_doctor">Doctor</string>
