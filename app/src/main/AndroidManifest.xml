@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
+
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.SEND_SMS"/>
+
     <application
         android:allowBackup="true"
         android:configChanges="keyboardHidden|orientation|screenSize"
         android:dataExtractionRules="@xml/data_extraction_rules"
-        android:enableOnBackInvokedCallback="true"
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_launcher_round"
         android:label="@string/app_name"
@@ -18,12 +18,11 @@
         android:windowSoftInputMode="adjustPan"
         tools:targetApi="31">
         <activity
-            android:name=".Intro.Login.VerifyOTP"
+            android:name=".recycle_request"
             android:exported="false" />
         <activity
-            android:name=".Intro.Login.ForgetPassword"
-            android:exported="false"
-            android:parentActivityName=".Intro.Login.login" />
+            android:name=".recycle_approved"
+            android:exported="false" />
         <activity
             android:name=".patient_recycle"
             android:exported="false" />
