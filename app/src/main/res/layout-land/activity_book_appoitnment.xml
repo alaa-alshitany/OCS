@@ -14,7 +14,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="25dp"
+        android:layout_margin="9dp"
         android:orientation="vertical"
    >
 
@@ -22,7 +22,7 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_gravity="center"
-            android:layout_weight="2"
+            android:layout_weight=".9"
             android:fontFamily="@font/acme_regular"
             android:gravity="center"
             android:text="@string/book_appointment_title"
@@ -31,54 +31,50 @@
            >
 
         </TextView>
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight=".5">
 
-        </Space>
         <EditText
             android:id="@+id/fullName_edt"
             style="@style/EditText"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1"
+            android:layout_weight="1.3"
             android:autofillHints=""
             android:drawableStart="@drawable/baseline_user_24"
             android:ems="10"
             android:hint="@string/fullName_inp"
             android:inputType="textPersonName"
             android:textColor="@color/black"
+            android:textSize="15sp"
             app:hintAnimationEnabled="true"
-            app:hintEnabled="true"
-            />
+            app:hintEnabled="true" />
     <Space
     android:layout_width="match_parent"
     android:layout_height="0dp"
-    android:layout_weight=".3">
+    android:layout_weight=".2
+">
 
 </Space>
+
         <EditText
             android:id="@+id/phone_edt"
             style="@style/EditText"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1"
+            android:layout_weight="1.3"
             android:autofillHints=""
             android:drawableStart="@drawable/baseline_phone_24"
             android:ems="10"
             android:hint="@string/phone"
             android:inputType="phone"
             android:textColor="@color/black"
+            android:textSize="15sp"
             app:hintAnimationEnabled="true"
-            app:hintEnabled="true"
-
-            />
+            app:hintEnabled="true" />
 
         <Space
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight=".3">
+            android:layout_weight=".2">
 
         </Space>
 
@@ -88,7 +84,7 @@
             style="@style/TextAppearance.MaterialComponents.Subtitle1"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight=".5"
+            android:layout_weight=".8"
             android:fontFamily="@font/inter_font"
             android:text="TextView"
             android:textColor="@color/black"
@@ -99,7 +95,7 @@
             android:id="@+id/medical_clinics"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight=".9"
+            android:layout_weight="1"
             android:text="@string/medical_clinics_radiobn"
             android:textColor="@color/black"
             android:textStyle="bold">
@@ -110,7 +106,7 @@
             android:id="@+id/medical_Rays"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight=".9"
+            android:layout_weight="1"
             android:text="@string/medical_Rays_radiobn"
             android:textColor="@color/black"
             android:textStyle="bold">
@@ -121,7 +117,7 @@
             android:id="@+id/medical_tests"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight=".9"
+            android:layout_weight="1"
             android:text="@string/medical_tests_radiobn"
             android:textColor="@color/black"
             android:textStyle="bold">
@@ -132,10 +128,10 @@
         <Button
             android:id="@+id/button"
             style="@style/Widget.AppCompat.Button.Colored"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="0dp"
             android:layout_gravity="center"
-            android:layout_weight=".9"
+            android:layout_weight="1"
             android:layout_marginLeft="50dp"
             android:layout_marginRight="50dp"
             android:background="@drawable/button_style"
