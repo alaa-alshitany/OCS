@@ -17,7 +17,7 @@ class Register : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
-         bindingItems()
+        init()
 
         continueBtn.setOnClickListener { moveToContinueRegister() }
     }
@@ -38,7 +38,7 @@ class Register : AppCompatActivity() {
         }
     }
 
-    private fun bindingItems(){
+    private fun init(){
         continueBtn=findViewById(R.id.continue_btn)
         firstNameEdt=findViewById(R.id.firstName)
         lastNameEdt=findViewById(R.id.lastName)

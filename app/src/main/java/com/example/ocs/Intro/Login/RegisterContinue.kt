@@ -8,7 +8,9 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import com.example.ocs.R
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
+import java.lang.System.err
 import java.util.*
 
 class RegisterContinue : AppCompatActivity() {
@@ -18,18 +20,19 @@ class RegisterContinue : AppCompatActivity() {
     private lateinit var addressEdt:EditText
     private lateinit var passwordEdt:EditText
     private lateinit var passwordConfEdt:EditText
-    private val database: DatabaseReference = FirebaseDatabase.getInstance().getReference("Patients")
     private lateinit var firstName:String
     private lateinit var lastName:String
     private lateinit var phone:String
     private lateinit var email:String
     private lateinit var gender:String
+    private val database: FirebaseDatabase = FirebaseDatabase.getInstance()
+    private  var auth:FirebaseAuth=FirebaseAuth.getInstance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_continue_register)
         backArrow()
-        bindingItems()
+        init()
         register()
 
     }
@@ -39,7 +42,6 @@ private fun validateInputData():Boolean{
     {
         return true
     }
-
     else{
        if( passwordEdt.text.toString().isEmpty() && passwordConfEdt.text.toString().isEmpty() && birthDateEdt.text.toString().isEmpty() && addressEdt.text.toString().isEmpty())
        {Toast.makeText(applicationContext,R.string.emptyData,Toast.LENGTH_LONG).show()}
@@ -64,7 +66,7 @@ private fun validateInputData():Boolean{
         registerBtn.setOnClickListener {
             if (validateInputData()){
                 sendDataToDB()
-                moveToLogin()
+                login()
             }
         }
         }
@@ -82,13 +84,20 @@ private fun validateInputData():Boolean{
         datePickerDialog.show()
     }
     private fun sendDataToDB() {
-        val patientId=database.push().key!!
-        val patient= PatientData(patientId,firstName,lastName, addressEdt.text.toString(),gender,birthDateEdt.text.toString(),email,null,null,null,phone,passwordEdt.text.toString())
-        database.child(patientId).setValue(patient).addOnSuccessListener{
-            Toast.makeText(this,R.string.register_success,Toast.LENGTH_LONG).show()
-        }.addOnFailureListener { err->
-            Toast.makeText(this,"Error ${err.message}",Toast.LENGTH_LONG).show() }
-    }
+        auth.createUserWithEmailAndPassword(email,passwordEdt.text.toString()).addOnCompleteListener {
+            if (it.isSuccessful){
+                var databaseRef=database.reference.child("Patients").child(auth.currentUser!!.uid)
+                val patient= PatientData(auth.currentUser!!.uid,firstName,lastName, addressEdt.text.toString(),gender,birthDateEdt.text.toString(),email,null,null,null,phone,passwordEdt.text.toString())
+                databaseRef.setValue(patient).addOnCompleteListener {
+                if (it.isSuccessful){
+                    Toast.makeText(this,R.string.register_success,Toast.LENGTH_LONG).show()
+                }else{
+                    Toast.makeText(this,"Error ${err}",Toast.LENGTH_LONG).show() }
+                }
+            }else{
+                Toast.makeText(this,"Error ${err}",Toast.LENGTH_LONG).show() }
+            }
+        }
 
     private fun getIntentExtra(){
          firstName=intent2.getStringExtra("first name").toString()
@@ -101,13 +110,13 @@ private fun validateInputData():Boolean{
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
         supportActionBar!!.setHomeAsUpIndicator(R.drawable.baseline_arrow_back_24)
     }
-    private fun moveToLogin() {
+    private fun login() {
        startActivity(Intent(this,login::class.java).putExtra("hint",R.string.p_email_hint.toString()))
         Toast.makeText(this,R.string.register_success,Toast.LENGTH_LONG).show()
         finish()
     }
 
-    private fun bindingItems(){
+    private fun init(){
         registerBtn=findViewById(R.id.register_btn)
         intent2=intent
         birthDateEdt=findViewById(R.id.birthdate)

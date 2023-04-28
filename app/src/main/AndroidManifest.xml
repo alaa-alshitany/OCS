@@ -83,13 +83,22 @@
             android:name=".Intro.IntroSlider.IntroSlider"
             android:exported="false"
             android:theme="@style/splash" />
+        <activity android:name=".Intro.Login.ForgetPassword"
+            android:windowSoftInputMode="adjustPan"
+            android:exported="false"
+            />
+        <activity android:name=".Intro.Login.VerifyOTP"
+            android:windowSoftInputMode="adjustPan"
+            android:exported="false"/>
+        <activity android:name=".Intro.Login.ResetPassword"
+            android:windowSoftInputMode="adjustPan"
+            android:exported="false"/>
         <activity
             android:name=".Intro.IntroSlider.splashScreen"
             android:exported="true"
             android:theme="@style/splash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

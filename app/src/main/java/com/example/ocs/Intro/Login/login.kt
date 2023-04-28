@@ -17,8 +17,10 @@ import com.example.ocs.Intro.patient.services.services
 import com.example.ocs.Intro.admin.profile
 import com.example.ocs.R
 import com.google.android.material.textfield.TextInputLayout
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import com.google.firebase.database.ktx.getValue
+
 class login : AppCompatActivity() {
     private lateinit var registerBtn:Button
     private lateinit var activity: Activity
@@ -30,17 +32,19 @@ class login : AppCompatActivity() {
     private lateinit var emailLayout:TextInputLayout
     private lateinit var forgetPasswordBtn:Button
     private lateinit var passwordEdt:EditText
-    private val database:DatabaseReference=FirebaseDatabase.getInstance().reference
+    private val auth:FirebaseAuth=FirebaseAuth.getInstance()
     private lateinit var context: Context
     private lateinit var pref:Prefrences
-    private lateinit var name:String
     private lateinit var intent2:Intent
+    private lateinit var patientID:String
+    private lateinit var name:String
+    private val database:DatabaseReference=FirebaseDatabase.getInstance().reference
 
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
-        bindingItems()
+        init()
         getIntentExtra()
         registerBtn.setOnClickListener { moveToRegister()}
         forgetPasswordBtn.setOnClickListener { moveToForgetPassword() }
@@ -63,7 +67,7 @@ class login : AppCompatActivity() {
         }
     }
     private fun moveToHome() {
-        startActivity(Intent(activity, services::class.java).putExtra("user name",name))
+        startActivity(Intent(activity, services::class.java).putExtra("patientID",patientID))
         finish()
     }
     private fun moveToRegister() {
@@ -102,22 +106,28 @@ class login : AppCompatActivity() {
                         var patient = item.getValue<PatientData>()
                         if (patient != null) {
                             if (patient.password.equals(password)) {
-                                name=patient.firstName.toString().plus(" ").plus(patient.lastName.toString())
+                                name = patient.firstName.toString().plus(" ").plus(patient.lastName.toString())
+                               patientID= patient?.id.toString()
                                 pref.prefStatus = true
-                                Toast.makeText(context,R.string.login_success,Toast.LENGTH_LONG).show()
+                                Toast.makeText(context, R.string.login_success, Toast.LENGTH_LONG).show()
                                 moveToHome()
-                            } else {
-                                Toast.makeText(context,R.string.login_failed,Toast.LENGTH_LONG).show()
                             }
+                            /*auth.signInWithEmailAndPassword(email,password).addOnCompleteListener {
+            if (it.isSuccessful){
+                patientID=auth.currentUser!!.uid
+                Toast.makeText(context,R.string.login_success,Toast.LENGTH_LONG).show()
+                moveToHome()
+            }else {
+                Toast.makeText(context, R.string.login_failed, Toast.LENGTH_LONG).show()
+            }
+        }*/
                         }
                     }
-                } else {
-                    Toast.makeText(context, R.string.userNotFound, Toast.LENGTH_LONG).show()
                 }
             }
 
             override fun onCancelled(error: DatabaseError) {
-                Toast.makeText(context, error.message, Toast.LENGTH_LONG).show()
+                TODO("Not yet implemented")
             }
         })
     }
@@ -135,7 +145,7 @@ class login : AppCompatActivity() {
         else if(password.text.toString().isEmpty())
             Toast.makeText(applicationContext,R.string.emptyPassword,Toast.LENGTH_LONG).show()
     }
-    private fun bindingItems(){
+    private fun init(){
         email_edt=findViewById(R.id.email)
         loginTextview=findViewById(R.id.login_text_view)
         registerBtn=findViewById(R.id.register_btn)

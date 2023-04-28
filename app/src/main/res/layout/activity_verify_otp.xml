@@ -61,99 +61,23 @@
 
         </TextView>
     </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:orientation="horizontal"
-        android:layout_marginRight="50dp"
-        android:layout_marginLeft="50dp"
-        android:layout_weight="1">
-        <EditText
-            android:id="@+id/code1"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:imeOptions="actionNext"
-            android:textAppearance="@style/TextAppearance.AppCompat.Large"
-            android:inputType="number"
-            android:textStyle="bold"
-            android:maxLength="1"
-            tools:ignore="labelFor"
-            android:layout_weight="1">
-
-        </EditText>
-        <EditText
-            android:id="@+id/code2"
-            android:layout_width="0dp"
-            android:textStyle="bold"
-            android:gravity="center"
-            android:layout_height="match_parent"
-            android:textAppearance="@style/TextAppearance.AppCompat.Large"
-            android:imeOptions="actionNext"
-            android:inputType="number"
-            android:maxLength="1"
-            tools:ignore="labelFor"
-            android:layout_weight="1">
-
-        </EditText>
-        <EditText
-            android:id="@+id/code3"
-            android:textStyle="bold"
-            android:gravity="center"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:textAppearance="@style/TextAppearance.AppCompat.Large"
-            android:imeOptions="actionNext"
-            android:inputType="number"
-            android:maxLength="1"
-            tools:ignore="labelFor"
-            android:layout_weight="1">
-
-        </EditText>
-        <EditText
-            android:id="@+id/code4"
-            android:layout_width="0dp"
-            android:gravity="center"
-            android:layout_height="match_parent"
-            android:imeOptions="actionNext"
-            android:inputType="number"
-            android:textAppearance="@style/TextAppearance.AppCompat.Large"
-            android:textStyle="bold"
-            android:maxLength="1"
-            tools:ignore="labelFor"
-            android:layout_weight="1">
-
-        </EditText>
-        <EditText
-            android:id="@+id/code5"
-            android:layout_width="0dp"
-            android:textStyle="bold"
-            android:layout_height="match_parent"
-            android:imeOptions="actionNext"
-            android:textAppearance="@style/TextAppearance.AppCompat.Large"
-            android:inputType="number"
-            android:maxLength="1"
-            android:gravity="center"
-            tools:ignore="labelFor"
-            android:layout_weight="1">
-
-        </EditText>
-        <EditText
-            android:id="@+id/code6"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:imeOptions="actionNext"
-            android:inputType="number"
-            android:gravity="center"
-            android:textStyle="bold"
-            android:maxLength="1"
-            tools:ignore="labelFor"
-            android:textAppearance="@style/TextAppearance.AppCompat.Large"
-            android:layout_weight="1">
-
-        </EditText>
-    </LinearLayout>
-
+    <com.chaos.view.PinView
+        android:layout_marginTop="10dp"
+        android:id="@+id/pinView"
+        android:layout_width="wrap_content"
+        app:itemCount="6"
+        android:itemBackground="@color/white"
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:inputType="number"
+        app:itemWidth="50dp"
+        app:itemHeight="50dp"
+        app:itemRadius="10dp"
+        style="@style/PinWidget.PinView"
+        android:cursorVisible="true"
+        app:hideLineWhenFilled="false"
+        android:layout_height="wrap_content">
+    </com.chaos.view.PinView>
     <Space
         android:layout_width="match_parent"
         android:layout_height="0dp"

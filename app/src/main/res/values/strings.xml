@@ -27,9 +27,9 @@
     <!-- Errors related to Login-->
     <string name="emptyEmail">Please enter your Email</string>
     <string name="emptyPassword">Please enter your Password</string>
-    <string name="emptyData">Please enter your email \&amp; password</string>
+    <string name="emptyData">Please enter All Data</string>
     <string name="userNotFound">User Not Found</string>
-    <string name="login_failed">Login failed</string>
+    <string name="login_failed">Login failed, Check your data and try again</string>
     <string name="login_success">Logged in Successfully</string>
     <string name="forgetPassword">Forget Password ? </string>
     <string name="forgetMessage">Enter Your Phone Number Associated With Your Account.</string>
@@ -41,6 +41,13 @@
     <string name="resetPasswordMessage">Your Identity has been verified!\n Set Your New Password.</string>
     <string name="update">Update</string>
     <string name="codeWrong">Code is incorrect</string>
+    <string name="resend">Resend OTP in 30 Second</string>
+    <string name="codeSent">Code Sent Successfully.</string>
+    <string name="verifyFailed">OTP Verification Failed</string>
+    <string name="wrongOTP">Enter the Full OTP Code</string>
+    <string name="sucessVerification">Successfully Verified.</string>
+    <string name="updateSuccess">Password Updated Successfully.</string>
+    <string name="updateFailed">Password Update Failed.</string>
 
     <!--String for login menu-->
     <string name="menu_doctor">Doctor</string>
@@ -144,7 +151,7 @@
     <string name="Drug_Effectiveness_Genomic_mutation">Genomic mutation:</string>
     <string name="Drug_Effectiveness_DNA_methylation">DNA methylation:</string>
     <string name="Drug_Effectiveness_drug_name">drug name:</string>
-    <string name="Drug_Effectiveness_predict_pn">perdict</string>
+    <string name="Drug_Effectiveness_predict_pn">predict</string>
 
     <!--string for drawer-->
     <string name="close">close</string>
