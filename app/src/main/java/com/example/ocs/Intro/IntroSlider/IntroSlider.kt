@@ -10,7 +10,7 @@ import android.widget.Button
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager.widget.ViewPager
-import com.example.ocs.Intro.login.login
+import com.example.ocs.Intro.Login.login
 import com.example.ocs.R
 import com.google.android.material.tabs.TabLayout
 import androidx.fragment.app.FragmentPagerAdapter as FragmentPagerAdapter1
@@ -30,7 +30,7 @@ class IntroSlider : AppCompatActivity() {
         setContentView(R.layout.activity_intro_slider)
 
         checkUser()
-        bindingItems()
+        init()
 
 
         var adapter: SliderAdapter = SliderAdapter(
@@ -76,7 +76,7 @@ class IntroSlider : AppCompatActivity() {
         })
 
         }
-    fun bindingItems(){
+    fun init(){
         viewPager=findViewById(R.id.viewPager)
         tabLayout=findViewById(R.id.tabLayout)
         next_btn=findViewById(R.id.next_btn)

@@ -1,6 +1,7 @@
-package com.example.ocs.Intro.login
+package com.example.ocs.Intro.Login
 
 data class PatientData (
+    val id:String?=null,
     val firstName:String?=null,
     val lastName:String?=null,
     val address:String?=null,
@@ -11,6 +12,5 @@ data class PatientData (
     val geneExp:String?=null,
     val geneMyth:String?=null,
     val phone:String?=null,
-    val password:String?=null
-        ){
-}
+    val password:String?=null,
+        )

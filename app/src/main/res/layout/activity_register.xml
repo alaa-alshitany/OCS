@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    tools:context=".Intro.login.register">
+    tools:context=".Intro.Login.Register">
 
     <LinearLayout
         android:id="@+id/first_linear"
@@ -116,33 +116,30 @@
                 tools:ignore="VisualLintTextFieldSize" />
         </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:boxStrokeWidth="0dp"
-            app:boxStrokeWidthFocused="0dp"
-            app:hintAnimationEnabled="true"
-            app:hintEnabled="true"
-            app:passwordToggleTint="@color/black">
-
-            <EditText
-                android:id="@+id/phone"
-                style="@style/EditText"
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginBottom="5dp"
-                android:autofillHints=""
-                android:drawableStart="@drawable/baseline_phone_24"
-                android:ems="10"
-                android:hint="@string/phone"
-                android:inputType="phone"
-                tools:ignore="VisualLintTextFieldSize" />
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginBottom="10dp"
+                >
+                <EditText
+                    android:id="@+id/phone"
+                    style="@style/EditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:autofillHints=""
+                    android:drawableStart="@drawable/baseline_phone_24"
+                    android:ems="10"
+                    android:hint="@string/phone"
+                    android:inputType="phone"
+                    tools:ignore="VisualLintTextFieldSize" />
 
-        </com.google.android.material.textfield.TextInputLayout>
+            </com.google.android.material.textfield.TextInputLayout>
     <!--radio buttons for gender-->
    <RadioGroup
        android:layout_width="match_parent"
        android:orientation="horizontal"
+       android:id="@+id/gender"
        android:layout_gravity="center"
        android:layout_height="wrap_content">
 
@@ -188,7 +185,7 @@
        </Space>
    </RadioGroup>
         <TextView
-                android:id="@+id/continue_register_btn"
+                android:id="@+id/continue_btn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@color/white"

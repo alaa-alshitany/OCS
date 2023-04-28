@@ -6,7 +6,7 @@
     <string name="slider1_description">professional doctors,\nmodern methods for examination\n,Fixed and organized appointments</string>
     <string name="slider2_title">Medical Rays</string>
     <string name="slider2_description">computerized tomography(CT)\nscan, bone scan,\nmagnetic resonance imaging (MRI),\npositron emission tomography(PET) scan,\nultrasound and X-ray,</string>
-    <string name="slider3_title">Medical tests</string>
+    <string name="slider3_title">Medical Tests</string>
     <string name="slider3_description">complete blood count (CBC).\nTumor markers.\nBlood protein testing.\nCirculating tumor cell tests</string>
     <string name="next">Next</string>
     <string name="get_started">Get Started!</string>
@@ -22,14 +22,32 @@
     <string name="prompt_password">Password</string>
     <string name="action_login_in_short">Login</string>
     <string name="forgetPass"><u>Forgotten Password?</u></string>
-    <string name="invalid_username">Not a valid username</string>
-    <string name="invalid_password">Password must be >6 characters</string>
+    <string name="newUser">Don\'t have an account?</string>
+
+    <!-- Errors related to Login-->
     <string name="emptyEmail">Please enter your Email</string>
     <string name="emptyPassword">Please enter your Password</string>
-    <string name="emptyData">Please enter your email \&amp; password</string>
-    <string name="login_failed">Login failed</string>
-    <string name="login_success">Login Successful</string>
-    <string name="newUser">Don\'t have an account?</string>
+    <string name="emptyData">Please enter All Data</string>
+    <string name="userNotFound">User Not Found</string>
+    <string name="login_failed">Login failed, Check your data and try again</string>
+    <string name="login_success">Logged in Successfully</string>
+    <string name="forgetPassword">Forget Password ? </string>
+    <string name="forgetMessage">Enter Your Phone Number Associated With Your Account.</string>
+    <string name="send">Send</string>
+    <string name="verification">Verification</string>
+    <string name="otpMessage">Enter The OTP code Sent on </string>
+    <string name="resetPassword">Reset Your Password</string>
+    <string name="newPassword">New Password</string>
+    <string name="resetPasswordMessage">Your Identity has been verified!\n Set Your New Password.</string>
+    <string name="update">Update</string>
+    <string name="codeWrong">Code is incorrect</string>
+    <string name="resend">Resend OTP in 30 Second</string>
+    <string name="codeSent">Code Sent Successfully.</string>
+    <string name="verifyFailed">OTP Verification Failed</string>
+    <string name="wrongOTP">Enter the Full OTP Code</string>
+    <string name="sucessVerification">Successfully Verified.</string>
+    <string name="updateSuccess">Password Updated Successfully.</string>
+    <string name="updateFailed">Password Update Failed.</string>
 
     <!--String for login menu-->
     <string name="menu_doctor">Doctor</string>
@@ -49,6 +67,19 @@
     <string name="passwordConfirm">Confirm Password</string>
     <string name="oldUser">Already have an account?\ </string>
     <string name="cont_register">Continue Register</string>
+
+    <!-- Errors related to register-->
+    <string name="emptyFields">Please Fill All Fields</string>
+    <string name="notValidEmail">Enter a valid Email</string>
+    <string name="emptyFName">Enter your First Name</string>
+    <string name="emptyLName">Enter your Last Name</string>
+    <string name="emptyPhone">Enter your Phone</string>
+    <string name="notValidNumber">Enter your Valid phone (11 Number)</string>
+    <string name="register_success">Registered Successfully</string>
+    <string name="passwordNotMatch">Password don\'t match</string>
+    <string name="notValidPassword">Your password must be >8 characters</string>
+    <string name="emptyBirthDate">Enter your Birth Date</string>
+    <string name="emptyAddress">Enter your Address</string>
 
     <!--strings for home -->
     <string name="clinic_service">Oncology Clinics</string>
@@ -99,6 +130,7 @@
     <string name="appointments_name">Nada Ahmed</string>
     <string name="appointments_date">22-Dec-2022 </string>
     <string name="appointments_time"> 1:00 PM</string>
+
     <!--patient details-->
     <string name="PatientRecord_title"> Patient Record</string>
     <string name="Patientdetails_name"> Name:</string>
@@ -119,9 +151,11 @@
     <string name="Drug_Effectiveness_Genomic_mutation">Genomic mutation:</string>
     <string name="Drug_Effectiveness_DNA_methylation">DNA methylation:</string>
     <string name="Drug_Effectiveness_drug_name">drug name:</string>
-    <string name="Drug_Effectiveness_predict_pn">perdict</string>
-    <string name="open">open</string>
+    <string name="Drug_Effectiveness_predict_pn">predict</string>
+
+    <!--string for drawer-->
     <string name="close">close</string>
+    <string name="open">open</string>
 
 
 </resources>

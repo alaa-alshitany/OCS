@@ -56,7 +56,6 @@ class SliderItemFragment : Fragment() {
     }
 
     companion object {
-
         @JvmStatic
         fun newInstance(position: Int) =
             SliderItemFragment().apply {

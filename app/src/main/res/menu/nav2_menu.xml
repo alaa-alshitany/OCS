@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <item
+        android:id="@+id/nau_profile1"
+        android:icon="@drawable/baseline_user_24"
+        android:title="Profile"/>
+
+    <item
+        android:id="@+id/nau_booking1"
+        android:icon="@drawable/baseline_book_online_24"
+        android:title="booking"/>
+    <item
+        android:id="@+id/nau_model"
+        android:icon="@drawable/baseline_laptop_mac_24"
+        android:title="model"/>
+
+    <item
+        android:id="@+id/nau_logout1"
+        android:icon="@drawable/baseline_logout_24"
+        android:title="Log Out"/>
+
+</menu>

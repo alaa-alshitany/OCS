@@ -1,4 +1,4 @@
-package com.example.ocs.Intro.login
+package com.example.ocs.Intro.Login
 
 import android.content.Context
 import android.content.SharedPreferences
