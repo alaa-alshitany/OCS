@@ -18,37 +18,37 @@
         android:windowSoftInputMode="adjustPan"
         tools:targetApi="31">
         <activity
-            android:name=".medical_clinic"
+            android:name=".profile.medical_clinic"
             android:exported="false" />
         <activity
-            android:name=".medical_tests"
+            android:name=".profile.medical_tests"
             android:exported="false" />
         <activity
-            android:name=".medical_rays"
+            android:name=".profile.medical_rays"
             android:exported="false" />
         <activity
-            android:name=".recycle_request"
+            android:name=".profile.recycle_request"
             android:exported="false" />
         <activity
-            android:name=".recycle_approved"
+            android:name=".profile.recycle_approved"
             android:exported="false" />
         <activity
-            android:name=".patient_recycle"
+            android:name=".profile.patient_recycle"
             android:exported="false" />
         <activity
-            android:name=".MainActivity3"
+            android:name=".profile.MainActivity3"
             android:exported="false" />
         <activity
-            android:name=".MainActivity2"
+            android:name=".profile.MainActivity2"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".profile.MainActivity"
             android:exported="false" />
         <activity
-            android:name=".profile_doctor"
+            android:name=".profile.profile_doctor"
             android:exported="false" />
         <activity
-            android:name=".profile_patient"
+            android:name=".profile.profile_patient"
             android:exported="false" />
         <activity
             android:name=".Intro.admin.appointments"
