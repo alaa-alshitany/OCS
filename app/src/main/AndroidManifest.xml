@@ -16,6 +16,18 @@
         android:theme="@style/Theme.OCS"
         tools:targetApi="31">
         <activity
+            android:name=".profile.recycle_book"
+            android:windowSoftInputMode="adjustPan"
+            android:exported="false" />
+        <activity
+            android:name=".profile.patient_recycle"
+            android:windowSoftInputMode="adjustPan"
+            android:exported="false" />
+        <activity
+            android:name=".profile.profile_doctor"
+            android:windowSoftInputMode="adjustPan"
+            android:exported="false" />
+        <activity
             android:name=".profile.profile_patient"
             android:windowSoftInputMode="adjustPan"
             android:exported="false" />
