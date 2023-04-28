@@ -18,6 +18,8 @@ import com.example.ocs.Intro.admin.profile
 import com.example.ocs.R
 import com.google.android.material.textfield.TextInputLayout
 import com.google.firebase.database.*
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ktx.getValue
 
 
@@ -34,7 +36,7 @@ class login : AppCompatActivity() {
     lateinit var forgetpass_btn:Button
     lateinit var password_edt:EditText
    private val database:DatabaseReference=FirebaseDatabase.getInstance().reference
-   private lateinit var context: Context
+   private  var context: Context = this
    private lateinit var pref:Prefrences
 
     @SuppressLint("MissingInflatedId")

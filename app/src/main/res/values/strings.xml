@@ -120,7 +120,8 @@
     <string name="Drug_Effectiveness_DNA_methylation">DNA methylation:</string>
     <string name="Drug_Effectiveness_drug_name">drug name:</string>
     <string name="Drug_Effectiveness_predict_pn">perdict</string>
-
+    <string name="open">open</string>
+    <string name="close">close</string>
 
 
 </resources>
