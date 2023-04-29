@@ -11,102 +11,165 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/white"
         android:orientation="vertical">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="192dp"
-        android:background="@color/blue_200"
-        android:orientation="vertical">
+        <Space
+            android:layout_width="match_parent"
+            android:layout_weight=".2"
+            android:layout_height="0dp">
 
-        <ImageView
-            android:layout_width="121dp"
-            android:layout_height="127dp"
-            android:layout_margin="20dp"
-            android:src="@drawable/baseline_account_circle_24" />
+        </Space>
+        <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            app:cardCornerRadius="10dp"
+            android:layout_margin="10dp"
+            android:background="@color/white"
+            >
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="vertical"
+                android:layout_height="match_parent">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
 
-        <TextView
-            android:layout_width="350dp"
-            android:layout_height="29dp"
-            android:layout_marginHorizontal="40dp" />
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:orientation="vertical"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1">
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="4"
+                            android:layout_margin="5dp"
+                            android:src="@drawable/baseline_account_circle_24">
+
+                        </ImageView>
+
+                        <TextView
+                            android:id="@+id/patientName"
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/inter_font"
+                            android:gravity="center"
+                            android:textColor="@color/black"
+                            android:textStyle="bold"
+                            tools:text="" />
+                    </LinearLayout>
+                    <Space
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1">
+                    </Space>
+                </LinearLayout>
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="2"
+            android:layout_margin="40dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/btn_specialize"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:drawableStart="@drawable/baseline_user_24"
+                android:drawablePadding="20dp"
+                android:inputType="text"
+                style="@style/EditText"
+                android:textStyle="bold"/>
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight=".4">
+
+            </Space>
+
+            <TextView
+                android:id="@+id/btn_calender"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:drawableStart="@drawable/baseline_calendar_month_24"
+                android:drawablePadding="20dp"
+                android:inputType="text"
+                style="@style/EditText"
+                android:textStyle="bold"/>
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight=".4">
+
+            </Space>
+
+
+            <TextView
+                android:id="@+id/btn_call"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:drawableStart="@drawable/baseline_phone_24"
+                android:drawablePadding="20dp"
+                android:inputType="phone"
+                style="@style/EditText"
+                android:textStyle="bold"/>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight=".4">
+
+            </Space>
+            <TextView
+                android:id="@+id/btn_email"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:drawableStart="@drawable/baseline_email_24"
+                android:drawablePadding="20dp"
+                android:inputType="textEmailAddress"
+                style="@style/EditText"
+                android:textStyle="bold"/>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight=".4">
+
+            </Space>
+
+            <TextView
+                android:id="@+id/btn_address"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:drawableStart="@drawable/baseline_location_on_24"
+                android:drawablePadding="20dp"
+                android:inputType="text"
+                style="@style/EditText"
+                android:textStyle="bold"/>
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight=".4">
+
+            </Space>
+        </LinearLayout>
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="773dp"
-        android:orientation="vertical">
-
-        <TextView
-            android:id="@+id/edt_specialize"
-            android:layout_width="match_parent"
-            android:layout_height="56dp"
-            android:layout_margin="30dp"
-            android:drawableStart="@drawable/baseline_user_24"
-            android:drawablePadding="20dp"
-            android:hint=" Radiation oncology "
-            android:inputType="text"
-            android:textSize="20dp"
-            style="@style/EditText"
-            android:textStyle="bold"/>
-
-
-        <TextView
-            android:id="@+id/edt_calender"
-            android:layout_width="match_parent"
-            android:layout_height="56dp"
-            android:layout_marginHorizontal="30dp"
-            android:drawableStart="@drawable/baseline_calendar_month_24"
-            android:drawablePadding="20dp"
-            android:hint=" 6 july 1998 "
-            android:inputType="text"
-            android:textSize="20dp"
-            style="@style/EditText"
-            android:textStyle="bold"/>
-
-
-        <TextView
-            android:id="@+id/edt_call"
-            android:layout_width="match_parent"
-            android:layout_height="56dp"
-            android:layout_margin="30dp"
-            android:drawableStart="@drawable/baseline_phone_24"
-            android:drawablePadding="20dp"
-            android:hint=" 01125896321 "
-            android:inputType="phone"
-            android:textSize="20dp"
-            style="@style/EditText"
-            android:textStyle="bold"/>
-
-
-        <TextView
-            android:id="@+id/edt_email"
-            android:layout_width="match_parent"
-            android:layout_height="56dp"
-            android:layout_marginHorizontal="30dp"
-            android:drawableStart="@drawable/baseline_email_24"
-            android:drawablePadding="20dp"
-            android:hint=" mohammed335@gmail.com  "
-            android:inputType="textEmailAddress"
-            android:textSize="20dp"
-            style="@style/EditText"
-            android:textStyle="bold"/>
-
-
-        <TextView
-            android:id="@+id/edt_location"
-            android:layout_width="match_parent"
-            android:layout_height="56dp"
-            android:layout_margin="30dp"
-            android:drawableStart="@drawable/baseline_location_on_24"
-            android:drawablePadding="20dp"
-            android:hint="Tanta, Al Gharbiyah "
-            android:inputType="text"
-            android:textSize="20dp"
-            style="@style/EditText"
-            android:textStyle="bold"/>
-
-    </LinearLayout>
-</LinearLayout>
     <com.google.android.material.navigation.NavigationView
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
@@ -116,3 +179,4 @@
         android:layout_gravity="start"
         android:fitsSystemWindows="true"/>
 </androidx.drawerlayout.widget.DrawerLayout>
+
