@@ -2,7 +2,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
-
+<group android:checkableBehavior="single">
     <item
         android:id="@+id/nau_home"
         android:icon="@drawable/baseline_house_24"
@@ -16,11 +16,15 @@
     <item
         android:id="@+id/nau_booking"
         android:icon="@drawable/baseline_book_online_24"
-        android:title="booking"/>
-
-    <item
-        android:id="@+id/nau_logout"
-        android:icon="@drawable/baseline_logout_24"
-        android:title="Log Out"/>
-
+        android:title="Booking"/>
+</group>
+    <item android:title="">
+        <menu>
+            <item
+                android:id="@+id/nau_logout"
+                android:icon="@drawable/baseline_logout_24"
+                android:title="Log Out"/>
+        </menu>
+    </item>
+=
 </menu>

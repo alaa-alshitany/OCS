@@ -16,18 +16,16 @@ class services : AppCompatActivity() {
     private lateinit var intent2: Intent
     private lateinit var fullName:String
     private lateinit var list: RecyclerView
-
     // navigation bar
     lateinit var toggle: ActionBarDrawerToggle
-
-    private fun bindingItems() {
+    private fun init() {
        list=findViewById(R.id.recyclerView)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_services)
-        bindingItems()
+        init()
         // this creates a vertical layout Manager
         list.layoutManager=LinearLayoutManager(this)
 
@@ -46,7 +44,6 @@ class services : AppCompatActivity() {
         list.adapter = adapter
         getIntentExtra()
         //adapter.setOnItem
-
         //navigation bar
         val drawerLayout : DrawerLayout = findViewById(R.id.drawerLayout)
         val navView : NavigationView = findViewById(R.id.nav_view)
@@ -54,8 +51,8 @@ class services : AppCompatActivity() {
         toggle = ActionBarDrawerToggle( this, drawerLayout, R.string.open, R.string.close)
         drawerLayout.addDrawerListener(toggle)
         toggle.syncState()
-
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.setHomeAsUpIndicator(R.drawable.baseline_menu_24)
         navView.setNavigationItemSelectedListener {
             when(it.itemId){
                 R.id.nau_home-> Toast.makeText(applicationContext,"clicked Home", Toast.LENGTH_SHORT).show()
@@ -66,7 +63,6 @@ class services : AppCompatActivity() {
 
             true
         }
-
 
 
     }

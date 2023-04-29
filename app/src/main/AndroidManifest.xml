@@ -66,6 +66,7 @@
             android:exported="false" />
         <activity
             android:name=".Intro.patient.services.services"
+            android:theme="@style/Theme.OCS"
             android:exported="false" />
         <activity
             android:name=".Intro.Login.RegisterContinue"

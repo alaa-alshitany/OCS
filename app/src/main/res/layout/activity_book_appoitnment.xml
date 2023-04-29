@@ -95,7 +95,7 @@
             android:id="@+id/medical_clinics"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight=".9"
+            android:layout_weight=".8"
             android:text="@string/medical_clinics_radiobn"
             android:textColor="@color/black"
             android:textStyle="bold">
@@ -106,7 +106,7 @@
             android:id="@+id/medical_Rays"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight=".9"
+            android:layout_weight=".8"
             android:text="@string/medical_Rays_radiobn"
             android:textColor="@color/black"
             android:textStyle="bold">
@@ -117,7 +117,7 @@
             android:id="@+id/medical_tests"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight=".9"
+            android:layout_weight=".8"
             android:text="@string/medical_tests_radiobn"
             android:textColor="@color/black"
             android:textStyle="bold">
