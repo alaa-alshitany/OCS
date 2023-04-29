@@ -9,17 +9,16 @@ import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.ocs.Intro.admin.profile
+import com.example.ocs.Intro.patient.Profile.Profile
 import com.example.ocs.Intro.patient.booking.BookAppointment
 import com.example.ocs.R
 import com.google.android.material.navigation.NavigationView
 
 class services : AppCompatActivity() {
     private lateinit var intent2: Intent
-    private lateinit var fullName:String
     private lateinit var list: RecyclerView
-    // navigation bar
     lateinit var toggle: ActionBarDrawerToggle
+    private lateinit var patientID:String
     private fun init() {
        list=findViewById(R.id.recyclerView)
     }
@@ -70,11 +69,11 @@ class services : AppCompatActivity() {
     }
 
     private fun booking() {
-        startActivity(Intent(this,BookAppointment::class.java))
+        startActivity(Intent(this,BookAppointment::class.java).putExtra("patientID",patientID))
     }
 
     private fun patientProfile() {
-        startActivity(Intent(this,profile::class.java))
+        startActivity(Intent(this, Profile::class.java).putExtra("patientID",patientID))
     }
 
     private fun home() {
@@ -90,7 +89,7 @@ class services : AppCompatActivity() {
     }
     private fun getIntentExtra(){
         intent2=intent
-        fullName=intent2.getStringExtra("name").toString()
+        patientID=intent2.getStringExtra("patientID").toString()
     }
 
 }

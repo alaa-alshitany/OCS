@@ -29,7 +29,7 @@ class RegisterContinue : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_continue_register)
         backArrow()
-        bindingItems()
+        init()
         register()
 
     }
@@ -108,7 +108,7 @@ private fun validateInputData():Boolean{
         finish()
     }
 
-    private fun bindingItems(){
+    private fun init(){
         registerBtn=findViewById(R.id.register_btn)
         intent2=intent
         birthDateEdt=findViewById(R.id.birthdate)

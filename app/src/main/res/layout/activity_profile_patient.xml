@@ -52,7 +52,6 @@
                         android:layout_height="0dp"
                         android:layout_weight="1"
                         android:fontFamily="@font/inter_font"
-                        android:text="TextView"
                         android:gravity="center"
                         android:textColor="@color/black"
                         android:textStyle="bold"
@@ -75,15 +74,13 @@
         android:layout_margin="40dp"
         android:orientation="vertical">
         <TextView
-            android:id="@+id/edt_calender"
+            android:id="@+id/birthdate_txt"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
             android:drawableStart="@drawable/baseline_calendar_month_24"
             android:drawablePadding="20dp"
-            android:hint=" 6 july 2000 "
             android:inputType="text"
-            android:textSize="20dp"
             style="@style/EditText"
             android:textStyle="bold"/>
 <Space
@@ -95,15 +92,13 @@
 
 
         <TextView
-            android:id="@+id/edt_call"
+            android:id="@+id/phone_txt"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
             android:drawableStart="@drawable/baseline_phone_24"
             android:drawablePadding="20dp"
-            android:hint=" 01025896321 "
             android:inputType="phone"
-            android:textSize="20dp"
             style="@style/EditText"
             android:textStyle="bold"/>
 
@@ -114,15 +109,13 @@
 
         </Space>
         <TextView
-            android:id="@+id/edt_email"
+            android:id="@+id/email_txt"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
             android:drawableStart="@drawable/baseline_email_24"
             android:drawablePadding="20dp"
-            android:hint=" mona334@gmail.com  "
             android:inputType="textEmailAddress"
-            android:textSize="20dp"
             style="@style/EditText"
             android:textStyle="bold"/>
 
@@ -134,15 +127,13 @@
         </Space>
 
         <TextView
-            android:id="@+id/edt_location"
+            android:id="@+id/address_txt"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
             android:drawableStart="@drawable/baseline_location_on_24"
             android:drawablePadding="20dp"
-            android:hint="Tanta, Al Gharbiyah "
             android:inputType="text"
-            android:textSize="20dp"
             style="@style/EditText"
             android:textStyle="bold"/>
         <Space
