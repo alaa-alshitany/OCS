@@ -48,7 +48,7 @@
             android:name=".profile.profile_doctor"
             android:exported="false" />
         <activity
-            android:name=".profile.profile_patient"
+            android:name=".Intro.patient.Profile.Profile"
             android:exported="false" />
         <activity
             android:name=".Intro.admin.appointments"
