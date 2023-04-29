@@ -32,12 +32,10 @@ class login : AppCompatActivity() {
     private lateinit var emailLayout:TextInputLayout
     private lateinit var forgetPasswordBtn:Button
     private lateinit var passwordEdt:EditText
-    private val auth:FirebaseAuth=FirebaseAuth.getInstance()
     private lateinit var context: Context
     private lateinit var pref:Prefrences
     private lateinit var intent2:Intent
     private lateinit var patientID:String
-    private lateinit var name:String
     private val database:DatabaseReference=FirebaseDatabase.getInstance().reference
 
     @SuppressLint("MissingInflatedId")
@@ -106,7 +104,6 @@ class login : AppCompatActivity() {
                         var patient = item.getValue<PatientData>()
                         if (patient != null) {
                             if (patient.password.equals(password)) {
-                                name = patient.firstName.toString().plus(" ").plus(patient.lastName.toString())
                                patientID= patient?.id.toString()
                                 pref.prefStatus = true
                                 Toast.makeText(context, R.string.login_success, Toast.LENGTH_LONG).show()

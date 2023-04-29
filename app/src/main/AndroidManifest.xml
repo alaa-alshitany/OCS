@@ -48,16 +48,8 @@
             android:name=".profile.profile_doctor"
             android:exported="false" />
         <activity
-            android:name=".profile.profile_patient"
+            android:name=".Intro.patient.Profile.Profile"
             android:exported="false" />
-        <activity
-            android:name=".Intro.admin.appointments"
-            android:exported="false"
-            android:windowSoftInputMode="adjustPan" />
-        <activity
-            android:name=".Intro.admin.doctors"
-            android:exported="false"
-            android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".Intro.patient.booking.BookAppointment"
             android:exported="false" />
