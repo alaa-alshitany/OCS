@@ -18,9 +18,6 @@ class recycle_book : AppCompatActivity() {
     lateinit var TitleList:Array<String>
     lateinit var DetailList:Array<String>
 
-    //nav_bar
-    lateinit var toggle: ActionBarDrawerToggle
-
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,36 +42,10 @@ class recycle_book : AppCompatActivity() {
         dataList = arrayListOf<DataClass2>()
         getData()
 
-        //nav_bar
-        val drawerLayout : DrawerLayout = findViewById(R.id.drawerLayout)
-        val navView : NavigationView = findViewById(R.id.nav_view)
-
-        toggle = ActionBarDrawerToggle( this, drawerLayout, R.string.open, R.string.close)
-        drawerLayout.addDrawerListener(toggle)
-        toggle.syncState()
-
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        navView.setNavigationItemSelectedListener {
-            when(it.itemId){
-                R.id.nau_profile1-> Toast.makeText(applicationContext,"clicked Profile", Toast.LENGTH_SHORT).show()
-                R.id.nau_booking1-> Toast.makeText(applicationContext,"clicked Booking", Toast.LENGTH_SHORT).show()
-                R.id.nau_model-> Toast.makeText(applicationContext,"clicked Home", Toast.LENGTH_SHORT).show()
-                R.id.nau_logout1-> Toast.makeText(applicationContext,"clicked Logout", Toast.LENGTH_SHORT).show()
-            }
-
-            true
-        }
 
 
     }
 
-    //nav_bar
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if (toggle.onOptionsItemSelected(item)) {
-            return true
-        }
-        return super.onOptionsItemSelected(item)
-    }
 
     private fun getData(){
         for(i in TitleList.indices){
