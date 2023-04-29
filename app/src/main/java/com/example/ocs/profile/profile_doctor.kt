@@ -32,6 +32,7 @@ class profile_doctor : AppCompatActivity() {
             when(it.itemId){
                 R.id.nau_profile1-> Toast.makeText(applicationContext,"clicked Profile", Toast.LENGTH_SHORT).show()
                 R.id.nau_booking1-> Toast.makeText(applicationContext,"clicked Booking", Toast.LENGTH_SHORT).show()
+                R.id.nau_patient-> Toast.makeText(applicationContext,"clicked patient", Toast.LENGTH_SHORT).show()
                 R.id.nau_model-> Toast.makeText(applicationContext,"clicked Home", Toast.LENGTH_SHORT).show()
                 R.id.nau_logout1-> Toast.makeText(applicationContext,"clicked Logout", Toast.LENGTH_SHORT).show()
             }
