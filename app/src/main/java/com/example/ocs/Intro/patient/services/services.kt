@@ -44,6 +44,7 @@ class services : AppCompatActivity() {
         list.adapter = adapter
         getIntentExtra()
         //adapter.setOnItem
+
         //navigation bar
         val drawerLayout : DrawerLayout = findViewById(R.id.drawerLayout)
         val navView : NavigationView = findViewById(R.id.nav_view)
