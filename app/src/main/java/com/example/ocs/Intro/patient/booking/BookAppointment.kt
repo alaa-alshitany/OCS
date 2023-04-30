@@ -8,6 +8,7 @@ import android.view.MenuItem
 import android.widget.Button
 import android.widget.CheckBox
 import android.widget.EditText
+import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.drawerlayout.widget.DrawerLayout
 import com.example.ocs.Intro.patient.Profile.Profile
@@ -21,6 +22,7 @@ import com.google.firebase.database.FirebaseDatabase
 class BookAppointment : AppCompatActivity() {
     private lateinit var toggle: ActionBarDrawerToggle
     private  var database:DatabaseReference=FirebaseDatabase.getInstance().reference
+    private var database2:DatabaseReference=FirebaseDatabase.getInstance().getReference("Appointments")
     private lateinit var patientID:String
     private lateinit var intent2:Intent
     private lateinit var bookBtn: Button
@@ -29,6 +31,8 @@ class BookAppointment : AppCompatActivity() {
     private lateinit var rays:CheckBox
     private lateinit var tests:CheckBox
     private lateinit var clinics:CheckBox
+    private lateinit var appointmentID:String
+    private  var serviceType=StringBuilder()
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -53,6 +57,7 @@ class BookAppointment : AppCompatActivity() {
             }
             true
         }
+
         bookBtn.setOnClickListener {
             sendRequest()
         }
@@ -68,7 +73,18 @@ class BookAppointment : AppCompatActivity() {
     }
 
     private fun sendRequest() {
-
+        if (rays.isChecked){ serviceType.append(rays.text.toString()).append(", ")}
+        if (clinics.isChecked){serviceType.append(clinics.text.toString()).append(", ")}
+        if (tests.isChecked){serviceType.append(tests.text.toString()).append(", ")}
+        appointmentID=database2.push().key!!
+        val appointment=AppointmentData(appointmentID,null,null,patientID, serviceType.toString(),null,fullName.text.toString(),phone.text.toString())
+        database2.child(appointmentID).setValue(appointment).addOnCompleteListener {
+            if (it.isSuccessful){
+                Toast.makeText(applicationContext,R.string.successRequest,Toast.LENGTH_LONG).show()
+            }else{
+                Toast.makeText(applicationContext,R.string.failRequest,Toast.LENGTH_LONG).show()
+            }
+        }
 
     }
 
