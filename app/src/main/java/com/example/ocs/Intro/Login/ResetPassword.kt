@@ -19,7 +19,6 @@ class ResetPassword : AppCompatActivity() {
     private lateinit var intent2: Intent
     private lateinit var phoneNumber:String
     private val database: DatabaseReference = FirebaseDatabase.getInstance().reference
-    private  var auth: FirebaseAuth = FirebaseAuth.getInstance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

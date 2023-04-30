@@ -10,6 +10,8 @@ import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.drawerlayout.widget.DrawerLayout
 import com.example.ocs.Intro.Login.PatientData
+import com.example.ocs.Intro.patient.booking.BookAppointment
+import com.example.ocs.Intro.patient.services.services
 import com.example.ocs.R
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.database.*
@@ -50,15 +52,28 @@ class Profile : AppCompatActivity() {
         supportActionBar?.setHomeAsUpIndicator(R.drawable.baseline_menu_24)
         navView.setNavigationItemSelectedListener {
             when(it.itemId){
-                R.id.nau_home-> Toast.makeText(applicationContext,"clicked Home", Toast.LENGTH_SHORT).show()
-                R.id.nau_profile-> Toast.makeText(applicationContext,"clicked Profile", Toast.LENGTH_SHORT).show()
-                R.id.nau_booking-> Toast.makeText(applicationContext,"clicked Booking", Toast.LENGTH_SHORT).show()
-                R.id.nau_logout-> Toast.makeText(applicationContext,"clicked Logout", Toast.LENGTH_SHORT).show()
+                R.id.nau_home-> home()
+                R.id.nau_profile-> patientProfile()
+                R.id.nau_booking-> booking()
+                R.id.nau_logout-> logout()
             }
-
             true
         }
 
+    }
+    private fun logout() {
+    }
+
+    private fun booking() {
+        startActivity(Intent(this, BookAppointment::class.java).putExtra("patientID",patientID))
+    }
+
+    private fun patientProfile() {
+        startActivity(Intent(this, Profile::class.java).putExtra("patientID",patientID))
+    }
+
+    private fun home() {
+        startActivity(Intent(this, services::class.java))
     }
 
     //nav_bar

@@ -93,6 +93,8 @@
     <string name="medical_Rays_radiobn">Medical Rays</string>
     <string name="medical_clinics_radiobn">Medical clinics</string>
     <string name="send_req_btn">Send Request</string>
+    <string name="successRequest">Your Request has been Submitted Successfully</string>
+    <string name="failRequest">Failed, Try again Later..</string>
     <!--    doctor details-->
     <string name="doctor_details_title">Doctor details</string>
     <string name="doctordetails_id">Doctor ID:</string>

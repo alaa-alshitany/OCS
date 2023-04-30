@@ -19,14 +19,14 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="25dp"
+        android:layout_margin="30dp"
         android:orientation="vertical">
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_gravity="center"
-            android:layout_weight="2"
+            android:layout_weight="1.5"
             android:fontFamily="@font/acme_regular"
             android:gravity="center"
             android:text="@string/book_appointment_title"
@@ -45,8 +45,10 @@
             style="@style/EditText"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1"
+            android:layout_weight=".8"
             android:autofillHints=""
+            android:focusable="false"
+            android:focusableInTouchMode="true"
             android:drawableStart="@drawable/baseline_user_24"
             android:ems="10"
             android:hint="@string/fullName_inp"
@@ -64,8 +66,10 @@
             android:id="@+id/phone_edt"
             style="@style/EditText"
             android:layout_width="match_parent"
+            android:focusableInTouchMode="true"
             android:layout_height="0dp"
-            android:layout_weight="1"
+            android:layout_weight=".8"
+            android:focusable="false"
             android:autofillHints=""
             android:drawableStart="@drawable/baseline_phone_24"
             android:ems="10"
@@ -80,7 +84,7 @@
         <Space
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight=".3">
+            android:layout_weight=".5">
 
         </Space>
 
@@ -90,18 +94,18 @@
             style="@style/TextAppearance.MaterialComponents.Subtitle1"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight=".5"
+            android:layout_weight=".3"
             android:fontFamily="@font/inter_font"
-            android:text="TextView"
+            android:textStyle="bold"
+            android:text="@string/service_view"
             android:textColor="@color/black"
-            android:textSize="20sp"
-            tools:text="@string/service_view" />
+           />
 
         <CheckBox
             android:id="@+id/medical_clinics"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight=".8"
+            android:layout_weight=".7"
             android:text="@string/medical_clinics_radiobn"
             android:textColor="@color/black"
             android:textStyle="bold">
@@ -112,7 +116,7 @@
             android:id="@+id/medical_Rays"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight=".8"
+            android:layout_weight=".7"
             android:text="@string/medical_Rays_radiobn"
             android:textColor="@color/black"
             android:textStyle="bold">
@@ -123,21 +127,25 @@
             android:id="@+id/medical_tests"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight=".8"
+            android:layout_weight=".7"
             android:text="@string/medical_tests_radiobn"
             android:textColor="@color/black"
             android:textStyle="bold">
 
         </CheckBox>
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight=".5">
 
-
+        </Space>
         <Button
-            android:id="@+id/button"
+            android:id="@+id/sendRequestBtn"
             style="@style/Widget.AppCompat.Button.Colored"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_gravity="center"
-            android:layout_weight=".9"
+            android:layout_weight=".6"
             android:layout_marginLeft="50dp"
             android:layout_marginRight="50dp"
             android:background="@drawable/button_style"
@@ -147,7 +155,12 @@
             android:textColor="@color/black"
             android:textStyle="bold"
       />
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight=".5">
 
+        </Space>
     </LinearLayout>
 
 </LinearLayout>
