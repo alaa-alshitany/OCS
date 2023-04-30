@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Strings related to intro slider -->
+    <string name="app_name">OCS</string>
+    <string name="app_desc">خدمات مركز الأورام</string>
+    <string name="slider1_title"> مرحبًا بكم في مركز الأورام</string>
+    <string name="slider1_description">الأطباء المحترفون \ n طرق الفحص الحديثة \n المواعيد الثابتة والمنظمة</string>
+    <string name="slider2_title">الأشعة الطبية</string>
+    <string name="slider2_description">التصوير المقطعي المحوسب (CT) \ n المسح الضوئي ، مسح العظام ، \ n التصوير بالرنين المغناطيسي (MRI) ، \ n التصوير المقطعي بالإصدار البوزيتروني (PET) ، \ n الموجات الصوتية والأشعة السينية ،</string>
+    <string name="slider3_title">فحوصات طبية</string>
+    <string name="slider3_description">تعداد الدم الكامل (CBC). \ n محددات الورم. \ n اختبار بروتين الدم. \ n تعميم اختبارات الخلايا السرطانية</string>
+    <string name="next">التالي</string>
+    <string name="get_started">البدء!</string>
+
+    <!-- Strings related to login -->
+    <string name="login">تسجيل الدخول</string>
+    <string name="p_login">تسجيل دخول المريض</string>
+    <string name="d_login">تسجيل دخول الدكتور</string>
+    <string name="a_login">تسجيل دخول المسؤول</string>
+    <string name="p_email_hint">بريد إلكتروني</string>
+    <string name="d_email_hint">walid2mohamed@ocs.com</string>
+    <string name="a_email_hint">أدخل الرمز السري الخاص بك</string>
+    <string name="prompt_password">كلمة المرور</string>
+    <string name="action_login_in_short">تسجيل الدخول</string>
+    <string name="forgetPass"><u>هل نسيت كلمة السر؟</u></string>
+    <string name="newUser">لا يوجد لديك حساب؟</string>
+
+    <!-- Errors related to Login-->
+    <string name="emptyEmail">رجاءا أدخل بريدك الإلكتروني</string>
+    <string name="emptyPassword">من فضلك أدخل رقمك السري</string>
+    <string name="emptyData"> رجاءا أدخل بريدك الإلكتروني \&amp; كلمة المرور </string>
+    <string name="userNotFound">لم يتم العثور على المستخدم</string>
+    <string name="login_failed">فشل تسجيل الدخول</string>
+    <string name="login_success">تم تسجيل الدخول بنجاح</string>
+
+    <!--String for login menu-->
+    <string name="menu_doctor">الطبيب</string>
+    <string name="menu_admin">المسؤول</string>
+    <string name="menu_patient">المريض</string>
+
+    <!-- Strings related to register -->
+    <string name="register">\ التسجيل</string>
+    <string name="first_name">الاسم الأول</string>
+    <string name="last_Name">اسم العائلة</string>
+    <string name="phone">رقم الهاتف</string>
+    <string name="Continue">استمر</string>
+    <string name="male">ذكر</string>
+    <string name="female">أنثى</string>
+    <string name="birthdate">تاريخ الميلاد</string>
+    <string name="address">العنوان</string>
+    <string name="passwordConfirm">تأكيد كلمة المرور</string>
+    <string name="oldUser">هل لديك حساب بالفعل؟ </string>
+    <string name="cont_register">استكمال التسجيل</string>
+
+    <!-- Errors related to register-->
+    <string name="emptyFields">لو سمحت أملأ كل الحقول</string>
+    <string name="notValidEmail">أدخل بريد إلكتروني متاح</string>
+    <string name="emptyFName">أدخل اسمك الأول</string>
+    <string name="emptyLName">أدخل اسمك العائلة</string>
+    <string name="emptyPhone">أدخل رقم هاتفك</string>
+    <string name="notValidNumber">أدخل رقم هاتفك الصحيح (11 رقم)</string>
+    <string name="register_success">تم التسجيل بنجاح</string>
+    <string name="passwordNotMach"></string>
+    <string name="notValidPassword">يجب أن تكون كلمة المرور الخاصة بك > 8 أحرف</string>
+    <string name="emptyBirthDate">أدخل تاريخ ميلادك</string>
+    <string name="emptyAddress">أدخل عنوانك</string>
+
+    <!--strings for home -->
+    <string name="clinic_service">عيادات الأورام</string>
+
+    <!--    book appointments-->
+    <string name="book_appointment_title">موعد الحجز</string>
+    <string name="fullName_inp">الاسم الكامل</string>
+    <string name="phone_inp">الهاتف</string>
+    <string name="service_view">اختر الخدمة:</string>
+    <string name="medical_tests_radiobn">فحوصات طبية</string>
+    <string name="medical_Rays_radiobn">الأشعة الطبية</string>
+    <string name="medical_clinics_radiobn">عيادات طبية</string>
+    <string name="send_req_btn">ارسل طلب</string>
+    <!--    doctor details-->
+    <string name="doctor_details_title">تفاصيل الطبيب</string>
+    <string name="doctordetails_id">الرقم التعريفي للطبيب:</string>
+    <string name="doctor_ID">125</string>
+    <string name="doctordetails_name">الأسم:</string>
+    <string name="doctor_name">DR. Mohammed Alaa</string>
+    <string name="doctordetais_email">البريد الإلكتروني:</string>
+    <string name="doctor_email">Mohamed2alaa@ocs.com</string>
+    <string name="doctordetails_phone">رقم الهاتف:</string>
+    <string name="doctor_phone">01209632578</string>
+    <string name="doctordetails_Specialization">التخصص:</string>
+    <string name="doctor_Specialization">علاج الأورام بالإشعاع</string>
+    <string name="doctordetails_birthdate">تاريخ الميلاد:</string>
+    <string name="doctor_birthdate">20-08-1966</string>
+    <!--approved-->
+    <string name="Approved_title">Approved</string>
+    <string name="request_button">طلب</string>
+    <string name="approved_button">Approved</string>
+    <string name="name_approved">Mazen Ali</string>
+    <string name="phone_approved">01554181290</string>
+    <string name="service_approved">فحوصات طبية</string>
+    <string name="date_approved">22-03-2023</string>
+    <string name="time_approved">9:00 PM</string>
+    <!--    doctor -->
+    <string name="doctor_title">الطبيب</string>
+    <string name="doctors_view_name">DR / Mohammed Alaa</string>
+
+    <!--requests-->
+    <string name="requests_title">الطلبات</string>
+    <string name="requests_name">Mazen Ali</string>
+    <string name="requests_phone">01554181290</string>
+    <string name="requests_service">فحوصات طبية</string>
+    <!--appointments-->
+    <string name="appointments_title">مواعيد</string>
+    <string name="appointments_name">Nada Ahmed</string>
+    <string name="appointments_date">22-Dec-2022 </string>
+    <string name="appointments_time"> 1:00 PM</string>
+
+    <!--patient details-->
+    <string name="PatientRecord_title"> سجل المريض</string>
+    <string name="Patientdetails_name">الاسم:</string>
+    <string name="Patient_name"> Mohammed Alaa</string>
+    <string name="Patientdetails_email"> البريد الإلكتروني:</string>
+    <string name="Patient_email"> Mohammed555@yahoo.com</string>
+    <string name="Patientdetails_phone">رقم الهاتف:</string>
+    <string name="Patient_phone"> 01209632578</string>
+    <string name="Patientdetails_diagnosis"> التشخيص:</string>
+    <string name="Patient_diagnosis">سرطان الدم</string>
+    <string name="Patientdetails_medicine">الدواء:</string>
+    <string name="Patient_medicine"> Alectinib 150 mg</string>
+    <!--model-->
+    <string name="Drug_Effectiveness_title">فاعلية الدواء</string>
+    <string name="Drug_Effectiveness_Gene_expression">التعبير الجيني:</string>
+    <string name="hint_Drug_Effectiveness">رفع ملف</string>
+    <string name="hint_Drug_name">اختار</string>
+    <string name="Drug_Effectiveness_Genomic_mutation">الطفرة الجينية:</string>
+    <string name="Drug_Effectiveness_DNA_methylation">مثيلة الحمض النووي:</string>
+    <string name="Drug_Effectiveness_drug_name">اسم الدواء:</string>
+    <string name="Drug_Effectiveness_predict_pn">تنبأ</string>
+
+    <!--string for drawer-->
+    <string name="close">close</string>
+    <string name="open">open</string>
+
+</resources>
