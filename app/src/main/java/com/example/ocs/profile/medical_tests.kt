@@ -9,10 +9,12 @@ import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.ocs.Intro.patient.services.OnItemRecycleClickListener
+import com.example.ocs.Intro.patient.services.serviceModel
 import com.example.ocs.R
 import com.google.android.material.navigation.NavigationView
 
-class medical_tests : AppCompatActivity() {
+class medical_tests : AppCompatActivity() , OnItemRecycleClickListener {
     private lateinit var recycleView: RecyclerView
     private lateinit var dataList: ArrayList<DataClass6>
     lateinit var serviceList:Array<String>
@@ -80,6 +82,12 @@ class medical_tests : AppCompatActivity() {
             dataList.add(dataClass)
         }
         recycleView.adapter = AdapterClass6(dataList)
+    }
+
+    //listener
+    override fun onClick(c: serviceModel?) {
+        val toast = Toast.makeText(applicationContext, c?.serviceImage!!, Toast.LENGTH_LONG)
+        toast.show()
     }
 
 }

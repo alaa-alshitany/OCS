@@ -11,7 +11,7 @@ import com.example.ocs.R
 
 
 //adapter-> creates new instance of view items and then feed them to the recycler view
-class serviceAdapter(val context:Context , val serviceList: List<serviceModel>) : RecyclerView.Adapter<serviceAdapter.MyViewHolder>() {
+class serviceAdapter(val context:Context, val serviceList: List<serviceModel>, val listener: services) : RecyclerView.Adapter<serviceAdapter.MyViewHolder>() {
 
     //create new view
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
@@ -36,6 +36,11 @@ class serviceAdapter(val context:Context , val serviceList: List<serviceModel>) 
         // sets the text to the textview from our itemHolder class
         holder.serviceName.setText(cardViewModel.serviceName)
 
+        //listener
+        holder.itemView.setOnClickListener {
+            listener.onClick(cardViewModel)
+        }
+        
 }
     // Holds the views for adding it to image and text
 class MyViewHolder (ItemView: View) : RecyclerView.ViewHolder(ItemView){
