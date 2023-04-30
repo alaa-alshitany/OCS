@@ -17,7 +17,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingTop="8dp"
-        android:text="ahmed ibrahim"
+        android:text="Admin : 3553098"
         android:textSize="20dp"
         android:textStyle="bold" />
 
@@ -25,7 +25,7 @@
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_marginTop="20dp"
-        android:background="@color/underline" />
+        android:background="@color/blue_200" />
 
 
 </LinearLayout>

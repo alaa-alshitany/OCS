@@ -30,7 +30,7 @@ class IntroSlider : AppCompatActivity() {
         setContentView(R.layout.activity_intro_slider)
 
         checkUser()
-        bindingItems()
+        init()
 
 
         var adapter: SliderAdapter = SliderAdapter(
@@ -76,7 +76,7 @@ class IntroSlider : AppCompatActivity() {
         })
 
         }
-    fun bindingItems(){
+    fun init(){
         viewPager=findViewById(R.id.viewPager)
         tabLayout=findViewById(R.id.tabLayout)
         next_btn=findViewById(R.id.next_btn)

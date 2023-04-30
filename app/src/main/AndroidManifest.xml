@@ -18,37 +18,29 @@
         android:windowSoftInputMode="adjustPan"
         tools:targetApi="31">
         <activity
-            android:name=".recycle_request"
+            android:name=".profile.medical_clinic"
             android:exported="false" />
         <activity
-            android:name=".recycle_approved"
+            android:name=".profile.medical_tests"
             android:exported="false" />
         <activity
-            android:name=".patient_recycle"
+            android:name=".profile.medical_rays"
             android:exported="false" />
         <activity
-            android:name=".MainActivity3"
+            android:name=".profile.recycle_request"
             android:exported="false" />
         <activity
-            android:name=".MainActivity2"
+            android:name=".profile.recycle_approved"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".profile.patient_recycle"
             android:exported="false" />
         <activity
-            android:name=".profile_doctor"
+            android:name=".profile.profile_doctor"
             android:exported="false" />
         <activity
-            android:name=".profile_patient"
+            android:name=".Intro.patient.Profile.Profile"
             android:exported="false" />
-        <activity
-            android:name=".Intro.admin.appointments"
-            android:exported="false"
-            android:windowSoftInputMode="adjustPan" />
-        <activity
-            android:name=".Intro.admin.doctors"
-            android:exported="false"
-            android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".Intro.patient.booking.BookAppointment"
             android:exported="false" />
@@ -57,6 +49,7 @@
             android:exported="false" />
         <activity
             android:name=".Intro.patient.services.services"
+            android:theme="@style/Theme.OCS"
             android:exported="false" />
         <activity
             android:name=".Intro.Login.RegisterContinue"
@@ -74,13 +67,22 @@
             android:name=".Intro.IntroSlider.IntroSlider"
             android:exported="false"
             android:theme="@style/splash" />
+        <activity android:name=".Intro.Login.ForgetPassword"
+            android:windowSoftInputMode="adjustPan"
+            android:exported="false"
+            />
+        <activity android:name=".Intro.Login.VerifyOTP"
+            android:windowSoftInputMode="adjustPan"
+            android:exported="false"/>
+        <activity android:name=".Intro.Login.ResetPassword"
+            android:windowSoftInputMode="adjustPan"
+            android:exported="false"/>
         <activity
             android:name=".Intro.IntroSlider.splashScreen"
             android:exported="true"
             android:theme="@style/splash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

@@ -1,0 +1,104 @@
+package com.example.ocs.profile
+
+import android.annotation.SuppressLint
+import androidx.appcompat.app.AppCompatActivity
+import android.os.Bundle
+import android.view.MenuItem
+import android.widget.Toast
+import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.drawerlayout.widget.DrawerLayout
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.example.ocs.R
+import com.google.android.material.navigation.NavigationView
+
+class recycle_approved : AppCompatActivity() {
+    private lateinit var recycleView: RecyclerView
+    private lateinit var dataList: ArrayList<DataClass_approv>
+    lateinit var TitleList:Array<String>
+    lateinit var phoneList:Array<String>
+    lateinit var serveList:Array<String>
+    lateinit var dateList:Array<String>
+    lateinit var timeList:Array<String>
+
+    //nav_bar
+    lateinit var toggle: ActionBarDrawerToggle
+
+    @SuppressLint("MissingInflatedId")
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_recycle_approved)
+
+        TitleList = arrayOf(
+            " Mohammed Ahmed",
+            " Ahmed Ali",
+            " Ali Naser"
+        )
+
+        phoneList = arrayOf(
+            " 01208628016",
+            " 01122520035",
+            " 01023569821"
+        )
+        serveList = arrayOf(
+            " Medical Test",
+            " Medical Rays",
+            " Medical Clinic"
+        )
+        dateList = arrayOf(
+            " 22-6-2023",
+            " 1-7-2023",
+            " 20-8-2023"
+        )
+        timeList = arrayOf(
+            " 9:00pm",
+            " 10:30pm",
+            "12:00pm"
+        )
+
+        recycleView = findViewById(R.id.recycleView4)
+        recycleView.layoutManager = LinearLayoutManager(this)
+        recycleView.setHasFixedSize(true)
+        dataList = arrayListOf<DataClass_approv>()
+        getData()
+
+        //nav_bar
+        val drawerLayout : DrawerLayout = findViewById(R.id.drawerLayout)
+        val navView : NavigationView = findViewById(R.id.nav_view)
+
+        toggle = ActionBarDrawerToggle( this, drawerLayout, R.string.open, R.string.close)
+        drawerLayout.addDrawerListener(toggle)
+        toggle.syncState()
+
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        navView.setNavigationItemSelectedListener {
+            when(it.itemId){
+                R.id.nau_profile2-> Toast.makeText(applicationContext,"clicked Profile", Toast.LENGTH_SHORT).show()
+                R.id.nau_booking2-> Toast.makeText(applicationContext,"clicked Booking", Toast.LENGTH_SHORT).show()
+                R.id.nau_doctor-> Toast.makeText(applicationContext,"clicked doctors", Toast.LENGTH_SHORT).show()
+                R.id.nau_logout2-> Toast.makeText(applicationContext,"clicked Logout", Toast.LENGTH_SHORT).show()
+            }
+
+            true
+        }
+
+
+    }
+
+    //nav_bar
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (toggle.onOptionsItemSelected(item)) {
+            return true
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
+    private fun getData(){
+        for(i in TitleList.indices){
+            val dataClass = DataClass_approv(TitleList[i], phoneList[i],serveList[i],dateList[i],timeList[i])
+            dataList.add(dataClass)
+        }
+        recycleView.adapter = AdapterClass4(dataList)
+    }
+
+}
