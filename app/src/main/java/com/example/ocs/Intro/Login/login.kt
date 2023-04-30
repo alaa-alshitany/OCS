@@ -3,6 +3,7 @@ import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
@@ -54,7 +55,6 @@ class login : AppCompatActivity() {
     }
     private fun getIntentExtra(){
         var hint:String =intent.getStringExtra("email_hint").toString()
-
         when(hint){
             R.string.d_email_hint.toString() -> doctorLogin()
             R.string.a_email_hint.toString() -> adminLogin()
@@ -65,7 +65,7 @@ class login : AppCompatActivity() {
         }
     }
     private fun moveToHome() {
-        startActivity(Intent(activity, services::class.java).putExtra("patientID",patientID))
+        startActivity(Intent(activity, services::class.java).putExtra("patientID",pref.prefID))
         finish()
     }
     private fun moveToRegister() {
@@ -106,6 +106,8 @@ class login : AppCompatActivity() {
                             if (patient.password.equals(password)) {
                                patientID= patient?.id.toString()
                                 pref.prefStatus = true
+                                pref.prefLevel="patient"
+                                pref.prefID=patientID
                                 Toast.makeText(context, R.string.login_success, Toast.LENGTH_LONG).show()
                                 moveToHome()
                             }
@@ -131,6 +133,10 @@ class login : AppCompatActivity() {
     override fun onStart(){
         super.onStart()
         if (pref.prefStatus){
+            when(pref.prefLevel){
+                "patient" -> moveToHome()
+                //"doctor" ->
+            }
 
         }
     }
@@ -142,6 +148,7 @@ class login : AppCompatActivity() {
         else if(password.text.toString().isEmpty())
             Toast.makeText(applicationContext,R.string.emptyPassword,Toast.LENGTH_LONG).show()
     }
+
     private fun init(){
         email_edt=findViewById(R.id.email)
         loginTextview=findViewById(R.id.login_text_view)

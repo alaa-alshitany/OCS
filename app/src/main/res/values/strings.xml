@@ -83,6 +83,7 @@
 
     <!--strings for home -->
     <string name="clinic_service">Oncology Clinics</string>
+    <string name="logout">Logged Out Successfully</string>
 
     <!--    book appointments-->
     <string name="book_appointment_title">Booking Appointment</string>
