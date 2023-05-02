@@ -54,6 +54,7 @@
         <activity
             android:name=".Intro.Login.RegisterContinue"
             android:exported="false"
+            android:theme="@style/Theme.OCS"
             android:parentActivityName=".Intro.Login.Register" />
         <activity
             android:name=".Intro.Login.Register"

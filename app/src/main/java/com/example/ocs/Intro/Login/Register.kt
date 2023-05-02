@@ -66,30 +66,38 @@ class Register : AppCompatActivity() {
          }else{
              if(emailEdt.text.toString().trim().isEmpty() && firstNameEdt.text.toString().isEmpty()
                  &&(lastNameEdt.text.toString().isEmpty() && phoneEdt.text.toString().isEmpty())){
-                 Toast.makeText(this,R.string.emptyFields,Toast.LENGTH_LONG).show()
+                 emailEdt.setError(getText(R.string.requird))
+                 firstNameEdt.setError(getText(R.string.requird))
+                 lastNameEdt.setError(getText(R.string.requird))
+                 phoneEdt.setError(getText(R.string.requird))
+                 Toast.makeText(this,R.string.emptyAllData,Toast.LENGTH_LONG).show()
              }
 
-
-             if (emailEdt.text.toString().trim().isEmpty())
+             if (emailEdt.text.toString().trim().isEmpty()){
+                 emailEdt.setError(getText(R.string.requird))
                  Toast.makeText(this, R.string.emptyEmail, Toast.LENGTH_LONG).show()
-             else if (!emailEdt.text.toString().trim().matches(emailPattern.toRegex()))
+             } else if (!emailEdt.text.toString().trim().matches(emailPattern.toRegex())){
+                 emailEdt.setError(getText(R.string.notValidEmail))
                  Toast.makeText(this, R.string.notValidEmail, Toast.LENGTH_LONG).show()
-
-
-             if (firstNameEdt.text.toString().isEmpty())
+             }
+             if (firstNameEdt.text.toString().isEmpty()){
+                 firstNameEdt.setError(getText(R.string.requird))
                  Toast.makeText(this, R.string.emptyFName, Toast.LENGTH_LONG).show()
-
-             if (lastNameEdt.text.toString().isEmpty())
+             }
+             if (lastNameEdt.text.toString().isEmpty()){
+                 lastNameEdt.setError(getText(R.string.requird))
                  Toast.makeText(this, R.string.emptyLName, Toast.LENGTH_LONG).show()
-
-             if (phoneEdt.text.toString().isEmpty())
+             }
+             if (phoneEdt.text.toString().isEmpty()){
+                 phoneEdt.setError(getText(R.string.requird))
                  Toast.makeText(this, R.string.emptyPhone, Toast.LENGTH_LONG).show()
-             else if (phoneEdt.text.toString().length != 11 || !phoneEdt.text.toString().trim().matches(phonePattern.toRegex()))
+             }
+             else if (phoneEdt.text.toString().length != 11 || !phoneEdt.text.toString().trim().matches(phonePattern.toRegex())){
+                 phoneEdt.setError(getText(R.string.notValidNumber))
                  Toast.makeText(this, R.string.notValidNumber, Toast.LENGTH_LONG).show()
-
+             }
              return false
          }
-
      }
     private fun checkUser(phone:String){
         val queryPhone: Query =database.child("Patients").orderByChild("phone").equalTo(phone)
@@ -106,7 +114,6 @@ class Register : AppCompatActivity() {
             }
         })
     }
-
     private fun checkInternet(context:Context) : Boolean{
         val connectivityManager = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
@@ -135,5 +142,8 @@ class Register : AppCompatActivity() {
             @Suppress("DEPRECATION")
             return networkInfo.isConnected
         }
+    }
+    private fun calculateAge(){
+
     }
     }

@@ -27,7 +27,7 @@
     <!-- Errors related to Login-->
     <string name="emptyEmail">Please enter your Email</string>
     <string name="emptyPassword">Please enter your Password</string>
-    <string name="emptyData">Please enter All Data</string>
+    <string name="emptyAllData">Please enter All Data</string>
     <string name="userNotFound">User Not Found</string>
     <string name="login_failed">Login failed, Check your data and try again</string>
     <string name="login_success">Logged in Successfully</string>
@@ -69,8 +69,11 @@
     <string name="cont_register">Continue Register</string>
     <string name="userFound">This phone already registered before</string>
     <string name="internetError">connection error</string>
+    <string name="ageError">Your age must be > 15 year</string>
+    <string name="requird">Required</string>
+
+
     <!-- Errors related to register-->
-    <string name="emptyFields">Please Fill All Fields</string>
     <string name="notValidEmail">Enter a valid Email</string>
     <string name="emptyFName">Enter your First Name</string>
     <string name="emptyLName">Enter your Last Name</string>

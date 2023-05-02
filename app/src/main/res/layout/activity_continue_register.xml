@@ -69,6 +69,10 @@
                 android:id="@+id/birthdate"
                 style="@style/EditText"
                 android:layout_width="match_parent"
+                android:clickable="false"
+                android:cursorVisible="false"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="5dp"
                 android:drawableStart="@drawable/baseline_calendar_month_24"
@@ -102,7 +106,6 @@
                 android:textColor="@color/black"
                 tools:ignore="VisualLintTextFieldSize" />
         </com.google.android.material.textfield.TextInputLayout>
-
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
