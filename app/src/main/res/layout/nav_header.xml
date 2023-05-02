@@ -4,21 +4,19 @@
     android:layout_height="wrap_content"
     android:layout_marginStart="16dp"
     android:layout_marginTop="16dp"
-    android:background="@color/white"
     android:orientation="vertical">
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:layout_width="60dp"
         android:layout_height="60dp"
-        android:src="@drawable/baseline_user_24" />
+        android:src="@drawable/baseline_account_circle_24" />
 
     <TextView
         android:id="@+id/user_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingTop="8dp"
-        android:text="Mohammed Ali"
-        android:textSize="20dp"
+       android:textColor="@color/black"
         android:textStyle="bold" />
 
     <View

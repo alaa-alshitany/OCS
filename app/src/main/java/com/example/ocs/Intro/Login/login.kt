@@ -108,6 +108,7 @@ class login : AppCompatActivity() {
                                 pref.prefStatus = true
                                 pref.prefLevel="patient"
                                 pref.prefID=patientID
+                                pref.userName=patient?.firstName.toString().plus(" ${patient?.lastName.toString()}")
                                 Toast.makeText(context, R.string.login_success, Toast.LENGTH_LONG).show()
                                 moveToHome()
                             }

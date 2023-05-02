@@ -2,9 +2,12 @@ package com.example.ocs.Intro.patient.services
 
 import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
+import android.view.View
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.drawerlayout.widget.DrawerLayout
@@ -27,10 +30,17 @@ class services : AppCompatActivity(), OnCardItemClickListener {
     private lateinit var patientID:String
     private lateinit var pref: Prefrences
     private lateinit var context: Context
+    private lateinit var navigationView:NavigationView
+    private lateinit var navHeader :View
+    private lateinit var userName: TextView
     private fun init() {
        list=findViewById(R.id.recyclerView)
         context=this
         pref= Prefrences(context)
+        navigationView=findViewById(R.id.nav_view)
+        navHeader=navigationView.getHeaderView(0)
+       userName=navHeader.findViewById(R.id.user_name)
+        userName.setText(pref.userName)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
