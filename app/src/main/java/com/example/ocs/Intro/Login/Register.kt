@@ -1,10 +1,14 @@
 package com.example.ocs.Intro.Login
+import android.content.Context
 import android.content.Intent
+import android.net.ConnectivityManager
+import android.net.NetworkCapabilities
+import android.os.Build
 import android.os.Bundle
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import com.example.ocs.R
-
+import com.google.firebase.database.*
 
 class Register : AppCompatActivity() {
     lateinit var continueBtn: TextView
@@ -14,17 +18,23 @@ class Register : AppCompatActivity() {
     lateinit var phoneEdt:EditText
     lateinit var genderRadio:RadioGroup
     lateinit var radioButton: RadioButton
+    private val database: DatabaseReference = FirebaseDatabase.getInstance().reference
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
         init()
-
-        continueBtn.setOnClickListener { moveToContinueRegister() }
+        continueBtn.setOnClickListener {
+            if(checkInternet(this)){
+                checkUser(phoneEdt.text.toString())
+            }else{
+                Toast.makeText(applicationContext,R.string.internetError,Toast.LENGTH_LONG).show()
+            }
+        }
     }
     override fun onBackPressed() {
         onBackPressedDispatcher.onBackPressed()
     }
-    private fun moveToContinueRegister() {
+    private fun continueRegister() {
         var selectedGender:Int=genderRadio!!.checkedRadioButtonId
         radioButton = findViewById(selectedGender)
         if (validateInputData()){
@@ -37,7 +47,6 @@ class Register : AppCompatActivity() {
             startActivity(intent)
         }
     }
-
     private fun init(){
         continueBtn=findViewById(R.id.continue_btn)
         firstNameEdt=findViewById(R.id.firstName)
@@ -45,9 +54,7 @@ class Register : AppCompatActivity() {
         emailEdt=findViewById(R.id.email)
         phoneEdt=findViewById(R.id.phone)
         genderRadio=findViewById(R.id.gender)
-
     }
-
     private fun validateInputData() :Boolean{
         var emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+"
         var phonePattern="^01[0125][0-9]{8}\$"
@@ -84,4 +91,49 @@ class Register : AppCompatActivity() {
          }
 
      }
-}
+    private fun checkUser(phone:String){
+        val queryPhone: Query =database.child("Patients").orderByChild("phone").equalTo(phone)
+        queryPhone.addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                if (snapshot.exists()){
+                    Toast.makeText(applicationContext,R.string.userFound,Toast.LENGTH_LONG).show()
+                }else{
+                    continueRegister()
+                }
+            }
+            override fun onCancelled(error: DatabaseError) {
+                Toast.makeText(applicationContext, error.message, Toast.LENGTH_LONG).show()
+            }
+        })
+    }
+
+    private fun checkInternet(context:Context) : Boolean{
+        val connectivityManager = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+
+            // Returns a Network object corresponding to
+            // the currently active default data network.
+            val network = connectivityManager.activeNetwork ?: return false
+            // Representation of the capabilities of an active network.
+            val activeNetwork = connectivityManager.getNetworkCapabilities(network) ?: return false
+            return when {
+                // Indicates this network uses a Wi-Fi transport,
+                // or WiFi has network connectivity
+                activeNetwork.hasTransport(NetworkCapabilities.TRANSPORT_WIFI) -> true
+
+                // Indicates this network uses a Cellular transport. or
+                // Cellular has network connectivity
+                activeNetwork.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR) -> true
+
+                // else return false
+                else -> false
+            }
+        } else {
+            // if the android version is below M
+            @Suppress("DEPRECATION") val networkInfo =
+                connectivityManager.activeNetworkInfo ?: return false
+            @Suppress("DEPRECATION")
+            return networkInfo.isConnected
+        }
+    }
+    }

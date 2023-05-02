@@ -1,7 +1,11 @@
 package com.example.ocs.Intro.Login
 
 import android.app.DatePickerDialog
+import android.content.Context
 import android.content.Intent
+import android.net.ConnectivityManager
+import android.net.NetworkCapabilities
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
@@ -9,9 +13,7 @@ import android.widget.EditText
 import android.widget.Toast
 import com.example.ocs.R
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.*
-import com.google.firebase.ktx.Firebase
 import java.util.*
 
 class RegisterContinue : AppCompatActivity() {
@@ -34,8 +36,16 @@ class RegisterContinue : AppCompatActivity() {
         setContentView(R.layout.activity_continue_register)
         backArrow()
         init()
-        register()
-
+        getIntentExtra()
+        registerBtn.setOnClickListener {
+            if (checkInternet(this)){
+                if (validateInputData()){
+                    register()
+                }
+            }else{
+                Toast.makeText(applicationContext,R.string.internetError,Toast.LENGTH_LONG).show()
+            }
+        }
     }
 private fun validateInputData():Boolean{
     if (passwordEdt.text.toString().isNotEmpty() && passwordConfEdt.text.toString().isNotEmpty() && passwordEdt.text.toString().trim().length >= 8
@@ -64,15 +74,7 @@ private fun validateInputData():Boolean{
     }
 
 }
-    private fun register() {
-        getIntentExtra()
-        registerBtn.setOnClickListener {
-            if (validateInputData()){
-                sendDataToDB()
-                moveToLogin()
-            }
-        }
-        }
+
     private fun calenderShow() {
         val calendar= Calendar.getInstance()
         val year = calendar.get(Calendar.YEAR)
@@ -86,13 +88,14 @@ private fun validateInputData():Boolean{
             }, year, month, day)
         datePickerDialog.show()
     }
-    private fun sendDataToDB() {
+    private fun register() {
         auth.createUserWithEmailAndPassword(email,passwordEdt.text.toString()).addOnCompleteListener {
             if (it.isSuccessful){
                 val patientId=auth.currentUser!!.uid
                 val patient= PatientData(patientId,firstName,lastName, addressEdt.text.toString(),gender,birthDateEdt.text.toString(),email,null,null,null,phone,passwordEdt.text.toString())
                 database.child(patientId).setValue(patient).addOnSuccessListener{
                     Toast.makeText(this,R.string.register_success,Toast.LENGTH_LONG).show()
+                    login()
                 }.addOnFailureListener { err->
                     Toast.makeText(this,"Error ${err.message}",Toast.LENGTH_LONG).show() }
             }
@@ -109,12 +112,40 @@ private fun validateInputData():Boolean{
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
         supportActionBar!!.setHomeAsUpIndicator(R.drawable.baseline_arrow_back_24)
     }
-    private fun moveToLogin() {
+    private fun login() {
        startActivity(Intent(this,login::class.java).putExtra("hint",R.string.p_email_hint.toString()))
         Toast.makeText(this,R.string.register_success,Toast.LENGTH_LONG).show()
         finish()
     }
+    private fun checkInternet(context: Context) : Boolean{
+        val connectivityManager = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
 
+            // Returns a Network object corresponding to
+            // the currently active default data network.
+            val network = connectivityManager.activeNetwork ?: return false
+            // Representation of the capabilities of an active network.
+            val activeNetwork = connectivityManager.getNetworkCapabilities(network) ?: return false
+            return when {
+                // Indicates this network uses a Wi-Fi transport,
+                // or WiFi has network connectivity
+                activeNetwork.hasTransport(NetworkCapabilities.TRANSPORT_WIFI) -> true
+
+                // Indicates this network uses a Cellular transport. or
+                // Cellular has network connectivity
+                activeNetwork.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR) -> true
+
+                // else return false
+                else -> false
+            }
+        } else {
+            // if the android version is below M
+            @Suppress("DEPRECATION") val networkInfo =
+                connectivityManager.activeNetworkInfo ?: return false
+            @Suppress("DEPRECATION")
+            return networkInfo.isConnected
+        }
+    }
     private fun init(){
         registerBtn=findViewById(R.id.register_btn)
         intent2=intent
@@ -125,6 +156,7 @@ private fun validateInputData():Boolean{
         passwordConfEdt=findViewById(R.id.passwordConfirmation)
         auth=FirebaseAuth.getInstance()
     }
+
     override fun onBackPressed() {
         onBackPressedDispatcher.onBackPressed()
     }

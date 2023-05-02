@@ -67,7 +67,8 @@
     <string name="passwordConfirm">Confirm Password</string>
     <string name="oldUser">Already have an account?\ </string>
     <string name="cont_register">Continue Register</string>
-
+    <string name="userFound">This phone already registered before</string>
+    <string name="internetError">connection error</string>
     <!-- Errors related to register-->
     <string name="emptyFields">Please Fill All Fields</string>
     <string name="notValidEmail">Enter a valid Email</string>
