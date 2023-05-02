@@ -73,22 +73,22 @@ class Register : AppCompatActivity() {
                  Toast.makeText(this,R.string.emptyAllData,Toast.LENGTH_LONG).show()
              }
 
-             if (emailEdt.text.toString().trim().isEmpty()){
+             else if (emailEdt.text.toString().trim().isEmpty()){
                  emailEdt.setError(getText(R.string.requird))
                  Toast.makeText(this, R.string.emptyEmail, Toast.LENGTH_LONG).show()
              } else if (!emailEdt.text.toString().trim().matches(emailPattern.toRegex())){
                  emailEdt.setError(getText(R.string.notValidEmail))
                  Toast.makeText(this, R.string.notValidEmail, Toast.LENGTH_LONG).show()
              }
-             if (firstNameEdt.text.toString().isEmpty()){
+            else if (firstNameEdt.text.toString().isEmpty()){
                  firstNameEdt.setError(getText(R.string.requird))
                  Toast.makeText(this, R.string.emptyFName, Toast.LENGTH_LONG).show()
              }
-             if (lastNameEdt.text.toString().isEmpty()){
+             else if (lastNameEdt.text.toString().isEmpty()){
                  lastNameEdt.setError(getText(R.string.requird))
                  Toast.makeText(this, R.string.emptyLName, Toast.LENGTH_LONG).show()
              }
-             if (phoneEdt.text.toString().isEmpty()){
+            else if (phoneEdt.text.toString().isEmpty()){
                  phoneEdt.setError(getText(R.string.requird))
                  Toast.makeText(this, R.string.emptyPhone, Toast.LENGTH_LONG).show()
              }
