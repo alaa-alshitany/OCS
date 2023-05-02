@@ -15,9 +15,12 @@ import com.example.ocs.Intro.Login.login
 import com.example.ocs.Intro.patient.Profile.Profile
 import com.example.ocs.Intro.patient.booking.BookAppointment
 import com.example.ocs.R
+import com.example.ocs.profile.medical_clinic
+import com.example.ocs.profile.medical_rays
+import com.example.ocs.profile.medical_tests
 import com.google.android.material.navigation.NavigationView
 
-class services : AppCompatActivity() {
+class services : AppCompatActivity(), OnCardItemClickListener {
     private lateinit var intent2: Intent
     private lateinit var list: RecyclerView
     lateinit var toggle: ActionBarDrawerToggle
@@ -104,6 +107,21 @@ class services : AppCompatActivity() {
     private fun getIntentExtra(){
         intent2=intent
         patientID=intent2.getStringExtra("patientID").toString()
+    }
+
+    override fun onClick(c: serviceModel) {
+        if (c?.serviceImage!!.equals(R.drawable.rays_service)) {
+            val doneIntent = Intent(this, medical_rays::class.java)
+            startActivity(doneIntent) }
+        else if (c?.serviceImage!!.equals(R.drawable.booking)) {
+            val doneIntent = Intent(this, booking()::class.java)
+            startActivity(doneIntent) }
+        else if (c?.serviceImage!!.equals(R.drawable.tests_service)){
+            val doneIntent = Intent(this, medical_tests::class.java)
+            startActivity(doneIntent) }
+        else if (c?.serviceImage!!.equals(R.drawable.clinics_service)){
+            val doneIntent = Intent(this, medical_clinic::class.java)
+            startActivity(doneIntent) }
     }
 
 }

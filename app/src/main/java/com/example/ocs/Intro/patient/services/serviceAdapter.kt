@@ -11,7 +11,7 @@ import com.example.ocs.R
 
 
 //adapter-> creates new instance of view items and then feed them to the recycler view
-class serviceAdapter(val context:Context, val serviceList: List<serviceModel>, val listener: services) : RecyclerView.Adapter<serviceAdapter.MyViewHolder>() {
+class serviceAdapter(val context:Context, val serviceList: List<serviceModel>, val listener: OnCardItemClickListener) : RecyclerView.Adapter<serviceAdapter.MyViewHolder>() {
 
     //create new view
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
