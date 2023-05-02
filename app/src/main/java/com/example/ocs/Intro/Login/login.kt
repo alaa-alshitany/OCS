@@ -143,16 +143,9 @@ class login : AppCompatActivity() {
                                 pref.userName=patient?.firstName.toString().plus(" ${patient?.lastName.toString()}")
                                 Toast.makeText(context, R.string.login_success, Toast.LENGTH_LONG).show()
                                 home()
+                            }else{
+                                passwordEdt.setError(getText(R.string.login_failed))
                             }
-                            /*auth.signInWithEmailAndPassword(email,password).addOnCompleteListener {
-            if (it.isSuccessful){
-                patientID=auth.currentUser!!.uid
-                Toast.makeText(context,R.string.login_success,Toast.LENGTH_LONG).show()
-                moveToHome()
-            }else {
-                Toast.makeText(context, R.string.login_failed, Toast.LENGTH_LONG).show()
-            }
-        }*/
                         }
                     }
                 }
@@ -174,12 +167,20 @@ class login : AppCompatActivity() {
         }
     }
     private fun checkEmptyData(email:EditText, password:EditText){
-        if (email.text.toString().isEmpty() && password.text.toString().isEmpty())
-            Toast.makeText(applicationContext,R.string.emptyData,Toast.LENGTH_LONG).show()
-        else if (email.text.toString().isEmpty())
+        if (email.text.toString().isEmpty() && password.text.toString().isEmpty()){
+            email.setError(getText(R.string.requird))
+            password.setError(getText(R.string.requird))
+            Toast.makeText(applicationContext,R.string.emptyAllData,Toast.LENGTH_LONG).show()
+        }
+
+        else if (email.text.toString().isEmpty()){
+            email.setError(getText(R.string.requird))
             Toast.makeText(applicationContext,R.string.emptyEmail,Toast.LENGTH_LONG).show()
-        else if(password.text.toString().isEmpty())
+        }
+        else if(password.text.toString().isEmpty()){
+            password.setError(getText(R.string.requird))
             Toast.makeText(applicationContext,R.string.emptyPassword,Toast.LENGTH_LONG).show()
+        }
     }
     private fun init(){
         email_edt=findViewById(R.id.email)
