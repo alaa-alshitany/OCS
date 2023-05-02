@@ -1,13 +1,17 @@
 package com.example.ocs.Intro.patient.services
 
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
+import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.ocs.Intro.Login.Prefrences
+import com.example.ocs.Intro.Login.login
 import com.example.ocs.Intro.patient.Profile.Profile
 import com.example.ocs.Intro.patient.booking.BookAppointment
 import com.example.ocs.R
@@ -18,8 +22,12 @@ class services : AppCompatActivity() {
     private lateinit var list: RecyclerView
     lateinit var toggle: ActionBarDrawerToggle
     private lateinit var patientID:String
+    private lateinit var pref: Prefrences
+    private lateinit var context: Context
     private fun init() {
        list=findViewById(R.id.recyclerView)
+        context=this
+        pref= Prefrences(context)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -38,7 +46,7 @@ class services : AppCompatActivity() {
 
 
         //This will pass the ArrayList to our Adapter
-        val adapter = serviceAdapter(this,data)
+        val adapter = serviceAdapter(this,data,this)
 
         // Setting the Adapter with the recyclerview
         list.adapter = adapter
@@ -66,8 +74,14 @@ class services : AppCompatActivity() {
     }
 
     private fun logout() {
+        pref.prefClear()
+        moveToLogin()
     }
-
+    private fun moveToLogin() {
+        startActivity(Intent(this, login::class.java).putExtra("hint",R.string.p_email_hint.toString()))
+        Toast.makeText(this,R.string.logout, Toast.LENGTH_LONG).show()
+        finish()
+    }
     private fun booking() {
         startActivity(Intent(this,BookAppointment::class.java).putExtra("patientID",patientID))
     }
