@@ -11,12 +11,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.ocs.Intro.patient.Profile.Profile
 import com.example.ocs.Intro.patient.booking.BookAppointment
 import com.example.ocs.R
-import com.example.ocs.profile.medical_clinic
-import com.example.ocs.profile.medical_rays
-import com.example.ocs.profile.medical_tests
 import com.google.android.material.navigation.NavigationView
 
-class services : AppCompatActivity(),OnItemRecycleClickListener {
+class services : AppCompatActivity() {
     private lateinit var intent2: Intent
     private lateinit var list: RecyclerView
     lateinit var toggle: ActionBarDrawerToggle
@@ -41,7 +38,7 @@ class services : AppCompatActivity(),OnItemRecycleClickListener {
 
 
         //This will pass the ArrayList to our Adapter
-        val adapter = serviceAdapter(this,data,this)
+        val adapter = serviceAdapter(this,data)
 
         // Setting the Adapter with the recyclerview
         list.adapter = adapter
@@ -93,28 +90,6 @@ class services : AppCompatActivity(),OnItemRecycleClickListener {
     private fun getIntentExtra(){
         intent2=intent
         patientID=intent2.getStringExtra("patientID").toString()
-    }
-
-    //listener
-    override fun onClick(c: serviceModel?) {
-        if(c?.serviceImage!!.equals("Medical Rays")){
-            val doneIntent = Intent(this,medical_rays::class.java)
-            startActivity(doneIntent)
-        }else if(c?.serviceImage!!.equals("Medical Tests")){
-
-            val doneIntent = Intent(this,medical_tests::class.java)
-            startActivity(doneIntent)
-        }
-        else if(c?.serviceImage!!.equals("Booking Appointment")){
-
-            val doneIntent = Intent(this,BookAppointment::class.java)
-            startActivity(doneIntent)
-        }
-        else if(c?.serviceImage!!.equals("Oncology Clinics")){
-
-            val doneIntent = Intent(this,medical_clinic::class.java)
-            startActivity(doneIntent)
-        }
     }
 
 }

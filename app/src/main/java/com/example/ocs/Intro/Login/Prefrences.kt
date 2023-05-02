@@ -7,7 +7,7 @@ class Prefrences(context: Context) {
     private val TAG_STATUS="status"
     private val TAG_LEVEL="level"
     private val TAG_APP="app"
-
+    private val TAG_ID="userID"
     private val pref:SharedPreferences= context.getSharedPreferences(TAG_APP,Context.MODE_PRIVATE)
 
     var prefStatus : Boolean
@@ -18,8 +18,13 @@ class Prefrences(context: Context) {
         get() = pref.getString(TAG_LEVEL,"")
         set(value) = pref.edit().putString(TAG_LEVEL,value).apply()
 
+    var prefID:String?
+    get() = pref.getString(TAG_ID,"")
+    set(value) =pref.edit().putString(TAG_ID,value).apply()
+
     fun prefClear(){
         pref.edit().remove(TAG_STATUS).apply()
         pref.edit().remove(TAG_LEVEL).apply()
+        pref.edit().remove(TAG_ID).apply()
     }
 }
