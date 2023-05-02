@@ -11,15 +11,18 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.ocs.Intro.patient.Profile.Profile
 import com.example.ocs.Intro.patient.booking.BookAppointment
 import com.example.ocs.R
+import com.example.ocs.profile.medical_clinic
+import com.example.ocs.profile.medical_rays
+import com.example.ocs.profile.medical_tests
 import com.google.android.material.navigation.NavigationView
 
-class services : AppCompatActivity() {
+class services : AppCompatActivity(),OnCardItemClickListener {
     private lateinit var intent2: Intent
     private lateinit var list: RecyclerView
     lateinit var toggle: ActionBarDrawerToggle
-    private lateinit var patientID:String
+    private lateinit var patientID: String
     private fun init() {
-       list=findViewById(R.id.recyclerView)
+        list = findViewById(R.id.recyclerView)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -27,18 +30,18 @@ class services : AppCompatActivity() {
         setContentView(R.layout.activity_services)
         init()
         // this creates a vertical layout Manager
-        list.layoutManager=LinearLayoutManager(this)
+        list.layoutManager = LinearLayoutManager(this)
 
         // ArrayList of class serviceViewModel
         val data = ArrayList<serviceModel>(4)
-        data.add(serviceModel(R.drawable.rays_service,R.string.slider2_title))
-        data.add(serviceModel(R.drawable.booking,R.string.book_appointment_title))
-        data.add(serviceModel(R.drawable.tests_service,R.string.slider3_title))
-        data.add(serviceModel(R.drawable.clinics_service,R.string.clinic_service))
+        data.add(serviceModel(R.drawable.rays_service, R.string.slider2_title))
+        data.add(serviceModel(R.drawable.booking, R.string.book_appointment_title))
+        data.add(serviceModel(R.drawable.tests_service, R.string.slider3_title))
+        data.add(serviceModel(R.drawable.clinics_service, R.string.clinic_service))
 
 
         //This will pass the ArrayList to our Adapter
-        val adapter = serviceAdapter(this,data)
+        val adapter = serviceAdapter(this, data, this)
 
         // Setting the Adapter with the recyclerview
         list.adapter = adapter
@@ -46,20 +49,20 @@ class services : AppCompatActivity() {
         //adapter.setOnItem
 
         //navigation bar
-        val drawerLayout : DrawerLayout = findViewById(R.id.drawerLayout)
-        val navView : NavigationView = findViewById(R.id.nav_view)
+        val drawerLayout: DrawerLayout = findViewById(R.id.drawerLayout)
+        val navView: NavigationView = findViewById(R.id.nav_view)
 
-        toggle = ActionBarDrawerToggle( this, drawerLayout, R.string.open, R.string.close)
+        toggle = ActionBarDrawerToggle(this, drawerLayout, R.string.open, R.string.close)
         drawerLayout.addDrawerListener(toggle)
         toggle.syncState()
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setHomeAsUpIndicator(R.drawable.baseline_menu_24)
         navView.setNavigationItemSelectedListener {
-            when(it.itemId){
-                R.id.nau_home-> home()
-                R.id.nau_profile-> patientProfile()
-                R.id.nau_booking-> booking()
-                R.id.nau_logout-> logout()
+            when (it.itemId) {
+                R.id.nau_home -> home()
+                R.id.nau_profile -> patientProfile()
+                R.id.nau_booking -> booking()
+                R.id.nau_logout -> logout()
             }
             true
         }
@@ -69,15 +72,15 @@ class services : AppCompatActivity() {
     }
 
     private fun booking() {
-        startActivity(Intent(this,BookAppointment::class.java).putExtra("patientID",patientID))
+        startActivity(Intent(this, BookAppointment::class.java).putExtra("patientID", patientID))
     }
 
     private fun patientProfile() {
-        startActivity(Intent(this, Profile::class.java).putExtra("patientID",patientID))
+        startActivity(Intent(this, Profile::class.java).putExtra("patientID", patientID))
     }
 
     private fun home() {
-        startActivity(Intent(this,services::class.java))
+        startActivity(Intent(this, services::class.java))
     }
 
     //nav_bar
@@ -87,9 +90,29 @@ class services : AppCompatActivity() {
         }
         return super.onOptionsItemSelected(item)
     }
-    private fun getIntentExtra(){
-        intent2=intent
-        patientID=intent2.getStringExtra("patientID").toString()
+
+    private fun getIntentExtra() {
+        intent2 = intent
+        patientID = intent2.getStringExtra("patientID").toString()
     }
 
+    //listener
+    override fun onClick(c: serviceModel) {
+        if (c?.serviceImage!!.equals("Medical Rays")) {
+            val doneIntent = Intent(this, medical_rays::class.java)
+            startActivity(doneIntent) }
+        else if (c?.serviceImage!!.equals("Booking Appointments")) {
+            val doneIntent = Intent(this, booking()::class.java)
+            startActivity(doneIntent) }
+        else if (c?.serviceImage!!.equals("Medical Tests")){
+            val doneIntent = Intent(this, medical_tests::class.java)
+            startActivity(doneIntent) }
+        else if (c?.serviceImage!!.equals("Oncology Clinics")){
+            val doneIntent = Intent(this, medical_clinic::class.java)
+            startActivity(doneIntent) }
+
 }
+
+
+    }
+
