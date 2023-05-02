@@ -156,7 +156,6 @@ private fun validateInputData():Boolean{
         passwordConfEdt=findViewById(R.id.passwordConfirmation)
         auth=FirebaseAuth.getInstance()
     }
-
     override fun onBackPressed() {
         onBackPressedDispatcher.onBackPressed()
     }

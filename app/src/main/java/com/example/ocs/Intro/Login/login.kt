@@ -3,7 +3,9 @@ import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
-import android.content.SharedPreferences
+import android.net.ConnectivityManager
+import android.net.NetworkCapabilities
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
@@ -18,7 +20,6 @@ import com.example.ocs.Intro.patient.services.services
 import com.example.ocs.Intro.admin.profile
 import com.example.ocs.R
 import com.google.android.material.textfield.TextInputLayout
-import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import com.google.firebase.database.ktx.getValue
 
@@ -45,12 +46,40 @@ class login : AppCompatActivity() {
         setContentView(R.layout.activity_login)
         init()
         getIntentExtra()
-        registerBtn.setOnClickListener { moveToRegister()}
-        forgetPasswordBtn.setOnClickListener { moveToForgetPassword() }
+        registerBtn.setOnClickListener { register()}
+        forgetPasswordBtn.setOnClickListener { forgetPassword() }
 
     }
+    private fun checkInternet(context: Context) : Boolean{
+        val connectivityManager = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
 
-    private fun moveToForgetPassword() {
+            // Returns a Network object corresponding to
+            // the currently active default data network.
+            val network = connectivityManager.activeNetwork ?: return false
+            // Representation of the capabilities of an active network.
+            val activeNetwork = connectivityManager.getNetworkCapabilities(network) ?: return false
+            return when {
+                // Indicates this network uses a Wi-Fi transport,
+                // or WiFi has network connectivity
+                activeNetwork.hasTransport(NetworkCapabilities.TRANSPORT_WIFI) -> true
+
+                // Indicates this network uses a Cellular transport. or
+                // Cellular has network connectivity
+                activeNetwork.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR) -> true
+
+                // else return false
+                else -> false
+            }
+        } else {
+            // if the android version is below M
+            @Suppress("DEPRECATION") val networkInfo =
+                connectivityManager.activeNetworkInfo ?: return false
+            @Suppress("DEPRECATION")
+            return networkInfo.isConnected
+        }
+    }
+    private fun forgetPassword() {
         startActivity(Intent(activity,ForgetPassword::class.java))
     }
     private fun getIntentExtra(){
@@ -64,11 +93,11 @@ class login : AppCompatActivity() {
             }
         }
     }
-    private fun moveToHome() {
+    private fun home() {
         startActivity(Intent(activity, services::class.java).putExtra("patientID",pref.prefID))
         finish()
     }
-    private fun moveToRegister() {
+    private fun register() {
         startActivity(Intent(activity,Register::class.java))
     }
     private fun doctorLogin(){
@@ -91,9 +120,12 @@ class login : AppCompatActivity() {
     private fun patientLogin(){
         email_edt.setHint(R.string.p_email_hint)
         loginBtn.setOnClickListener {
+            if(checkInternet(this)){
             checkEmptyData(email_edt,passwordEdt)
             readPatientData(email_edt.text.toString(),passwordEdt.text.toString())
-        }
+        }else{
+                Toast.makeText(applicationContext,R.string.internetError,Toast.LENGTH_LONG).show()
+        }}
     }
     private fun readPatientData(email: String,password: String) {
         var queryPatient: Query = database.child("Patients").orderByChild("email").equalTo(email)
@@ -110,7 +142,7 @@ class login : AppCompatActivity() {
                                 pref.prefID=patientID
                                 pref.userName=patient?.firstName.toString().plus(" ${patient?.lastName.toString()}")
                                 Toast.makeText(context, R.string.login_success, Toast.LENGTH_LONG).show()
-                                moveToHome()
+                                home()
                             }
                             /*auth.signInWithEmailAndPassword(email,password).addOnCompleteListener {
             if (it.isSuccessful){
@@ -135,7 +167,7 @@ class login : AppCompatActivity() {
         super.onStart()
         if (pref.prefStatus){
             when(pref.prefLevel){
-                "patient" -> moveToHome()
+                "patient" -> home()
                 //"doctor" ->
             }
 
@@ -149,7 +181,6 @@ class login : AppCompatActivity() {
         else if(password.text.toString().isEmpty())
             Toast.makeText(applicationContext,R.string.emptyPassword,Toast.LENGTH_LONG).show()
     }
-
     private fun init(){
         email_edt=findViewById(R.id.email)
         loginTextview=findViewById(R.id.login_text_view)
