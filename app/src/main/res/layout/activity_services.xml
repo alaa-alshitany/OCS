@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".Intro.patient.services.services">
+    tools:context=".patient.services.services">
 
     <LinearLayout
         android:background="@color/white"

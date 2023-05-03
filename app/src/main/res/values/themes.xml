@@ -5,6 +5,7 @@
         <item name="colorPrimary">@color/white</item>
         <item name="colorPrimaryVariant">@color/white</item>
         <item name="colorOnPrimary">@color/blue_500</item>
+
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/blue_200</item>
         <item name="colorSecondaryVariant">@color/blue_500</item>
@@ -62,7 +63,6 @@
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
-
 
 
     <style name="Theme.OCS.PopupOverlay" parent="ThemeOverlay.AppCompat.Dark" />

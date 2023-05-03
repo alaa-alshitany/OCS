@@ -7,7 +7,6 @@
 
     <application
         android:allowBackup="true"
-        android:configChanges="keyboardHidden|orientation|screenSize"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_launcher_round"
@@ -18,72 +17,78 @@
         android:windowSoftInputMode="adjustPan"
         tools:targetApi="31">
         <activity
-            android:name=".Intro.patient.services.medical_clinic"
+            android:name=".Dashboard"
             android:exported="false" />
         <activity
-            android:name=".Intro.patient.services.medical_tests"
+            android:name=".patient.services.medical_clinic"
             android:exported="false" />
         <activity
-            android:name=".Intro.patient.services.medical_rays"
+            android:name=".patient.services.medical_tests"
             android:exported="false" />
         <activity
-            android:name=".Intro.admin.recycle_request"
+            android:name=".patient.services.medical_rays"
             android:exported="false" />
         <activity
-            android:name=".Intro.admin.recycle_approved"
+            android:name=".admin.recycle_request"
             android:exported="false" />
         <activity
-            android:name=".Intro.doctor.patient_recycle"
+            android:name=".admin.recycle_approved"
             android:exported="false" />
         <activity
-            android:name=".Intro.doctor.profile_doctor"
+            android:name=".doctor.patient_recycle"
             android:exported="false" />
         <activity
-            android:name=".Intro.patient.Profile.Profile"
+            android:name=".doctor.profile_doctor"
             android:exported="false" />
         <activity
-            android:name=".Intro.patient.booking.BookAppointment"
+            android:name=".patient.Profile.Profile"
             android:exported="false" />
         <activity
-            android:name=".Intro.admin.profile"
+            android:name=".patient.booking.BookAppointment"
             android:exported="false" />
         <activity
-            android:name=".Intro.patient.services.services"
-            android:theme="@style/Theme.OCS"
+            android:name=".admin.profile"
             android:exported="false" />
         <activity
-            android:name=".Intro.Login.RegisterContinue"
-            android:exported="false"
-            android:theme="@style/Theme.OCS"
-            android:parentActivityName=".Intro.Login.Register" />
-        <activity
-            android:name=".Intro.Login.Register"
+            android:name=".patient.services.services"
             android:exported="false"
             android:theme="@style/Theme.OCS" />
         <activity
-            android:name=".Intro.Login.login"
+            android:name=".Login_Register.register.RegisterContinue"
+            android:exported="false"
+            android:parentActivityName=".Login_Register.register.Register"
+            android:theme="@style/Theme.OCS" />
+        <activity
+            android:name=".Login_Register.register.Register"
             android:exported="false"
             android:theme="@style/Theme.OCS" />
         <activity
-            android:name=".Intro.IntroSlider.IntroSlider"
+            android:name=".Login_Register.login.login"
+            android:exported="false"
+            android:theme="@style/Theme.OCS" />
+        <activity
+            android:name=".IntroSlider.IntroSlider"
             android:exported="false"
             android:theme="@style/splash" />
-        <activity android:name=".Intro.Login.ForgetPassword"
-            android:windowSoftInputMode="adjustPan"
-            android:exported="false"
-            />
-        <activity android:name=".Intro.Login.VerifyOTP"
-            android:windowSoftInputMode="adjustPan"
-            android:exported="false"/>
-        <activity android:name=".Intro.Login.ResetPassword"
-            android:windowSoftInputMode="adjustPan"
-            android:exported="false"/>
         <activity
-            android:name=".Intro.IntroSlider.splashScreen"
+            android:name=".Login_Register.forgetPassword.ForgetPassword"
+            android:exported="false"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".Login_Register.forgetPassword.VerifyOTP"
+            android:exported="false"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".Login_Register.forgetPassword.ResetPassword"
+            android:exported="false"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".IntroSlider.splashScreen"
             android:exported="true"
             android:theme="@style/splash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
