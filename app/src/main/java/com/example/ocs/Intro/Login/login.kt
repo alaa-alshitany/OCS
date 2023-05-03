@@ -155,6 +155,14 @@ class login : AppCompatActivity() {
             }
         })
     }
+
+    override fun onStop() {
+        super.onStop()
+    }
+
+    override fun onResume() {
+        super.onResume()
+    }
     override fun onStart(){
         super.onStart()
         if (pref.prefStatus){
