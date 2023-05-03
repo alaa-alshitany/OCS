@@ -2,7 +2,6 @@ package com.example.ocs.Intro.patient.services
 
 import android.content.Context
 import android.content.Intent
-import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
@@ -18,9 +17,6 @@ import com.example.ocs.Intro.Login.login
 import com.example.ocs.Intro.patient.Profile.Profile
 import com.example.ocs.Intro.patient.booking.BookAppointment
 import com.example.ocs.R
-import com.example.ocs.profile.medical_clinic
-import com.example.ocs.profile.medical_rays
-import com.example.ocs.profile.medical_tests
 import com.google.android.material.navigation.NavigationView
 
 class services : AppCompatActivity(), OnCardItemClickListener {

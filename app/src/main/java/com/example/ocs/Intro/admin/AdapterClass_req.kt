@@ -1,4 +1,4 @@
-package com.example.ocs.profile
+package com.example.ocs.Intro.admin
 
 import android.view.LayoutInflater
 import android.view.View
@@ -8,7 +8,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ocs.R
 
-class AdapterClass5(private val dataList: ArrayList<DataClass5>): RecyclerView.Adapter<AdapterClass5.ViewHolderClass>(){
+class AdapterClass_req(private val dataList: ArrayList<DataClass_req>): RecyclerView.Adapter<AdapterClass_req.ViewHolderClass>(){
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolderClass {
         val itemView = LayoutInflater.from(parent.context).inflate(R.layout.item_layout5, parent, false)

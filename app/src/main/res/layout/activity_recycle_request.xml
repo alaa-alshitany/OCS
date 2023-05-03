@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".profile.recycle_request">
+    tools:context=".Intro.admin.recycle_request">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"

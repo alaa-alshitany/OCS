@@ -1,4 +1,4 @@
-package com.example.ocs.profile
+package com.example.ocs.Intro.patient.services
 
 import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
@@ -9,12 +9,10 @@ import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.ocs.Intro.patient.services.OnItemRecycleClickListener
-import com.example.ocs.Intro.patient.services.serviceModel
 import com.example.ocs.R
 import com.google.android.material.navigation.NavigationView
 
-class medical_tests : AppCompatActivity() , OnItemRecycleClickListener {
+class medical_rays : AppCompatActivity(), OnItemRecycleClickListener {
     private lateinit var recycleView: RecyclerView
     private lateinit var dataList: ArrayList<DataClass6>
     lateinit var serviceList:Array<String>
@@ -26,18 +24,21 @@ class medical_tests : AppCompatActivity() , OnItemRecycleClickListener {
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_medical_tests)
+        setContentView(R.layout.activity_medical_rays)
 
         serviceList = arrayOf(
-            " Single Mutation",
-            " Gene Expression",
-            " Panel Text"
+            " CT",
+            " MRI",
+            " Ultrasound",
+            "X-rays"
+
         )
 
         priceList = arrayOf(
-            " 1500LE",
-            " 2000LE",
-            " 1000LE"
+            " 440LE",
+            " 950LE",
+            " 850LE",
+            " 300LE"
         )
 
 

@@ -1,4 +1,4 @@
-package com.example.ocs.profile
+package com.example.ocs.Intro.patient.services
 
 import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
@@ -9,12 +9,10 @@ import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.ocs.Intro.patient.services.OnItemRecycleClickListener
-import com.example.ocs.Intro.patient.services.serviceModel
 import com.example.ocs.R
 import com.google.android.material.navigation.NavigationView
 
-class medical_rays : AppCompatActivity(), OnItemRecycleClickListener {
+class medical_clinic : AppCompatActivity(), OnItemRecycleClickListener {
     private lateinit var recycleView: RecyclerView
     private lateinit var dataList: ArrayList<DataClass6>
     lateinit var serviceList:Array<String>
@@ -26,21 +24,18 @@ class medical_rays : AppCompatActivity(), OnItemRecycleClickListener {
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_medical_rays)
+        setContentView(R.layout.activity_medical_clinic)
 
         serviceList = arrayOf(
-            " CT",
-            " MRI",
-            " Ultrasound",
-            "X-rays"
-
+            " DR/ Mohamed Ali",
+            " DR/ Mostafa Ahmed",
+            " DR/ Hamza Mahmoud"
         )
 
         priceList = arrayOf(
-            " 440LE",
-            " 950LE",
-            " 850LE",
-            " 300LE"
+            " from 10am to 10pm ",
+            " from 9am to 9pm ",
+            " from 8am to 8pm "
         )
 
 
@@ -71,6 +66,13 @@ class medical_rays : AppCompatActivity(), OnItemRecycleClickListener {
         }
     }
 
+    //lisener
+    override fun onClick(c: serviceModel?) {
+        val toast = Toast.makeText(applicationContext, c?.serviceImage!!, Toast.LENGTH_LONG)
+        toast.show()
+    }
+
+
     //nav_bar
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (toggle.onOptionsItemSelected(item)) {
@@ -85,12 +87,6 @@ class medical_rays : AppCompatActivity(), OnItemRecycleClickListener {
             dataList.add(dataClass)
         }
         recycleView.adapter = AdapterClass6(dataList)
-    }
-
-    //listener
-    override fun onClick(c: serviceModel?) {
-        val toast = Toast.makeText(applicationContext, c?.serviceImage!!, Toast.LENGTH_LONG)
-        toast.show()
     }
 
 }

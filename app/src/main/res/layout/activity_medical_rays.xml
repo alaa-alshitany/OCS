@@ -7,7 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".profile.medical_rays">
+    tools:context=".Intro.patient.services.medical_rays">
 
     <LinearLayout
         android:background="@color/white"

@@ -1,4 +1,4 @@
-package com.example.ocs.view
+package com.example.ocs.Intro.doctor
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ocs.R
-import com.example.ocs.model.patientData
 
 class PatientAdapter(val c:Context, val patientList: ArrayList<patientData>):RecyclerView.Adapter<PatientAdapter.PatientViewHolder>() {
 

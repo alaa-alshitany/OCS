@@ -1,20 +1,21 @@
-package com.example.ocs.profile
+package com.example.ocs.Intro.admin
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
-import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.ocs.Intro.patient.Profile.Profile
 import com.example.ocs.R
 import com.google.android.material.navigation.NavigationView
 
 class recycle_request : AppCompatActivity() {
     private lateinit var recycleView: RecyclerView
-    private lateinit var dataList: ArrayList<DataClass5>
+    private lateinit var dataList: ArrayList<DataClass_req>
     lateinit var TitleList:Array<String>
     lateinit var phoneDetail:Array<String>
     lateinit var serveDetail:Array<String>
@@ -61,7 +62,7 @@ class recycle_request : AppCompatActivity() {
         recycleView = findViewById(R.id.recycleView5)
         recycleView.layoutManager = LinearLayoutManager(this)
         recycleView.setHasFixedSize(true)
-        dataList = arrayListOf<DataClass5>()
+        dataList = arrayListOf<DataClass_req>()
         getData()
 
         //nav_bar
@@ -75,16 +76,31 @@ class recycle_request : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         navView.setNavigationItemSelectedListener {
             when(it.itemId){
-                R.id.nau_profile2-> Toast.makeText(applicationContext,"clicked Profile", Toast.LENGTH_SHORT).show()
-                R.id.nau_booking2-> Toast.makeText(applicationContext,"clicked Booking", Toast.LENGTH_SHORT).show()
-                R.id.nau_doctor-> Toast.makeText(applicationContext,"clicked doctors", Toast.LENGTH_SHORT).show()
-                R.id.nau_logout2-> Toast.makeText(applicationContext,"clicked Logout", Toast.LENGTH_SHORT).show()
+                R.id.nau_profile2-> adminProfile()
+                R.id.nau_booking2-> requests()
+                R.id.nau_doctor-> doctordetails()
+                R.id.nau_logout2-> logout()
             }
 
             true
         }
 
 
+    }
+    //nav_bar
+    private fun logout() {
+    }
+
+    private fun requests() {
+        startActivity(Intent(this, recycle_request::class.java))
+    }
+
+    private fun adminProfile() {
+        startActivity(Intent(this, Profile::class.java))
+    }
+
+    private fun doctordetails() {
+        startActivity(Intent(this, doctor_details::class.java))
     }
 
     //nav_bar
@@ -97,10 +113,13 @@ class recycle_request : AppCompatActivity() {
 
     private fun getData(){
         for(i in TitleList.indices){
-            val dataClass = DataClass5(TitleList[i],phoneDetail[i],serveDetail[i],imageList[i],imageList2[i])
+            val dataClass = DataClass_req(TitleList[i],phoneDetail[i],serveDetail[i],imageList[i],imageList2[i])
             dataList.add(dataClass)
         }
-        recycleView.adapter = AdapterClass5(dataList)
+        recycleView.adapter = AdapterClass_req(dataList)
+    }
+    override fun onBackPressed() {
+        onBackPressedDispatcher.onBackPressed()
     }
 
 }

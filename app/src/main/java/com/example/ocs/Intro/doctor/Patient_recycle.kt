@@ -1,22 +1,26 @@
-package com.example.ocs.profile
+package com.example.ocs.Intro.doctor
 
 import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.MenuItem
+import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.appcompat.app.AlertDialog
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ocs.R
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.navigation.NavigationView
 
-class recycle_book : AppCompatActivity() {
-    private lateinit var recycleView: RecyclerView
-    private lateinit var dataList: ArrayList<DataClass2>
-    lateinit var TitleList:Array<String>
-    lateinit var DetailList:Array<String>
+class patient_recycle : AppCompatActivity() {
+    private  lateinit var addBtn:FloatingActionButton
+    private lateinit var recv:RecyclerView
+    private lateinit var patientList:ArrayList<patientData>
+    private lateinit var patientAdapter: PatientAdapter
 
     //nav_bar
     lateinit var toggle: ActionBarDrawerToggle
@@ -24,26 +28,7 @@ class recycle_book : AppCompatActivity() {
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_recycle_book)
-
-        TitleList = arrayOf(
-            " Mohammed Ahmed",
-            " Ahmed Ali",
-            " Ali Naser"
-        )
-
-        DetailList = arrayOf(
-            " 2-5-2023",
-            " 3-6-2023",
-            " 7-7-2023"
-        )
-
-
-        recycleView = findViewById(R.id.recycleview2)
-        recycleView.layoutManager = LinearLayoutManager(this)
-        recycleView.setHasFixedSize(true)
-        dataList = arrayListOf<DataClass2>()
-        getData()
+        setContentView(R.layout.activity_patient_recycle)
 
         //nav_bar
         val drawerLayout : DrawerLayout = findViewById(R.id.drawerLayout)
@@ -65,6 +50,49 @@ class recycle_book : AppCompatActivity() {
 
             true
         }
+
+
+
+
+        //patient_recycle
+        patientList = ArrayList()
+        addBtn = findViewById(R.id.addingBtn)
+        recv = findViewById(R.id.pRecycler)
+        patientAdapter = PatientAdapter(this, patientList)
+        recv.layoutManager = LinearLayoutManager(this)
+        recv.adapter = patientAdapter
+        addBtn.setOnClickListener {
+            (addInfo())}
+
+    }
+    private fun addInfo() {
+        val inflater = LayoutInflater.from(this)
+        val v = inflater.inflate(R.layout.add_item, null)
+
+        val patientName = v.findViewById<EditText>(R.id.patientName)
+        val addDialog = AlertDialog.Builder(this)
+        val view = addDialog.setView(v)
+        addDialog.setPositiveButton("OK",{
+                dialog,
+                id->finish()
+            val names = patientName.text.toString()
+            patientList.add(patientData("Name: $names"))
+            patientAdapter.notifyDataSetChanged()
+            Toast.makeText(this, "Adding patient success",Toast.LENGTH_SHORT).show()
+            dialog.dismiss()
+
+        })
+
+
+
+        addDialog.setNegativeButton("Cancel",{
+                dialog ,
+                id->finish()
+            dialog.dismiss()
+            Toast.makeText(this, "Cancel",Toast.LENGTH_SHORT).show()
+        })
+        addDialog.create()
+        addDialog.show()
     }
 
     //nav_bar
@@ -75,12 +103,5 @@ class recycle_book : AppCompatActivity() {
         return super.onOptionsItemSelected(item)
     }
 
-    private fun getData(){
-        for(i in TitleList.indices){
-            val dataClass = DataClass2(TitleList[i], DetailList[i])
-            dataList.add(dataClass)
-        }
-        recycleView.adapter = AdapterClass2(dataList)
-    }
 
 }

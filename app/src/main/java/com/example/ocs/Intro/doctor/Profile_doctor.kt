@@ -1,4 +1,4 @@
-package com.example.ocs.profile
+package com.example.ocs.Intro.doctor
 
 import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
