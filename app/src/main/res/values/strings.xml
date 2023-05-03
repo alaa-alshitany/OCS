@@ -67,7 +67,8 @@
     <string name="passwordConfirm">Confirm Password</string>
     <string name="oldUser">Already have an account?\ </string>
     <string name="cont_register">Continue Register</string>
-    <string name="userFound">This phone already registered before</string>
+    <string name="phoneFound">This phone already registered before</string>
+    <string name="emailFound">This email already registered before</string>
     <string name="internetError">connection error</string>
     <string name="ageError">Your age must be > 15 year</string>
     <string name="requird">Required</string>

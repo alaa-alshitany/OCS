@@ -28,7 +28,11 @@
     <style name="ThreeDotStyle" parent="Widget.AppCompat.Light.ActionButton.Overflow">
         <item name="tint">@color/blue_500</item>
     </style>
-
+    <style name="datepicker" parent="Theme.AppCompat.Light.Dialog">
+        <item name="colorPrimary">@color/blue_500</item>
+        <item name="colorPrimaryDark">@color/black</item>
+        <item name="colorAccent">@color/blue_500</item>
+    </style>
     <style name="TextAppearance.AppCompat.Widget.ActionBar.Title" parent="@android:style/TextAppearance">
         <item name="android:textColor">@color/blue_500</item>
         <item name="android:textStyle">bold</item>

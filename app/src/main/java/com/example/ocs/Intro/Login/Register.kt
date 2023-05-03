@@ -25,11 +25,28 @@ class Register : AppCompatActivity() {
         init()
         continueBtn.setOnClickListener {
             if(checkInternet(this)){
-                checkUser(phoneEdt.text.toString())
+                checkPhone(phoneEdt.text.toString())
+                checkEmail(emailEdt.text.toString())
             }else{
                 Toast.makeText(applicationContext,R.string.internetError,Toast.LENGTH_LONG).show()
             }
         }
+    }
+    private fun checkEmail(email:String){
+        val query:Query=database.child("Patients").orderByChild("email").equalTo(email)
+        query.addListenerForSingleValueEvent(object:ValueEventListener{
+            override fun onDataChange(snapshot: DataSnapshot) {
+                if (snapshot.exists()) {
+                    emailEdt.setError(getText(R.string.emailFound))
+                    Toast.makeText(applicationContext, R.string.emailFound, Toast.LENGTH_LONG).show()
+                }else{
+                    continueRegister()
+                }
+            }
+            override fun onCancelled(error: DatabaseError) {
+                TODO("Not yet implemented")
+            }
+        })
     }
     override fun onBackPressed() {
         onBackPressedDispatcher.onBackPressed()
@@ -99,14 +116,13 @@ class Register : AppCompatActivity() {
              return false
          }
      }
-    private fun checkUser(phone:String){
+    private fun checkPhone(phone:String){
         val queryPhone: Query =database.child("Patients").orderByChild("phone").equalTo(phone)
         queryPhone.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 if (snapshot.exists()){
-                    Toast.makeText(applicationContext,R.string.userFound,Toast.LENGTH_LONG).show()
-                }else{
-                    continueRegister()
+                    phoneEdt.setError(getText(R.string.phoneFound))
+                    Toast.makeText(applicationContext,R.string.phoneFound,Toast.LENGTH_LONG).show()
                 }
             }
             override fun onCancelled(error: DatabaseError) {
@@ -143,7 +159,5 @@ class Register : AppCompatActivity() {
             return networkInfo.isConnected
         }
     }
-    private fun calculateAge(){
 
-    }
     }
