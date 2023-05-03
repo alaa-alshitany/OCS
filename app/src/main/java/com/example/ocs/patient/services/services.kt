@@ -13,7 +13,7 @@ import androidx.drawerlayout.widget.DrawerLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ocs.Login_Register.login.Prefrences
-import com.example.ocs.Login_Register.login.login
+import com.example.ocs.Login_Register.login.Login
 import com.example.ocs.patient.Profile.Profile
 import com.example.ocs.patient.booking.BookAppointment
 import com.example.ocs.R
@@ -88,7 +88,7 @@ class services : AppCompatActivity(), OnCardItemClickListener {
         moveToLogin()
     }
     private fun moveToLogin() {
-        startActivity(Intent(this, login::class.java).putExtra("hint",R.string.p_email_hint.toString()))
+        startActivity(Intent(this, Login::class.java).putExtra("hint",R.string.p_email_hint.toString()))
         Toast.makeText(this,R.string.logout, Toast.LENGTH_LONG).show()
         finish()
     }

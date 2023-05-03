@@ -16,8 +16,10 @@
         android:theme="@style/Theme.OCS"
         android:windowSoftInputMode="adjustPan"
         tools:targetApi="31">
+        <activity android:name=".admin.Doctors"
+            android:exported="false"/>
         <activity
-            android:name=".Dashboard"
+            android:name=".admin.Dashboard"
             android:exported="false" />
         <activity
             android:name=".patient.services.medical_clinic"
@@ -63,7 +65,7 @@
             android:exported="false"
             android:theme="@style/Theme.OCS" />
         <activity
-            android:name=".Login_Register.login.login"
+            android:name=".Login_Register.login.Login"
             android:exported="false"
             android:theme="@style/Theme.OCS" />
         <activity

@@ -10,7 +10,7 @@ import android.widget.Button
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager.widget.ViewPager
-import com.example.ocs.Login_Register.login.login
+import com.example.ocs.Login_Register.login.Login
 import com.example.ocs.R
 import com.google.android.material.tabs.TabLayout
 import androidx.fragment.app.FragmentPagerAdapter as FragmentPagerAdapter1
@@ -91,7 +91,7 @@ class IntroSlider : AppCompatActivity() {
         }
     }
     fun moveToLogin(){
-        startActivity(Intent(activity, login::class.java).putExtra("email_hint",R.string.p_email_hint.toString()))
+        startActivity(Intent(activity, Login::class.java).putExtra("email_hint",R.string.p_email_hint.toString()))
         finish()
     }
 }

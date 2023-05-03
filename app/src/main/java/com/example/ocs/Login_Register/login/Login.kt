@@ -21,11 +21,14 @@ import com.example.ocs.Login_Register.register.Register
 import com.example.ocs.admin.adminData
 import com.example.ocs.patient.services.services
 import com.example.ocs.R
+import com.example.ocs.admin.DoctorData
+import com.example.ocs.admin.Doctors
 import com.google.android.material.textfield.TextInputLayout
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import com.google.firebase.database.ktx.getValue
 
-class login : AppCompatActivity() {
+class Login : AppCompatActivity() {
     private lateinit var registerBtn:Button
     private lateinit var activity: Activity
     private lateinit var loginBtn:Button
@@ -40,6 +43,7 @@ class login : AppCompatActivity() {
     private lateinit var pref: Prefrences
     private lateinit var intent2:Intent
     private lateinit var patientID:String
+    private lateinit var auth: FirebaseAuth
     private val database:DatabaseReference=FirebaseDatabase.getInstance().reference
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -51,7 +55,6 @@ class login : AppCompatActivity() {
         registerBtn.setOnClickListener { register()}
         forgetPasswordBtn.setOnClickListener { forgetPassword() }
     }
-
     private fun checkInternet(context: Context) : Boolean{
         val connectivityManager = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
@@ -121,7 +124,7 @@ class login : AppCompatActivity() {
        loginBtn.setOnClickListener { readAdminData(email_edt.text.toString(),passwordEdt.text.toString()) }
     }
     private fun dashboard() {
-        TODO("Not yet implemented")
+        startActivity(Intent(activity,Doctors::class.java))
     }
     private fun patientLogin(){
         email_edt.setHint(R.string.p_email_hint)
@@ -132,6 +135,33 @@ class login : AppCompatActivity() {
         }else{
                 Toast.makeText(applicationContext,R.string.internetError,Toast.LENGTH_LONG).show()
         }}
+    }
+    private fun addDoctor() {
+        var email="salama2gad@ocs.com"
+        var password="salama36"
+        auth.createUserWithEmailAndPassword(email, password)
+            .addOnCompleteListener {
+                if (it.isSuccessful) {
+                    val doctorId = auth.currentUser!!.uid
+                    val doctor = DoctorData(
+                        doctorId,
+                        "salama",
+                        "gad",
+                        "15-10-1990",
+                        "colon Cancer",
+                        "01230407080",
+                        "Male",
+                        email,
+                        password,
+                    )
+                    database.child("Doctors").child(doctorId).setValue(doctor).addOnSuccessListener {
+                        Toast.makeText(this, R.string.register_success, Toast.LENGTH_LONG).show()
+                        //login()
+                    }.addOnFailureListener { err ->
+                        Toast.makeText(this, "Error ${err.message}", Toast.LENGTH_LONG).show()
+                    }
+                }
+            }
     }
     private fun readPatientData(email: String,password: String) {
         var queryPatient: Query = database.child("Patients").orderByChild("email").equalTo(email)
@@ -177,8 +207,7 @@ class login : AppCompatActivity() {
                                 pref.prefStatus = true
                                 pref.prefLevel = "admin"
                                 pref.prefID = admin?.id
-                                Toast.makeText(context, R.string.login_success, Toast.LENGTH_LONG)
-                                    .show()
+                                Toast.makeText(context, R.string.login_success, Toast.LENGTH_LONG).show()
                                 dashboard()
                             } else {
                                 passwordEdt.setError(getText(R.string.login_failed))
@@ -239,6 +268,7 @@ class login : AppCompatActivity() {
         pref= Prefrences(context)
         intent2=intent
         activity=this
+        auth = FirebaseAuth.getInstance()
     }
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu,menu)

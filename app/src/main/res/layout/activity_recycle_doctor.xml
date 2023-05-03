@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    tools:context=".profile.recycle_doctor"
+    tools:context=".admin.Doctors"
     android:orientation="vertical">
 
     <LinearLayout
@@ -27,6 +27,7 @@
          />
 
 <SearchView
+    android:id="@+id/searchDoctor"
     android:layout_width="match_parent"
     android:queryHint="@string/searchDocHint"
     android:iconifiedByDefault="false"

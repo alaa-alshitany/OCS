@@ -33,7 +33,7 @@ class ResetPassword : AppCompatActivity() {
         }
     }
     private fun login() {
-        startActivity(Intent(this, com.example.ocs.Login_Register.login.login::class.java).putExtra("hint",R.string.p_email_hint.toString()))
+        startActivity(Intent(this, com.example.ocs.Login_Register.login.Login::class.java).putExtra("hint",R.string.p_email_hint.toString()))
         Toast.makeText(this,R.string.updateSuccess,Toast.LENGTH_LONG).show()
         finish()
     }

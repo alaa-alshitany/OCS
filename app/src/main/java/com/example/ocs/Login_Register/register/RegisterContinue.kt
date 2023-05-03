@@ -148,23 +148,17 @@ class RegisterContinue : AppCompatActivity() {
         email = intent2.getStringExtra("email").toString()
         gender = intent2.getStringExtra("gender").toString()
     }
-
     private fun backArrow() {
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
         supportActionBar!!.setHomeAsUpIndicator(R.drawable.baseline_arrow_back_24)
     }
-
     private fun login() {
         startActivity(
-            Intent(this, com.example.ocs.Login_Register.login.login::class.java).putExtra(
-                "hint",
-                R.string.p_email_hint.toString()
-            )
+            Intent(this, com.example.ocs.Login_Register.login.Login::class.java).putExtra("hint", R.string.p_email_hint.toString())
         )
         Toast.makeText(this, R.string.register_success, Toast.LENGTH_LONG).show()
         finish()
     }
-
     private fun checkInternet(context: Context): Boolean {
         val connectivityManager =
             context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
@@ -195,7 +189,6 @@ class RegisterContinue : AppCompatActivity() {
             return networkInfo.isConnected
         }
     }
-
     private fun init() {
         registerBtn = findViewById(R.id.register_btn)
         intent2 = intent
@@ -206,7 +199,6 @@ class RegisterContinue : AppCompatActivity() {
         auth = FirebaseAuth.getInstance()
         currentDate= LocalDate.now()
     }
-
     override fun onBackPressed() {
         onBackPressedDispatcher.onBackPressed()
     }
