@@ -43,48 +43,48 @@ class ForgetPassword : AppCompatActivity() {
     }
 
 @SuppressLint("SuspiciousIndentation")
-private fun sendOTP(phone:String, isResend:Boolean){
-    setInProgress(true)
-    val options = PhoneAuthOptions.newBuilder(Firebase.auth)
-        .setPhoneNumber(phone)
-        .setTimeout(60L, TimeUnit.SECONDS)
-        .setActivity(this)
-        .setCallbacks(object: PhoneAuthProvider.OnVerificationStateChangedCallbacks(){
-            override fun onVerificationCompleted(p0: PhoneAuthCredential) {
-                signInWithPhoneAuthCredential(p0)
-                setInProgress(false)
-            }
+    private fun sendOTP(phone:String, isResend:Boolean){
+        setInProgress(true)
+        val options = PhoneAuthOptions.newBuilder(Firebase.auth)
+            .setPhoneNumber(phone)
+            .setTimeout(60L, TimeUnit.SECONDS)
+            .setActivity(this)
+            .setCallbacks(object: PhoneAuthProvider.OnVerificationStateChangedCallbacks(){
+                override fun onVerificationCompleted(p0: PhoneAuthCredential) {
+                    signInWithPhoneAuthCredential(p0)
+                    setInProgress(false)
+                }
 
-            override fun onVerificationFailed(p0: FirebaseException) {
-                Toast.makeText(applicationContext,R.string.verifyFailed,Toast.LENGTH_LONG).show()
-                setInProgress(false)
-            }
+                override fun onVerificationFailed(p0: FirebaseException) {
+                    Toast.makeText(applicationContext,R.string.verifyFailed,Toast.LENGTH_LONG).show()
+                    setInProgress(false)
+                }
 
-            override fun onCodeSent(p0: String, p1: PhoneAuthProvider.ForceResendingToken) {
-                super.onCodeSent(p0, p1)
-                verficationCode=p0
-                resendingToken=p1
-                Toast.makeText(applicationContext, R.string.codeSent, Toast.LENGTH_LONG).show()
-                setInProgress(false)
-                startActivity(Intent(applicationContext, VerifyOTP::class.java).putExtra("codeSent",verficationCode).putExtra("phone", phoneEdt.text.toString()))
-                finish()
+                override fun onCodeSent(p0: String, p1: PhoneAuthProvider.ForceResendingToken) {
+                    super.onCodeSent(p0, p1)
+                    verficationCode=p0
+                    resendingToken=p1
+                    Toast.makeText(applicationContext, R.string.codeSent, Toast.LENGTH_LONG).show()
+                    setInProgress(false)
+                    startActivity(Intent(applicationContext, VerifyOTP::class.java).putExtra("codeSent",verficationCode).putExtra("phone", phoneEdt.text.toString()))
+                    finish()
+                }
+            })
+            if (isResend){
+                PhoneAuthProvider.verifyPhoneNumber(options.setForceResendingToken(resendingToken).build())
+            }else{
+                PhoneAuthProvider.verifyPhoneNumber(options.build())
             }
-        })
-        if (isResend){
-            PhoneAuthProvider.verifyPhoneNumber(options.setForceResendingToken(resendingToken).build())
+        }
+    private fun setInProgress(inProgress: Boolean){
+        if (inProgress){
+            progressBar.visibility=View.VISIBLE
+            sendSmsButton.visibility=View.GONE
         }else{
-            PhoneAuthProvider.verifyPhoneNumber(options.build())
+            progressBar.visibility=View.INVISIBLE
+            sendSmsButton.visibility=View.VISIBLE
         }
     }
-private fun setInProgress(inProgress: Boolean){
-    if (inProgress){
-        progressBar.visibility=View.VISIBLE
-        sendSmsButton.visibility=View.GONE
-    }else{
-        progressBar.visibility=View.INVISIBLE
-        sendSmsButton.visibility=View.VISIBLE
-    }
-}
     private fun signInWithPhoneAuthCredential(credential: PhoneAuthCredential) {
         setInProgress(true)
         auth.signInWithCredential(credential)
@@ -98,7 +98,6 @@ private fun setInProgress(inProgress: Boolean){
                 }
             })
     }
-
     private fun init(){
         phoneEdt=findViewById(R.id.phone)
         sendSmsButton=findViewById(R.id.send_btn)
@@ -106,6 +105,7 @@ private fun setInProgress(inProgress: Boolean){
         progressBar.visibility= View.INVISIBLE
     }
     private fun checkUser(phone:String){
+        if (checkEmpty()){
         val queryPhone:Query=database.child("Patients").orderByChild("phone").equalTo(phone)
         queryPhone.addListenerForSingleValueEvent(object :ValueEventListener{
             override fun onDataChange(snapshot: DataSnapshot) {
@@ -120,6 +120,25 @@ private fun setInProgress(inProgress: Boolean){
             }
         })
     }
+    }
+
+    private fun checkEmpty(): Boolean {
+        var phonePattern="^01[0125][0-9]{8}\$"
+       if( phoneEdt.text.toString().isNotEmpty())
+           return true
+        else {
+          if (phoneEdt.text.toString().isEmpty()){
+               phoneEdt.setError(getText(R.string.requird))
+               Toast.makeText(this, R.string.emptyPhone, Toast.LENGTH_LONG).show()
+           }
+           else if (phoneEdt.text.toString().length != 11 || !phoneEdt.text.toString().trim().matches(phonePattern.toRegex())){
+               phoneEdt.setError(getText(R.string.notValidNumber))
+               Toast.makeText(this, R.string.notValidNumber, Toast.LENGTH_LONG).show()
+           }
+           return false
+       }
+    }
+
     private fun backArrow(){
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
         supportActionBar!!.setHomeAsUpIndicator(R.drawable.baseline_arrow_back_24)
