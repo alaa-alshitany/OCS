@@ -23,7 +23,7 @@
         android:layout_marginTop="-80dp">
 
         <androidx.cardview.widget.CardView
-            android:id="@+id/card_prof"
+            android:id="@+id/profile"
             android:layout_width="150dp"
             android:layout_height="150dp"
             app:cardCornerRadius="15dp"
@@ -57,7 +57,7 @@
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
-            android:id="@+id/card_app"
+            android:id="@+id/appointments"
             android:layout_width="150dp"
             android:layout_height="150dp"
             app:cardCornerRadius="15dp"
@@ -91,7 +91,7 @@
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
-            android:id="@+id/card_doc"
+            android:id="@+id/doctors"
             android:layout_width="150dp"
             android:layout_height="150dp"
             app:cardCornerRadius="15dp"
@@ -125,7 +125,7 @@
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
-            android:id="@+id/card_log"
+            android:id="@+id/logout"
             android:layout_width="150dp"
             android:layout_height="150dp"
             app:cardCornerRadius="15dp"

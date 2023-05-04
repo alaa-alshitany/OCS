@@ -21,6 +21,7 @@ import com.example.ocs.Login_Register.register.Register
 import com.example.ocs.admin.adminData
 import com.example.ocs.patient.services.services
 import com.example.ocs.R
+import com.example.ocs.admin.Dashboard
 import com.example.ocs.admin.DoctorData
 import com.example.ocs.admin.Doctors
 import com.google.android.material.textfield.TextInputLayout
@@ -124,7 +125,7 @@ class Login : AppCompatActivity() {
        loginBtn.setOnClickListener { readAdminData(email_edt.text.toString(),passwordEdt.text.toString()) }
     }
     private fun dashboard() {
-        startActivity(Intent(activity,Doctors::class.java))
+        startActivity(Intent(activity, Dashboard::class.java))
     }
     private fun patientLogin(){
         email_edt.setHint(R.string.p_email_hint)
@@ -234,6 +235,7 @@ class Login : AppCompatActivity() {
             when(pref.prefLevel){
                 "patient" -> home()
                 //"doctor" ->
+                "admin" ->dashboard()
             }
 
         }

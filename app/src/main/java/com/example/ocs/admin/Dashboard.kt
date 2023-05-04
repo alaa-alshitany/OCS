@@ -13,20 +13,20 @@ class Dashboard : AppCompatActivity()  {
     private lateinit var binding: ActivityDashboardBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
+        supportActionBar!!.elevation= 0F
         //listener on dashboard_card
         binding = ActivityDashboardBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.cardProf.setOnClickListener {
+        binding.profile.setOnClickListener {
             val cardprofileIntent = Intent(this, profile::class.java)
             startActivity(cardprofileIntent)
         }
-        binding.cardApp.setOnClickListener {
+        binding.appointments.setOnClickListener {
             val cardappointmentIntent = Intent(this, recycle_request::class.java)
             startActivity(cardappointmentIntent)
         }
-        binding.cardDoc.setOnClickListener {
+        binding.doctors.setOnClickListener {
             val carddoctorsIntent = Intent(this, Doctors::class.java)
             startActivity(carddoctorsIntent)
         }
