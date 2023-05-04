@@ -124,10 +124,10 @@ class services : AppCompatActivity(), OnCardItemClickListener {
             val doneIntent = Intent(this, booking()::class.java)
             startActivity(doneIntent) }
         else if (c?.serviceImage!!.equals(R.drawable.tests_service)){
-            val doneIntent = Intent(this, medical_tests::class.java)
+            val doneIntent = Intent(this, MedicalTests::class.java)
             startActivity(doneIntent) }
         else if (c?.serviceImage!!.equals(R.drawable.clinics_service)){
-            val doneIntent = Intent(this, medical_clinic::class.java)
+            val doneIntent = Intent(this, MedicalClinic::class.java)
             startActivity(doneIntent) }
     }
 

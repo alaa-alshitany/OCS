@@ -76,6 +76,7 @@
             app:passwordToggleTint="@color/black">
 
             <EditText
+                android:id="@+id/password_edt"
                 style="@style/EditText"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
