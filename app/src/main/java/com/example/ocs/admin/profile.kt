@@ -5,13 +5,16 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
+import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.drawerlayout.widget.DrawerLayout
 import com.example.ocs.patient.Profile.Profile
 import com.example.ocs.R
+import com.example.ocs.patient.services.OnItemRecycleClickListener
+import com.example.ocs.patient.services.serviceModel
 import com.google.android.material.navigation.NavigationView
 
-class profile : AppCompatActivity() {
+class profile : AppCompatActivity(), OnItemRecycleClickListener {
 
     //nav_bar
     lateinit var toggle: ActionBarDrawerToggle
@@ -67,5 +70,11 @@ class profile : AppCompatActivity() {
     }
     override fun onBackPressed() {
         onBackPressedDispatcher.onBackPressed()
+    }
+
+    //lisener
+    override fun onClick(c: serviceModel?) {
+        val toast = Toast.makeText(applicationContext, c?.serviceImage!!, Toast.LENGTH_LONG)
+        toast.show()
     }
 }

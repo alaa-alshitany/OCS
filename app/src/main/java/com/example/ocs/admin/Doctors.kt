@@ -11,11 +11,13 @@ import androidx.drawerlayout.widget.DrawerLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ocs.R
+import com.example.ocs.patient.services.OnItemRecycleClickListener
+import com.example.ocs.patient.services.serviceModel
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 
-class Doctors : AppCompatActivity() {
+class Doctors : AppCompatActivity() , OnItemRecycleClickListener {
     private lateinit var doctorRecycle: RecyclerView
     private lateinit var doctorList: ArrayList<DoctorData>
     private lateinit var imageList:Array<Int>
@@ -63,6 +65,12 @@ class Doctors : AppCompatActivity() {
         return super.onOptionsItemSelected(item)
     }
 
+    //lisener
+    override fun onClick(c: serviceModel?) {
+        val toast = Toast.makeText(applicationContext, c?.serviceImage!!, Toast.LENGTH_LONG)
+        toast.show()
+    }
+
 private fun getDoctorsData(){
     database.child("Doctors").addValueEventListener(object : ValueEventListener{
         override fun onDataChange(snapshot: DataSnapshot) {
@@ -81,6 +89,7 @@ private fun getDoctorsData(){
         }
 
     })
+
 }
    /* private fun getData(){
         for(i in imageList.indices){

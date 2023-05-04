@@ -5,15 +5,18 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
+import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ocs.patient.Profile.Profile
 import com.example.ocs.R
+import com.example.ocs.patient.services.OnItemRecycleClickListener
+import com.example.ocs.patient.services.serviceModel
 import com.google.android.material.navigation.NavigationView
 
-class recycle_request : AppCompatActivity() {
+class recycle_request : AppCompatActivity(), OnItemRecycleClickListener {
     private lateinit var recycleView: RecyclerView
     private lateinit var dataList: ArrayList<DataClass_req>
     lateinit var TitleList:Array<String>
@@ -87,6 +90,15 @@ class recycle_request : AppCompatActivity() {
 
 
     }
+
+    //lisener
+    override fun onClick(c: serviceModel?) {
+        val toast = Toast.makeText(applicationContext, c?.serviceImage!!, Toast.LENGTH_LONG)
+        toast.show()
+    }
+
+
+
     //nav_bar
     private fun logout() {
     }
