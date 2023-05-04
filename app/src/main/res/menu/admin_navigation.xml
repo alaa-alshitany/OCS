@@ -13,8 +13,8 @@
         android:title="Appointments"/>
     <item
         android:id="@+id/nau_doctor"
-        android:icon="@drawable/baseline_home_work_24"
-        android:title="Doctor"/>
+        android:icon="@drawable/img"
+        android:title="Doctors"/>
 
     <item
         android:id="@+id/nau_logout2"

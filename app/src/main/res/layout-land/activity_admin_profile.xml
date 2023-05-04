@@ -135,7 +135,7 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         app:headerLayout="@layout/nav3_header"
-        app:menu="@menu/nav_menu3"
+        app:menu="@menu/admin_navigation"
         android:id="@+id/nav_view"
         android:layout_gravity="start"
         android:fitsSystemWindows="true"/>
