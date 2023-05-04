@@ -22,10 +22,10 @@
             android:name=".admin.Dashboard"
             android:exported="false" />
         <activity
-            android:name=".patient.services.medical_clinic"
+            android:name=".patient.services.MedicalClinic"
             android:exported="false" />
         <activity
-            android:name=".patient.services.medical_tests"
+            android:name=".patient.services.MedicalTests"
             android:exported="false" />
         <activity
             android:name=".patient.services.medical_rays"

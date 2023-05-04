@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.ocs.R
 import com.google.android.material.navigation.NavigationView
 
-class medical_clinic : AppCompatActivity(), OnItemRecycleClickListener {
+class MedicalClinic : AppCompatActivity(), OnItemRecycleClickListener {
     private lateinit var recycleView: RecyclerView
     private lateinit var dataList: ArrayList<DataClass6>
     lateinit var serviceList:Array<String>
