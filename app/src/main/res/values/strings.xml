@@ -73,6 +73,7 @@
     <string name="ageError">Your age must be > 15 year</string>
     <string name="requird">Required</string>
     <string name="specialization">specialization</string>
+    <string name="add">Add</string>
 
 
     <!-- Errors related to register-->
