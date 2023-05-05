@@ -71,19 +71,19 @@ class RegisterContinue : AppCompatActivity() {
                 Toast.makeText(applicationContext, R.string.emptyAllData, Toast.LENGTH_LONG).show()
             }
 
-            if (birthDateEdt.text.toString().isEmpty()) {
+            else if (birthDateEdt.text.toString().isEmpty()) {
                 birthDateEdt.setError(getText(R.string.requird))
                 Toast.makeText(applicationContext,R.string.emptyBirthDate,Toast.LENGTH_LONG).show()
             }else if (Period.between(dateEntered,currentDate).years <15){
                 birthDateEdt.setError(getText(R.string.ageError))
                 Toast.makeText(applicationContext,R.string.ageError,Toast.LENGTH_LONG).show()
             }
-            if (addressEdt.text.toString().isEmpty()) {
+            else if (addressEdt.text.toString().isEmpty()) {
                 addressEdt.setError(getText(R.string.requird))
                 Toast.makeText(applicationContext,R.string.emptyAddress,Toast.LENGTH_LONG).show()
             }
 
-            if (passwordEdt.text.toString().isEmpty() || passwordConfEdt.text.toString().isEmpty()) {
+            else if (passwordEdt.text.toString().isEmpty() || passwordConfEdt.text.toString().isEmpty()) {
                 passwordConfEdt.setError(getText(R.string.requird))
                 passwordEdt.setError(getText(R.string.requird))
                 Toast.makeText(applicationContext, R.string.emptyPassword, Toast.LENGTH_LONG).show()

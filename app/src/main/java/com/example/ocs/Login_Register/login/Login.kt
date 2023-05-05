@@ -136,33 +136,7 @@ class Login : AppCompatActivity() {
                 Toast.makeText(applicationContext,R.string.internetError,Toast.LENGTH_LONG).show()
         }}
     }
-    private fun addDoctor() {
-        var email="salama2gad@ocs.com"
-        var password="salama36"
-        auth.createUserWithEmailAndPassword(email, password)
-            .addOnCompleteListener {
-                if (it.isSuccessful) {
-                    val doctorId = auth.currentUser!!.uid
-                    val doctor = DoctorData(
-                        doctorId,
-                        "salama",
-                        "gad",
-                        "15-10-1990",
-                        "colon Cancer",
-                        "01230407080",
-                        "Male",
-                        email,
-                        password,
-                    )
-                    database.child("Doctors").child(doctorId).setValue(doctor).addOnSuccessListener {
-                        Toast.makeText(this, R.string.register_success, Toast.LENGTH_LONG).show()
-                        //login()
-                    }.addOnFailureListener { err ->
-                        Toast.makeText(this, "Error ${err.message}", Toast.LENGTH_LONG).show()
-                    }
-                }
-            }
-    }
+
     private fun readPatientData(email: String,password: String) {
         var queryPatient: Query = database.child("Patients").orderByChild("email").equalTo(email)
         queryPatient.addListenerForSingleValueEvent(object : ValueEventListener {
@@ -221,9 +195,7 @@ class Login : AppCompatActivity() {
                 override fun onCancelled(error: DatabaseError) {
                     TODO("Not yet implemented")
                 }
-
             })
-
                 } else {
             Toast.makeText(applicationContext, R.string.internetError, Toast.LENGTH_LONG).show()
         }

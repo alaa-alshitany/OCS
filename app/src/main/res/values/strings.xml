@@ -25,8 +25,8 @@
     <string name="newUser">Don\'t have an account?</string>
 
     <!-- Errors related to Login-->
-    <string name="emptyEmail">Please enter your Email</string>
-    <string name="emptyPassword">Please enter your Password</string>
+    <string name="emptyEmail">Please enter Email</string>
+    <string name="emptyPassword">Please enter Password</string>
     <string name="emptyAllData">Please enter All Data</string>
     <string name="userNotFound">User Not Found</string>
     <string name="login_failed">Login failed, Check your data and try again</string>
@@ -78,14 +78,14 @@
 
     <!-- Errors related to register-->
     <string name="notValidEmail">Enter a valid Email</string>
-    <string name="emptyFName">Enter your First Name</string>
-    <string name="emptyLName">Enter your Last Name</string>
-    <string name="emptyPhone">Enter your Phone</string>
-    <string name="notValidNumber">Enter your Valid phone (11 Number)</string>
+    <string name="emptyFName">Enter First Name</string>
+    <string name="emptyLName">Enter Last Name</string>
+    <string name="emptyPhone">Enter Phone</string>
+    <string name="notValidNumber">Enter Valid phone (11 Number)</string>
     <string name="register_success">Registered Successfully</string>
     <string name="passwordNotMatch">Password don\'t match</string>
-    <string name="notValidPassword">Your password must be >8 characters</string>
-    <string name="emptyBirthDate">Enter your Birth Date</string>
+    <string name="notValidPassword"> password must be >8 characters</string>
+    <string name="emptyBirthDate">Enter Birth Date</string>
     <string name="emptyAddress">Enter your Address</string>
 
     <!--strings for home -->
@@ -170,6 +170,10 @@
     <!--string for admin-->
     <string name="searchDocHint">Enter Doctor Name Here</string>
     <string name="noDoctorFound">No Data Found</string>
+    <string name="cancel">Cancel</string>
+    <string name="emptySpecialization">Enter Specialization</string>
+    <string name="doctorAgeError">Age must be > 26 year</string>
+
     <!--string for doctor-->
     <string name="searchpatientHint">Enter patient Name Here</string>
     <!--string for add_doctor-->

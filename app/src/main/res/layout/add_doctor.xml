@@ -5,13 +5,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
+    android:background="@drawable/shape_background"
     android:gravity="center"
-    android:layout_margin="15dp">
+   >
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="620dp"
-        android:background="@drawable/shape_background"
+        android:layout_height="match_parent"
         android:orientation="vertical"
         android:paddingLeft="8dp"
         android:paddingRight="8dp">
@@ -25,17 +25,17 @@
             android:id="@+id/add_doctor_view"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="2.5"
+            android:layout_weight=".5"
             android:fontFamily="@font/acme_regular"
             android:text="@string/add_doctor"
             android:textAlignment="center"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             android:textColor="@color/blue_500"
             android:textStyle="bold" />
-
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
             app:boxStrokeWidth="0dp"
             app:boxStrokeWidthFocused="0dp"
             app:hintAnimationEnabled="true"
@@ -56,10 +56,10 @@
                 android:textColor="@color/black"
                 tools:ignore="VisualLintTextFieldSize" />
         </com.google.android.material.textfield.TextInputLayout>
-
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
             app:boxStrokeWidth="0dp"
             app:boxStrokeWidthFocused="0dp"
             app:hintAnimationEnabled="true"
@@ -79,10 +79,10 @@
                 android:textColor="@color/black"
                 tools:ignore="VisualLintTextFieldSize" />
         </com.google.android.material.textfield.TextInputLayout>
-
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
             app:boxStrokeWidth="0dp"
             app:boxStrokeWidthFocused="0dp"
             app:hintAnimationEnabled="true"
@@ -106,10 +106,10 @@
                 android:textColor="@color/black"
                 tools:ignore="VisualLintTextFieldSize" />
         </com.google.android.material.textfield.TextInputLayout>
-
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
             app:boxStrokeWidth="0dp"
             app:boxStrokeWidthFocused="0dp"
             app:hintAnimationEnabled="true"
@@ -129,13 +129,12 @@
                 android:textColor="@color/black"
                 tools:ignore="VisualLintTextFieldSize" />
         </com.google.android.material.textfield.TextInputLayout>
-
-
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
             android:layout_gravity="center"
-            android:layout_marginBottom="10dp">
+            android:layout_marginBottom="5dp">
 
             <EditText
                 android:id="@+id/phone_d"
@@ -150,11 +149,11 @@
                 tools:ignore="VisualLintTextFieldSize" />
 
         </com.google.android.material.textfield.TextInputLayout>
-
         <RadioGroup
-            android:id="@+id/gender"
+            android:id="@+id/gender_d"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight=".7"
             android:layout_gravity="center"
             android:orientation="horizontal">
 
@@ -198,10 +197,10 @@
 
             </Space>
         </RadioGroup>
-
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
             app:boxStrokeWidth="0dp"
             app:boxStrokeWidthFocused="0dp"
             app:hintAnimationEnabled="true"
@@ -224,7 +223,8 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
             app:boxStrokeWidth="0dp"
             app:boxStrokeWidthFocused="0dp"
             app:hintAnimationEnabled="true"
@@ -238,7 +238,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginTop="5dp"
-                android:layout_marginBottom="10dp"
                 android:autofillHints=""
                 android:drawableStart="@drawable/baseline_lock_24"
                 android:ems="10"
@@ -246,23 +245,54 @@
                 android:inputType="textPassword"
                 tools:ignore="VisualLintTextFieldSize" />
         </com.google.android.material.textfield.TextInputLayout>
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight=".4">
+
+        </Space>
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+    android:layout_weight=".8"
+    android:orientation="horizontal">
 
         <Button
-            android:id="@+id/add_btn"
-            android:layout_width="wrap_content"
-            android:layout_height="65dp"
+            android:gravity="center"
+            android:id="@+id/cancelBtn"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
             android:layout_gravity="center"
-            android:layout_marginTop="10dp"
-            android:layout_weight=".9"
+            android:layout_marginLeft="10dp"
+            android:layout_weight="1"
+            android:backgroundTint="@color/black_transparent"
             android:background="@drawable/button_style"
             android:enabled="true"
             android:fontFamily="@font/inter_font"
-            android:text="@string/add"
+            android:text="@string/cancel"
             android:textAllCaps="false"
             android:textColor="@color/black"
             android:textStyle="bold"
             tools:ignore="VisualLintButtonSize,TouchTargetSizeCheck" />
-
+    <Space
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight=".4"></Space>
+    <Button
+        android:id="@+id/add_btn"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:layout_weight="1"
+        android:background="@drawable/button_style"
+        android:enabled="true"
+        android:fontFamily="@font/inter_font"
+        android:text="@string/add"
+        android:textAllCaps="false"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        tools:ignore="VisualLintButtonSize,TouchTargetSizeCheck" />
+</LinearLayout>
         <Space
             android:layout_width="match_parent"
             android:layout_height="0dp"
