@@ -1,0 +1,24 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <item
+        android:id="@+id/nau_profile2"
+        android:icon="@drawable/baseline_user_24"
+        android:title="Profile"/>
+
+    <item
+        android:id="@+id/nau_booking2"
+        android:icon="@drawable/baseline_book_online_24"
+        android:title="Appointments"/>
+    <item
+        android:id="@+id/nau_doctor"
+        android:icon="@drawable/img"
+        android:title="Doctors"/>
+
+    <item
+        android:id="@+id/nau_logout2"
+        android:icon="@drawable/baseline_logout_24"
+        android:title="Log Out"/>
+
+</menu>

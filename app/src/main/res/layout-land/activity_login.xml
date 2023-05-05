@@ -6,8 +6,7 @@
     android:orientation="horizontal"
     android:layout_height="match_parent"
     android:background="@color/white"
-    tools:context=".Intro.Login.login">
-
+    tools:context=".Login_Register.login.Login">
 
         <ImageView
             android:id="@+id/login_img"
@@ -77,6 +76,7 @@
             app:passwordToggleTint="@color/black">
 
             <EditText
+                android:id="@+id/password_edt"
                 style="@style/EditText"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"

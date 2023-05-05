@@ -27,7 +27,7 @@
     <!-- Errors related to Login-->
     <string name="emptyEmail">Please enter your Email</string>
     <string name="emptyPassword">Please enter your Password</string>
-    <string name="emptyData">Please enter All Data</string>
+    <string name="emptyAllData">Please enter All Data</string>
     <string name="userNotFound">User Not Found</string>
     <string name="login_failed">Login failed, Check your data and try again</string>
     <string name="login_success">Logged in Successfully</string>
@@ -67,9 +67,14 @@
     <string name="passwordConfirm">Confirm Password</string>
     <string name="oldUser">Already have an account?\ </string>
     <string name="cont_register">Continue Register</string>
+    <string name="phoneFound">This phone already registered before</string>
+    <string name="emailFound">This email already registered before</string>
+    <string name="internetError">connection error</string>
+    <string name="ageError">Your age must be > 15 year</string>
+    <string name="requird">Required</string>
+
 
     <!-- Errors related to register-->
-    <string name="emptyFields">Please Fill All Fields</string>
     <string name="notValidEmail">Enter a valid Email</string>
     <string name="emptyFName">Enter your First Name</string>
     <string name="emptyLName">Enter your Last Name</string>
@@ -160,7 +165,8 @@
     <string name="close">close</string>
     <string name="open">open</string>
 
-
+    <!--string for admin-->
+<string name="searchDocHint">Enter Doctor Name Here</string>
 </resources>
 
 

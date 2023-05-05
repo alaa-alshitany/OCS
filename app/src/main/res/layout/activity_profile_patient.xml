@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".Intro.patient.Profile.Profile">
+    tools:context=".patient.Profile.Profile">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -156,7 +156,7 @@
         android:layout_height="match_parent"
         app:headerLayout="@layout/nav_header"
         android:background="@drawable/navigation_style"
-        app:menu="@menu/nav_menu"
+        app:menu="@menu/patient_navigation"
         android:id="@+id/nav_view"
         android:layout_gravity="start"
         app:itemIconTint="@color/blue_500"

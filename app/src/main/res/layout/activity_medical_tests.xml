@@ -2,55 +2,52 @@
 <androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/white"
     android:id="@+id/drawerLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".profile.medical_tests">
+    tools:context=".patient.services.MedicalTests">
 
     <LinearLayout
         android:background="@color/white"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_margin="20dp"
         android:orientation="vertical">
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_weight=".5"
+            android:layout_height="0dp"
+            android:text="@string/medical_tests_radiobn"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textStyle="bold"
+            android:fontFamily="@font/acme_regular"
+            android:textAlignment="center"
+            android:textColor="@color/blue_500"/>
 
-    <Space
-        android:layout_width="match_parent"
-        android:layout_weight=".2"
-        android:layout_height="0dp">
-
-    </Space>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Medical tests"
-        android:textStyle="bold"
-        android:textSize="20dp"
-        android:textAlignment="center"
-        android:textColor="@color/black"/>
-
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="258dp"
-        android:layout_margin="30dp"
-        android:src="@drawable/tests" />
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:outlineProvider="background"
+            android:layout_weight="5"
+            android:src="@drawable/tests_service" />
 
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/recycleview2"
-        android:layout_marginTop="35dp"/>
-
-
-</LinearLayout>
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="5"
+            android:id="@+id/recycleview2"
+            />
+    </LinearLayout>
     <com.google.android.material.navigation.NavigationView
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         app:headerLayout="@layout/nav_header"
         android:background="@drawable/navigation_style"
-        app:menu="@menu/nav_menu"
+        app:menu="@menu/patient_navigation"
         android:id="@+id/nav_view"
         android:layout_gravity="start"
         app:itemIconTint="@color/blue_500"

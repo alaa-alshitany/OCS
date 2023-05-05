@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".Intro.doctor.model">
+    tools:context=".doctor.model">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -293,7 +293,7 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         app:headerLayout="@layout/nav2_header"
-        app:menu="@menu/nav2_menu"
+        app:menu="@menu/doctor_navigation"
         android:id="@+id/nav_view"
         android:layout_gravity="start"
         android:fitsSystemWindows="true"/>

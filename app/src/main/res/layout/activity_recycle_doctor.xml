@@ -5,10 +5,12 @@
     android:id="@+id/drawerLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".profile.recycle_doctor"
+    android:background="@color/white"
+    tools:context=".admin.Doctors"
     android:orientation="vertical">
 
     <LinearLayout
+        android:layout_margin="20dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
@@ -17,24 +19,35 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Doctors"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         android:textStyle="bold"
-        android:textSize="20dp"
+        android:textColor="@color/blue_500"
+        android:fontFamily="@font/acme_regular"
         android:textAlignment="center"
-        android:drawableEnd="@drawable/baseline_search_24" />
+         />
 
+<SearchView
+    android:id="@+id/searchDoctor"
+    android:layout_width="match_parent"
+    android:queryHint="@string/searchDocHint"
+    android:iconifiedByDefault="false"
+    android:layout_height="wrap_content">
 
+</SearchView>
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/recycleview1"
-        android:layout_marginTop="12dp"/>
+     />
+
 
 </LinearLayout>
+
     <com.google.android.material.navigation.NavigationView
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         app:headerLayout="@layout/nav3_header"
-        app:menu="@menu/nav_menu3"
+        app:menu="@menu/admin_navigation"
         android:id="@+id/nav_view"
         android:layout_gravity="start"
         android:fitsSystemWindows="true"/>
