@@ -14,7 +14,7 @@
         android:paddingRight="8dp"
         android:background="@drawable/shape_background">
         <TextView
-            android:id="@+id/add_patient_view"
+            android:id="@+id/add_doctor_view"
             android:layout_width="match_parent"
             android:layout_weight=".5"
             android:layout_height="0dp"
@@ -23,7 +23,8 @@
             android:fontFamily="@font/acme_regular"
             android:textAlignment="center"
             android:textColor="@color/blue_500"
-            android:text="@string/add_patient"/>
+            android:text="@string/add_doctor"
+            />
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -32,9 +33,9 @@
             android:layout_margin="20dp"
             android:hint="Name"
             android:textColor="@color/black"
-            android:textSize="17dp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             android:textStyle="bold"
-            android:id="@+id/patientName"
+            android:id="@+id/doctorName"
             android:inputType="textPersonName"/>
 
 
