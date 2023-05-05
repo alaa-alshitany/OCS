@@ -21,17 +21,15 @@ class IntroSlider : AppCompatActivity() {
     lateinit var viewPager:ViewPager
     lateinit var activity:Activity
     lateinit var tabLayout:TabLayout
-    lateinit var next_btn: Button
-    val pref_show_intro="Intro"
+    lateinit var nextBtn: Button
+    val prefShowIntro="Intro"
 
     @RequiresApi(Build.VERSION_CODES.S)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_intro_slider)
-
         checkUser()
         init()
-
 
         var adapter: SliderAdapter = SliderAdapter(
             supportFragmentManager,
@@ -40,7 +38,7 @@ class IntroSlider : AppCompatActivity() {
         viewPager.adapter = adapter
         tabLayout.setupWithViewPager(viewPager)
 
-        next_btn.setOnClickListener{
+        nextBtn.setOnClickListener{
             if (viewPager.currentItem<adapter.count){
                 viewPager.currentItem+=1
             }
@@ -57,17 +55,16 @@ class IntroSlider : AppCompatActivity() {
 
             override fun onPageSelected(position: Int) {
                 if(position==adapter.count-1){
-                    next_btn.setText(R.string.get_started)
-
-                    next_btn.setOnClickListener {
+                    nextBtn.setText(R.string.get_started)
+                    nextBtn.setOnClickListener {
                         moveToLogin()
                         val editor=prefManager.edit()
-                        editor.putBoolean(pref_show_intro,false)
+                        editor.putBoolean(prefShowIntro,false)
                         editor.apply()
                     }
 
                 }
-                else{next_btn.setText(R.string.next)}
+                else{nextBtn.setText(R.string.next)}
             }
 
             override fun onPageScrollStateChanged(state: Int) {
@@ -79,14 +76,14 @@ class IntroSlider : AppCompatActivity() {
     fun init(){
         viewPager=findViewById(R.id.viewPager)
         tabLayout=findViewById(R.id.tabLayout)
-        next_btn=findViewById(R.id.next_btn)
+        nextBtn=findViewById(R.id.next_btn)
 
     }
     @RequiresApi(Build.VERSION_CODES.S)
     fun checkUser() { // Checking for first time launch
         activity = this
         prefManager = getSharedPreferences("IntroSlider", Context.MODE_PRIVATE)
-        if (!prefManager.getBoolean(pref_show_intro, true)) {
+        if (!prefManager.getBoolean(prefShowIntro, true)) {
             moveToLogin()
         }
     }

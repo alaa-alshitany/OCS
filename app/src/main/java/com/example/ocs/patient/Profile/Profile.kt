@@ -28,7 +28,6 @@ class Profile : AppCompatActivity() {
     // navigation bar
     lateinit var toggle: ActionBarDrawerToggle
 
-
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

@@ -67,12 +67,10 @@ class Doctors : AppCompatActivity() , OnItemRecycleClickListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
                 return false
             }
-
             override fun onQueryTextChange(newText: String?): Boolean {
                filterList(newText)
                 return true
             }
-
         })
         navView.setNavigationItemSelectedListener {
             when(it.itemId){
@@ -134,13 +132,30 @@ class Doctors : AppCompatActivity() , OnItemRecycleClickListener {
                if(checkEmptyFields()){
                    var selectedGender:Int=genderRadio!!.checkedRadioButtonId
                    radioButton = dialog.findViewById(selectedGender)
-                   addDoctor(radioButton.text.toString())
-                   dialog.dismiss()
+                   checkPhone(phone)
+                   checkEmail(email)
+                   //dialog.dismiss()
                }
             } else {
-                Toast.makeText(applicationContext, R.string.internetError, Toast.LENGTH_LONG).show()
+                Toast.makeText(this, R.string.internetError, Toast.LENGTH_LONG).show()
             }
         }
+    }
+    private fun checkEmail(email:EditText){
+        val query:Query=database.child("Doctors").orderByChild("email").equalTo(email.text.toString())
+        query.addListenerForSingleValueEvent(object:ValueEventListener{
+            override fun onDataChange(snapshot: DataSnapshot) {
+                if (snapshot.exists()) {
+                    email.setError(getText(R.string.emailFound))
+                    //Toast.makeText(applicationContext, R.string.emailFound, Toast.LENGTH_LONG).show()
+                }else{
+                    addDoctor(radioButton.text.toString())
+                }
+            }
+            override fun onCancelled(error: DatabaseError) {
+                TODO("Not yet implemented")
+            }
+        })
     }
     private fun addDoctor(gender:String) {
         auth.createUserWithEmailAndPassword(email.text.toString(), password.text.toString())
@@ -301,6 +316,20 @@ class Doctors : AppCompatActivity() , OnItemRecycleClickListener {
     override fun onClick(c: serviceModel?) {
         val toast = Toast.makeText(applicationContext, c?.serviceImage!!, Toast.LENGTH_LONG)
         toast.show()
+    }
+    private fun checkPhone(phone:EditText){
+        val queryPhone: Query =database.child("Doctors").orderByChild("phone").equalTo(phone.text.toString())
+        queryPhone.addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                if (snapshot.exists()){
+                    phone.setError(getText(R.string.phoneFound))
+                    Toast.makeText(baseContext,R.string.phoneFound,Toast.LENGTH_LONG).show()
+                }
+            }
+            override fun onCancelled(error: DatabaseError) {
+                Toast.makeText(applicationContext, error.message, Toast.LENGTH_LONG).show()
+            }
+        })
     }
     private fun getDoctorsData(){
     database.child("Doctors").addValueEventListener(object : ValueEventListener{
