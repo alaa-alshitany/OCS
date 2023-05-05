@@ -94,11 +94,6 @@ class Doctors : AppCompatActivity() , OnItemRecycleClickListener {
         window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         dialog.show()
 
-        /*
-        val dialogView =LayoutInflater.from(this).inflate(R.layout.add_doctor,null)
-        val builder =AlertDialog.Builder(this).setView(dialogView)
-        val alertDialog=builder.show()
-        alertDialog.show()*/
     }
 
     private fun init(){
