@@ -207,7 +207,6 @@ class Doctors : AppCompatActivity() , OnItemRecycleClickListener {
                     )
                     database.child("Doctors").child(doctorId).setValue(doctor).addOnSuccessListener {
                         Toast.makeText(this, R.string.register_success, Toast.LENGTH_SHORT).show()
-
                     }.addOnFailureListener { err ->
                         Toast.makeText(this, "Error ${err.message}", Toast.LENGTH_LONG).show()
                     }
