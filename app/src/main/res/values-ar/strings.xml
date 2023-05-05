@@ -4,7 +4,7 @@
     <string name="app_name">OCS</string>
     <string name="app_desc">خدمات مركز الأورام</string>
     <string name="slider1_title"> مرحبًا بكم في مركز الأورام</string>
-    <string name="slider1_description">الأطباء المحترفون \ n طرق الفحص الحديثة \n المواعيد الثابتة والمنظمة</string>
+    <string name="slider1_description">أطباء محترفين,\n طرق الفحص الحديثة\n,المواعيد الثابتة والمنظمة</string>
     <string name="slider2_title">الأشعة الطبية</string>
     <string name="slider2_description">التصوير المقطعي المحوسب (CT) \ n المسح الضوئي ، مسح العظام ، \ n التصوير بالرنين المغناطيسي (MRI) ، \ n التصوير المقطعي بالإصدار البوزيتروني (PET) ، \ n الموجات الصوتية والأشعة السينية ،</string>
     <string name="slider3_title">فحوصات طبية</string>
@@ -32,6 +32,23 @@
     <string name="userNotFound">لم يتم العثور على المستخدم</string>
     <string name="login_failed">فشل تسجيل الدخول</string>
     <string name="login_success">تم تسجيل الدخول بنجاح</string>
+    <string name="forgetPassword">هل نسيت كلمة السر؟ </string>
+    <string name="forgetMessage">أدخل رقم هاتفك المرتبط بحسابك.</string>
+    <string name="send">أرسل</string>
+    <string name="verification">تَحَقّق</string>
+    <string name="otpMessage">أدخل رمز OTP المرسل </string>
+    <string name="resetPassword">اعد ضبط كلمه السر</string>
+    <string name="newPassword">كلمة المرور الجديدة</string>
+    <string name="resetPasswordMessage">تم التحقق من هويتك!\n قم بتعيين كلمة المرور الجديدة الخاصة بك.</string>
+    <string name="update">تحديث</string>
+    <string name="codeWrong">الرمز غير صحيح</string>
+    <string name="resend">أعد إرسال OTP في 30 ثانية</string>
+    <string name="codeSent">تم إرسال الرمز بنجاح.</string>
+    <string name="verifyFailed">فشل التحقق من OTP</string>
+    <string name="wrongOTP">أدخل رمز OTP الكامل</string>
+    <string name="sucessVerification">تم التحقق بنجاح.</string>
+    <string name="updateSuccess">تم تحديث كلمة السر بنجاح.</string>
+    <string name="updateFailed">فشل تحديث كلمة المرور.</string>
 
     <!--String for login menu-->
     <string name="menu_doctor">الطبيب</string>
@@ -60,13 +77,14 @@
     <string name="emptyPhone">أدخل رقم هاتفك</string>
     <string name="notValidNumber">أدخل رقم هاتفك الصحيح (11 رقم)</string>
     <string name="register_success">تم التسجيل بنجاح</string>
-    <string name="passwordNotMach"></string>
+    <string name="passwordNotMatch">كلمة المرور غير متطابقة</string>
     <string name="notValidPassword">يجب أن تكون كلمة المرور الخاصة بك > 8 أحرف</string>
     <string name="emptyBirthDate">أدخل تاريخ ميلادك</string>
     <string name="emptyAddress">أدخل عنوانك</string>
 
     <!--strings for home -->
     <string name="clinic_service">عيادات الأورام</string>
+    <string name="logout">تم تسجيل الخروج بنجاح</string>
 
     <!--    book appointments-->
     <string name="book_appointment_title">موعد الحجز</string>
@@ -77,6 +95,8 @@
     <string name="medical_Rays_radiobn">الأشعة الطبية</string>
     <string name="medical_clinics_radiobn">عيادات طبية</string>
     <string name="send_req_btn">ارسل طلب</string>
+    <string name="successRequest">تم تقديم طلبك بنجاح</string>
+    <string name="failRequest">فشل ، حاول مرة أخرى لاحقًا ..</string>
     <!--    doctor details-->
     <string name="doctor_details_title">تفاصيل الطبيب</string>
     <string name="doctordetails_id">الرقم التعريفي للطبيب:</string>
@@ -92,9 +112,9 @@
     <string name="doctordetails_birthdate">تاريخ الميلاد:</string>
     <string name="doctor_birthdate">20-08-1966</string>
     <!--approved-->
-    <string name="Approved_title">Approved</string>
+    <string name="Approved_title">موافقة</string>
     <string name="request_button">طلب</string>
-    <string name="approved_button">Approved</string>
+    <string name="approved_button">موافقة</string>
     <string name="name_approved">Mazen Ali</string>
     <string name="phone_approved">01554181290</string>
     <string name="service_approved">فحوصات طبية</string>
@@ -138,7 +158,7 @@
     <string name="Drug_Effectiveness_predict_pn">تنبأ</string>
 
     <!--string for drawer-->
-    <string name="close">close</string>
-    <string name="open">open</string>
+    <string name="close">غلق</string>
+    <string name="open">فتح</string>
 
 </resources>
