@@ -7,7 +7,6 @@ import com.example.ocs.admin.Doctors.Doctors
 import com.example.ocs.databinding.ActivityDashboardBinding
 
 class Dashboard : AppCompatActivity()  {
-
     //listener on dashboard_card
     private lateinit var binding: ActivityDashboardBinding
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -18,16 +17,19 @@ class Dashboard : AppCompatActivity()  {
         setContentView(binding.root)
 
         binding.profile.setOnClickListener {
-            val cardprofileIntent = Intent(this, profile::class.java)
-            startActivity(cardprofileIntent)
+            val cardProfileIntent = Intent(this, profile::class.java)
+            startActivity(cardProfileIntent)
         }
         binding.appointments.setOnClickListener {
-            val cardappointmentIntent = Intent(this, recycle_request::class.java)
-            startActivity(cardappointmentIntent)
+            val cardAppointmentIntent = Intent(this, recycle_request::class.java)
+            startActivity(cardAppointmentIntent)
         }
         binding.doctors.setOnClickListener {
-            val carddoctorsIntent = Intent(this, Doctors::class.java)
-            startActivity(carddoctorsIntent)
+            val cardDoctorsIntent = Intent(this, Doctors::class.java)
+            startActivity(cardDoctorsIntent)
+        }
+        binding.logout.setOnClickListener {
+
         }
     }
 

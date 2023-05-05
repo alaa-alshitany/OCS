@@ -93,7 +93,6 @@ class Doctors : AppCompatActivity() , OnItemRecycleClickListener {
         dialog.setContentView(R.layout.add_doctor)
         window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         dialog.show()
-
     }
 
     private fun init(){
@@ -117,13 +116,11 @@ class Doctors : AppCompatActivity() , OnItemRecycleClickListener {
         }
         return super.onOptionsItemSelected(item)
     }
-
     //listener
     override fun onClick(c: serviceModel?) {
         val toast = Toast.makeText(applicationContext, c?.serviceImage!!, Toast.LENGTH_LONG)
         toast.show()
     }
-
 private fun getDoctorsData(){
     database.child("Doctors").addValueEventListener(object : ValueEventListener{
         override fun onDataChange(snapshot: DataSnapshot) {
@@ -136,7 +133,6 @@ private fun getDoctorsData(){
                 doctorRecycle.adapter=dAdapter
             }
         }
-
         override fun onCancelled(error: DatabaseError) {
             TODO("Not yet implemented")
         }

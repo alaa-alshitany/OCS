@@ -22,7 +22,7 @@ class splashScreen : AppCompatActivity() {
         val logoImage: ImageView = findViewById(R.id.logo)
         val appName:TextView=findViewById(R.id.ocs)
         val appDesc:TextView=findViewById(R.id.ocs_desc)
-        val splashAnimation = AnimationUtils.loadAnimation(this, R.anim.side_splash)
+        val splashAnimation = AnimationUtils.loadAnimation(this, R.anim.splash_animation)
         logoImage.startAnimation(splashAnimation)
         appName.startAnimation(splashAnimation)
         appDesc.startAnimation(splashAnimation)

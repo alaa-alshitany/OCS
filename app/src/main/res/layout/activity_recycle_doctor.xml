@@ -39,6 +39,7 @@
 </SearchView>
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
+        android:layout_marginTop="5dp"
         android:layout_height="match_parent"
         android:id="@+id/recycleview1"
      />
@@ -54,7 +55,7 @@
             android:contentDescription="add"
             android:layout_marginEnd="15dp"
             android:layout_marginBottom="15dp"
-            android:src="@drawable/baseline_add_task_24"
+            android:src="@drawable/baseline_add"
             android:backgroundTint="@color/blue_500"
             android:tint="@color/white">
         </com.google.android.material.floatingactionbutton.FloatingActionButton>
