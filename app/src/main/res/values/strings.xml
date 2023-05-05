@@ -167,6 +167,10 @@
 
     <!--string for admin-->
 <string name="searchDocHint">Enter Doctor Name Here</string>
+
+    <!--string for doctor-->
+    <string name="searchpatientHint">Enter patient Name Here</string>
+
 </resources>
 
 
