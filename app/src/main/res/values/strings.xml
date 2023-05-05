@@ -168,8 +168,8 @@
     <string name="open">open</string>
 
     <!--string for admin-->
-<string name="searchDocHint">Enter Doctor Name Here</string>
-
+    <string name="searchDocHint">Enter Doctor Name Here</string>
+    <string name="noDoctorFound">No Data Found</string>
     <!--string for doctor-->
     <string name="searchpatientHint">Enter patient Name Here</string>
     <!--string for add_doctor-->

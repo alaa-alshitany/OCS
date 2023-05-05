@@ -11,8 +11,10 @@
             android:layout_width="wrap_content"
             android:layout_height="40dp"
             android:id="@+id/doctorName"
+            android:gravity="center_vertical"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             android:textColor="@color/black"
+            android:textStyle="bold"
             android:layout_marginStart="20dp"
       />
 </androidx.cardview.widget.CardView>

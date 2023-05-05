@@ -3,6 +3,7 @@ package com.example.ocs.admin
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.ocs.admin.Doctors.Doctors
 import com.example.ocs.databinding.ActivityDashboardBinding
 
 class Dashboard : AppCompatActivity()  {

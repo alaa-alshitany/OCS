@@ -1,10 +1,15 @@
-package com.example.ocs.admin
+package com.example.ocs.admin.Doctors
 
 import android.annotation.SuppressLint
+import android.app.Dialog
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.MenuItem
+import android.view.Window
+import android.widget.Adapter
 import android.widget.Button
 import android.widget.SearchView
 import android.widget.Toast
@@ -16,9 +21,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.ocs.R
 import com.example.ocs.patient.services.OnItemRecycleClickListener
 import com.example.ocs.patient.services.serviceModel
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
+import java.util.*
+import kotlin.collections.ArrayList
 
 class Doctors : AppCompatActivity() , OnItemRecycleClickListener {
     private lateinit var doctorRecycle: RecyclerView
@@ -28,7 +36,8 @@ class Doctors : AppCompatActivity() , OnItemRecycleClickListener {
     private lateinit var drawerLayout : DrawerLayout
     private lateinit var navView : NavigationView
     private val database: DatabaseReference = FirebaseDatabase.getInstance().reference
-    private lateinit var addDoctorBtn:Button
+    private lateinit var addDoctorBtn:FloatingActionButton
+    private lateinit var dAdapter :DoctorAdapter
     private lateinit var auth: FirebaseAuth
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -36,7 +45,18 @@ class Doctors : AppCompatActivity() , OnItemRecycleClickListener {
         setContentView(R.layout.activity_recycle_doctor)
         init()
         getDoctorsData()
-        addDoctorBtn.setOnClickListener { addDoctorDialog() }
+        addDoctorBtn.setOnClickListener { addDoctorDialog()}
+        searchView.setOnQueryTextListener(object:SearchView.OnQueryTextListener{
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+               filterList(newText)
+                return true
+            }
+
+        })
         navView.setNavigationItemSelectedListener {
             when(it.itemId){
                 R.id.nau_profile2-> Toast.makeText(applicationContext,"clicked Profile", Toast.LENGTH_SHORT).show()
@@ -48,10 +68,31 @@ class Doctors : AppCompatActivity() , OnItemRecycleClickListener {
         }
     }
 
+    private fun filterList(query: String?) {
+        if (query!=null){
+            val filteredList=ArrayList<DoctorData>()
+            for (i in doctorList){
+                if ((i.firstName+" "+i.lastName).toLowerCase(Locale.ROOT).contains(query)){
+                    filteredList.add(i)
+                }
+            }
+            if (filteredList.isEmpty()){
+                filteredList.clear()
+                dAdapter.setFilteredList(filteredList)
+                Toast.makeText(applicationContext,R.string.noDoctorFound,Toast.LENGTH_SHORT).show()
+            }else{
+                dAdapter.setFilteredList(filteredList)
+            }
+        }
+    }
+
     private fun addDoctorDialog() {
-        val dialogView =LayoutInflater.from(this).inflate(R.layout.service_item,null)
-        val builder =AlertDialog.Builder(this).setView(dialogView).setTitle("Add New Doctor")
-        val alertDialog=builder.show()
+        val dialog=Dialog(this)
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+        dialog.setCancelable(false)
+        dialog.setContentView(R.layout.add_doctor)
+        window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        dialog.show()
 
     }
 
@@ -77,7 +118,7 @@ class Doctors : AppCompatActivity() , OnItemRecycleClickListener {
         return super.onOptionsItemSelected(item)
     }
 
-    //lisener
+    //listener
     override fun onClick(c: serviceModel?) {
         val toast = Toast.makeText(applicationContext, c?.serviceImage!!, Toast.LENGTH_LONG)
         toast.show()
@@ -91,7 +132,7 @@ private fun getDoctorsData(){
                     val docName=docData.getValue(DoctorData::class.java)
                     doctorList.add(docName!!)
                 }
-                val dAdapter=DoctorAdapter(doctorList)
+                dAdapter= DoctorAdapter(doctorList)
                 doctorRecycle.adapter=dAdapter
             }
         }
