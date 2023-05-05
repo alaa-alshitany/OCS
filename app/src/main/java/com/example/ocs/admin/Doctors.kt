@@ -3,10 +3,13 @@ package com.example.ocs.admin
 import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.MenuItem
+import android.widget.Button
 import android.widget.SearchView
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.appcompat.app.AlertDialog
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -20,13 +23,12 @@ import com.google.firebase.database.*
 class Doctors : AppCompatActivity() , OnItemRecycleClickListener {
     private lateinit var doctorRecycle: RecyclerView
     private lateinit var doctorList: ArrayList<DoctorData>
-    private lateinit var imageList:Array<Int>
-    private lateinit var titleList:Array<String>
     private lateinit var searchView:SearchView
     private lateinit var toggle: ActionBarDrawerToggle
     private lateinit var drawerLayout : DrawerLayout
     private lateinit var navView : NavigationView
     private val database: DatabaseReference = FirebaseDatabase.getInstance().reference
+    private lateinit var addDoctorBtn:Button
     private lateinit var auth: FirebaseAuth
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -34,6 +36,7 @@ class Doctors : AppCompatActivity() , OnItemRecycleClickListener {
         setContentView(R.layout.activity_recycle_doctor)
         init()
         getDoctorsData()
+        addDoctorBtn.setOnClickListener { addDoctorDialog() }
         navView.setNavigationItemSelectedListener {
             when(it.itemId){
                 R.id.nau_profile2-> Toast.makeText(applicationContext,"clicked Profile", Toast.LENGTH_SHORT).show()
@@ -44,6 +47,14 @@ class Doctors : AppCompatActivity() , OnItemRecycleClickListener {
             true
         }
     }
+
+    private fun addDoctorDialog() {
+        val dialogView =LayoutInflater.from(this).inflate(R.layout.service_item,null)
+        val builder =AlertDialog.Builder(this).setView(dialogView).setTitle("Add New Doctor")
+        val alertDialog=builder.show()
+
+    }
+
     private fun init(){
         doctorRecycle = findViewById(R.id.recycleview1)
         doctorRecycle.layoutManager = LinearLayoutManager(this)
@@ -56,6 +67,7 @@ class Doctors : AppCompatActivity() , OnItemRecycleClickListener {
         drawerLayout.addDrawerListener(toggle)
         toggle.syncState()
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        addDoctorBtn=findViewById(R.id.addingDoctorBtn)
 }
     //nav_bar
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -91,12 +103,5 @@ private fun getDoctorsData(){
     })
 
 }
-   /* private fun getData(){
-        for(i in imageList.indices){
-            val dataClass = DoctorData(titleList[i])
-            dataList.add(dataClass)
-        }
-        recycleView.adapter = AdapterClass(dataList)
-    }*/
 
 }

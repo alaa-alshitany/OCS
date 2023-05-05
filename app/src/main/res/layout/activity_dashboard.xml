@@ -24,8 +24,8 @@
 
         <androidx.cardview.widget.CardView
             android:id="@+id/profile"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             app:cardCornerRadius="15dp"
             app:cardElevation="12dp"
             android:layout_columnWeight="1"
@@ -38,12 +38,13 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical"
                 android:gravity="center">
-            <ImageView
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:src="@drawable/baseline_user_24"
-                android:layout_gravity="center_horizontal"
-                app:tint="@color/blue_300" />
+
+                <ImageView
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_gravity="center_horizontal"
+                    android:src="@drawable/baseline_user_24"
+                    app:tint="@color/blue_300" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

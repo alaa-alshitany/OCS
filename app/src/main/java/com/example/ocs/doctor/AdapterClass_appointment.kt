@@ -10,7 +10,7 @@ import com.example.ocs.R
 class AdapterClass2(private val dataList: ArrayList<DataClass2>):RecyclerView.Adapter<AdapterClass2.ViewHolderClass>(){
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolderClass {
-        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.item_layout, parent, false)
+        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.doctor_card, parent, false)
         return ViewHolderClass(itemView)
     }
 

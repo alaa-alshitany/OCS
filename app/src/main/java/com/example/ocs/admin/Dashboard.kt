@@ -3,9 +3,7 @@ package com.example.ocs.admin
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.example.ocs.R
 import com.example.ocs.databinding.ActivityDashboardBinding
-import com.example.ocs.patient.services.OnCardItemClickListener
 
 class Dashboard : AppCompatActivity()  {
 
