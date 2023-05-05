@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ocs.patient.Profile.Profile
 import com.example.ocs.R
+import com.example.ocs.admin.Doctors.Doctors
 import com.example.ocs.patient.services.OnItemRecycleClickListener
 import com.example.ocs.patient.services.serviceModel
 import com.google.android.material.navigation.NavigationView
@@ -79,9 +80,10 @@ class recycle_request : AppCompatActivity(), OnItemRecycleClickListener {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         navView.setNavigationItemSelectedListener {
             when(it.itemId){
+                R.id.nau_dashboard->dashboard()
                 R.id.nau_profile2-> adminProfile()
                 R.id.nau_booking2-> requests()
-                R.id.nau_doctor-> doctordetails()
+                R.id.nau_doctor-> doctor()
                 R.id.nau_logout2-> logout()
             }
 
@@ -100,6 +102,10 @@ class recycle_request : AppCompatActivity(), OnItemRecycleClickListener {
 
 
     //nav_bar
+
+    private fun dashboard() {
+        startActivity(Intent(this, Dashboard::class.java))
+    }
     private fun logout() {
     }
 
@@ -111,8 +117,8 @@ class recycle_request : AppCompatActivity(), OnItemRecycleClickListener {
         startActivity(Intent(this, Profile::class.java))
     }
 
-    private fun doctordetails() {
-        startActivity(Intent(this, doctor_details::class.java))
+    private fun doctor() {
+        startActivity(Intent(this, Doctors::class.java))
     }
 
     //nav_bar

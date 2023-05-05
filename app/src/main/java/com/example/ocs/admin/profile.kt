@@ -10,6 +10,7 @@ import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.drawerlayout.widget.DrawerLayout
 import com.example.ocs.patient.Profile.Profile
 import com.example.ocs.R
+import com.example.ocs.admin.Doctors.Doctors
 import com.example.ocs.patient.services.OnItemRecycleClickListener
 import com.example.ocs.patient.services.serviceModel
 import com.google.android.material.navigation.NavigationView
@@ -34,11 +35,13 @@ class profile : AppCompatActivity(), OnItemRecycleClickListener {
         toggle.syncState()
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.setHomeAsUpIndicator(R.drawable.baseline_menu_24)
         navView.setNavigationItemSelectedListener {
             when(it.itemId){
+                R.id.nau_dashboard->dashboard()
                 R.id.nau_profile2-> adminProfile()
                 R.id.nau_booking2-> requests()
-                R.id.nau_doctor-> doctordetails()
+                R.id.nau_doctor-> doctor()
                 R.id.nau_logout2-> logout()
             }
 
@@ -47,6 +50,10 @@ class profile : AppCompatActivity(), OnItemRecycleClickListener {
 
     }
     //nav_bar
+
+    private fun dashboard() {
+        startActivity(Intent(this, Dashboard::class.java))
+    }
     private fun logout() {
     }
 
@@ -58,8 +65,8 @@ class profile : AppCompatActivity(), OnItemRecycleClickListener {
         startActivity(Intent(this, Profile::class.java))
     }
 
-    private fun doctordetails() {
-        startActivity(Intent(this, doctor_details::class.java))
+    private fun doctor() {
+        startActivity(Intent(this, Doctors::class.java))
     }
     //nav_bar
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

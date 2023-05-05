@@ -3,6 +3,11 @@
     tools:showIn="navigation_view">
 
     <item
+        android:id="@+id/nau_dashboard"
+        android:icon="@drawable/baseline_house_24"
+        android:title="Home"/>
+
+    <item
         android:id="@+id/nau_profile2"
         android:icon="@drawable/baseline_user_24"
         android:title="Profile"/>

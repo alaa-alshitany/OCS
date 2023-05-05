@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.app.DatePickerDialog
 import android.app.Dialog
 import android.content.Context
+import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.net.ConnectivityManager
@@ -21,6 +22,10 @@ import androidx.drawerlayout.widget.DrawerLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ocs.R
+import com.example.ocs.admin.Dashboard
+import com.example.ocs.admin.doctor_details
+import com.example.ocs.admin.recycle_request
+import com.example.ocs.patient.Profile.Profile
 import com.example.ocs.patient.services.OnItemRecycleClickListener
 import com.example.ocs.patient.services.serviceModel
 import com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -36,7 +41,6 @@ class Doctors : AppCompatActivity() , OnItemRecycleClickListener {
     private lateinit var doctorRecycle: RecyclerView
     private lateinit var doctorList: ArrayList<DoctorData>
     private lateinit var searchView:SearchView
-    private lateinit var toggle: ActionBarDrawerToggle
     private lateinit var drawerLayout : DrawerLayout
     private lateinit var navView : NavigationView
     private val database: DatabaseReference = FirebaseDatabase.getInstance().reference
@@ -56,6 +60,10 @@ class Doctors : AppCompatActivity() , OnItemRecycleClickListener {
     private lateinit var password:EditText
     private  var currentDate: LocalDate=LocalDate.now()
     private lateinit var dateEntered: LocalDate
+
+    //nav_bar
+    lateinit var toggle: ActionBarDrawerToggle
+
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -74,15 +82,55 @@ class Doctors : AppCompatActivity() , OnItemRecycleClickListener {
             }
 
         })
+        //nav_bar
+        val drawerLayout : DrawerLayout = findViewById(R.id.drawerLayout)
+        val navView : NavigationView = findViewById(R.id.nav_view)
+
+        toggle = ActionBarDrawerToggle( this, drawerLayout, R.string.open, R.string.close)
+        drawerLayout.addDrawerListener(toggle)
+        toggle.syncState()
+
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.setHomeAsUpIndicator(R.drawable.baseline_menu_24)
         navView.setNavigationItemSelectedListener {
             when(it.itemId){
-                R.id.nau_profile2-> Toast.makeText(applicationContext,"clicked Profile", Toast.LENGTH_SHORT).show()
-                R.id.nau_booking2-> Toast.makeText(applicationContext,"clicked Booking", Toast.LENGTH_SHORT).show()
-                R.id.nau_doctor-> Toast.makeText(applicationContext,"clicked doctors", Toast.LENGTH_SHORT).show()
-                R.id.nau_logout2-> Toast.makeText(applicationContext,"clicked Logout", Toast.LENGTH_SHORT).show()
+                R.id.nau_dashboard->dashboard()
+                R.id.nau_profile2-> adminProfile()
+                R.id.nau_booking2-> requests()
+                R.id.nau_doctor-> doctor()
+                R.id.nau_logout2-> logout()
             }
+
             true
         }
+    }
+
+    //nav_bar
+
+    private fun dashboard() {
+        startActivity(Intent(this, Dashboard::class.java))
+    }
+    private fun logout() {
+    }
+
+    private fun requests() {
+        startActivity(Intent(this, recycle_request::class.java))
+    }
+
+    private fun adminProfile() {
+        startActivity(Intent(this, Profile::class.java))
+    }
+
+    private fun doctor() {
+        startActivity(Intent(this, Doctors::class.java))
+    }
+
+    //nav_bar
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (toggle.onOptionsItemSelected(item)) {
+            return true
+        }
+        return super.onOptionsItemSelected(item)
     }
 
     private fun filterList(query: String?) {
@@ -291,13 +339,7 @@ class Doctors : AppCompatActivity() , OnItemRecycleClickListener {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         addDoctorBtn=findViewById(R.id.addingDoctorBtn)
 }
-    //nav_bar
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if (toggle.onOptionsItemSelected(item)) {
-            return true
-        }
-        return super.onOptionsItemSelected(item)
-    }
+
     //listener
     override fun onClick(c: serviceModel?) {
         val toast = Toast.makeText(applicationContext, c?.serviceImage!!, Toast.LENGTH_LONG)
