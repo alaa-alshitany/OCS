@@ -22,8 +22,7 @@ import com.example.ocs.admin.adminData
 import com.example.ocs.patient.services.services
 import com.example.ocs.R
 import com.example.ocs.admin.Dashboard
-import com.example.ocs.admin.DoctorData
-import com.example.ocs.admin.Doctors
+import com.example.ocs.admin.Doctors.DoctorData
 import com.google.android.material.textfield.TextInputLayout
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*

@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    tools:context=".admin.Doctors"
+    tools:context=".admin.Doctors.Doctors"
     android:orientation="vertical">
     <RelativeLayout
         android:layout_width="match_parent"
@@ -57,7 +57,6 @@
             android:src="@drawable/baseline_add_task_24"
             android:backgroundTint="@color/blue_500"
             android:tint="@color/white">
-
         </com.google.android.material.floatingactionbutton.FloatingActionButton>
 
 </RelativeLayout>

@@ -16,7 +16,7 @@
         android:theme="@style/Theme.OCS"
         android:windowSoftInputMode="adjustPan"
         tools:targetApi="31">
-        <activity android:name=".admin.Doctors"
+        <activity android:name=".admin.Doctors.Doctors"
             android:exported="false"/>
         <activity
             android:name=".admin.Dashboard"
