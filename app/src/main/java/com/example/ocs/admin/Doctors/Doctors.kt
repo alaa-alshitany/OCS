@@ -60,6 +60,7 @@ class Doctors : AppCompatActivity() , OnItemRecycleClickListener {
     private lateinit var password:EditText
     private  var currentDate: LocalDate=LocalDate.now()
     private lateinit var dateEntered: LocalDate
+   private lateinit var  dialog:Dialog
 
     //nav_bar
     lateinit var toggle: ActionBarDrawerToggle
@@ -71,6 +72,7 @@ class Doctors : AppCompatActivity() , OnItemRecycleClickListener {
         init()
         getDoctorsData()
         addDoctorBtn.setOnClickListener { addDoctorDialog()}
+
         searchView.setOnQueryTextListener(object:SearchView.OnQueryTextListener{
             override fun onQueryTextSubmit(query: String?): Boolean {
                 return false
@@ -98,31 +100,24 @@ class Doctors : AppCompatActivity() , OnItemRecycleClickListener {
                 R.id.nau_doctor-> doctor()
                 R.id.nau_logout2-> logout()
             }
-
             true
         }
     }
-
     //nav_bar
-
     private fun dashboard() {
         startActivity(Intent(this, Dashboard::class.java))
     }
     private fun logout() {
     }
-
     private fun requests() {
         startActivity(Intent(this, recycle_request::class.java))
     }
-
     private fun adminProfile() {
         startActivity(Intent(this, Profile::class.java))
     }
-
     private fun doctor() {
         startActivity(Intent(this, Doctors::class.java))
     }
-
     //nav_bar
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (toggle.onOptionsItemSelected(item)) {
@@ -130,7 +125,6 @@ class Doctors : AppCompatActivity() , OnItemRecycleClickListener {
         }
         return super.onOptionsItemSelected(item)
     }
-
     private fun filterList(query: String?) {
         if (query!=null){
             val filteredList=ArrayList<DoctorData>()
@@ -148,9 +142,7 @@ class Doctors : AppCompatActivity() , OnItemRecycleClickListener {
             }
         }
     }
-
     private fun addDoctorDialog() {
-        val dialog=Dialog(this)
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
         dialog.setCancelable(false)
         dialog.setContentView(R.layout.add_doctor)
@@ -181,8 +173,6 @@ class Doctors : AppCompatActivity() , OnItemRecycleClickListener {
                    var selectedGender:Int=genderRadio!!.checkedRadioButtonId
                    radioButton = dialog.findViewById(selectedGender)
                    checkPhone(phone)
-                   checkEmail(email)
-                   //dialog.dismiss()
                }
             } else {
                 Toast.makeText(this, R.string.internetError, Toast.LENGTH_LONG).show()
@@ -195,13 +185,12 @@ class Doctors : AppCompatActivity() , OnItemRecycleClickListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 if (snapshot.exists()) {
                     email.setError(getText(R.string.emailFound))
-                    //Toast.makeText(applicationContext, R.string.emailFound, Toast.LENGTH_LONG).show()
                 }else{
                     addDoctor(radioButton.text.toString())
                 }
             }
             override fun onCancelled(error: DatabaseError) {
-                TODO("Not yet implemented")
+                Toast.makeText(applicationContext, error.message, Toast.LENGTH_LONG).show()
             }
         })
     }
@@ -222,6 +211,7 @@ class Doctors : AppCompatActivity() , OnItemRecycleClickListener {
                     )
                     database.child("Doctors").child(doctorId).setValue(doctor).addOnSuccessListener {
                         Toast.makeText(this, R.string.register_success, Toast.LENGTH_SHORT).show()
+                        dialog.dismiss()
                     }.addOnFailureListener { err ->
                         Toast.makeText(this, "Error ${err.message}", Toast.LENGTH_LONG).show()
                     }
@@ -352,8 +342,8 @@ class Doctors : AppCompatActivity() , OnItemRecycleClickListener {
         toggle.syncState()
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         addDoctorBtn=findViewById(R.id.addingDoctorBtn)
+        dialog=Dialog(this)
 }
-
     //listener
     override fun onClick(c: serviceModel?) {
         val toast = Toast.makeText(applicationContext, c?.serviceImage!!, Toast.LENGTH_LONG)
@@ -366,6 +356,8 @@ class Doctors : AppCompatActivity() , OnItemRecycleClickListener {
                 if (snapshot.exists()){
                     phone.setError(getText(R.string.phoneFound))
                     Toast.makeText(baseContext,R.string.phoneFound,Toast.LENGTH_LONG).show()
+                }else{
+                    checkEmail(email)
                 }
             }
             override fun onCancelled(error: DatabaseError) {
@@ -374,8 +366,10 @@ class Doctors : AppCompatActivity() , OnItemRecycleClickListener {
         })
     }
     private fun getDoctorsData(){
+        //dAdapter.clearList()
     database.child("Doctors").addValueEventListener(object : ValueEventListener{
         override fun onDataChange(snapshot: DataSnapshot) {
+           doctorList.clear()
             if (snapshot.exists()){
                 for (docData in snapshot.children){
                     val docName=docData.getValue(DoctorData::class.java)
