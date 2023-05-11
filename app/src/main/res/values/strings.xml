@@ -185,6 +185,7 @@
     <string name="service">Service</string>
     <string name="date">Date</string>
     <string name="Time">Time</string>
+    <string name="send_SMs">Send SMS</string>
 
 </resources>
 
