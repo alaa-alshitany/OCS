@@ -180,6 +180,11 @@
     <string name="add_doctor">Add Doctor</string>
     <!--string for add_item-->
     <string name="add_patient">Add Patient</string>
+    <!--string for send_request-->
+    <string name="patient_name">Name</string>
+    <string name="service">Service</string>
+    <string name="date">Date</string>
+    <string name="Time">Time</string>
 
 </resources>
 
