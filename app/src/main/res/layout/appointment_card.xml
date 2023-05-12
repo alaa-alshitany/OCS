@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="130dp"
     app:cardCornerRadius="20dp"
     app:cardElevation="8dp"
     android:layout_marginHorizontal="10dp"
@@ -13,14 +13,13 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="horizontal"
-        android:layout_margin="25dp"
+        android:layout_margin="10dp"
         >
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-
             android:fadingEdgeLength="20dp"
             android:orientation="vertical"
             app:layout_constraintEnd_toEndOf="parent"
@@ -28,32 +27,33 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <TextView
-                android:id="@+id/t_title"
-                style="@style/TextAppearance.AppCompat"
+                android:id="@+id/patientName"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Text"
-                android:textSize="20sp"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:textColor="@color/black"
                 android:textStyle="bold"
                 />
 
             <TextView
-                android:id="@+id/t_phone"
+                android:id="@+id/patientPhone"
+                android:textColor="@color/black"
                 style="@style/TextAppearance.AppCompat"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1"
                 android:text="Text"
-                android:textSize="20sp"
                 android:textStyle="normal"
                 />
 
             <TextView
-                android:id="@+id/t_serve"
+                android:id="@+id/patientService"
                 style="@style/TextAppearance.AppCompat"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:textColor="@color/black"
                 android:text="Text"
-                android:textSize="20sp"
                 android:textStyle="normal"
                 />
 
@@ -63,24 +63,24 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="horizontal"
-            android:layout_weight="1"
+            android:layout_weight="2.5"
             >
 
             <ImageButton
-                android:id="@+id/ckeck"
+                android:id="@+id/cancel"
                 android:layout_width="0dp"
-                android:layout_height="80dp"
+                android:layout_height="match_parent"
                 android:layout_weight=".5"
-                android:autofillHints=""
+                android:src="@drawable/baseline_wrong"
                 android:backgroundTint="#FFFFFF"
                 tools:ignore="SpeakableTextPresentCheck" />
 
             <ImageButton
-                android:id="@+id/clear"
+                android:id="@+id/accept"
                 android:layout_width="0dp"
-                android:layout_height="80dp"
+                android:layout_height="match_parent"
                 android:layout_weight=".5"
-                android:autofillHints=""
+                android:src="@drawable/baseline_check_green"
                 android:backgroundTint="#FFFFFF"
                 tools:ignore="SpeakableTextPresentCheck" />
 

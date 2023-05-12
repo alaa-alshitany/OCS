@@ -1,4 +1,4 @@
-package com.example.ocs.admin.Doctors
+package com.example.ocs.Admin.Doctors
 
 import android.annotation.SuppressLint
 import android.app.DatePickerDialog
@@ -21,9 +21,9 @@ import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.ocs.Admin.Appointments.Appointments
 import com.example.ocs.R
-import com.example.ocs.admin.Dashboard
-import com.example.ocs.admin.recycle_request
+import com.example.ocs.Admin.Dashboard.Dashboard
 import com.example.ocs.Patient.Profile.Profile
 import com.example.ocs.Patient.services.OnItemRecycleClickListener
 import com.example.ocs.Patient.services.ServiceData
@@ -62,7 +62,7 @@ class Doctors : AppCompatActivity() , OnItemRecycleClickListener {
    private lateinit var  dialog:Dialog
 
     //nav_bar
-    lateinit var toggle: ActionBarDrawerToggle
+    private lateinit var toggle: ActionBarDrawerToggle
 
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -109,7 +109,7 @@ class Doctors : AppCompatActivity() , OnItemRecycleClickListener {
     private fun logout() {
     }
     private fun requests() {
-        startActivity(Intent(this, recycle_request::class.java))
+        startActivity(Intent(this, Appointments::class.java))
     }
     private fun adminProfile() {
         startActivity(Intent(this, Profile::class.java))
@@ -365,7 +365,6 @@ class Doctors : AppCompatActivity() , OnItemRecycleClickListener {
         })
     }
     private fun getDoctorsData(){
-        //dAdapter.clearList()
     database.child("Doctors").addValueEventListener(object : ValueEventListener{
         override fun onDataChange(snapshot: DataSnapshot) {
            doctorList.clear()
@@ -379,7 +378,6 @@ class Doctors : AppCompatActivity() , OnItemRecycleClickListener {
             }
         }
         override fun onCancelled(error: DatabaseError) {
-            TODO("Not yet implemented")
         }
 
     })

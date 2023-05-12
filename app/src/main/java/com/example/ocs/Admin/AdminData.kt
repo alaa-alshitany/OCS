@@ -1,6 +1,6 @@
-package com.example.ocs.admin
+package com.example.ocs.Admin
 
-data class adminData(
+data class AdminData(
     val email:String?=null,
     val password:String?=null,
     val id:String?=null,

@@ -1,4 +1,4 @@
-package com.example.ocs.admin
+/*package com.example.ocs.Admin
 
 import android.annotation.SuppressLint
 import android.content.Intent
@@ -11,7 +11,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ocs.Patient.Profile.Profile
 import com.example.ocs.R
-import com.example.ocs.admin.Doctors.Doctors
+import com.example.ocs.Admin.Dashboard.Dashboard
+import com.example.ocs.Admin.Doctors.Doctors
 import com.google.android.material.navigation.NavigationView
 
 class recycle_approved : AppCompatActivity() {
@@ -29,7 +30,7 @@ class recycle_approved : AppCompatActivity() {
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_recycle_approved)
+        setContentView(R.layout.activity_admin_requests)
 
         TitleList = arrayOf(
             " Mohammed Ahmed",
@@ -127,3 +128,4 @@ class recycle_approved : AppCompatActivity() {
         onBackPressedDispatcher.onBackPressed()
     }
 }
+*/

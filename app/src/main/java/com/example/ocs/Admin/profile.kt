@@ -1,24 +1,31 @@
-package com.example.ocs.admin
+/*package com.example.ocs.Admin
 
+import android.annotation.SuppressLint
 import android.content.Intent
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
+import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
-import androidx.appcompat.app.AppCompatActivity
 import androidx.drawerlayout.widget.DrawerLayout
 import com.example.ocs.Patient.Profile.Profile
 import com.example.ocs.R
-import com.example.ocs.admin.Doctors.Doctors
+import com.example.ocs.Admin.Doctors.Doctors
+import com.example.ocs.Patient.services.OnItemRecycleClickListener
+import com.example.ocs.Patient.services.ServiceData
+import com.example.ocs.Admin.Dashboard.Dashboard
 import com.google.android.material.navigation.NavigationView
 
-class doctor_details: AppCompatActivity() {
+class profile : AppCompatActivity(), OnItemRecycleClickListener {
 
     //nav_bar
     lateinit var toggle: ActionBarDrawerToggle
-
+    @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.doctor_details)
+        setContentView(R.layout.activity_admin_profile)
+        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
+        supportActionBar!!.setHomeAsUpIndicator(R.drawable.baseline_arrow_back_24)
 
         //nav_bar
         val drawerLayout : DrawerLayout = findViewById(R.id.drawerLayout)
@@ -41,8 +48,9 @@ class doctor_details: AppCompatActivity() {
 
             true
         }
+
     }
-//nav_bar
+    //nav_bar
 
     private fun dashboard() {
         startActivity(Intent(this, Dashboard::class.java))
@@ -61,7 +69,6 @@ class doctor_details: AppCompatActivity() {
     private fun doctor() {
         startActivity(Intent(this, Doctors::class.java))
     }
-
     //nav_bar
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (toggle.onOptionsItemSelected(item)) {
@@ -69,4 +76,13 @@ class doctor_details: AppCompatActivity() {
         }
         return super.onOptionsItemSelected(item)
     }
-}
+    override fun onBackPressed() {
+        onBackPressedDispatcher.onBackPressed()
+    }
+
+    //listener
+    override fun onClick(c: ServiceData?) {
+        val toast = Toast.makeText(applicationContext, c?.serviceImage!!, Toast.LENGTH_LONG)
+        toast.show()
+    }
+}*/

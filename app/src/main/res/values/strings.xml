@@ -218,6 +218,8 @@
     <string name="medicalClinicHMT">From 5 PM to 8 PM </string>
     <string name="medicalClinicMAT">From 8 PM to 10 PM</string>
 
+    <string name="requestsBtn">Requests</string>
+    <string name="approvedBtn">Approved</string>
 </resources>
 
 

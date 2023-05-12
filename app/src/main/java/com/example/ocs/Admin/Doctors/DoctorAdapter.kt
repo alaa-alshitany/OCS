@@ -1,4 +1,4 @@
-package com.example.ocs.admin.Doctors
+package com.example.ocs.Admin.Doctors
 
 import android.view.LayoutInflater
 import android.view.View

@@ -78,7 +78,7 @@ class BookAppointment : AppCompatActivity() {
         if (clinics.isChecked){serviceType.append(clinics.text.toString()).append(", ")}
         if (tests.isChecked){serviceType.append(tests.text.toString()).append(", ")}
         appointmentID=database2.push().key!!
-        val appointment= AppointmentData(appointmentID,null,null,patientID, serviceType.toString(),null,fullName.text.toString(),phone.text.toString())
+        val appointment= AppointmentData(appointmentID,null,null,patientID, serviceType.toString(),null,fullName.text.toString(), phoneNumber = phone.text.toString() )
         database2.child(appointmentID).setValue(appointment).addOnCompleteListener {
             if (it.isSuccessful){
                 Toast.makeText(applicationContext,R.string.successRequest,Toast.LENGTH_LONG).show()

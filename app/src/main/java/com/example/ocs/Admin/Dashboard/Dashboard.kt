@@ -1,9 +1,11 @@
-package com.example.ocs.admin
+package com.example.ocs.Admin.Dashboard
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.example.ocs.admin.Doctors.Doctors
+import com.example.ocs.Admin.Appointments.Appointments
+import com.example.ocs.Admin.Doctors.Doctors
+//import com.example.ocs.Admin.profile
 import com.example.ocs.databinding.ActivityDashboardBinding
 
 class Dashboard : AppCompatActivity()  {
@@ -17,11 +19,11 @@ class Dashboard : AppCompatActivity()  {
         setContentView(binding.root)
 
         binding.profile.setOnClickListener {
-            val cardProfileIntent = Intent(this, profile::class.java)
-            startActivity(cardProfileIntent)
+            //val cardProfileIntent = Intent(this, profile::class.java)
+            //startActivity(cardProfileIntent)
         }
         binding.appointments.setOnClickListener {
-            val cardAppointmentIntent = Intent(this, recycle_request::class.java)
+            val cardAppointmentIntent = Intent(this, Appointments::class.java)
             startActivity(cardAppointmentIntent)
         }
         binding.doctors.setOnClickListener {

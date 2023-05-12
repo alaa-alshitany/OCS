@@ -1,4 +1,4 @@
-package com.example.ocs.admin
+/*package com.example.ocs.Admin
 
 import android.view.LayoutInflater
 import android.view.View
@@ -11,7 +11,7 @@ import com.example.ocs.R
 class AdapterClass_req(private val dataList: ArrayList<DataClass_req>): RecyclerView.Adapter<AdapterClass_req.ViewHolderClass>(){
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolderClass {
-        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.item_layout5, parent, false)
+        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.appointment_card, parent, false)
         return ViewHolderClass(itemView)
     }
 
@@ -37,4 +37,4 @@ class AdapterClass_req(private val dataList: ArrayList<DataClass_req>): Recycler
 
 
     }
-}
+}*/

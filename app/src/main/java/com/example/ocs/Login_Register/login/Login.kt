@@ -18,10 +18,10 @@ import android.widget.Toast
 import com.example.ocs.Login_Register.forgetPassword.ForgetPassword
 import com.example.ocs.Patient.PatientData
 import com.example.ocs.Login_Register.register.Register
-import com.example.ocs.admin.adminData
+import com.example.ocs.Admin.AdminData
 import com.example.ocs.Patient.services.services
 import com.example.ocs.R
-import com.example.ocs.admin.Dashboard
+import com.example.ocs.Admin.Dashboard.Dashboard
 import com.google.android.material.textfield.TextInputLayout
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
@@ -174,7 +174,7 @@ class Login : AppCompatActivity() {
                 override fun onDataChange(snapshot: DataSnapshot) {
                     if (snapshot.exists()) {
                         for (item in snapshot.children) {
-                            var admin = item.getValue<adminData>()
+                            var admin = item.getValue<AdminData>()
                             if (admin?.password.equals(password)) {
                                 pref.userName = admin?.name
                                 pref.prefStatus = true

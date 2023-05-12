@@ -1,4 +1,4 @@
-package com.example.ocs.admin.Doctors
+package com.example.ocs.Admin.Doctors
 
 data class DoctorData(
     val id:String?=null,

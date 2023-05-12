@@ -1,4 +1,4 @@
-package com.example.ocs.admin
+/*package com.example.ocs.Admin
 
 import android.annotation.SuppressLint
 import android.content.Intent
@@ -12,9 +12,10 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ocs.Patient.Profile.Profile
 import com.example.ocs.R
-import com.example.ocs.admin.Doctors.Doctors
+import com.example.ocs.Admin.Doctors.Doctors
 import com.example.ocs.Patient.services.OnItemRecycleClickListener
 import com.example.ocs.Patient.services.ServiceData
+import com.example.ocs.Admin.Dashboard.Dashboard
 import com.google.android.material.navigation.NavigationView
 
 class recycle_request : AppCompatActivity(), OnItemRecycleClickListener {
@@ -140,4 +141,4 @@ class recycle_request : AppCompatActivity(), OnItemRecycleClickListener {
         onBackPressedDispatcher.onBackPressed()
     }
 
-}
+}*/
