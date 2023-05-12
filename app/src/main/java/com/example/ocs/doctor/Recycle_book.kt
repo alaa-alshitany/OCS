@@ -39,7 +39,7 @@ class recycle_book : AppCompatActivity() {
         )
 
 
-        recycleView = findViewById(R.id.recycleview2)
+        recycleView = findViewById(R.id.recycleView)
         recycleView.layoutManager = LinearLayoutManager(this)
         recycleView.setHasFixedSize(true)
         dataList = arrayListOf<DataClass2>()

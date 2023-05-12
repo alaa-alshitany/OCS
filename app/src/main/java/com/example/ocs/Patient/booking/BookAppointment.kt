@@ -1,4 +1,4 @@
-package com.example.ocs.patient.booking
+package com.example.ocs.Patient.booking
 
 import android.annotation.SuppressLint
 import android.content.Intent
@@ -11,8 +11,8 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.drawerlayout.widget.DrawerLayout
-import com.example.ocs.patient.Profile.Profile
-import com.example.ocs.patient.services.services
+import com.example.ocs.Patient.Profile.Profile
+import com.example.ocs.Patient.services.services
 import com.example.ocs.R
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.database.DatabaseReference

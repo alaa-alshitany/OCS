@@ -1,4 +1,4 @@
-package com.example.ocs.patient.services
+package com.example.ocs.Patient.services
 
 import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
@@ -12,37 +12,28 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.ocs.R
 import com.google.android.material.navigation.NavigationView
 
-class MedicalTests : AppCompatActivity() , OnItemRecycleClickListener {
+class MedicalClinic : AppCompatActivity(), OnItemRecycleClickListener {
     private lateinit var recycleView: RecyclerView
-    private lateinit var dataList: ArrayList<DataClass6>
-    lateinit var serviceList:Array<String>
-    lateinit var priceList:Array<String>
+    private lateinit var dataList: ArrayList<ServiceData>
+    lateinit var serviceList:Array<Int>
+    lateinit var priceList:Array<Int>
 
     // navigation bar
     lateinit var toggle: ActionBarDrawerToggle
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_medical_tests)
+        setContentView(R.layout.service_details_layout)
+        supportActionBar!!.elevation= 0F
+        serviceList = arrayOf(R.string.medicalClinicEA,R.string.medicalClinicWM,R.string.medicalClinicHM,R.string.medicalClinicMA)
 
-        serviceList = arrayOf(
-            " Single Mutation",
-            " Gene Expression",
-            " Panel Text"
-        )
+        priceList = arrayOf(R.string.medicalClinicEAT,R.string.medicalClinicWMT,R.string.medicalClinicHMT,R.string.medicalClinicMAT)
 
-        priceList = arrayOf(
-            " 1500LE",
-            " 2000LE",
-            " 1000LE"
-        )
-
-
-        recycleView = findViewById(R.id.recycleview2)
+        recycleView = findViewById(R.id.recycleView)
         recycleView.layoutManager = LinearLayoutManager(this)
         recycleView.setHasFixedSize(true)
-        dataList = arrayListOf<DataClass6>()
-        getData()
+        dataList = arrayListOf<ServiceData>()
+         getData()
 
         //navigation bar
         val drawerLayout : DrawerLayout = findViewById(R.id.drawerLayout)
@@ -65,6 +56,13 @@ class MedicalTests : AppCompatActivity() , OnItemRecycleClickListener {
         }
     }
 
+    //lisener
+    override fun onClick(c: ServiceData?) {
+        val toast = Toast.makeText(applicationContext, c?.serviceImage!!, Toast.LENGTH_LONG)
+        toast.show()
+    }
+
+
     //nav_bar
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (toggle.onOptionsItemSelected(item)) {
@@ -75,16 +73,10 @@ class MedicalTests : AppCompatActivity() , OnItemRecycleClickListener {
 
     private fun getData(){
         for(i in serviceList.indices){
-            val dataClass = DataClass6(serviceList[i], priceList[i])
+            val dataClass = ServiceData(0,serviceList[i], priceList[i])
             dataList.add(dataClass)
         }
-        recycleView.adapter = AdapterClass6(dataList)
-    }
-
-    //listener
-    override fun onClick(c: serviceModel?) {
-        val toast = Toast.makeText(applicationContext, c?.serviceImage!!, Toast.LENGTH_LONG)
-        toast.show()
+        recycleView.adapter = ServiceDetailsAdapter(dataList)
     }
 
 }

@@ -1,9 +1,11 @@
-package com.example.ocs.patient.services
+package com.example.ocs.Patient.services
 
 import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
+import android.widget.ImageView
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.drawerlayout.widget.DrawerLayout
@@ -12,37 +14,28 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.ocs.R
 import com.google.android.material.navigation.NavigationView
 
-class MedicalClinic : AppCompatActivity(), OnItemRecycleClickListener {
+class MedicalRays : AppCompatActivity(), OnItemRecycleClickListener {
     private lateinit var recycleView: RecyclerView
-    private lateinit var dataList: ArrayList<DataClass6>
-    lateinit var serviceList:Array<String>
-    lateinit var priceList:Array<String>
-
+    private lateinit var dataList: ArrayList<ServiceData>
+    private lateinit var serviceList:Array<Int>
+    private lateinit var priceList:Array<Int>
+    private lateinit var image:ImageView
+    private lateinit var serviceName:TextView
     // navigation bar
     lateinit var toggle: ActionBarDrawerToggle
+
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_medical_clinic)
-
-        serviceList = arrayOf(
-            " DR/ Mohamed Ali",
-            " DR/ Mostafa Ahmed",
-            " DR/ Hamza Mahmoud"
-        )
-
-        priceList = arrayOf(
-            " from 10am to 10pm ",
-            " from 9am to 9pm ",
-            " from 8am to 8pm "
-        )
-
-
-        recycleView = findViewById(R.id.recycleview2)
+        setContentView(R.layout.service_details_layout)
+        supportActionBar!!.elevation= 0F
+        init()
+        serviceList = arrayOf(R.string.medicalRaysCT,R.string.medicalRaysMRI,R.string.medicalRaysUS,R.string.medicalRaysxray)
+        priceList = arrayOf(R.string.medicalRaysCTP,R.string.medicalRaysMRIP,R.string.medicalRaysUSP,R.string.medicalRaysxrayP)
         recycleView.layoutManager = LinearLayoutManager(this)
         recycleView.setHasFixedSize(true)
-        dataList = arrayListOf<DataClass6>()
-        getData()
+        dataList = arrayListOf<ServiceData>()
+       getData()
 
         //navigation bar
         val drawerLayout : DrawerLayout = findViewById(R.id.drawerLayout)
@@ -64,14 +57,13 @@ class MedicalClinic : AppCompatActivity(), OnItemRecycleClickListener {
             true
         }
     }
-
-    //lisener
-    override fun onClick(c: serviceModel?) {
-        val toast = Toast.makeText(applicationContext, c?.serviceImage!!, Toast.LENGTH_LONG)
-        toast.show()
-    }
-
-
+private fun init(){
+    image=findViewById(R.id.serviceImage)
+    serviceName=findViewById(R.id.serviceName)
+    image.setImageResource(R.drawable.rays_service)
+    serviceName.setText(R.string.medical_Rays_radiobn)
+    recycleView = findViewById(R.id.recycleView)
+}
     //nav_bar
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (toggle.onOptionsItemSelected(item)) {
@@ -82,10 +74,16 @@ class MedicalClinic : AppCompatActivity(), OnItemRecycleClickListener {
 
     private fun getData(){
         for(i in serviceList.indices){
-            val dataClass = DataClass6(serviceList[i], priceList[i])
+            val dataClass = ServiceData(0,serviceList[i], priceList[i])
             dataList.add(dataClass)
         }
-        recycleView.adapter = AdapterClass6(dataList)
+        recycleView.adapter = ServiceDetailsAdapter(dataList)
+    }
+
+    //listener
+    override fun onClick(c: ServiceData?) {
+        val toast = Toast.makeText(applicationContext, c?.serviceImage!!, Toast.LENGTH_LONG)
+        toast.show()
     }
 
 }

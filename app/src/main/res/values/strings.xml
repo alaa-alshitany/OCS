@@ -187,6 +187,38 @@
     <string name="Time">Time</string>
     <string name="send_SMs">Send SMS</string>
 
+    <string name="medicalRaysCT">CT</string>
+    <string name="medicalRaysMRI"> MRI</string>
+    <string name="medicalRaysUS">Ultrasound </string>
+    <string name="medicalRaysxray">X-rays</string>
+
+    <string name="medicalRaysCTP">440 LE</string>
+    <string name="medicalRaysMRIP">950 LE</string>
+    <string name="medicalRaysUSP">850 LE </string>
+    <string name="medicalRaysxrayP">300 LE</string>
+
+
+    <string name="medicalTestCBC">Complete blood count </string>
+    <string name="medicalTestLB">Liquid Biopsy</string>
+    <string name="medicalTestIm">Immunophenotyping</string>
+    <string name="medicalTestBC">Blood chemistry test</string>
+
+    <string name="medicalTestCBCP">1500 LE</string>
+    <string name="medicalTestLBP">2000 LE</string>
+    <string name="medicalTestImP">1000 LE </string>
+    <string name="medicalTestBCP">4500 LE</string>
+
+
+    <string name="medicalClinicEA">DR/ Eman Ahmed</string>
+    <string name="medicalClinicWM">DR/ Walid Mohamed</string>
+    <string name="medicalClinicHM">DR/ Hamza Mahmoud</string>
+    <string name="medicalClinicMA">DR/ Mohamed Ali</string>
+
+    <string name="medicalClinicEAT">From 10 AM to 1 PM</string>
+    <string name="medicalClinicWMT">From 1 PM to 5 PM</string>
+    <string name="medicalClinicHMT">From 5 PM to 8 PM </string>
+    <string name="medicalClinicMAT">From 8 PM to 10 PM</string>
+
 </resources>
 
 

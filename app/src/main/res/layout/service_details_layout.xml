@@ -7,7 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".patient.services.MedicalClinic">
+    tools:context=".Patient.services.MedicalClinic">
 
     <LinearLayout
         android:background="@color/white"
@@ -17,6 +17,7 @@
         android:orientation="vertical">
 
         <TextView
+            android:id="@+id/serviceName"
             android:layout_width="match_parent"
             android:layout_weight=".5"
             android:layout_height="0dp"
@@ -28,6 +29,7 @@
             android:textColor="@color/blue_500"/>
 
         <ImageView
+            android:id="@+id/serviceImage"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:outlineProvider="background"
@@ -39,7 +41,7 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="5"
-            android:id="@+id/recycleview2"
+            android:id="@+id/recycleView"
             />
     </LinearLayout>
     <com.google.android.material.navigation.NavigationView

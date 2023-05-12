@@ -1,4 +1,4 @@
-package com.example.ocs.patient.services
+package com.example.ocs.Patient.services
 
 import android.view.LayoutInflater
 import android.view.View
@@ -7,10 +7,10 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ocs.R
 
-class AdapterClass6 (private val dataList: ArrayList<DataClass6>): RecyclerView.Adapter<AdapterClass6.ViewHolderClass>(){
+class ServiceDetailsAdapter (private val dataList: ArrayList<ServiceData>): RecyclerView.Adapter<ServiceDetailsAdapter.ViewHolderClass>(){
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolderClass {
-        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.item_layout6, parent, false)
+        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.service_details_item, parent, false)
         return ViewHolderClass(itemView)
     }
 
@@ -20,14 +20,12 @@ class AdapterClass6 (private val dataList: ArrayList<DataClass6>): RecyclerView.
 
     override fun onBindViewHolder(holder: ViewHolderClass, position: Int) {
         val currentItem = dataList[position]
-        holder.rvTitle.text = currentItem.dataservice
-        holder.rvdetail.text = currentItem.dataprice
+        holder.serviceName.setText(currentItem.serviceName)
+        holder.servicePrice.setText(currentItem.price)
     }
 
     class ViewHolderClass (itemView: View): RecyclerView.ViewHolder(itemView) {
-        val rvTitle: TextView = itemView.findViewById(R.id.t_title)
-        val rvdetail: TextView = itemView.findViewById(R.id.d_title)
-
-
+        val serviceName: TextView = itemView.findViewById(R.id.serviceName)
+        val servicePrice: TextView = itemView.findViewById(R.id.servicePrice)
     }
 }

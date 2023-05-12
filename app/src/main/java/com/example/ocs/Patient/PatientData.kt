@@ -1,4 +1,4 @@
-package com.example.ocs.patient
+package com.example.ocs.Patient
 
 data class PatientData (
     val id:String?=null,
