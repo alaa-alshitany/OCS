@@ -68,6 +68,7 @@ class Doctors : AppCompatActivity() , OnItemRecycleClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_recycle_doctor)
+        supportActionBar!!.elevation= 0F
         init()
         getDoctorsData()
         addDoctorBtn.setOnClickListener { addDoctorDialog()}

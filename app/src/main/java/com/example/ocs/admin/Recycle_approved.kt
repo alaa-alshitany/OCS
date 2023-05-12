@@ -30,6 +30,7 @@ class recycle_approved : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_recycle_approved)
+        supportActionBar!!.elevation= 0F
 
         TitleList = arrayOf(
             " Mohammed Ahmed",
