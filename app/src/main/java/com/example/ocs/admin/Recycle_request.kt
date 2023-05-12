@@ -14,7 +14,7 @@ import com.example.ocs.patient.Profile.Profile
 import com.example.ocs.R
 import com.example.ocs.admin.Doctors.Doctors
 import com.example.ocs.patient.services.OnItemRecycleClickListener
-import com.example.ocs.patient.services.serviceModel
+import com.example.ocs.patient.services.ServiceData
 import com.google.android.material.navigation.NavigationView
 
 class recycle_request : AppCompatActivity(), OnItemRecycleClickListener {
@@ -94,7 +94,7 @@ class recycle_request : AppCompatActivity(), OnItemRecycleClickListener {
     }
 
     //lisener
-    override fun onClick(c: serviceModel?) {
+    override fun onClick(c: ServiceData?) {
         val toast = Toast.makeText(applicationContext, c?.serviceImage!!, Toast.LENGTH_LONG)
         toast.show()
     }

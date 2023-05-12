@@ -14,35 +14,26 @@ import com.google.android.material.navigation.NavigationView
 
 class MedicalClinic : AppCompatActivity(), OnItemRecycleClickListener {
     private lateinit var recycleView: RecyclerView
-    private lateinit var dataList: ArrayList<DataClass6>
-    lateinit var serviceList:Array<String>
-    lateinit var priceList:Array<String>
+    private lateinit var dataList: ArrayList<ServiceData>
+    lateinit var serviceList:Array<Int>
+    lateinit var priceList:Array<Int>
 
     // navigation bar
     lateinit var toggle: ActionBarDrawerToggle
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_medical_clinic)
+        setContentView(R.layout.service_details_layout)
+        supportActionBar!!.elevation= 0F
+        serviceList = arrayOf(R.string.medicalClinicEA,R.string.medicalClinicWM,R.string.medicalClinicHM,R.string.medicalClinicMA)
 
-        serviceList = arrayOf(
-            " DR/ Mohamed Ali",
-            " DR/ Mostafa Ahmed",
-            " DR/ Hamza Mahmoud"
-        )
+        priceList = arrayOf(R.string.medicalClinicEAT,R.string.medicalClinicWMT,R.string.medicalClinicHMT,R.string.medicalClinicMAT)
 
-        priceList = arrayOf(
-            " from 10am to 10pm ",
-            " from 9am to 9pm ",
-            " from 8am to 8pm "
-        )
-
-
-        recycleView = findViewById(R.id.recycleview2)
+        recycleView = findViewById(R.id.recycleView)
         recycleView.layoutManager = LinearLayoutManager(this)
         recycleView.setHasFixedSize(true)
-        dataList = arrayListOf<DataClass6>()
-        getData()
+        dataList = arrayListOf<ServiceData>()
+         getData()
 
         //navigation bar
         val drawerLayout : DrawerLayout = findViewById(R.id.drawerLayout)
@@ -66,7 +57,7 @@ class MedicalClinic : AppCompatActivity(), OnItemRecycleClickListener {
     }
 
     //lisener
-    override fun onClick(c: serviceModel?) {
+    override fun onClick(c: ServiceData?) {
         val toast = Toast.makeText(applicationContext, c?.serviceImage!!, Toast.LENGTH_LONG)
         toast.show()
     }
@@ -82,10 +73,10 @@ class MedicalClinic : AppCompatActivity(), OnItemRecycleClickListener {
 
     private fun getData(){
         for(i in serviceList.indices){
-            val dataClass = DataClass6(serviceList[i], priceList[i])
+            val dataClass = ServiceData(0,serviceList[i], priceList[i])
             dataList.add(dataClass)
         }
-        recycleView.adapter = AdapterClass6(dataList)
+        recycleView.adapter = ServiceDetailsAdapter(dataList)
     }
 
 }

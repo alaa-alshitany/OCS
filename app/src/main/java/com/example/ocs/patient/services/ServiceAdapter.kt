@@ -1,5 +1,4 @@
 package com.example.ocs.patient.services
-
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
@@ -11,7 +10,7 @@ import com.example.ocs.R
 
 
 //adapter-> creates new instance of view items and then feed them to the recycler view
-class serviceAdapter(val context:Context, val serviceList: List<serviceModel>, val listener: OnCardItemClickListener) : RecyclerView.Adapter<serviceAdapter.MyViewHolder>() {
+class ServiceAdapter(val context:Context, val serviceList: List<ServiceData>, val listener: OnCardItemClickListener) : RecyclerView.Adapter<ServiceAdapter.MyViewHolder>() {
 
     //create new view
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
@@ -46,6 +45,5 @@ class serviceAdapter(val context:Context, val serviceList: List<serviceModel>, v
 class MyViewHolder (ItemView: View) : RecyclerView.ViewHolder(ItemView){
     val serviceName:TextView=itemView.findViewById(R.id.serviceNam)
     val serviceImage:ImageView=itemView.findViewById(R.id.serviceImg)
-
 }
 }

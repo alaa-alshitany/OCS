@@ -48,15 +48,15 @@ class services : AppCompatActivity(), OnCardItemClickListener {
         list.layoutManager=LinearLayoutManager(this)
 
         // ArrayList of class serviceViewModel
-        val data = ArrayList<serviceModel>(4)
-        data.add(serviceModel(R.drawable.rays_service,R.string.slider2_title))
-        data.add(serviceModel(R.drawable.booking,R.string.book_appointment_title))
-        data.add(serviceModel(R.drawable.tests_service,R.string.slider3_title))
-        data.add(serviceModel(R.drawable.clinics_service,R.string.clinic_service))
+        val data = ArrayList<ServiceData>(4)
+        data.add(ServiceData(R.drawable.rays_service,R.string.slider2_title,0))
+        data.add(ServiceData(R.drawable.booking,R.string.book_appointment_title,0))
+        data.add(ServiceData(R.drawable.tests_service,R.string.slider3_title,0))
+        data.add(ServiceData(R.drawable.clinics_service,R.string.clinic_service,0))
 
 
         //This will pass the ArrayList to our Adapter
-        val adapter = serviceAdapter(this,data,this)
+        val adapter = ServiceAdapter(this,data,this)
 
         // Setting the Adapter with the recyclerview
         list.adapter = adapter
@@ -116,9 +116,9 @@ class services : AppCompatActivity(), OnCardItemClickListener {
         patientID=intent2.getStringExtra("patientID").toString()
     }
 
-    override fun onClick(c: serviceModel) {
+    override fun onClick(c: ServiceData) {
         if (c?.serviceImage!!.equals(R.drawable.rays_service)) {
-            val doneIntent = Intent(this, medical_rays::class.java)
+            val doneIntent = Intent(this, MedicalRays::class.java)
             startActivity(doneIntent) }
         else if (c?.serviceImage!!.equals(R.drawable.booking)) {
             val doneIntent = Intent(this, booking()::class.java)

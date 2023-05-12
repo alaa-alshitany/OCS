@@ -29,7 +29,7 @@
             android:name=".patient.services.MedicalTests"
             android:exported="false" />
         <activity
-            android:name=".patient.services.medical_rays"
+            android:name=".patient.services.MedicalRays"
             android:exported="false" />
         <activity
             android:name=".admin.recycle_request"
