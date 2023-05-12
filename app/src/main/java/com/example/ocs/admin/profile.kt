@@ -79,7 +79,7 @@ class profile : AppCompatActivity(), OnItemRecycleClickListener {
         onBackPressedDispatcher.onBackPressed()
     }
 
-    //lisener
+    //listener
     override fun onClick(c: ServiceData?) {
         val toast = Toast.makeText(applicationContext, c?.serviceImage!!, Toast.LENGTH_LONG)
         toast.show()

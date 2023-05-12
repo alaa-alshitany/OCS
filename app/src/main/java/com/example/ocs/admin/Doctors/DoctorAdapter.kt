@@ -24,9 +24,7 @@ class DoctorAdapter(private var dataList: ArrayList<DoctorData>): RecyclerView.A
         this.dataList=list
         notifyDataSetChanged()
     }
-    fun clearList(){
-        this.dataList.clear()
-    }
+
     class ViewHolderClass (itemView: View): RecyclerView.ViewHolder(itemView) {
         val doctorName: TextView = itemView.findViewById(R.id.doctorName)
     }
