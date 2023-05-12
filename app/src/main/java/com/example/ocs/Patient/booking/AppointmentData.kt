@@ -1,4 +1,4 @@
-package com.example.ocs.patient.booking
+package com.example.ocs.Patient.booking
 
 data class AppointmentData(
     val appointmentID :String?=null,

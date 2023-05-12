@@ -10,11 +10,11 @@ import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.ocs.patient.Profile.Profile
+import com.example.ocs.Patient.Profile.Profile
 import com.example.ocs.R
 import com.example.ocs.admin.Doctors.Doctors
-import com.example.ocs.patient.services.OnItemRecycleClickListener
-import com.example.ocs.patient.services.ServiceData
+import com.example.ocs.Patient.services.OnItemRecycleClickListener
+import com.example.ocs.Patient.services.ServiceData
 import com.google.android.material.navigation.NavigationView
 
 class recycle_request : AppCompatActivity(), OnItemRecycleClickListener {

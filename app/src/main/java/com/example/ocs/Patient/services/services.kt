@@ -1,4 +1,4 @@
-package com.example.ocs.patient.services
+package com.example.ocs.Patient.services
 
 import android.content.Context
 import android.content.Intent
@@ -14,8 +14,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ocs.Login_Register.login.Prefrences
 import com.example.ocs.Login_Register.login.Login
-import com.example.ocs.patient.Profile.Profile
-import com.example.ocs.patient.booking.BookAppointment
+import com.example.ocs.Patient.Profile.Profile
+import com.example.ocs.Patient.booking.BookAppointment
 import com.example.ocs.R
 import com.google.android.material.navigation.NavigationView
 

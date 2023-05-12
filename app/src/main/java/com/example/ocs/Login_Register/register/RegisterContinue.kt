@@ -11,7 +11,7 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
-import com.example.ocs.patient.PatientData
+import com.example.ocs.Patient.PatientData
 import com.example.ocs.R
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*

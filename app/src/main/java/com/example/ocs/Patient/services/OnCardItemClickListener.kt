@@ -1,4 +1,4 @@
-package com.example.ocs.patient.services
+package com.example.ocs.Patient.services
 
 interface OnCardItemClickListener {
     fun onClick(c: ServiceData)

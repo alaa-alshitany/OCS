@@ -23,13 +23,13 @@
             android:name=".admin.Dashboard"
             android:exported="false" />
         <activity
-            android:name=".patient.services.MedicalClinic"
+            android:name=".Patient.services.MedicalClinic"
             android:exported="false" />
         <activity
-            android:name=".patient.services.MedicalTests"
+            android:name=".Patient.services.MedicalTests"
             android:exported="false" />
         <activity
-            android:name=".patient.services.MedicalRays"
+            android:name=".Patient.services.MedicalRays"
             android:exported="false" />
         <activity
             android:name=".admin.recycle_request"
@@ -44,16 +44,16 @@
             android:name=".doctor.profile_doctor"
             android:exported="false" />
         <activity
-            android:name=".patient.Profile.Profile"
+            android:name=".Patient.Profile.Profile"
             android:exported="false" />
         <activity
-            android:name=".patient.booking.BookAppointment"
+            android:name=".Patient.booking.BookAppointment"
             android:exported="false" />
         <activity
             android:name=".admin.profile"
             android:exported="false" />
         <activity
-            android:name=".patient.services.services"
+            android:name=".Patient.services.services"
             android:exported="false"
             android:theme="@style/Theme.OCS" />
         <activity

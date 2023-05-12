@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ocs.R
 import com.example.ocs.admin.Doctors.DoctorAdapter
-import com.example.ocs.patient.booking.AppointmentData
+import com.example.ocs.Patient.booking.AppointmentData
 
 class AppointmentAdapter (private var dataList: ArrayList<AppointmentData>):
     RecyclerView.Adapter<DoctorAdapter.ViewHolderClass>() {

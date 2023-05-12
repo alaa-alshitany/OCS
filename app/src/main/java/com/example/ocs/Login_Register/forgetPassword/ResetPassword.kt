@@ -6,7 +6,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.example.ocs.patient.PatientData
+import com.example.ocs.Patient.PatientData
 import com.example.ocs.R
 import com.google.firebase.database.*
 import com.google.firebase.database.ktx.getValue

@@ -1,4 +1,4 @@
-package com.example.ocs.patient.services
+package com.example.ocs.Patient.services
 
 import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity

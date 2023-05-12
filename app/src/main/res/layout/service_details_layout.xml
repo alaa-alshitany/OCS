@@ -7,7 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".patient.services.MedicalClinic">
+    tools:context=".Patient.services.MedicalClinic">
 
     <LinearLayout
         android:background="@color/white"

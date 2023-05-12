@@ -24,9 +24,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.ocs.R
 import com.example.ocs.admin.Dashboard
 import com.example.ocs.admin.recycle_request
-import com.example.ocs.patient.Profile.Profile
-import com.example.ocs.patient.services.OnItemRecycleClickListener
-import com.example.ocs.patient.services.ServiceData
+import com.example.ocs.Patient.Profile.Profile
+import com.example.ocs.Patient.services.OnItemRecycleClickListener
+import com.example.ocs.Patient.services.ServiceData
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.FirebaseAuth
