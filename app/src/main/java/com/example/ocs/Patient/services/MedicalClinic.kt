@@ -1,6 +1,7 @@
 package com.example.ocs.Patient.services
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
@@ -9,6 +10,9 @@ import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.ocs.Login_Register.login.Login
+import com.example.ocs.Patient.Profile.Profile
+import com.example.ocs.Patient.booking.BookAppointment
 import com.example.ocs.R
 import com.google.android.material.navigation.NavigationView
 
@@ -46,14 +50,34 @@ class MedicalClinic : AppCompatActivity(), OnItemRecycleClickListener {
         supportActionBar?.setHomeAsUpIndicator(R.drawable.baseline_menu_24)
         navView.setNavigationItemSelectedListener {
             when(it.itemId){
-                R.id.nau_home-> Toast.makeText(applicationContext,"clicked Home", Toast.LENGTH_SHORT).show()
-                R.id.nau_profile-> Toast.makeText(applicationContext,"clicked Profile", Toast.LENGTH_SHORT).show()
-                R.id.nau_booking-> Toast.makeText(applicationContext,"clicked Booking", Toast.LENGTH_SHORT).show()
-                R.id.nau_logout-> Toast.makeText(applicationContext,"clicked Logout", Toast.LENGTH_SHORT).show()
+                R.id.nau_home-> home()
+                R.id.nau_profile-> patientProfile()
+                R.id.nau_booking-> booking()
+                R.id.nau_logout-> logout()
             }
 
             true
         }
+    }
+
+    private fun logout() {
+
+    }
+    private fun moveToLogin() {
+        startActivity(Intent(this, Login::class.java).putExtra("hint",R.string.p_email_hint.toString()))
+        Toast.makeText(this,R.string.logout, Toast.LENGTH_LONG).show()
+        finish()
+    }
+    private fun booking() {
+        startActivity(Intent(this, BookAppointment::class.java))
+    }
+
+    private fun patientProfile() {
+        startActivity(Intent(this, Profile::class.java))
+    }
+
+    private fun home() {
+        startActivity(Intent(this, services::class.java))
     }
 
     //lisener
