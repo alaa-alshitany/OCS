@@ -26,6 +26,7 @@ class profile : AppCompatActivity(), OnItemRecycleClickListener {
         setContentView(R.layout.activity_admin_profile)
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
         supportActionBar!!.setHomeAsUpIndicator(R.drawable.baseline_arrow_back_24)
+        supportActionBar!!.elevation= 0F
 
         //nav_bar
         val drawerLayout : DrawerLayout = findViewById(R.id.drawerLayout)

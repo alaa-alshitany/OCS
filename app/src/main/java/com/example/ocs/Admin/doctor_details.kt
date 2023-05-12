@@ -20,6 +20,7 @@ class doctor_details: AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.doctor_details)
+        supportActionBar!!.elevation= 0F
 
         //nav_bar
         val drawerLayout : DrawerLayout = findViewById(R.id.drawerLayout)

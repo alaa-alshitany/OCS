@@ -34,6 +34,7 @@ class recycle_request : AppCompatActivity(), OnItemRecycleClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_recycle_request)
+        supportActionBar!!.elevation= 0F
 
         TitleList = arrayOf(
             " Mohammed Ahmed",
