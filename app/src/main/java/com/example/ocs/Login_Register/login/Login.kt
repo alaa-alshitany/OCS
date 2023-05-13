@@ -98,7 +98,7 @@ class Login : AppCompatActivity() {
         }
     }
     private fun home() {
-        startActivity(Intent(activity, services::class.java).putExtra("patientID",pref.prefID))
+        startActivity(Intent(activity, services::class.java))
         finish()
     }
     private fun register() {

@@ -2,6 +2,8 @@ package com.example.ocs.Admin.Appointments
 
 import android.os.Bundle
 import android.widget.Button
+import android.widget.ImageButton
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
@@ -30,6 +32,7 @@ class Appointments : AppCompatActivity()  {
     private lateinit var approvedList:ArrayList<AppointmentData>
     private lateinit var requestsBtn:Button
     private lateinit var approvedBtn:Button
+    private lateinit var layoutTitle:TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -60,6 +63,7 @@ class Appointments : AppCompatActivity()  {
             getRequestsData()
         }
         approvedBtn.setOnClickListener {
+            layoutTitle.setText(R.string.approvedBtn)
             getApprovedData()
         }
     }
@@ -77,11 +81,12 @@ class Appointments : AppCompatActivity()  {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         requestsBtn=findViewById(R.id.btn_req)
         approvedBtn=findViewById(R.id.btn_approved)
+        layoutTitle=findViewById(R.id.approved_txtView)
     }
     private fun getRequestsData(){
         database.child("Appointments").addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
-                //doctorList.clear()
+                requestsList.clear()
                 if (snapshot.exists()){
                     for (appData in snapshot.children){
                         var appointment = appData.getValue<AppointmentData>()
@@ -95,29 +100,31 @@ class Appointments : AppCompatActivity()  {
                 }
             }
             override fun onCancelled(error: DatabaseError) {
-
+            Toast.makeText(applicationContext,R.string.appointmentsNotFound,Toast.LENGTH_LONG).show()
             }
 
         })
 
     }
+
     private fun getApprovedData(){
         database.child("Appointments").addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
-                //doctorList.clear()
+                approvedList.clear()
                 if (snapshot.exists()){
                     for (appData in snapshot.children){
                         var appointment = appData.getValue<AppointmentData>()
                         if(appointment?.status.equals("Approved")){
-                            //val patientName=appData.getValue(AppointmentData::class.java)
                             approvedList.add(appointment!!)
                         }
                     }
                     appAdapter= AppointmentAdapter(approvedList)
                     requestsRecycle.adapter=appAdapter
+
                 }
             }
             override fun onCancelled(error: DatabaseError) {
+                Toast.makeText(applicationContext,R.string.appointmentsNotFound,Toast.LENGTH_LONG).show()
 
             }
 

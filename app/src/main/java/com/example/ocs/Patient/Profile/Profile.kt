@@ -1,6 +1,7 @@
 package com.example.ocs.Patient.Profile
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -8,6 +9,7 @@ import android.view.MenuItem
 import android.widget.TextView
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.drawerlayout.widget.DrawerLayout
+import com.example.ocs.Login_Register.login.Prefrences
 import com.example.ocs.Patient.booking.BookAppointment
 import com.example.ocs.Patient.services.services
 import com.example.ocs.R
@@ -17,14 +19,14 @@ import com.google.firebase.database.*
 
 class Profile : AppCompatActivity() {
     private lateinit var intent2: Intent
-    private lateinit var patientID:String
     private  var dataBase: DatabaseReference = FirebaseDatabase.getInstance().reference
     private lateinit var name:TextView
     private lateinit var birthDate:TextView
     private lateinit var phone:TextView
     private lateinit var address:TextView
     private lateinit var email:TextView
-
+    private lateinit var pref: Prefrences
+    private lateinit var context: Context
     // navigation bar
     lateinit var toggle: ActionBarDrawerToggle
 
@@ -34,8 +36,8 @@ class Profile : AppCompatActivity() {
         setContentView(R.layout.activity_profile_patient)
         supportActionBar!!.elevation= 0F
         init()
-        getExtras()
-        getDataDB()
+        //getExtras()
+        //getDataDB()
 
         //navigation bar
         val drawerLayout : DrawerLayout = findViewById(R.id.drawerLayout)
@@ -61,11 +63,11 @@ class Profile : AppCompatActivity() {
     }
 
     private fun booking() {
-        startActivity(Intent(this, BookAppointment::class.java).putExtra("patientID",patientID))
+        startActivity(Intent(this, BookAppointment::class.java))
     }
 
     private fun patientProfile() {
-        startActivity(Intent(this, Profile::class.java).putExtra("patientID",patientID))
+        startActivity(Intent(this, Profile::class.java))
     }
 
     private fun home() {
@@ -88,9 +90,9 @@ class Profile : AppCompatActivity() {
         phone=findViewById(R.id.phone_txt)
         email=findViewById(R.id.email_txt)
         address=findViewById(R.id.address_txt)
-    }
-    private fun getDataDB(){
-        dataBase.child("Patients").child(patientID).get().addOnSuccessListener {
+        context=this
+        pref= Prefrences(context)
+        dataBase.child("Patients").child(pref.prefID.toString()).get().addOnSuccessListener {
             if (it.exists()){
                 name.text = it.child("firstName").value.toString().plus(" ").plus(it.child("lastName").value.toString())
                 address.text = it.child("address").value.toString()
@@ -98,10 +100,7 @@ class Profile : AppCompatActivity() {
                 phone.text = it.child("phone").value.toString()
                 email.text = it.child("email").value.toString()
             }
-                    }
-    }
-    private fun getExtras(){
-        patientID=intent2.getStringExtra("patientID").toString()
+        }
     }
 
     override fun onBackPressed() {

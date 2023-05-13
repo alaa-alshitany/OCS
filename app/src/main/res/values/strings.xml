@@ -221,6 +221,7 @@
 
     <string name="requestsBtn">Requests</string>
     <string name="approvedBtn">Approved</string>
+    <string name="appointmentsNotFound">No Appointments Found</string>
 </resources>
 
 

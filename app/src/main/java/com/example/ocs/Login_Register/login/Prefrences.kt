@@ -15,21 +15,23 @@ class Prefrences(context: Context) {
         get() = pref.getBoolean(TAG_STATUS,false)
         set(value)=pref.edit().putBoolean(TAG_STATUS,value).apply()
 
+
     var prefLevel:String?
         get() = pref.getString(TAG_LEVEL,"")
         set(value) = pref.edit().putString(TAG_LEVEL,value).apply()
 
     var prefID:String?
-    get() = pref.getString(TAG_ID,"")
-    set(value) =pref.edit().putString(TAG_ID,value).apply()
+        get() = pref.getString(TAG_ID,"")
+        set(value) =pref.edit().putString(TAG_ID,value).apply()
 
     var userName:String?
-    get() = pref.getString(TAG_USERNAME,"")
-    set(value) = pref.edit().putString(TAG_USERNAME,value).apply()
+        get() = pref.getString(TAG_USERNAME,"")
+        set(value) = pref.edit().putString(TAG_USERNAME,value).apply()
 
     fun prefClear(){
         pref.edit().remove(TAG_STATUS).apply()
         pref.edit().remove(TAG_LEVEL).apply()
         pref.edit().remove(TAG_ID).apply()
+        pref.edit().remove(TAG_USERNAME).apply()
     }
 }
