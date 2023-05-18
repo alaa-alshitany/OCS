@@ -2,7 +2,6 @@ package com.example.ocs.Admin.Appointments
 
 import android.os.Bundle
 import android.widget.Button
-import android.widget.ImageButton
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
@@ -10,10 +9,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.ocs.Admin.AdminData
-import com.example.ocs.Admin.DataClass_req
-import com.example.ocs.Admin.Doctors.DoctorAdapter
-import com.example.ocs.Admin.Doctors.DoctorData
 import com.example.ocs.Patient.booking.AppointmentData
 import com.example.ocs.R
 import com.google.android.material.navigation.NavigationView
@@ -67,6 +62,10 @@ class Appointments : AppCompatActivity()  {
             layoutTitle.setText(R.string.approvedBtn)
             getApprovedData()
         }
+    }
+
+    override fun onBackPressed() {
+        onBackPressedDispatcher.onBackPressed()
     }
     private fun init(){
         requestsRecycle=findViewById(R.id.appointmentRecycle)

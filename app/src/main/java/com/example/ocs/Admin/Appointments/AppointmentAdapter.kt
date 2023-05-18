@@ -1,8 +1,6 @@
 package com.example.ocs.Admin.Appointments
 
 import android.app.Dialog
-import android.graphics.Color
-import android.graphics.drawable.ColorDrawable
 import android.view.Window
 import android.view.WindowManager
 import android.util.DisplayMetrics
@@ -26,6 +24,7 @@ class AppointmentAdapter (private var dataList: ArrayList<AppointmentData>):
         val acceptBtn:ImageButton=itemView.findViewById(R.id.accept)
         val cancelBtn:ImageButton=itemView.findViewById(R.id.cancel)
 
+
     }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolderClass {
         val itemView = LayoutInflater.from(parent.context).inflate(R.layout.appointment_card, parent, false)
@@ -35,6 +34,7 @@ class AppointmentAdapter (private var dataList: ArrayList<AppointmentData>):
     override fun getItemCount(): Int {
         return dataList.size
     }
+
     override fun onBindViewHolder(holder: AppointmentAdapter.ViewHolderClass, position: Int) {
         val context = holder.itemView.context
         val currentItem = dataList[position]
@@ -42,19 +42,18 @@ class AppointmentAdapter (private var dataList: ArrayList<AppointmentData>):
         holder.patientPhone.text=currentItem.phoneNumber
         holder.service.text=currentItem.serviceType
         holder.acceptBtn.setOnClickListener {
-                var  dialog=Dialog(context)
-                dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
-                dialog.setCancelable(false)
-                dialog.setContentView(R.layout.accept_request_dialog)
-                //window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-                dialog.show()
-                val displayMetrics= DisplayMetrics()
-                //windowManager.defaultDisplay.getMetrics(displayMetrics)
-               // val layoutParam= WindowManager.LayoutParams()
-                //layoutParam.copyFrom(dialog.window?.attributes)
-               // layoutParam.width=(displayMetrics.widthPixels *0.9F).toInt()
-//                dialog.window?.attributes=layoutParam
-                database.child("Appointments").child(currentItem.appointmentID.toString())
+        var  dialog=Dialog(context)
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+        dialog.setCancelable(false)
+        dialog.setContentView(R.layout.accept_request_dialog)
+        dialog.show()
+        val displayMetrics= DisplayMetrics()
+        val layoutParam=WindowManager.LayoutParams()
+        layoutParam.copyFrom(dialog.window?.attributes)
+        layoutParam.width=(700)
+        layoutParam.height=(1100)
+        dialog.window?.attributes=layoutParam
+            database.child("Appointments").child(currentItem.appointmentID.toString())
 
         }
         holder.cancelBtn.setOnClickListener {

@@ -12,6 +12,7 @@ class DoctorAdapter(private var dataList: ArrayList<DoctorData>): RecyclerView.A
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolderClass {
         val itemView = LayoutInflater.from(parent.context).inflate(R.layout.doctor_card, parent, false)
         return ViewHolderClass(itemView)
+        notifyDataSetChanged()
     }
     override fun getItemCount(): Int {
         return dataList.size
