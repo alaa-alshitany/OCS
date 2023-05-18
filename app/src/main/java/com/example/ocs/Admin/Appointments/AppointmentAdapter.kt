@@ -1,8 +1,12 @@
 package com.example.ocs.Admin.Appointments
 
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.app.Dialog
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
+import android.view.Window
+import android.view.WindowManager
+import android.util.DisplayMetrics
+import android.view.*
 import android.widget.ImageButton
 import android.widget.TextView
 import android.widget.Toast
@@ -11,7 +15,6 @@ import com.example.ocs.R
 import com.example.ocs.Patient.booking.AppointmentData
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.database.ValueEventListener
 
 class AppointmentAdapter (private var dataList: ArrayList<AppointmentData>):
     RecyclerView.Adapter<AppointmentAdapter.ViewHolderClass>() {
@@ -24,26 +27,36 @@ class AppointmentAdapter (private var dataList: ArrayList<AppointmentData>):
         val cancelBtn:ImageButton=itemView.findViewById(R.id.cancel)
 
     }
-        private fun acceptRequest(){
-
-        }
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolderClass {
         val itemView = LayoutInflater.from(parent.context).inflate(R.layout.appointment_card, parent, false)
         return ViewHolderClass(itemView)
         notifyDataSetChanged()
     }
-
     override fun getItemCount(): Int {
         return dataList.size
     }
-
     override fun onBindViewHolder(holder: AppointmentAdapter.ViewHolderClass, position: Int) {
+        val context = holder.itemView.context
         val currentItem = dataList[position]
         holder.patientName.text =currentItem.patientName
         holder.patientPhone.text=currentItem.phoneNumber
         holder.service.text=currentItem.serviceType
-        holder.acceptBtn.setOnClickListener { acceptRequest() }
+        holder.acceptBtn.setOnClickListener {
+                var  dialog=Dialog(context)
+                dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+                dialog.setCancelable(false)
+                dialog.setContentView(R.layout.accept_request_dialog)
+                //window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+                dialog.show()
+                val displayMetrics= DisplayMetrics()
+                //windowManager.defaultDisplay.getMetrics(displayMetrics)
+               // val layoutParam= WindowManager.LayoutParams()
+                //layoutParam.copyFrom(dialog.window?.attributes)
+               // layoutParam.width=(displayMetrics.widthPixels *0.9F).toInt()
+//                dialog.window?.attributes=layoutParam
+                database.child("Appointments").child(currentItem.appointmentID.toString())
+
+        }
         holder.cancelBtn.setOnClickListener {
             database.child("Appointments").child(currentItem.appointmentID.toString()).removeValue().addOnSuccessListener {
                 Toast.makeText(holder.itemView.context,"deleted",Toast.LENGTH_LONG).show()

@@ -60,6 +60,7 @@ class Appointments : AppCompatActivity()  {
             true
         }
         requestsBtn.setOnClickListener {
+            layoutTitle.setText(R.string.requestsBtn)
             getRequestsData()
         }
         approvedBtn.setOnClickListener {
