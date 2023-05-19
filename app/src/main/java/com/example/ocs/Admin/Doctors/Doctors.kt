@@ -230,6 +230,7 @@ class Doctors : AppCompatActivity() , OnItemRecycleClickListener {
                 dateEntered=LocalDate.of(year,month,dayOfMonth)
             }, year, month, day
         )
+        datePickerDialog.datePicker.maxDate=calendar.timeInMillis
         datePickerDialog.show()
     }
     private fun checkEmptyFields():Boolean {

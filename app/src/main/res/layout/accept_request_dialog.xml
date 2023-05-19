@@ -123,10 +123,16 @@
                  />
         </com.google.android.material.textfield.TextInputLayout>
 
+
+        <androidx.appcompat.widget.AppCompatSpinner
+            android:id="@+id/doctorSpinner"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight=".5"/>
         <Space
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight=".4">
+            android:layout_weight=".2">
 
         </Space>
         <LinearLayout

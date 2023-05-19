@@ -1,20 +1,27 @@
 package com.example.ocs.Admin.Appointments
 
 import android.content.Context
+import android.content.pm.PackageManager
+import android.os.Build
 import android.os.Bundle
+import android.telephony.SmsManager
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.ocs.Admin.Doctors.DoctorData
 import com.example.ocs.Patient.booking.AppointmentData
 import com.example.ocs.R
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.database.*
 import com.google.firebase.database.ktx.getValue
+import java.util.Dictionary
 
 class Appointments : AppCompatActivity()  {
 
@@ -30,12 +37,15 @@ class Appointments : AppCompatActivity()  {
     private lateinit var approvedBtn:Button
     private lateinit var layoutTitle:TextView
     private lateinit var context: Context
+    private lateinit var doctorList: MutableMap<String,String>
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_admin_requests)
         supportActionBar!!.elevation=0F
         init()
+        getDoctorList()
         getRequestsData()
         val drawerLayout : DrawerLayout = findViewById(R.id.drawerLayout)
         val navView : NavigationView = findViewById(R.id.nav_view)
@@ -57,6 +67,7 @@ class Appointments : AppCompatActivity()  {
             true
         }
         requestsBtn.setOnClickListener {
+            //Toast.makeText(context,doctorList.size,Toast.LENGTH_LONG).show()
             layoutTitle.setText(R.string.requestsBtn)
             getRequestsData()
         }
@@ -75,6 +86,7 @@ class Appointments : AppCompatActivity()  {
         requestsRecycle.setHasFixedSize(true)
         requestsList= arrayListOf<AppointmentData>()
         approvedList= arrayListOf<AppointmentData>()
+        doctorList= mutableMapOf<String,String>()
         drawerLayout = findViewById(R.id.drawerLayout)
         navView = findViewById(R.id.nav_view)
         toggle = ActionBarDrawerToggle( this, drawerLayout, R.string.open, R.string.close)
@@ -86,7 +98,30 @@ class Appointments : AppCompatActivity()  {
         layoutTitle=findViewById(R.id.approved_txtView)
         context=this
     }
+    private fun getDoctorList(){
+        database.child("Doctors").addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                if (snapshot.exists()) {
+                    for (docData in snapshot.children) {
+                        val doctor = docData.getValue<DoctorData>()
+                        var doctorName ="DR/ ${doctor!!.firstName} ${doctor!!.lastName}"
+                        var doctorID="${doctor!!.id}"
+                        doctorList.put(doctorName,doctorID)
+                    }
+                }else{
+                    Toast.makeText(applicationContext,"canceled", Toast.LENGTH_LONG).show()
+                }
+            }
+            override fun onCancelled(error: DatabaseError) {
+                TODO("Not yet implemented")
+            }
+        })
+    }
     private fun getRequestsData(){
+        if(ContextCompat.checkSelfPermission(this,android.Manifest.permission.SEND_SMS)
+            != PackageManager.PERMISSION_GRANTED){
+            ActivityCompat.requestPermissions(this, arrayOf(android.Manifest.permission.SEND_SMS),1)
+        }
         database.child("Appointments").addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 requestsList.clear()
@@ -98,7 +133,7 @@ class Appointments : AppCompatActivity()  {
                             requestsList.add(appointment!!)
                         }
                     }
-                    appAdapter= AppointmentAdapter(context,requestsList)
+                    appAdapter= AppointmentAdapter(context,requestsList,doctorList)
                     requestsRecycle.adapter=appAdapter
                 }
             }
@@ -121,7 +156,7 @@ class Appointments : AppCompatActivity()  {
                             approvedList.add(appointment!!)
                         }
                     }
-                    appAdapter= AppointmentAdapter(context,approvedList)
+                    appAdapter= AppointmentAdapter(context,approvedList,doctorList)
                     requestsRecycle.adapter=appAdapter
 
                 }

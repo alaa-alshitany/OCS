@@ -19,7 +19,7 @@ class DoctorAdapter(private var dataList: ArrayList<DoctorData>): RecyclerView.A
     }
     override fun onBindViewHolder(holder: ViewHolderClass, position: Int) {
         val currentItem = dataList[position]
-        holder.doctorName.text ="DR/ "+currentItem.firstName+" "+currentItem.lastName
+        holder.doctorName.text ="DR/ ${currentItem.firstName} ${currentItem.lastName}"
     }
     fun setFilteredList(list:ArrayList<DoctorData>){
         this.dataList=list
