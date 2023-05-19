@@ -16,8 +16,8 @@ import java.time.LocalDate
 import java.util.*
 import kotlin.collections.ArrayList
 
-class AppointmentAdapter (var context: Context, private var dataList: ArrayList<AppointmentData>,private var doctorList:MutableMap<String,String>):
-    RecyclerView.Adapter<AppointmentAdapter.ViewHolderClass>() {
+class RequestsAdapter (var context: Context, private var dataList: ArrayList<AppointmentData>, private var doctorList:MutableMap<String,String>):
+    RecyclerView.Adapter<RequestsAdapter.ViewHolderClass>() {
     var database: DatabaseReference = FirebaseDatabase.getInstance().reference
     lateinit var  dialog:Dialog
     private lateinit var dateEntered:LocalDate
@@ -30,7 +30,7 @@ class AppointmentAdapter (var context: Context, private var dataList: ArrayList<
         val cancelBtn:ImageButton=itemView.findViewById(R.id.cancel)
     }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolderClass {
-        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.appointment_card, parent, false)
+        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.appointment_request_card, parent, false)
         return ViewHolderClass(itemView)
         notifyDataSetChanged()
     }
@@ -38,7 +38,7 @@ class AppointmentAdapter (var context: Context, private var dataList: ArrayList<
         return dataList.size
     }
 
-    override fun onBindViewHolder(holder: AppointmentAdapter.ViewHolderClass, position: Int) {
+    override fun onBindViewHolder(holder: RequestsAdapter.ViewHolderClass, position: Int) {
         val currentItem = dataList[position]
         holder.patientName.text =currentItem.patientName
         holder.patientPhone.text=currentItem.phoneNumber

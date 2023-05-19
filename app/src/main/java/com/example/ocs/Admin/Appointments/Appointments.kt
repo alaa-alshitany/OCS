@@ -2,9 +2,7 @@ package com.example.ocs.Admin.Appointments
 
 import android.content.Context
 import android.content.pm.PackageManager
-import android.os.Build
 import android.os.Bundle
-import android.telephony.SmsManager
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
@@ -21,7 +19,6 @@ import com.example.ocs.R
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.database.*
 import com.google.firebase.database.ktx.getValue
-import java.util.Dictionary
 
 class Appointments : AppCompatActivity()  {
 
@@ -31,7 +28,8 @@ class Appointments : AppCompatActivity()  {
     private lateinit var drawerLayout : DrawerLayout
     private lateinit var navView : NavigationView
     private lateinit var toggle: ActionBarDrawerToggle
-    private lateinit var appAdapter :AppointmentAdapter
+    private lateinit var requestsAdapter :RequestsAdapter
+    private lateinit var approvedAdapter: ApprovedAdapter
     private lateinit var approvedList:ArrayList<AppointmentData>
     private lateinit var requestsBtn:Button
     private lateinit var approvedBtn:Button
@@ -133,8 +131,8 @@ class Appointments : AppCompatActivity()  {
                             requestsList.add(appointment!!)
                         }
                     }
-                    appAdapter= AppointmentAdapter(context,requestsList,doctorList)
-                    requestsRecycle.adapter=appAdapter
+                    requestsAdapter= RequestsAdapter(context,requestsList,doctorList)
+                    requestsRecycle.adapter=requestsAdapter
                 }
             }
             override fun onCancelled(error: DatabaseError) {
@@ -156,8 +154,8 @@ class Appointments : AppCompatActivity()  {
                             approvedList.add(appointment!!)
                         }
                     }
-                    appAdapter= AppointmentAdapter(context,approvedList,doctorList)
-                    requestsRecycle.adapter=appAdapter
+                    approvedAdapter= ApprovedAdapter(context,approvedList,doctorList)
+                    requestsRecycle.adapter=approvedAdapter
 
                 }
             }
