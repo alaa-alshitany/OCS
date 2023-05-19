@@ -1,5 +1,6 @@
 package com.example.ocs.Admin.Appointments
 
+import android.content.Context
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
@@ -28,6 +29,7 @@ class Appointments : AppCompatActivity()  {
     private lateinit var requestsBtn:Button
     private lateinit var approvedBtn:Button
     private lateinit var layoutTitle:TextView
+    private lateinit var context: Context
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -82,6 +84,7 @@ class Appointments : AppCompatActivity()  {
         requestsBtn=findViewById(R.id.btn_req)
         approvedBtn=findViewById(R.id.btn_approved)
         layoutTitle=findViewById(R.id.approved_txtView)
+        context=this
     }
     private fun getRequestsData(){
         database.child("Appointments").addValueEventListener(object : ValueEventListener {
@@ -95,7 +98,7 @@ class Appointments : AppCompatActivity()  {
                             requestsList.add(appointment!!)
                         }
                     }
-                    appAdapter= AppointmentAdapter(requestsList)
+                    appAdapter= AppointmentAdapter(context,requestsList)
                     requestsRecycle.adapter=appAdapter
                 }
             }
@@ -118,7 +121,7 @@ class Appointments : AppCompatActivity()  {
                             approvedList.add(appointment!!)
                         }
                     }
-                    appAdapter= AppointmentAdapter(approvedList)
+                    appAdapter= AppointmentAdapter(context,approvedList)
                     requestsRecycle.adapter=appAdapter
 
                 }

@@ -62,7 +62,7 @@
             android:layout_marginBottom="5dp">
 
             <EditText
-                android:id="@+id/phone_d"
+                android:id="@+id/phone_txt"
                 style="@style/EditText"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -82,7 +82,7 @@
           >
 
             <EditText
-                android:id="@+id/apointment_date"
+                android:id="@+id/appointment_date"
                 style="@style/EditText"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -115,6 +115,7 @@
                 android:layout_marginBottom="5dp"
                 android:drawableStart="@drawable/baseline_access_time_24"
                 android:ems="10"
+                android:focusable="false"
                 android:hint="@string/Time"
                 android:imeOptions="actionNext"
                 android:inputType="time"
@@ -154,7 +155,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight=".4"></Space>
             <Button
-                android:id="@+id/add_btn"
+                android:id="@+id/sendSMSBtn"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"

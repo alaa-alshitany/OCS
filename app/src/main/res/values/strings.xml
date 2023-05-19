@@ -223,6 +223,7 @@
     <string name="approvedBtn">Approved</string>
     <string name="appointmentsNotFound">No Appointments Found</string>
     <string name="confirmAppointment">Appointment Confirmation</string>
+    <string name="dateError">Choose a Date after Today</string>
 </resources>
 
 

@@ -33,6 +33,7 @@
             android:exported="false" />
         <activity
             android:name=".Admin.Appointments.Appointments"
+            android:theme="@style/Theme.OCS"
             android:exported="false" />
         <activity
             android:name=".Admin.recycle_approved"
