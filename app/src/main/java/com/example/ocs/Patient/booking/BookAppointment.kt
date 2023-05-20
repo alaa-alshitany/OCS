@@ -6,15 +6,14 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
-import android.widget.Button
-import android.widget.CheckBox
-import android.widget.EditText
-import android.widget.Toast
+import android.view.View
+import android.widget.*
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.drawerlayout.widget.DrawerLayout
+import com.example.ocs.Login_Register.login.Login
 import com.example.ocs.Login_Register.login.Prefrences
 import com.example.ocs.Patient.Profile.Profile
-import com.example.ocs.Patient.services.services
+import com.example.ocs.Patient.services.Services
 import com.example.ocs.R
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.database.DatabaseReference
@@ -36,6 +35,10 @@ class BookAppointment : AppCompatActivity() {
     private lateinit var clinics:CheckBox
     private lateinit var appointmentID:String
     private  var serviceType=StringBuilder()
+    private lateinit var drawerLayout : DrawerLayout
+    private lateinit var navView : NavigationView
+    private lateinit var userName: TextView
+    private lateinit var navHeader : View
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,8 +46,6 @@ class BookAppointment : AppCompatActivity() {
         supportActionBar!!.elevation= 0F
         init()
         //navigation bar
-        val drawerLayout : DrawerLayout = findViewById(R.id.drawerLayout)
-        val navView : NavigationView = findViewById(R.id.nav_view)
         toggle = ActionBarDrawerToggle( this, drawerLayout, R.string.open, R.string.close)
         drawerLayout.addDrawerListener(toggle)
         toggle.syncState()
@@ -59,14 +60,10 @@ class BookAppointment : AppCompatActivity() {
             }
             true
         }
-
         bookBtn.setOnClickListener {
             sendRequest()
         }
     }
-
-
-
     private fun sendRequest() {
         if (rays.isChecked){ serviceType.append(rays.text.toString()).append(", ")}
         if (clinics.isChecked){serviceType.append(clinics.text.toString()).append(", ")}
@@ -85,8 +82,14 @@ class BookAppointment : AppCompatActivity() {
     }
 
     private fun logout() {
+        pref.prefClear()
+        moveToLogin()
     }
-
+    private fun moveToLogin() {
+        startActivity(Intent(this, Login::class.java).putExtra("hint",R.string.p_email_hint.toString()))
+        Toast.makeText(this,R.string.logout, Toast.LENGTH_LONG).show()
+        finish()
+    }
     private fun booking() {
         startActivity(Intent(this, BookAppointment::class.java))
     }
@@ -96,7 +99,7 @@ class BookAppointment : AppCompatActivity() {
     }
 
     private fun home() {
-        startActivity(Intent(this, services::class.java))
+        startActivity(Intent(this, Services::class.java))
     }
     //nav_bar
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -107,6 +110,9 @@ class BookAppointment : AppCompatActivity() {
     }
     private fun init(){
         intent2=intent
+        drawerLayout= findViewById(R.id.drawerLayout)
+        navView= findViewById(R.id.nav_view)
+        navHeader=navView.getHeaderView(0)
         bookBtn=findViewById(R.id.sendRequestBtn)
         rays=findViewById(R.id.medical_Rays)
         tests=findViewById(R.id.medical_tests)
@@ -116,6 +122,8 @@ class BookAppointment : AppCompatActivity() {
         phone =findViewById(R.id.phone_edt)
         fullName=findViewById(R.id.fullName_edt)
         fullName.setText(pref.userName)
+        userName=navHeader.findViewById(R.id.user_name)
+        userName.setText(pref.userName)
         database.child("Patients").child(pref.prefID.toString()).get().addOnSuccessListener {
             if (it.exists()){
                 phone.setText(it.child("phone").value.toString())

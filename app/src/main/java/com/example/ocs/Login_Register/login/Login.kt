@@ -19,7 +19,7 @@ import com.example.ocs.Login_Register.forgetPassword.ForgetPassword
 import com.example.ocs.Patient.PatientData
 import com.example.ocs.Login_Register.register.Register
 import com.example.ocs.Admin.AdminData
-import com.example.ocs.Patient.services.services
+import com.example.ocs.Patient.services.Services
 import com.example.ocs.R
 import com.example.ocs.Admin.Dashboard.Dashboard
 import com.google.android.material.textfield.TextInputLayout
@@ -98,7 +98,7 @@ class Login : AppCompatActivity() {
         }
     }
     private fun home() {
-        startActivity(Intent(activity, services::class.java))
+        startActivity(Intent(activity, Services::class.java))
         finish()
     }
     private fun register() {

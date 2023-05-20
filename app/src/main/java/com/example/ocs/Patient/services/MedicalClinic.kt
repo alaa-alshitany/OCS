@@ -77,7 +77,7 @@ class MedicalClinic : AppCompatActivity(), OnItemRecycleClickListener {
     }
 
     private fun home() {
-        startActivity(Intent(this, services::class.java))
+        startActivity(Intent(this, Services::class.java))
     }
 
     //lisener

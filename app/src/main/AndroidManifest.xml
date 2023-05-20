@@ -54,7 +54,7 @@
             android:name=".Patient.booking.BookAppointment"
             android:exported="false" />
         <activity
-            android:name=".Patient.services.services"
+            android:name=".Patient.services.Services"
             android:exported="false"
             android:theme="@style/Theme.OCS" />
         <activity

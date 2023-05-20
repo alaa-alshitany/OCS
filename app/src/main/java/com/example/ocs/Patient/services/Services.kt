@@ -19,7 +19,7 @@ import com.example.ocs.Patient.booking.BookAppointment
 import com.example.ocs.R
 import com.google.android.material.navigation.NavigationView
 
-class services : AppCompatActivity(), OnCardItemClickListener {
+class Services : AppCompatActivity(), OnCardItemClickListener {
     private lateinit var intent2: Intent
     private lateinit var list: RecyclerView
     lateinit var toggle: ActionBarDrawerToggle
@@ -101,7 +101,7 @@ class services : AppCompatActivity(), OnCardItemClickListener {
     }
 
     private fun home() {
-        startActivity(Intent(this, services::class.java))
+        startActivity(Intent(this, Services::class.java))
     }
 
     //nav_bar
