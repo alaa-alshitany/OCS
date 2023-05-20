@@ -39,7 +39,7 @@
             android:theme="@style/Theme.OCS"
             android:exported="false" />
         <activity
-            android:name=".Admin.recycle_approved"
+            android:name=".Admin.Profile"
             android:exported="false" />
         <activity
             android:name=".doctor.patient_recycle"
@@ -52,9 +52,6 @@
             android:exported="false" />
         <activity
             android:name=".Patient.booking.BookAppointment"
-            android:exported="false" />
-        <activity
-            android:name=".Admin.profile"
             android:exported="false" />
         <activity
             android:name=".Patient.services.services"

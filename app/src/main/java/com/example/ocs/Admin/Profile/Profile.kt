@@ -1,23 +1,34 @@
-/*package com.example.ocs.Admin
+package com.example.ocs.Admin
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.drawerlayout.widget.DrawerLayout
-import com.example.ocs.Patient.Profile.Profile
+import com.example.ocs.Admin.Appointments.Appointments
 import com.example.ocs.R
 import com.example.ocs.Admin.Doctors.Doctors
 import com.example.ocs.Patient.services.OnItemRecycleClickListener
 import com.example.ocs.Patient.services.ServiceData
 import com.example.ocs.Admin.Dashboard.Dashboard
+import com.example.ocs.Login_Register.login.Prefrences
 import com.google.android.material.navigation.NavigationView
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
 
-class profile : AppCompatActivity(), OnItemRecycleClickListener {
-
+class Profile : AppCompatActivity(), OnItemRecycleClickListener {
+    private lateinit var adminName: TextView
+    private lateinit var adminCode: TextView
+    private lateinit var adminEmail: TextView
+    private lateinit var adminPhone:TextView
+    private  var dataBase: DatabaseReference = FirebaseDatabase.getInstance().reference
+    private lateinit var pref: Prefrences
+    private lateinit var context:Context
     //nav_bar
     lateinit var toggle: ActionBarDrawerToggle
     @SuppressLint("MissingInflatedId")
@@ -27,7 +38,7 @@ class profile : AppCompatActivity(), OnItemRecycleClickListener {
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
         supportActionBar!!.setHomeAsUpIndicator(R.drawable.baseline_arrow_back_24)
         supportActionBar!!.elevation= 0F
-
+        init()
         //nav_bar
         val drawerLayout : DrawerLayout = findViewById(R.id.drawerLayout)
         val navView : NavigationView = findViewById(R.id.nav_view)
@@ -51,6 +62,17 @@ class profile : AppCompatActivity(), OnItemRecycleClickListener {
         }
 
     }
+
+    private fun getAdminData() {
+        dataBase.child("Admins").child(pref.prefID.toString()).get().addOnSuccessListener {
+            if (it.exists()){
+                adminName.text = it.child("name").value.toString()
+                adminCode.text = it.child("code").value.toString()
+                adminPhone.text = it.child("phone").value.toString()
+                adminEmail.text = it.child("email").value.toString()
+            }
+        }
+    }
     //nav_bar
 
     private fun dashboard() {
@@ -60,7 +82,7 @@ class profile : AppCompatActivity(), OnItemRecycleClickListener {
     }
 
     private fun requests() {
-        startActivity(Intent(this, recycle_request::class.java))
+        startActivity(Intent(this, Appointments::class.java))
     }
 
     private fun adminProfile() {
@@ -80,10 +102,18 @@ class profile : AppCompatActivity(), OnItemRecycleClickListener {
     override fun onBackPressed() {
         onBackPressedDispatcher.onBackPressed()
     }
-
     //listener
     override fun onClick(c: ServiceData?) {
         val toast = Toast.makeText(applicationContext, c?.serviceImage!!, Toast.LENGTH_LONG)
         toast.show()
     }
-}*/
+    private fun init(){
+        context=this
+        pref= Prefrences(context)
+        adminEmail=findViewById(R.id.adminEmailTxt)
+        adminName=findViewById(R.id.adminNameTxt)
+        adminPhone=findViewById(R.id.adminPhoneTxt)
+        adminCode=findViewById(R.id.adminCodeTxt)
+        getAdminData()
+    }
+}

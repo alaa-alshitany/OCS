@@ -5,5 +5,6 @@ data class AdminData(
     val password:String?=null,
     val id:String?=null,
     val code:String?=null,
-    val name:String?=null
+    val name:String?=null,
+    val phone:String?=null
 )

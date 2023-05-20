@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".Admin.profile">
+    tools:context=".Admin.Profile">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -54,7 +54,7 @@
                 </ImageView>
 
                 <TextView
-                    android:id="@+id/admin_code_view1"
+                    android:id="@+id/adminNameTxt"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="1"
@@ -84,7 +84,7 @@
 
 
         <TextView
-            android:id="@+id/admin_code_view2"
+            android:id="@+id/adminCodeTxt"
             style="@style/EditText"
             android:layout_width="match_parent"
             android:drawableStart="@drawable/baseline_key_24"
@@ -100,12 +100,12 @@
 
 </Space>
         <TextView
-            android:id="@+id/admin_name"
+            android:id="@+id/adminPhoneTxt"
             style="@style/EditText"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:drawableStart="@drawable/baseline_user_24"
+            android:drawableStart="@drawable/baseline_phone_24"
             android:ems="10"
             android:textColor="@color/black" />
         <Space
@@ -115,13 +115,13 @@
 
         </Space>
         <TextView
-            android:id="@+id/admin_password"
+            android:id="@+id/adminEmailTxt"
             style="@style/EditText"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:textColor="@color/black"
             android:layout_weight="1"
-            android:drawableStart="@drawable/baseline_lock_24"
+            android:drawableStart="@drawable/baseline_email_24"
            />
         <Space
             android:layout_width="match_parent"

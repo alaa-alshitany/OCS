@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.widget.Toast
 import com.example.ocs.Admin.Appointments.Appointments
 import com.example.ocs.Admin.Doctors.Doctors
+import com.example.ocs.Admin.Profile
 import com.example.ocs.Login_Register.login.Login
 import com.example.ocs.Login_Register.login.Prefrences
 import com.example.ocs.R
@@ -27,8 +28,8 @@ class Dashboard : AppCompatActivity()  {
         setContentView(binding.root)
 
         binding.profile.setOnClickListener {
-            //val cardProfileIntent = Intent(this, profile::class.java)
-            //startActivity(cardProfileIntent)
+            val cardProfileIntent = Intent(this, Profile::class.java)
+            startActivity(cardProfileIntent)
         }
         binding.appointments.setOnClickListener {
             val cardAppointmentIntent = Intent(this, Appointments::class.java)
