@@ -1,27 +1,35 @@
-/*package com.example.ocs.Admin
+package com.example.ocs.Admin
 
 import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
+import android.widget.EditText
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.drawerlayout.widget.DrawerLayout
+import com.example.ocs.Admin.Appointments.Appointments
 import com.example.ocs.Patient.Profile.Profile
 import com.example.ocs.R
 import com.example.ocs.Admin.Dashboard.Dashboard
 import com.example.ocs.Admin.Doctors.Doctors
 import com.google.android.material.navigation.NavigationView
 
-class doctor_details: AppCompatActivity() {
+class DoctorDetails: AppCompatActivity() {
+    private lateinit var fullName:EditText
+    private lateinit var id:EditText
+    private lateinit var email:EditText
+    private lateinit var phone:EditText
+    private lateinit var specialization:EditText
+    private lateinit var gender:EditText
+    private lateinit var password:EditText
 
-    //nav_bar
-    lateinit var toggle: ActionBarDrawerToggle
+    private lateinit var toggle: ActionBarDrawerToggle
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.doctor_details)
         supportActionBar!!.elevation= 0F
-
+        init()
         //nav_bar
         val drawerLayout : DrawerLayout = findViewById(R.id.drawerLayout)
         val navView : NavigationView = findViewById(R.id.nav_view)
@@ -53,7 +61,7 @@ class doctor_details: AppCompatActivity() {
     }
 
     private fun requests() {
-        startActivity(Intent(this, recycle_request::class.java))
+        startActivity(Intent(this, Appointments::class.java))
     }
 
     private fun adminProfile() {
@@ -63,7 +71,12 @@ class doctor_details: AppCompatActivity() {
     private fun doctor() {
         startActivity(Intent(this, Doctors::class.java))
     }
+    private fun init(){
+        var intent2:Intent=intent
+        fullName=findViewById(R.id.doctorDetailsNameTxt)
+        fullName.setText(intent2.getStringExtra("name").toString())
 
+    }
     //nav_bar
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (toggle.onOptionsItemSelected(item)) {
@@ -71,4 +84,4 @@ class doctor_details: AppCompatActivity() {
         }
         return super.onOptionsItemSelected(item)
     }
-}*/
+}

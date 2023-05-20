@@ -99,7 +99,7 @@
     <string name="failRequest">فشل ، حاول مرة أخرى لاحقًا ..</string>
     <!--    doctor details-->
     <string name="doctor_details_title">تفاصيل الطبيب</string>
-    <string name="doctordetails_id">الرقم التعريفي للطبيب:</string>
+    <string name="doctorDetailsID">الرقم التعريفي للطبيب:</string>
     <string name="doctor_ID">125</string>
     <string name="doctordetails_name">الأسم:</string>
     <string name="doctor_name">DR. Mohammed Alaa</string>

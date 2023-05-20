@@ -74,6 +74,7 @@
     <string name="requird">Required</string>
     <string name="specialization">specialization</string>
     <string name="add">Add</string>
+    <string name="gender">Gender</string>
 
 
     <!-- Errors related to register-->
@@ -104,8 +105,8 @@
     <string name="successRequest">Your Request has been Submitted Successfully</string>
     <string name="failRequest">Failed, Try again Later..</string>
     <!--    doctor details-->
-    <string name="doctor_details_title">Doctor details</string>
-    <string name="doctordetails_id">Doctor ID:</string>
+    <string name="doctor_details_title">Doctor Details</string>
+    <string name="doctorDetailsID">Doctor ID:</string>
     <string name="doctor_ID">125</string>
     <string name="doctordetails_name">Name:</string>
     <string name="doctor_name">DR. Mohammed Alaa</string>
@@ -225,6 +226,8 @@
     <string name="confirmAppointment">Appointment Confirmation</string>
     <string name="timeError">Time accepted only start From 12 PM</string>
     <string name="messageConfirm">Message sent Successfully!</string>
+
+
 </resources>
 
 

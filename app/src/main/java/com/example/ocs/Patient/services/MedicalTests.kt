@@ -1,10 +1,12 @@
 package com.example.ocs.Patient.services
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
+import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
@@ -12,18 +14,24 @@ import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.ocs.Login_Register.login.Prefrences
 import com.example.ocs.Patient.Profile.Profile
 import com.example.ocs.Patient.booking.BookAppointment
 import com.example.ocs.R
 import com.google.android.material.navigation.NavigationView
 
-class MedicalTests : AppCompatActivity() , OnItemRecycleClickListener {
+class MedicalTests : AppCompatActivity() , OnCardItemClickListener {
     private lateinit var recycleView: RecyclerView
     private lateinit var dataList: ArrayList<ServiceData>
     lateinit var serviceList:Array<Int>
     lateinit var priceList:Array<Int>
     private lateinit var image: ImageView
     private lateinit var serviceName: TextView
+    private lateinit var pref: Prefrences
+    private lateinit var context: Context
+    private lateinit var navigationView:NavigationView
+    private lateinit var navHeader : View
+    private lateinit var userName: TextView
 
     // navigation bar
     lateinit var toggle: ActionBarDrawerToggle
@@ -86,6 +94,12 @@ class MedicalTests : AppCompatActivity() , OnItemRecycleClickListener {
     image.setImageResource(R.drawable.tests_service)
     serviceName.setText(R.string.medical_tests_radiobn)
     recycleView = findViewById(R.id.recycleView)
+        context=this
+        pref= Prefrences(context)
+        navigationView=findViewById(R.id.nav_view)
+        navHeader=navigationView.getHeaderView(0)
+        userName=navHeader.findViewById(R.id.user_name)
+        userName.setText(pref.userName)
 }
     //nav_bar
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

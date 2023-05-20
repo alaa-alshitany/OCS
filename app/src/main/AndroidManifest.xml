@@ -26,6 +26,9 @@
             android:name=".Admin.Dashboard.Dashboard"
             android:exported="false" />
         <activity
+            android:name=".Admin.DoctorDetails"
+            android:exported="false" />
+        <activity
             android:name=".Patient.services.MedicalClinic"
             android:exported="false" />
         <activity

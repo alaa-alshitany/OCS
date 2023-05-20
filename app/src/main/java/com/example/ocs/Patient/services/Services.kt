@@ -116,7 +116,7 @@ class Services : AppCompatActivity(), OnCardItemClickListener {
         patientID=intent2.getStringExtra("patientID").toString()
     }
 
-    override fun onClick(c: ServiceData) {
+    override fun onClick(c: ServiceData?) {
         if (c?.serviceImage!!.equals(R.drawable.rays_service)) {
             val doneIntent = Intent(this, MedicalRays::class.java)
             startActivity(doneIntent) }

@@ -84,7 +84,7 @@
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
                     tools:ignore="VisualLintTextFieldSize"
-                    tools:text="@string/doctordetails_id" />
+                    tools:text="@string/doctorDetailsID" />
 
                 <TextView
                     android:id="@+id/textView16"

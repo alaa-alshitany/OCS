@@ -24,9 +24,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.ocs.Admin.Appointments.Appointments
 import com.example.ocs.R
 import com.example.ocs.Admin.Dashboard.Dashboard
+import com.example.ocs.Admin.DoctorDetails
 import com.example.ocs.Patient.Profile.Profile
-import com.example.ocs.Patient.services.OnItemRecycleClickListener
-import com.example.ocs.Patient.services.ServiceData
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.FirebaseAuth
@@ -36,7 +35,7 @@ import java.time.Period
 import java.util.*
 import kotlin.collections.ArrayList
 
-class Doctors : AppCompatActivity() , OnItemRecycleClickListener {
+class Doctors : AppCompatActivity() , OnCardListener {
     private lateinit var doctorRecycle: RecyclerView
     private lateinit var doctorList: ArrayList<DoctorData>
     private lateinit var searchView:SearchView
@@ -345,11 +344,7 @@ class Doctors : AppCompatActivity() , OnItemRecycleClickListener {
         addDoctorBtn=findViewById(R.id.addingDoctorBtn)
         dialog=Dialog(this)
 }
-    //listener
-    override fun onClick(c: ServiceData?) {
-        val toast = Toast.makeText(applicationContext, c?.serviceImage!!, Toast.LENGTH_LONG)
-        toast.show()
-    }
+
     private fun checkPhone(phone:EditText){
         val queryPhone: Query =database.child("Doctors").orderByChild("phone").equalTo(phone.text.toString())
         queryPhone.addListenerForSingleValueEvent(object : ValueEventListener {
@@ -375,7 +370,7 @@ class Doctors : AppCompatActivity() , OnItemRecycleClickListener {
                     val docName=docData.getValue(DoctorData::class.java)
                     doctorList.add(docName!!)
                 }
-                dAdapter= DoctorAdapter(doctorList)
+                dAdapter= DoctorAdapter(doctorList, listener = this@Doctors)
                 doctorRecycle.adapter=dAdapter
             }
         }
@@ -385,5 +380,28 @@ class Doctors : AppCompatActivity() , OnItemRecycleClickListener {
     })
 
 }
+    override fun onClick(c: DoctorData?) {
+       var doctorName="DR/ ${c?.firstName} ${c?.lastName}"
+        var phone=c?.phone
+        var id=c?.phone
+        var email=c?.email
+        var specialization=c?.specialization
+        var gender = c?.gender
+        var password=c?.password
+        var birthDate=c?.birthDate
+
+        var intentDetails=Intent(this,DoctorDetails::class.java)
+
+        intentDetails.putExtra("name",doctorName)
+        intentDetails.putExtra("phone",phone)
+        intentDetails.putExtra("id",id)
+        intentDetails.putExtra("email",email)
+        intentDetails.putExtra("specialization",specialization)
+        intentDetails.putExtra("gender",gender)
+        intentDetails.putExtra("password",password)
+        intentDetails.putExtra("birthdate",birthDate)
+
+        startActivity(intentDetails)
+    }
 
 }
