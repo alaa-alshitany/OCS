@@ -49,7 +49,7 @@ class Doctors : AppCompatActivity() , OnCardListener {
     private lateinit var cancelBtn:Button
     private lateinit var firstName:EditText
     private lateinit var lastName:EditText
-    private lateinit var specialization:EditText
+    private lateinit var specialization:Spinner
     private lateinit var birthDate:EditText
     private lateinit var genderRadio: RadioGroup
     private lateinit var radioButton: RadioButton
@@ -59,6 +59,7 @@ class Doctors : AppCompatActivity() , OnCardListener {
     private  var currentDate: LocalDate=LocalDate.now()
     private lateinit var dateEntered: LocalDate
    private lateinit var  dialog:Dialog
+   private lateinit var specializationList:Array<String>
 
     //nav_bar
     private lateinit var toggle: ActionBarDrawerToggle
@@ -158,12 +159,18 @@ class Doctors : AppCompatActivity() , OnCardListener {
         cancelBtn=dialog.findViewById(R.id.cancelBtn)
         firstName=dialog.findViewById(R.id.firstName_d)
         lastName=dialog.findViewById(R.id.lastName_d)
-        specialization=dialog.findViewById(R.id.specialization_d)
+        specialization=dialog.findViewById(R.id.specializationSpinner)
         birthDate=dialog.findViewById(R.id.birthdate_d)
         genderRadio=dialog.findViewById(R.id.gender_d)
         phone=dialog.findViewById(R.id.phone_d)
         email=dialog.findViewById(R.id.email_d)
         password=dialog.findViewById(R.id.password_d)
+        ArrayAdapter.createFromResource(this,R.array.specializationList,android.R.layout.simple_spinner_item).also {
+        adapter->
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+            specialization.adapter=adapter
+        }
+        //specialization.adapter=ArrayAdapter(this,android.R.layout.simple_spinner_dropdown_item,R.array.specializationList.toString())
         birthDate.setOnClickListener { calenderShow() }
         cancelBtn.setOnClickListener { dialog.dismiss() }
         addBtn.setOnClickListener {
@@ -202,7 +209,7 @@ class Doctors : AppCompatActivity() , OnCardListener {
                         firstName.text.toString(),
                         lastName.text.toString(),
                         birthDate.text.toString(),
-                        specialization.text.toString(),
+                        specialization.selectedItem.toString(),
                         phone.text.toString(),
                         gender,
                         email.text.toString(),
@@ -237,14 +244,14 @@ class Doctors : AppCompatActivity() , OnCardListener {
         var phonePattern = "^01[0125][0-9]{8}\$"
         if (firstName.text.toString().isNotEmpty() && lastName.text.toString().isNotEmpty()
             && email.text.toString().trim().matches(emailPattern.toRegex())&& birthDate.text.toString().isNotEmpty()
-            && specialization.text.toString().isNotEmpty() && phone.text.toString().isNotEmpty()
+            /*&& specialization.text.toString().isNotEmpty() && phone.text.toString().isNotEmpty()*/
             && phone.text.toString().length == 11 && phone.text.toString().trim().matches(phonePattern.toRegex()) && password.text.toString().isNotEmpty()
             && password.text.toString().trim().length >= 8 && Period.between(dateEntered,currentDate).years >26
                 ) {
             return true
         }else{
             if(email.text.toString().trim().isEmpty() && firstName.text.toString().isEmpty() && birthDate.text.toString().isEmpty()
-                && password.text.toString().isEmpty() && specialization.text.toString().isEmpty()
+                && password.text.toString().isEmpty() /*&& specialization.text.toString().isEmpty()*/
                 &&(lastName.text.toString().isEmpty() && phone.text.toString().isEmpty())){
                 email.setError(getText(R.string.requird))
                 firstName.setError(getText(R.string.requird))
@@ -252,7 +259,7 @@ class Doctors : AppCompatActivity() , OnCardListener {
                 phone.setError(getText(R.string.requird))
                 birthDate.setError(getText(R.string.requird))
                 password.setError(getText(R.string.requird))
-                specialization.setError(getText(R.string.requird))
+                /*specialization.setError(getText(R.string.requird))*/
                 Toast.makeText(this,R.string.emptyAllData,Toast.LENGTH_SHORT).show()
             }
             else if (email.text.toString().trim().isEmpty()){
@@ -278,10 +285,10 @@ class Doctors : AppCompatActivity() , OnCardListener {
                 phone.setError(getText(R.string.notValidNumber))
                 Toast.makeText(this, R.string.notValidNumber, Toast.LENGTH_SHORT).show()
             }
-            else if (specialization.text.toString().isEmpty()){
+            /*else if (specialization.selectedItem.toString().isEmpty()){
                 specialization.setError(getText(R.string.requird))
                 Toast.makeText(this,R.string.emptySpecialization,Toast.LENGTH_SHORT)
-            }
+            }*/
             else if (birthDate.text.toString().isEmpty()) {
                 birthDate.setError(getText(R.string.requird))
                 Toast.makeText(applicationContext,R.string.emptyBirthDate,Toast.LENGTH_LONG).show()
@@ -383,7 +390,7 @@ class Doctors : AppCompatActivity() , OnCardListener {
     override fun onClick(c: DoctorData?) {
        var doctorName="DR/ ${c?.firstName} ${c?.lastName}"
         var phone=c?.phone
-        var id=c?.phone
+        var id=c?.id
         var email=c?.email
         var specialization=c?.specialization
         var gender = c?.gender
@@ -402,6 +409,7 @@ class Doctors : AppCompatActivity() , OnCardListener {
         intentDetails.putExtra("birthdate",birthDate)
 
         startActivity(intentDetails)
+
     }
 
 }

@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
 import android.widget.EditText
+import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.drawerlayout.widget.DrawerLayout
@@ -11,8 +12,12 @@ import com.example.ocs.Admin.Appointments.Appointments
 import com.example.ocs.Patient.Profile.Profile
 import com.example.ocs.R
 import com.example.ocs.Admin.Dashboard.Dashboard
+import com.example.ocs.Admin.Doctors.DoctorData
 import com.example.ocs.Admin.Doctors.Doctors
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.navigation.NavigationView
+import com.google.firebase.database.*
+import com.google.firebase.database.ktx.getValue
 
 class DoctorDetails: AppCompatActivity() {
     private lateinit var fullName:EditText
@@ -22,8 +27,10 @@ class DoctorDetails: AppCompatActivity() {
     private lateinit var specialization:EditText
     private lateinit var gender:EditText
     private lateinit var password:EditText
-
+    private lateinit var birthDate:EditText
+    private lateinit var updateBtn:FloatingActionButton
     private lateinit var toggle: ActionBarDrawerToggle
+    private  var database:DatabaseReference=FirebaseDatabase.getInstance().reference
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -51,6 +58,39 @@ class DoctorDetails: AppCompatActivity() {
 
             true
         }
+
+        updateBtn.setOnClickListener {
+            database.child("Doctors").child(id.text.toString()).addValueEventListener(object:ValueEventListener{
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    if (snapshot.exists()) {
+                        for (item in snapshot.children) {
+                            //val doctor = item.getValue<DoctorData>()
+                            var firstName:String=item?.child("firstName").toString()
+                            var lastName:String=item?.child("lastName").toString()
+                            //if (doctor?.id?.equals(id.text)!!){
+                               val updatedDoctor= DoctorData(id.text.toString(),
+                                   firstName,
+                                   lastName,
+                                   birthDate.text.toString(),
+                                   specialization.text.toString(),
+                                   phone.text.toString(),
+                                   gender.text.toString(),
+                                   email.text.toString(),
+                                   password.text.toString())
+                            database.child("Doctors").child(id.text.toString()).setValue(updatedDoctor).addOnSuccessListener {
+                                   Toast.makeText(baseContext, "All Data has been updated!", Toast.LENGTH_LONG).show()
+                               }
+                            }
+                       // }
+                    }
+
+                }
+                override fun onCancelled(error: DatabaseError) {
+                    TODO("Not yet implemented")
+                }
+
+            })
+        }
     }
 //nav_bar
 
@@ -73,8 +113,32 @@ class DoctorDetails: AppCompatActivity() {
     }
     private fun init(){
         var intent2:Intent=intent
+
         fullName=findViewById(R.id.doctorDetailsNameTxt)
         fullName.setText(intent2.getStringExtra("name").toString())
+
+       phone=findViewById(R.id.doctorDetailsPhoneTxt)
+       phone.setText(intent2.getStringExtra("phone").toString())
+
+        email=findViewById(R.id.doctorDetailsEmailTxt)
+        email.setText(intent2.getStringExtra("email").toString())
+
+        password=findViewById(R.id.doctorDetailsPasswordTxt)
+        password.setText(intent2.getStringExtra("password").toString())
+
+        id=findViewById(R.id.doctorDetailsIDTxt)
+        id.setText(intent2.getStringExtra("id").toString())
+
+        gender=findViewById(R.id.doctorDetailsGenderTxt)
+        gender.setText(intent2.getStringExtra("gender").toString())
+
+        birthDate=findViewById(R.id.doctorDetailsBirthTxt)
+        birthDate.setText(intent2.getStringExtra("birthdate").toString())
+
+        specialization=findViewById(R.id.doctorDetailsSpecializationTxt)
+        specialization.setText(intent2.getStringExtra("specialization").toString())
+
+        updateBtn=findViewById(R.id.updateBtn)
 
     }
     //nav_bar

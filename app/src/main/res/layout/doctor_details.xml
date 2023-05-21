@@ -67,9 +67,11 @@
                 android:id="@+id/doctorDetailsIDTxt"
                 style="@style/EditText"
                 android:layout_width="0dp"
+                android:focusable="false"
+                android:textAppearance="@style/TextAppearance.AppCompat.Small"
                 android:cursorVisible="false"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
+                android:layout_weight="1.8"
                 android:textColor="@color/black"
                 />
         </LinearLayout>
@@ -103,6 +105,8 @@
                 android:id="@+id/doctorDetailsNameTxt"
                 style="@style/EditText"
                 android:layout_width="0dp"
+                android:focusable="false"
+                android:cursorVisible="false"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:textColor="@color/black"
@@ -140,6 +144,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:focusable="false"
+                android:cursorVisible="false"
                 android:textColor="@color/black"
                  />
         </LinearLayout>
@@ -168,9 +173,10 @@
                 app:layout_constraintStart_toStartOf="parent"
                 android:text="@string/doctordetails_phone" />
 
-            <TextView
+            <EditText
                 android:id="@+id/doctorDetailsPhoneTxt"
                 style="@style/EditText"
+                android:cursorVisible="false"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -321,7 +327,7 @@
         </LinearLayout>
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             style="@style/Widget.AppCompat.Button"
-            android:id="@+id/floatingActionButton3"
+            android:id="@+id/updateBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|center"

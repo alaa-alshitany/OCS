@@ -227,7 +227,15 @@
     <string name="timeError">Time accepted only start From 12 PM</string>
     <string name="messageConfirm">Message sent Successfully!</string>
 
-
+<string-array name="specializationList">
+    <item>Neuro Oncologists</item> <!--specialize in treating nervous system, spine, and brain cancers.-->
+    <item>Pediatric Oncologists </item><!--specialize in treating cancers in teens and children. Often, certain types of cancer are prominent in such age groups.-->
+    <item>Geriatric Oncologists </item><!--specialize in providing the best care for cancer patients who are 65 and older. Such older patients can have additional challenges.-->
+    <item>Gynecologic Oncologists</item><!--specialize in treating cancers in reproductive organs like the fallopian tubes, ovaries, uterus, vulva, vagina, ovaries, and cervix.-->
+    <item>Hematology Oncologists</item><!--specialize in treating blood cancers like lymphoma, leukemia, and myeloma.-->
+    <item>Thoracic Oncologists</item><!--specialize in treating cancers that are present inside the chest area, including the esophagus and lungs.-->
+    <item>Urologic Oncologists </item><!--specialize in treating cancers present in the genitourinary system like the penis, kidneys, bladder, testicles, and prostate gland.-->
+</string-array>
 </resources>
 
 

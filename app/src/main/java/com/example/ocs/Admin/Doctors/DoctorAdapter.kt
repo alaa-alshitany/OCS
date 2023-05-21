@@ -5,7 +5,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.ocs.Patient.services.OnCardItemClickListener
 import com.example.ocs.R
 
 class DoctorAdapter(private var dataList: ArrayList<DoctorData>, private val listener: OnCardListener): RecyclerView.Adapter<DoctorAdapter.ViewHolderClass>(){

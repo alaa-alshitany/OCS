@@ -35,7 +35,7 @@
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1"
+            android:layout_weight="1.2"
             app:boxStrokeWidth="0dp"
             app:boxStrokeWidthFocused="0dp"
             app:hintAnimationEnabled="true"
@@ -46,7 +46,7 @@
                 style="@style/EditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="5dp"
+
                 android:drawableStart="@drawable/baseline_user_24"
                 android:drawablePadding="20dp"
                 android:ems="10"
@@ -59,7 +59,7 @@
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1"
+            android:layout_weight="1.2"
             app:boxStrokeWidth="0dp"
             app:boxStrokeWidthFocused="0dp"
             app:hintAnimationEnabled="true"
@@ -70,7 +70,7 @@
                 style="@style/EditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="5dp"
+
                 android:drawableStart="@drawable/baseline_user_24"
                 android:ems="10"
                 android:hint="@string/last_Name"
@@ -82,7 +82,7 @@
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1"
+            android:layout_weight="1.2"
             app:boxStrokeWidth="0dp"
             app:boxStrokeWidthFocused="0dp"
             app:hintAnimationEnabled="true"
@@ -93,7 +93,6 @@
                 style="@style/EditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="5dp"
                 android:clickable="false"
                 android:cursorVisible="false"
                 android:drawableStart="@drawable/baseline_calendar_month_24"
@@ -106,35 +105,18 @@
                 android:textColor="@color/black"
                 tools:ignore="VisualLintTextFieldSize" />
         </com.google.android.material.textfield.TextInputLayout>
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            app:boxStrokeWidth="0dp"
-            app:boxStrokeWidthFocused="0dp"
-            app:hintAnimationEnabled="true"
-            app:hintEnabled="true">
+        <androidx.appcompat.widget.AppCompatSpinner
+        android:id="@+id/specializationSpinner"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight=".6"/>
 
-            <EditText
-                android:id="@+id/specialization_d"
-                style="@style/EditText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="5dp"
-                android:drawableStart="@drawable/baseline_user_24"
-                android:ems="10"
-                android:hint="@string/specialization"
-                android:imeOptions="actionNext"
-                android:inputType="textPersonName"
-                android:textColor="@color/black"
-                tools:ignore="VisualLintTextFieldSize" />
-        </com.google.android.material.textfield.TextInputLayout>
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1"
+            android:layout_weight="1.2"
             android:layout_gravity="center"
-            android:layout_marginBottom="5dp">
+            >
 
             <EditText
                 android:id="@+id/phone_d"
@@ -200,7 +182,7 @@
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1"
+            android:layout_weight="1.2"
             app:boxStrokeWidth="0dp"
             app:boxStrokeWidthFocused="0dp"
             app:hintAnimationEnabled="true"
@@ -211,7 +193,6 @@
                 style="@style/EditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="5dp"
                 android:drawableStart="@drawable/baseline_email_24"
                 android:ems="10"
                 android:hint="@string/p_email_hint"
@@ -224,7 +205,7 @@
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1"
+            android:layout_weight="1.2"
             app:boxStrokeWidth="0dp"
             app:boxStrokeWidthFocused="0dp"
             app:hintAnimationEnabled="true"
@@ -237,7 +218,6 @@
                 style="@style/EditText"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="5dp"
                 android:autofillHints=""
                 android:drawableStart="@drawable/baseline_lock_24"
                 android:ems="10"
