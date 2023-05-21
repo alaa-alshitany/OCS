@@ -60,36 +60,17 @@ class DoctorDetails: AppCompatActivity() {
         }
 
         updateBtn.setOnClickListener {
-            database.child("Doctors").child(id.text.toString()).addValueEventListener(object:ValueEventListener{
-                override fun onDataChange(snapshot: DataSnapshot) {
-                    if (snapshot.exists()) {
-                        for (item in snapshot.children) {
-                            //val doctor = item.getValue<DoctorData>()
-                            var firstName:String=item?.child("firstName").toString()
-                            var lastName:String=item?.child("lastName").toString()
-                            //if (doctor?.id?.equals(id.text)!!){
-                               val updatedDoctor= DoctorData(id.text.toString(),
-                                   firstName,
-                                   lastName,
-                                   birthDate.text.toString(),
-                                   specialization.text.toString(),
-                                   phone.text.toString(),
-                                   gender.text.toString(),
-                                   email.text.toString(),
-                                   password.text.toString())
-                            database.child("Doctors").child(id.text.toString()).setValue(updatedDoctor).addOnSuccessListener {
+           var ref= database.child("Doctors").child(id.text.toString())
+                   ref.child("birthDate").setValue( birthDate.text.toString()).addOnSuccessListener {
+                       ref.child("phone").setValue( phone.text.toString()).addOnSuccessListener {
+                           ref.child("email").setValue(email.text.toString()).addOnSuccessListener {
+                               ref.child("password").setValue(password.text.toString()).addOnSuccessListener {
                                    Toast.makeText(baseContext, "All Data has been updated!", Toast.LENGTH_LONG).show()
+                                   doctor()
                                }
-                            }
-                       // }
-                    }
-
-                }
-                override fun onCancelled(error: DatabaseError) {
-                    TODO("Not yet implemented")
-                }
-
-            })
+                           }
+                       }
+                   }
         }
     }
 //nav_bar
