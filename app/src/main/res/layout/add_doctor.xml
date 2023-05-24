@@ -46,7 +46,6 @@
                 style="@style/EditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-
                 android:drawableStart="@drawable/baseline_user_24"
                 android:drawablePadding="20dp"
                 android:ems="10"
@@ -128,7 +127,7 @@
                 android:ems="10"
                 android:hint="@string/phone"
                 android:inputType="phone"
-                tools:ignore="VisualLintTextFieldSize" />
+                tools:ignore="VisualLintTextFieldSize,SpeakableTextPresentCheck" />
 
         </com.google.android.material.textfield.TextInputLayout>
         <RadioGroup
@@ -223,7 +222,7 @@
                 android:ems="10"
                 android:hint="@string/prompt_password"
                 android:inputType="textPassword"
-                tools:ignore="VisualLintTextFieldSize" />
+                tools:ignore="VisualLintTextFieldSize,SpeakableTextPresentCheck" />
         </com.google.android.material.textfield.TextInputLayout>
         <Space
             android:layout_width="match_parent"
