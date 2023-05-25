@@ -39,7 +39,7 @@ class MedicalClinic : AppCompatActivity(), OnCardItemClickListener {
         setContentView(R.layout.service_details_layout)
         supportActionBar!!.elevation= 0F
         init()
-         getData()
+        getData()
 
         //navigation bar
         val drawerLayout : DrawerLayout = findViewById(R.id.drawerLayout)

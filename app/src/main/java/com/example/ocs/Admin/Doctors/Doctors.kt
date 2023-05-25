@@ -25,6 +25,8 @@ import com.example.ocs.Admin.Appointments.Appointments
 import com.example.ocs.R
 import com.example.ocs.Admin.Dashboard.Dashboard
 import com.example.ocs.Admin.DoctorDetails
+import com.example.ocs.Login_Register.login.Login
+import com.example.ocs.Login_Register.login.Prefrences
 import com.example.ocs.Patient.Profile.Profile
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.navigation.NavigationView
@@ -60,6 +62,7 @@ class Doctors : AppCompatActivity() , OnCardListener {
     private lateinit var dateEntered: LocalDate
    private lateinit var  dialog:Dialog
    private lateinit var specializationList:Array<String>
+    private lateinit var pref: Prefrences
 
     //nav_bar
     private lateinit var toggle: ActionBarDrawerToggle
@@ -108,6 +111,13 @@ class Doctors : AppCompatActivity() , OnCardListener {
         startActivity(Intent(this, Dashboard::class.java))
     }
     private fun logout() {
+        pref.prefClear()
+        moveToLogin()
+    }
+    private fun moveToLogin() {
+        startActivity(Intent(this, Login::class.java).putExtra("hint",R.string.p_email_hint.toString()))
+        Toast.makeText(this,R.string.logout, Toast.LENGTH_LONG).show()
+        finish()
     }
     private fun requests() {
         startActivity(Intent(this, Appointments::class.java))
@@ -124,6 +134,10 @@ class Doctors : AppCompatActivity() , OnCardListener {
             return true
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    override fun onBackPressed() {
+        onBackPressedDispatcher.onBackPressed()
     }
     private fun filterList(query: String?) {
         if (query!=null){

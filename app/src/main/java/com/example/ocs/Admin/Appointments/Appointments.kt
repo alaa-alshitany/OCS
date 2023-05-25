@@ -1,8 +1,10 @@
 package com.example.ocs.Admin.Appointments
 
 import android.content.Context
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
+import android.view.MenuItem
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
@@ -13,8 +15,15 @@ import androidx.core.content.ContextCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.ocs.Admin.Dashboard.Dashboard
 import com.example.ocs.Admin.Doctors.DoctorData
+import com.example.ocs.Admin.Doctors.Doctors
+import com.example.ocs.Login_Register.login.Login
+import com.example.ocs.Login_Register.login.Prefrences
+import com.example.ocs.Patient.Profile.Profile
 import com.example.ocs.Patient.booking.AppointmentData
+import com.example.ocs.Patient.booking.BookAppointment
+import com.example.ocs.Patient.services.Services
 import com.example.ocs.R
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.database.*
@@ -36,6 +45,7 @@ class Appointments : AppCompatActivity()  {
     private lateinit var layoutTitle:TextView
     private lateinit var context: Context
     private lateinit var doctorList: MutableMap<String,String>
+    private lateinit var pref: Prefrences
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -56,11 +66,11 @@ class Appointments : AppCompatActivity()  {
         supportActionBar?.setHomeAsUpIndicator(R.drawable.baseline_menu_24)
         navView.setNavigationItemSelectedListener {
             when(it.itemId){
-               // R.id.nau_dashboard->dashboard()
-               // R.id.nau_profile2-> adminProfile()
-               // R.id.nau_booking2-> requests()
-               // R.id.nau_doctor-> doctor()
-               // R.id.nau_logout2-> logout()
+                R.id.nau_dashboard->dashboard()
+                R.id.nau_profile2-> adminProfile()
+                R.id.nau_booking2-> requests()
+                R.id.nau_doctor-> doctor()
+                R.id.nau_logout2-> logout()
             }
             true
         }
@@ -74,6 +84,41 @@ class Appointments : AppCompatActivity()  {
             getApprovedData()
         }
     }
+
+    //nav_bar
+    private fun logout() {
+        pref.prefClear()
+        moveToLogin()
+    }
+    private fun moveToLogin() {
+        startActivity(Intent(this, Login::class.java).putExtra("hint",R.string.p_email_hint.toString()))
+        Toast.makeText(this,R.string.logout, Toast.LENGTH_LONG).show()
+        finish()
+    }
+    private fun requests() {
+        startActivity(Intent(this, Appointments::class.java))
+    }
+
+    private fun adminProfile() {
+        startActivity(Intent(this, Profile::class.java))
+    }
+
+    private fun doctor() {
+        startActivity(Intent(this, Doctors::class.java))
+    }
+    private fun dashboard() {
+        startActivity(Intent(this, Dashboard::class.java))
+    }
+
+    //nav_bar
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (toggle.onOptionsItemSelected(item)) {
+            return true
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
+
 
     override fun onBackPressed() {
         onBackPressedDispatcher.onBackPressed()
