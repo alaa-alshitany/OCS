@@ -5,6 +5,7 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
 import android.view.MenuItem
+import android.view.View
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
@@ -46,6 +47,8 @@ class Appointments : AppCompatActivity()  {
     private lateinit var context: Context
     private lateinit var doctorList: MutableMap<String,String>
     private lateinit var pref: Prefrences
+    private lateinit var navHeader : View
+    private lateinit var userName:TextView
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -132,6 +135,7 @@ class Appointments : AppCompatActivity()  {
         doctorList= mutableMapOf<String,String>()
         drawerLayout = findViewById(R.id.drawerLayout)
         navView = findViewById(R.id.nav_view)
+        navHeader=navView.getHeaderView(0)
         toggle = ActionBarDrawerToggle( this, drawerLayout, R.string.open, R.string.close)
         drawerLayout.addDrawerListener(toggle)
         toggle.syncState()
@@ -140,6 +144,9 @@ class Appointments : AppCompatActivity()  {
         approvedBtn=findViewById(R.id.btn_approved)
         layoutTitle=findViewById(R.id.approved_txtView)
         context=this
+        pref= Prefrences(context)
+        userName=navHeader.findViewById(R.id.user_name)
+        userName.setText(pref.userName)
     }
     private fun getDoctorList(){
         database.child("Doctors").addValueEventListener(object : ValueEventListener {

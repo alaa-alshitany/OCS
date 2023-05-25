@@ -14,6 +14,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.DisplayMetrics
 import android.view.MenuItem
+import android.view.View
 import android.view.Window
 import android.view.WindowManager
 import android.widget.*
@@ -63,6 +64,9 @@ class Doctors : AppCompatActivity() , OnCardListener {
    private lateinit var  dialog:Dialog
    private lateinit var specializationList:Array<String>
     private lateinit var pref: Prefrences
+    private lateinit var navHeader : View
+    private lateinit var userName:TextView
+    private lateinit var context: Context
 
     //nav_bar
     private lateinit var toggle: ActionBarDrawerToggle
@@ -356,6 +360,7 @@ class Doctors : AppCompatActivity() , OnCardListener {
         doctorList = arrayListOf<DoctorData>()
         drawerLayout = findViewById(R.id.drawerLayout)
         navView = findViewById(R.id.nav_view)
+        navHeader=navView.getHeaderView(0)
         searchView=findViewById(R.id.searchDoctor)
         auth = FirebaseAuth.getInstance()
         toggle = ActionBarDrawerToggle( this, drawerLayout, R.string.open, R.string.close)
@@ -364,6 +369,10 @@ class Doctors : AppCompatActivity() , OnCardListener {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         addDoctorBtn=findViewById(R.id.addingDoctorBtn)
         dialog=Dialog(this)
+        context=this
+        pref= Prefrences(context)
+        userName=navHeader.findViewById(R.id.user_name)
+        userName.setText(pref.userName)
 }
 
     private fun checkPhone(phone:EditText){

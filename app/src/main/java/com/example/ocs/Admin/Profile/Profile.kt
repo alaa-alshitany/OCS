@@ -6,6 +6,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
+import android.view.View
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
@@ -30,6 +31,12 @@ class Profile : AppCompatActivity(), OnCardItemClickListener {
     private  var dataBase: DatabaseReference = FirebaseDatabase.getInstance().reference
     private lateinit var pref: Prefrences
     private lateinit var context:Context
+    private lateinit var drawerLayout : DrawerLayout
+    private lateinit var navView : NavigationView
+    private lateinit var navHeader : View
+    private lateinit var userName:TextView
+
+
     //nav_bar
     lateinit var toggle: ActionBarDrawerToggle
     @SuppressLint("MissingInflatedId")
@@ -122,6 +129,12 @@ class Profile : AppCompatActivity(), OnCardItemClickListener {
         adminName=findViewById(R.id.adminNameTxt)
         adminPhone=findViewById(R.id.adminPhoneTxt)
         adminCode=findViewById(R.id.adminCodeTxt)
+        drawerLayout= findViewById(R.id.drawerLayout)
+        navView= findViewById(R.id.nav_view)
+        navHeader=navView.getHeaderView(0)
+        userName=navHeader.findViewById(R.id.user_name)
+        userName.setText(pref.userName)
+
         getAdminData()
     }
 }
