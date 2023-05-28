@@ -20,10 +20,15 @@ import com.github.mikephil.charting.components.XAxis
 import com.github.mikephil.charting.data.*
 import com.github.mikephil.charting.formatter.IndexAxisValueFormatter
 import com.github.mikephil.charting.utils.ColorTemplate
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 
 class Dashboard : AppCompatActivity()  {
 
     lateinit var piechart: PieChart
+
 
     //listener on dashboard_card
     private lateinit var binding: ActivityDashboardBinding
@@ -54,8 +59,67 @@ class Dashboard : AppCompatActivity()  {
             moveToLogin()
         }
 
-      //bar_chart
+        // Get a reference to the Firebase Realtime Database
+        val database = FirebaseDatabase.getInstance()
+        val dataRef = database.getReference("Doctors")
         val chart = findViewById<BarChart>(R.id.chart)
+
+        // Add a listener to retrieve the data from Firebase
+        dataRef.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                // Initialize a list to hold the BarEntry objects
+                val entries = ArrayList<BarEntry>()
+
+                // Loop through the data and add it to the entries list
+                for (snapshot in dataSnapshot.children) {
+                    val oncologytype = snapshot.child("specialization").value.toString()
+                    val doctors = snapshot.child("Doctors").value.toString().toFloat()
+                    entries.add(BarEntry(entries.size.toFloat(), doctors))
+                }
+
+                // Create a BarDataSet object with the data
+                val dataSet = BarDataSet(entries, "oncology type")
+                dataSet.setColors(*ColorTemplate.COLORFUL_COLORS)
+
+                // Create a BarData object with the BarDataSet
+                val data = BarData(dataSet)
+
+                // Configure the chart view
+                chart.data=data
+                chart.xAxis.setDrawGridLines(false)
+                chart.xAxis.position = XAxis.XAxisPosition.BOTTOM
+
+                // Set the labels for the x-axis using the data from Firebase
+                val labels = ArrayList<String>()
+                for (snapshot in dataSnapshot.children) {
+                    val oncologytype = snapshot.child("specialization").value.toString()
+                    labels.add(oncologytype)
+                }
+                chart.xAxis.valueFormatter = IndexAxisValueFormatter(labels.toTypedArray())
+
+                chart.description.isEnabled = true
+                chart.legend.isEnabled = false
+                chart.axisLeft.isEnabled = true
+                chart.axisRight.isEnabled = false
+                chart.animateY(1000)
+                chart.invalidate()
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                // Handle errors
+            }
+        })
+
+
+
+
+
+
+
+
+
+      //bar_chart
+        /**val chart = findViewById<BarChart>(R.id.chart)
         val entries = listOf(
             BarEntry(0f, 10f),
             BarEntry(1f, 20f),
@@ -72,7 +136,7 @@ class Dashboard : AppCompatActivity()  {
         chart.xAxis.position = XAxis.XAxisPosition.BOTTOM
         val labels = arrayOf("Neuro", "pediatric", "Gynecologic", "Hematologists", "Thoracic", "Urologic")
         chart.xAxis.valueFormatter = IndexAxisValueFormatter(labels)
-        chart.invalidate()
+        chart.invalidate()**/
 
 
         //piechart
