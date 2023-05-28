@@ -4,9 +4,8 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.SEND_SMS"/>
+    <uses-permission android:name="android.permission.SEND_SMS" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-
 
     <application
         android:allowBackup="true"
@@ -19,9 +18,13 @@
         android:theme="@style/Theme.OCS"
         android:windowSoftInputMode="adjustPan"
         tools:targetApi="31">
-        <activity android:name=".Admin.Doctors.Doctors"
-            android:windowSoftInputMode="adjustPan"
-            android:exported="false"/>
+        <activity
+            android:name=".doctor_dashboard"
+            android:exported="false" />
+        <activity
+            android:name=".Admin.Doctors.Doctors"
+            android:exported="false"
+            android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".Admin.Dashboard.Dashboard"
             android:exported="false" />
@@ -39,8 +42,8 @@
             android:exported="false" />
         <activity
             android:name=".Admin.Appointments.Appointments"
-            android:theme="@style/Theme.OCS"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/Theme.OCS" />
         <activity
             android:name=".Admin.Profile"
             android:exported="false" />
