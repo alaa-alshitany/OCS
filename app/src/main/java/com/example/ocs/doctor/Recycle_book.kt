@@ -1,6 +1,7 @@
 package com.example.ocs.doctor
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
@@ -9,6 +10,7 @@ import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.ocs.Login_Register.login.Login
 import com.example.ocs.R
 import com.google.android.material.navigation.NavigationView
 
@@ -56,15 +58,37 @@ class Recycle_book : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         navView.setNavigationItemSelectedListener {
             when(it.itemId){
-                R.id.nau_profile1-> Toast.makeText(applicationContext,"clicked Profile", Toast.LENGTH_SHORT).show()
-                R.id.nau_booking1-> Toast.makeText(applicationContext,"clicked Booking", Toast.LENGTH_SHORT).show()
-                R.id.nau_patient-> Toast.makeText(applicationContext,"clicked patient", Toast.LENGTH_SHORT).show()
-                R.id.nau_model-> Toast.makeText(applicationContext,"clicked Home", Toast.LENGTH_SHORT).show()
-                R.id.nau_logout1-> Toast.makeText(applicationContext,"clicked Logout", Toast.LENGTH_SHORT).show()
+                R.id.nau_profile1-> doctorProfile()
+                R.id.nau_booking1-> appointment()
+                R.id.nau_patient-> patients()
+                R.id.nau_model-> model()
+                R.id.nau_logout1-> logout()
             }
 
             true
         }
+    }
+    //nav_bar
+    private fun logout() {
+    }
+    private fun moveToLogin() {
+        startActivity(Intent(this, Login::class.java).putExtra("hint",R.string.p_email_hint.toString()))
+        Toast.makeText(this,R.string.logout, Toast.LENGTH_LONG).show()
+        finish()
+    }
+    private fun appointment() {
+        startActivity(Intent(this, Recycle_book::class.java))
+    }
+
+    private fun doctorProfile() {
+        startActivity(Intent(this, Profile_doctor::class.java))
+    }
+    private fun patients() {
+        startActivity(Intent(this, Patient_recycle::class.java))
+    }
+
+    private fun model() {
+        startActivity(Intent(this, model::class.java))
     }
 
     //nav_bar
