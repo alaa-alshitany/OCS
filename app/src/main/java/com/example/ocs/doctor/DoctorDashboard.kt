@@ -35,7 +35,7 @@ class DoctorDashboard : AppCompatActivity() {
             startActivity(cardAppointmentIntent)
         }
         binding.model.setOnClickListener {
-            val cardDoctorsIntent = Intent(this, model::class.java)
+            val cardDoctorsIntent = Intent(this, Pre_model::class.java)
             startActivity(cardDoctorsIntent)
         }
         binding.logoutD.setOnClickListener {
