@@ -1,3 +1,3 @@
 package com.example.ocs.doctor
 
-data class patientData(val PatientName:String)
+data class PatientData(val PatientName:String)

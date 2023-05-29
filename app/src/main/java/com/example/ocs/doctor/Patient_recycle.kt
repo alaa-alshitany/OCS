@@ -16,7 +16,7 @@ import com.example.ocs.R
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.navigation.NavigationView
 
-class patient_recycle : AppCompatActivity() {
+class Patient_recycle : AppCompatActivity() {
     private  lateinit var addBtn:FloatingActionButton
     private lateinit var recv:RecyclerView
     private lateinit var patientList:ArrayList<patientData>

@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.ocs.R
 import com.google.android.material.navigation.NavigationView
 
-class recycle_book : AppCompatActivity() {
+class Recycle_book : AppCompatActivity() {
     private lateinit var recycleView: RecyclerView
     private lateinit var dataList: ArrayList<DataClass2>
     lateinit var TitleList:Array<String>

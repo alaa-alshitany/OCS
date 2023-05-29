@@ -159,10 +159,10 @@ class Dashboard : AppCompatActivity()  {
 
 
     }
-private fun init(){
-    context=this
-    pref= Prefrences(context)
-}
+     private fun init() {
+         context = this
+         pref = Prefrences(context)
+     }
     private fun moveToLogin() {
         startActivity(Intent(this, Login::class.java).putExtra("hint", R.string.a_email_hint.toString()))
         Toast.makeText(this, R.string.logout, Toast.LENGTH_LONG).show()

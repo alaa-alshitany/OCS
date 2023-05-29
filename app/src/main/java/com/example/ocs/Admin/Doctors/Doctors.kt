@@ -371,8 +371,8 @@ class Doctors : AppCompatActivity() , OnCardListener {
         dialog=Dialog(this)
         context=this
         pref= Prefrences(context)
-        userName=navHeader.findViewById(R.id.user_name)
-        userName.setText(pref.userName)
+        adminName=navHeader.findViewById(R.id.admin_name)
+        adminName.setText(pref.adminName)
 }
 
     private fun checkPhone(phone:EditText){

@@ -10,7 +10,7 @@ import androidx.drawerlayout.widget.DrawerLayout
 import com.example.ocs.R
 import com.google.android.material.navigation.NavigationView
 
-class profile_doctor : AppCompatActivity() {
+class Profile_doctor : AppCompatActivity() {
 
     //nav_bar
     lateinit var toggle: ActionBarDrawerToggle

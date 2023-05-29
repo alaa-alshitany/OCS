@@ -188,7 +188,7 @@ class Appointments : AppCompatActivity()  {
                 }
             }
             override fun onCancelled(error: DatabaseError) {
-            Toast.makeText(applicationContext,R.string.appointmentsNotFound,Toast.LENGTH_LONG).show()
+                Toast.makeText(applicationContext,R.string.appointmentsNotFound,Toast.LENGTH_LONG).show()
             }
 
         })
