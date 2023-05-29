@@ -196,7 +196,7 @@ class Appointments : AppCompatActivity()  {
     }
 
     private fun getApprovedData(){
-        database.child("Appointments").addValueEventListener(object : ValueEventListener {
+        database.child("Appoin  tments").addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 approvedList.clear()
                 if (snapshot.exists()){

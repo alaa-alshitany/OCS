@@ -27,7 +27,7 @@
         import com.example.ocs.R
         import com.example.ocs.Admin.Dashboard.Dashboard
         import com.example.ocs.Admin.Doctors.DoctorData
-        import com.example.ocs.doctor.DoctorDashboard
+        import com.example.ocs.Doctor.DoctorDashboard.DoctorDashboard
         import com.google.android.material.textfield.TextInputLayout
         import com.google.firebase.auth.FirebaseAuth
         import com.google.firebase.auth.ktx.auth
@@ -62,7 +62,7 @@
                 setContentView(R.layout.activity_login)
                 supportActionBar!!.elevation= 0F
                 init()
-                //getIntentExtra()
+                getIntentExtra()
                 registerBtn.setOnClickListener { register()}
                 forgetPasswordBtn.setOnClickListener { forgetPassword() }
             }
@@ -311,6 +311,7 @@
                                                 doctorDashboard()
                                             } else {
                                                 passwordEdt.setError(getText(R.string.login_failed))
+                                                Toast.makeText(context, R.string.login_failed, Toast.LENGTH_LONG).show()
                                             }
                                         }
                                     }else{
@@ -372,7 +373,7 @@
             startActivity(Intent(activity, Dashboard::class.java))
             }
             private fun doctorDashboard(){
-                startActivity(Intent(activity,DoctorDashboard::class.java))
+                startActivity(Intent(activity, DoctorDashboard::class.java))
             }
             private fun patientLogin(){
             email_edt.setHint(R.string.p_email_hint)
@@ -474,7 +475,6 @@
             }
             }
             private fun init(){
-                getIntentExtra()
             email_edt=findViewById(R.id.email)
             loginTextview=findViewById(R.id.login_text_view)
             registerBtn=findViewById(R.id.register_btn)

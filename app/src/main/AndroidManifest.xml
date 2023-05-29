@@ -19,7 +19,7 @@
         android:windowSoftInputMode="adjustPan"
         tools:targetApi="31">
         <activity
-            android:name=".doctor_dashboard"
+            android:name=".Doctor.DoctorDashboard.DoctorDashboard"
             android:exported="false" />
         <activity
             android:name=".Admin.Doctors.Doctors"
@@ -48,14 +48,16 @@
             android:name=".Admin.Profile"
             android:exported="false" />
         <activity
-            android:name=".doctor.patient_recycle"
+            android:name=".Doctor.Appointments.Appointments"
             android:exported="false" />
         <activity
-            android:name=".doctor.profile_doctor"
+            android:name=".Doctor.DoctorProfile.Profile"
             android:exported="false" />
         <activity
             android:name=".Patient.Profile.Profile"
             android:exported="false" />
+        <activity android:name=".Doctor.Patients"
+            android:exported="false"/>
         <activity
             android:name=".Patient.booking.BookAppointment"
             android:exported="false" />

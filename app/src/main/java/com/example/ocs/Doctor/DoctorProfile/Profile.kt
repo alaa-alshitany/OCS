@@ -1,4 +1,4 @@
-package com.example.ocs.doctor
+package com.example.ocs.Doctor.DoctorProfile
 
 import android.annotation.SuppressLint
 import android.content.Intent
@@ -8,11 +8,12 @@ import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.drawerlayout.widget.DrawerLayout
+import com.example.ocs.Doctor.Appointments.Appointments
 import com.example.ocs.Login_Register.login.Login
 import com.example.ocs.R
 import com.google.android.material.navigation.NavigationView
 
-class Profile_doctor : AppCompatActivity() {
+class Profile : AppCompatActivity() {
 
     //nav_bar
     lateinit var toggle: ActionBarDrawerToggle
@@ -52,18 +53,18 @@ class Profile_doctor : AppCompatActivity() {
         finish()
     }
     private fun appointment() {
-        startActivity(Intent(this, Recycle_book::class.java))
+        startActivity(Intent(this, Appointments::class.java))
     }
 
     private fun doctorProfile() {
-        startActivity(Intent(this, Profile_doctor::class.java))
+        startActivity(Intent(this, Profile::class.java))
     }
     private fun patients() {
-        startActivity(Intent(this, Patient_recycle::class.java))
+        //startActivity(Intent(this, Patient_recycle::class.java))
     }
 
     private fun model() {
-        startActivity(Intent(this, model::class.java))
+        startActivity(Intent(this, com.example.ocs.Doctor.model::class.java))
     }
 
     //nav_bar

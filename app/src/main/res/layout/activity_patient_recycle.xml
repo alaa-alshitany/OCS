@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".doctor.patient_recycle">
+    tools:context=".Doctor.patient_recycle">
 
     <RelativeLayout
         android:layout_width="match_parent"

@@ -169,7 +169,7 @@
     <string name="open">open</string>
 
     <!--string for admin-->
-    <string name="searchDocHint">Enter Doctor Name Here</string>
+    <string name="searchHint">Enter Name Here</string>
     <string name="noDoctorFound">No Data Found</string>
     <string name="cancel">Cancel</string>
     <string name="emptySpecialization">Enter Specialization</string>
@@ -179,8 +179,6 @@
     <string name="searchpatientHint">Enter patient Name Here</string>
     <!--string for add_doctor-->
     <string name="add_doctor">Add Doctor</string>
-    <!--string for add_item-->
-    <string name="add_patient">Add Patient</string>
     <!--string for send_request-->
     <string name="patient_name">Name</string>
     <string name="service">Service</string>
@@ -231,7 +229,7 @@
     <string name="appointments">Appointment</string>
     <string name="model">Model</string>
     <string name="log_d">Log Out</string>
-
+    <string name="add_patient">Add Patient</string>
 
 
 

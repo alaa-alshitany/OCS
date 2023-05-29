@@ -1,10 +1,13 @@
-package com.example.ocs.doctor
+package com.example.ocs.Doctor.DoctorDashboard
 
 import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import com.example.ocs.Doctor.Patients
+//import com.example.ocs.Doctor.Appointments.Appointments
+//import com.example.ocs.Doctor.model
 import com.example.ocs.Login_Register.login.Login
 import com.example.ocs.Login_Register.login.Prefrences
 import com.example.ocs.R
@@ -27,16 +30,16 @@ class DoctorDashboard : AppCompatActivity() {
         init()
 
         binding.patients.setOnClickListener {
-            val cardpatientIntent = Intent(this, Patient_recycle::class.java)
-            startActivity(cardpatientIntent)
+           val cardpatientIntent = Intent(this, Patients::class.java)
+           startActivity(cardpatientIntent)
         }
         binding.appointmentsD.setOnClickListener {
-            val cardAppointmentIntent = Intent(this, Recycle_book::class.java)
-            startActivity(cardAppointmentIntent)
+           // val cardAppointmentIntent = Intent(this, Appointments::class.java)
+            //startActivity(cardAppointmentIntent)
         }
         binding.model.setOnClickListener {
-            val cardDoctorsIntent = Intent(this, model::class.java)
-            startActivity(cardDoctorsIntent)
+           // val cardDoctorsIntent = Intent(this, model::class.java)
+           // startActivity(cardDoctorsIntent)
         }
         binding.logoutD.setOnClickListener {
             pref.prefClear()

@@ -1,4 +1,4 @@
-package com.example.ocs.Admin.Doctors
+package com.example.ocs.Doctor
 
 import android.annotation.SuppressLint
 import android.app.DatePickerDialog
@@ -22,13 +22,12 @@ import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.ocs.Admin.Appointments.Appointments
-import com.example.ocs.R
-import com.example.ocs.Admin.Dashboard.Dashboard
-import com.example.ocs.Admin.DoctorDetails
+import com.example.ocs.Admin.Doctors.DoctorData
+import com.example.ocs.Doctor.PatientAdapter
 import com.example.ocs.Login_Register.login.Login
 import com.example.ocs.Login_Register.login.Prefrences
-import com.example.ocs.Patient.Profile.Profile
+import com.example.ocs.Patient.PatientData
+import com.example.ocs.R
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.FirebaseAuth
@@ -38,38 +37,37 @@ import java.time.Period
 import java.util.*
 import kotlin.collections.ArrayList
 
-class Doctors : AppCompatActivity() , OnCardListener {
-    private lateinit var doctorRecycle: RecyclerView
-    private lateinit var doctorList: ArrayList<DoctorData>
-    private lateinit var searchView:SearchView
+class Patients : AppCompatActivity(),OnPatientListener {
+
+    private lateinit var patientRecycle: RecyclerView
+    private lateinit var patientList: ArrayList<PatientData>
+    private lateinit var searchView: SearchView
     private lateinit var drawerLayout : DrawerLayout
     private lateinit var navView : NavigationView
     private val database: DatabaseReference = FirebaseDatabase.getInstance().reference
-    private lateinit var addDoctorBtn:FloatingActionButton
-    private lateinit var dAdapter :DoctorAdapter
+    private lateinit var addPatientBtn:FloatingActionButton
+    private lateinit var pAdapter : PatientAdapter
     private lateinit var auth: FirebaseAuth
-    private lateinit var addBtn:Button
-    private lateinit var cancelBtn:Button
+    private lateinit var addBtn: Button
+    private lateinit var cancelBtn: Button
     private lateinit var firstName:EditText
     private lateinit var lastName:EditText
-    private lateinit var specialization:Spinner
+    private lateinit var address: EditText
     private lateinit var birthDate:EditText
     private lateinit var genderRadio: RadioGroup
     private lateinit var radioButton: RadioButton
     private lateinit var email:EditText
     private lateinit var phone:EditText
     private lateinit var password:EditText
-    private  var currentDate: LocalDate=LocalDate.now()
+    private  var currentDate: LocalDate = LocalDate.now()
     private lateinit var dateEntered: LocalDate
-   private lateinit var  dialog:Dialog
-   private lateinit var specializationList:Array<String>
+    private lateinit var  dialog: Dialog
     private lateinit var pref: Prefrences
     private lateinit var navHeader : View
-    private lateinit var userName:TextView
+    private lateinit var userName: TextView
     private lateinit var context: Context
-
-    //nav_bar
     private lateinit var toggle: ActionBarDrawerToggle
+    private lateinit var title:TextView
 
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -77,18 +75,7 @@ class Doctors : AppCompatActivity() , OnCardListener {
         setContentView(R.layout.activity_recycle_doctor)
         supportActionBar!!.elevation= 0F
         init()
-        getDoctorsData()
-        addDoctorBtn.setOnClickListener { addDoctorDialog()}
-
-        searchView.setOnQueryTextListener(object:SearchView.OnQueryTextListener{
-            override fun onQueryTextSubmit(query: String?): Boolean {
-                return false
-            }
-            override fun onQueryTextChange(newText: String?): Boolean {
-               filterList(newText)
-                return true
-            }
-        })
+        getPatientsData()
         //nav_bar
         val drawerLayout : DrawerLayout = findViewById(R.id.drawerLayout)
         val navView : NavigationView = findViewById(R.id.nav_view)
@@ -97,78 +84,40 @@ class Doctors : AppCompatActivity() , OnCardListener {
         drawerLayout.addDrawerListener(toggle)
         toggle.syncState()
 
+        searchView.setOnQueryTextListener(object:SearchView.OnQueryTextListener{
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                return false
+            }
+            override fun onQueryTextChange(newText: String?): Boolean {
+                filterList(newText)
+                return true
+            }
+        })
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        supportActionBar?.setHomeAsUpIndicator(R.drawable.baseline_menu_24)
         navView.setNavigationItemSelectedListener {
             when(it.itemId){
-                R.id.nau_dashboard->dashboard()
-                R.id.nau_profile2-> adminProfile()
-                R.id.nau_booking2-> requests()
-                R.id.nau_doctor-> doctor()
-                R.id.nau_logout2-> logout()
+                R.id.nau_profile1-> doctorProfile()
+                R.id.nau_booking1-> appointment()
+                R.id.nau_patient-> patients()
+                R.id.nau_model-> model()
+                R.id.nau_logout1-> logout()
             }
+
             true
         }
-    }
-    //nav_bar
-    private fun dashboard() {
-        startActivity(Intent(this, Dashboard::class.java))
-    }
-    private fun logout() {
-        pref.prefClear()
-        moveToLogin()
-    }
-    private fun moveToLogin() {
-        startActivity(Intent(this, Login::class.java).putExtra("hint",R.string.a_email_hint.toString()))
-        Toast.makeText(this,R.string.logout, Toast.LENGTH_LONG).show()
-        finish()
-    }
-    private fun requests() {
-        startActivity(Intent(this, Appointments::class.java))
-    }
-    private fun adminProfile() {
-        startActivity(Intent(this, Profile::class.java))
-    }
-    private fun doctor() {
-        startActivity(Intent(this, Doctors::class.java))
-    }
-    //nav_bar
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if (toggle.onOptionsItemSelected(item)) {
-            return true
-        }
-        return super.onOptionsItemSelected(item)
+
+        addPatientBtn.setOnClickListener { addPatientDialog()}
     }
 
-    override fun onBackPressed() {
-        onBackPressedDispatcher.onBackPressed()
-    }
-    private fun filterList(query: String?) {
-        if (query!=null){
-            val filteredList=ArrayList<DoctorData>()
-            for (i in doctorList){
-                if ((i.firstName+" "+i.lastName).toLowerCase(Locale.ROOT).contains(query)){
-                    filteredList.add(i)
-                }
-            }
-            if (filteredList.isEmpty()){
-                filteredList.clear()
-                dAdapter.setFilteredList(filteredList)
-                Toast.makeText(applicationContext,R.string.noDoctorFound,Toast.LENGTH_SHORT).show()
-            }else{
-                dAdapter.setFilteredList(filteredList)
-            }
-        }
-    }
-    private fun addDoctorDialog() {
+    private fun addPatientDialog() {
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
         dialog.setCancelable(false)
-        dialog.setContentView(R.layout.add_doctor)
+        dialog.setContentView(R.layout.add_patient)
         window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         dialog.show()
-        val displayMetrics=DisplayMetrics()
+        val displayMetrics= DisplayMetrics()
         windowManager.defaultDisplay.getMetrics(displayMetrics)
-        val layoutParam=WindowManager.LayoutParams()
+        val layoutParam= WindowManager.LayoutParams()
         layoutParam.copyFrom(dialog.window?.attributes)
         layoutParam.width=(displayMetrics.widthPixels *0.9F).toInt()
         layoutParam.height=(displayMetrics.heightPixels *0.9F).toInt()
@@ -177,99 +126,39 @@ class Doctors : AppCompatActivity() , OnCardListener {
         cancelBtn=dialog.findViewById(R.id.cancelBtn)
         firstName=dialog.findViewById(R.id.firstName_d)
         lastName=dialog.findViewById(R.id.lastName_d)
-        specialization=dialog.findViewById(R.id.specializationSpinner)
+        address=dialog.findViewById(R.id.address)
         birthDate=dialog.findViewById(R.id.birthdate_d)
         genderRadio=dialog.findViewById(R.id.gender_d)
         phone=dialog.findViewById(R.id.phone_d)
         email=dialog.findViewById(R.id.email_d)
         password=dialog.findViewById(R.id.password_d)
-        ArrayAdapter.createFromResource(this,R.array.specializationList,android.R.layout.simple_spinner_item).also {
-        adapter->
-            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-            specialization.adapter=adapter
-        }
-        //specialization.adapter=ArrayAdapter(this,android.R.layout.simple_spinner_dropdown_item,R.array.specializationList.toString())
         birthDate.setOnClickListener { calenderShow() }
         cancelBtn.setOnClickListener { dialog.dismiss() }
         addBtn.setOnClickListener {
             if (checkInternet(this)){
-               if(checkEmptyFields()){
-                   var selectedGender:Int=genderRadio!!.checkedRadioButtonId
-                   radioButton = dialog.findViewById(selectedGender)
-                   checkPhone(phone)
-               }
+                if(checkEmptyFields()){
+                    var selectedGender:Int=genderRadio!!.checkedRadioButtonId
+                    radioButton = dialog.findViewById(selectedGender)
+                    checkPhone(phone)
+                }
             } else {
                 Toast.makeText(this, R.string.internetError, Toast.LENGTH_LONG).show()
             }
         }
     }
-    private fun checkEmail(email:EditText){
-        val query:Query=database.child("Doctors").orderByChild("email").equalTo(email.text.toString())
-        query.addListenerForSingleValueEvent(object:ValueEventListener{
-            override fun onDataChange(snapshot: DataSnapshot) {
-                if (snapshot.exists()) {
-                    email.setError(getText(R.string.emailFound))
-                }else{
-                    addDoctor(radioButton.text.toString())
-                }
-            }
-            override fun onCancelled(error: DatabaseError) {
-                Toast.makeText(applicationContext, error.message, Toast.LENGTH_LONG).show()
-            }
-        })
-    }
-    private fun addDoctor(gender:String) {
-        auth.createUserWithEmailAndPassword(email.text.toString(), password.text.toString())
-            .addOnCompleteListener {
-                if (it.isSuccessful) {
-                    val doctorId = auth.currentUser!!.uid
-                    val doctor = DoctorData(doctorId,
-                        firstName.text.toString(),
-                        lastName.text.toString(),
-                        birthDate.text.toString(),
-                        specialization.selectedItem.toString(),
-                        phone.text.toString(),
-                        gender,
-                        email.text.toString(),
-                        password.text.toString()
-                    )
-                    database.child("Doctors").child(doctorId).setValue(doctor).addOnSuccessListener {
-                        Toast.makeText(this, R.string.register_success, Toast.LENGTH_SHORT).show()
-                        dialog.dismiss()
-                    }.addOnFailureListener { err ->
-                        Toast.makeText(this, "Error ${err.message}", Toast.LENGTH_LONG).show()
-                    }
-                }
-            }
-    }
-    private fun calenderShow() {
-        val calendar = Calendar.getInstance()
-        val year = calendar.get(Calendar.YEAR)
-        val month = calendar.get(Calendar.MONTH)
-        val day = calendar.get(Calendar.DAY_OF_MONTH)
-        val datePickerDialog = DatePickerDialog(this,R.style.datepicker,
-            DatePickerDialog.OnDateSetListener
-            { view, year, monthOfYear, dayOfMonth ->
-                birthDate.setText("$year" +"-"+ (monthOfYear + 1)+"-"+dayOfMonth  )
-                dateEntered=LocalDate.of(year,month,dayOfMonth)
-            }, year, month, day
-        )
-        datePickerDialog.datePicker.maxDate=calendar.timeInMillis
-        datePickerDialog.show()
-    }
     private fun checkEmptyFields():Boolean {
-        var emailPattern = "[a-zA-Z0-9._-]+@ocs+\\.+[a-z]+"
+        var emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+"
         var phonePattern = "^01[0125][0-9]{8}\$"
         if (firstName.text.toString().isNotEmpty() && lastName.text.toString().isNotEmpty()
             && email.text.toString().trim().matches(emailPattern.toRegex())&& birthDate.text.toString().isNotEmpty()
             /*&& specialization.text.toString().isNotEmpty() && phone.text.toString().isNotEmpty()*/
             && phone.text.toString().length == 11 && phone.text.toString().trim().matches(phonePattern.toRegex()) && password.text.toString().isNotEmpty()
-            && password.text.toString().trim().length >= 8 && Period.between(dateEntered,currentDate).years >26
-                ) {
+            && password.text.toString().trim().length >= 8 && Period.between(dateEntered,currentDate).years >15 && address.text.toString().isNotEmpty()
+        ) {
             return true
         }else{
             if(email.text.toString().trim().isEmpty() && firstName.text.toString().isEmpty() && birthDate.text.toString().isEmpty()
-                && password.text.toString().isEmpty() /*&& specialization.text.toString().isEmpty()*/
+                && password.text.toString().isEmpty() && address.text.toString().isEmpty()
                 &&(lastName.text.toString().isEmpty() && phone.text.toString().isEmpty())){
                 email.setError(getText(R.string.requird))
                 firstName.setError(getText(R.string.requird))
@@ -277,7 +166,7 @@ class Doctors : AppCompatActivity() , OnCardListener {
                 phone.setError(getText(R.string.requird))
                 birthDate.setError(getText(R.string.requird))
                 password.setError(getText(R.string.requird))
-                /*specialization.setError(getText(R.string.requird))*/
+                address.setError(getText(R.string.requird))
                 Toast.makeText(this,R.string.emptyAllData,Toast.LENGTH_SHORT).show()
             }
             else if (email.text.toString().trim().isEmpty()){
@@ -303,16 +192,16 @@ class Doctors : AppCompatActivity() , OnCardListener {
                 phone.setError(getText(R.string.notValidNumber))
                 Toast.makeText(this, R.string.notValidNumber, Toast.LENGTH_SHORT).show()
             }
-            /*else if (specialization.selectedItem.toString().isEmpty()){
-                specialization.setError(getText(R.string.requird))
-                Toast.makeText(this,R.string.emptySpecialization,Toast.LENGTH_SHORT)
-            }*/
+            else if (address.text.toString().isEmpty()){
+                address.setError(getText(R.string.requird))
+                Toast.makeText(this,R.string.emptyAddress,Toast.LENGTH_SHORT)
+            }
             else if (birthDate.text.toString().isEmpty()) {
                 birthDate.setError(getText(R.string.requird))
                 Toast.makeText(applicationContext,R.string.emptyBirthDate,Toast.LENGTH_LONG).show()
             }else if (Period.between(dateEntered,currentDate).years <15){
-                birthDate.setError(getText(R.string.doctorAgeError))
-                Toast.makeText(applicationContext,R.string.doctorAgeError,Toast.LENGTH_LONG).show()
+                birthDate.setError(getText(R.string.ageError))
+                Toast.makeText(applicationContext,R.string.ageError,Toast.LENGTH_LONG).show()
             }
             else if (password.text.toString().isEmpty()) {
                 password.setError(getText(R.string.requird))
@@ -353,11 +242,58 @@ class Doctors : AppCompatActivity() , OnCardListener {
             return networkInfo.isConnected
         }
     }
+    private fun getPatientsData(){
+        database.child("Patients").addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                patientList.clear()
+                if (snapshot.exists()){
+                    for (patientData in snapshot.children){
+                        val patientName=patientData.getValue(PatientData::class.java)
+                        patientList.add(patientName!!)
+                    }
+                    pAdapter= PatientAdapter(patientList, listener = this@Patients)
+                    patientRecycle.adapter=pAdapter
+                }
+            }
+            override fun onCancelled(error: DatabaseError) {
+            }
+        })
+
+    }
+    private fun logout() {
+        pref.prefClear()
+        moveToLogin()
+    }
+    private fun moveToLogin() {
+        startActivity(Intent(this, Login::class.java).putExtra("hint",R.string.p_email_hint.toString()))
+        Toast.makeText(this,R.string.logout, Toast.LENGTH_LONG).show()
+        finish()
+    }
+    private fun appointment() {
+       // startActivity(Intent(this, Appointments::class.java))
+    }
+    private fun doctorProfile() {
+        //startActivity(Intent(this, Profile::class.java))
+    }
+    private fun patients() {
+        startActivity(Intent(this, Patients::class.java))
+    }
+
+    private fun model() {
+        //startActivity(Intent(this, model::class.java))
+    }
+    //nav_bar
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (toggle.onOptionsItemSelected(item)) {
+            return true
+        }
+        return super.onOptionsItemSelected(item)
+    }
     private fun init(){
-        doctorRecycle = findViewById(R.id.recycleview1)
-        doctorRecycle.layoutManager = LinearLayoutManager(this)
-        doctorRecycle.setHasFixedSize(true)
-        doctorList = arrayListOf<DoctorData>()
+        patientRecycle = findViewById(R.id.recycleview1)
+        patientRecycle.layoutManager = LinearLayoutManager(this)
+        patientRecycle.setHasFixedSize(true)
+        patientList = arrayListOf<PatientData>()
         drawerLayout = findViewById(R.id.drawerLayout)
         navView = findViewById(R.id.nav_view)
         navHeader=navView.getHeaderView(0)
@@ -367,16 +303,74 @@ class Doctors : AppCompatActivity() , OnCardListener {
         drawerLayout.addDrawerListener(toggle)
         toggle.syncState()
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        addDoctorBtn=findViewById(R.id.addingDoctorBtn)
+        addPatientBtn=findViewById(R.id.addingDoctorBtn)
         dialog=Dialog(this)
         context=this
         pref= Prefrences(context)
         userName=navHeader.findViewById(R.id.user_name)
         userName.setText(pref.userName)
-}
-
+        title=findViewById(R.id.titleTxt)
+        title.setText(R.string.patients)
+    }
+    override fun onBackPressed() {
+        onBackPressedDispatcher.onBackPressed()
+    }
+    private fun addPatient(gender:String) {
+        auth.createUserWithEmailAndPassword(email.text.toString(), password.text.toString())
+            .addOnCompleteListener {
+                if (it.isSuccessful) {
+                    val patientID = auth.currentUser!!.uid
+                    val patient = DoctorData(patientID,
+                        firstName.text.toString(),
+                        lastName.text.toString(),
+                        birthDate.text.toString(),
+                        address.text.toString(),
+                        phone.text.toString(),
+                        gender,
+                        email.text.toString(),
+                        password.text.toString()
+                    )
+                    database.child("Patients").child(patientID).setValue(patient).addOnSuccessListener {
+                        Toast.makeText(this, R.string.register_success, Toast.LENGTH_SHORT).show()
+                        dialog.dismiss()
+                    }.addOnFailureListener { err ->
+                        Toast.makeText(this, "Error ${err.message}", Toast.LENGTH_LONG).show()
+                    }
+                }
+            }
+    }
+    private fun checkEmail(email:EditText){
+        val query:Query=database.child("Patients").orderByChild("email").equalTo(email.text.toString())
+        query.addListenerForSingleValueEvent(object:ValueEventListener{
+            override fun onDataChange(snapshot: DataSnapshot) {
+                if (snapshot.exists()) {
+                    email.setError(getText(R.string.emailFound))
+                }else{
+                    addPatient(radioButton.text.toString())
+                }
+            }
+            override fun onCancelled(error: DatabaseError) {
+                Toast.makeText(applicationContext, error.message, Toast.LENGTH_LONG).show()
+            }
+        })
+    }
+    private fun calenderShow() {
+        val calendar = Calendar.getInstance()
+        val year = calendar.get(Calendar.YEAR)
+        val month = calendar.get(Calendar.MONTH)
+        val day = calendar.get(Calendar.DAY_OF_MONTH)
+        val datePickerDialog = DatePickerDialog(this,R.style.datepicker,
+            DatePickerDialog.OnDateSetListener
+            { view, year, monthOfYear, dayOfMonth ->
+                birthDate.setText("$year" +"-"+ (monthOfYear + 1)+"-"+dayOfMonth  )
+                dateEntered=LocalDate.of(year,month,dayOfMonth)
+            }, year, month, day
+        )
+        datePickerDialog.datePicker.maxDate=calendar.timeInMillis
+        datePickerDialog.show()
+    }
     private fun checkPhone(phone:EditText){
-        val queryPhone: Query =database.child("Doctors").orderByChild("phone").equalTo(phone.text.toString())
+        val queryPhone: Query =database.child("Patients").orderByChild("phone").equalTo(phone.text.toString())
         queryPhone.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 if (snapshot.exists()){
@@ -391,41 +385,40 @@ class Doctors : AppCompatActivity() , OnCardListener {
             }
         })
     }
-    private fun getDoctorsData(){
-    database.child("Doctors").addValueEventListener(object : ValueEventListener{
-        override fun onDataChange(snapshot: DataSnapshot) {
-           doctorList.clear()
-            if (snapshot.exists()){
-                for (docData in snapshot.children){
-                    val docName=docData.getValue(DoctorData::class.java)
-                    doctorList.add(docName!!)
+    private fun filterList(query: String?) {
+        if (query!=null){
+            val filteredList=ArrayList<PatientData>()
+            for (i in patientList){
+                if ((i.firstName+" "+i.lastName).toLowerCase(Locale.ROOT).contains(query)){
+                    filteredList.add(i)
                 }
-                dAdapter= DoctorAdapter(doctorList, listener = this@Doctors)
-                doctorRecycle.adapter=dAdapter
+            }
+            if (filteredList.isEmpty()){
+                filteredList.clear()
+                pAdapter.setFilteredList(filteredList)
+                Toast.makeText(applicationContext,R.string.noDoctorFound,Toast.LENGTH_SHORT).show()
+            }else{
+                pAdapter.setFilteredList(filteredList)
             }
         }
-        override fun onCancelled(error: DatabaseError) {
-        }
-
-    })
-}
-    override fun onClick(c: DoctorData?) {
-       var doctorName="DR/ ${c?.firstName} ${c?.lastName}"
+    }
+    override fun onClick(c: PatientData?) {
+        var patientName="${c?.firstName} ${c?.lastName}"
         var phone=c?.phone
         var id=c?.id
         var email=c?.email
-        var specialization=c?.specialization
         var gender = c?.gender
         var password=c?.password
         var birthDate=c?.birthDate
+        var address=c?.address
 
-        var intentDetails=Intent(this,DoctorDetails::class.java)
+        var intentDetails=Intent(this, PatientDetails::class.java)
 
-        intentDetails.putExtra("name",doctorName)
+        intentDetails.putExtra("name",patientName)
         intentDetails.putExtra("phone",phone)
         intentDetails.putExtra("id",id)
         intentDetails.putExtra("email",email)
-        intentDetails.putExtra("specialization",specialization)
+        intentDetails.putExtra("address",address)
         intentDetails.putExtra("gender",gender)
         intentDetails.putExtra("password",password)
         intentDetails.putExtra("birthdate",birthDate)
@@ -433,5 +426,4 @@ class Doctors : AppCompatActivity() , OnCardListener {
         startActivity(intentDetails)
 
     }
-
 }

@@ -61,13 +61,13 @@ class DoctorDetails: AppCompatActivity() {
 
         updateBtn.setOnClickListener {
            var ref= database.child("Doctors").child(id.text.toString())
-                   ref.child("birthDate").setValue( birthDate.text.toString()).addOnSuccessListener {
-                       ref.child("phone").setValue( phone.text.toString()).addOnSuccessListener {
-                           ref.child("email").setValue(email.text.toString()).addOnSuccessListener {
-                               ref.child("password").setValue(password.text.toString()).addOnSuccessListener {
-                                   Toast.makeText(baseContext, "All Data has been updated!", Toast.LENGTH_LONG).show()
-                                   doctor()
-                               }
+           ref.child("birthDate").setValue( birthDate.text.toString()).addOnSuccessListener {
+               ref.child("phone").setValue( phone.text.toString()).addOnSuccessListener {
+                   ref.child("email").setValue(email.text.toString()).addOnSuccessListener {
+                       ref.child("password").setValue(password.text.toString()).addOnSuccessListener {
+                           Toast.makeText(baseContext, "All Data has been updated!", Toast.LENGTH_LONG).show()
+                           doctor()
+                       }
                            }
                        }
                    }
