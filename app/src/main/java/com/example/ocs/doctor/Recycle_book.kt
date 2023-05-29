@@ -14,7 +14,7 @@ import com.google.android.material.navigation.NavigationView
 
 class Recycle_book : AppCompatActivity() {
     private lateinit var recycleView: RecyclerView
-    private lateinit var dataList: ArrayList<DataClass2>
+    private lateinit var dataList: ArrayList<DataClass_appointment>
     lateinit var TitleList:Array<String>
     lateinit var DetailList:Array<String>
 
@@ -42,7 +42,7 @@ class Recycle_book : AppCompatActivity() {
         recycleView = findViewById(R.id.recycleView)
         recycleView.layoutManager = LinearLayoutManager(this)
         recycleView.setHasFixedSize(true)
-        dataList = arrayListOf<DataClass2>()
+        dataList = arrayListOf<DataClass_appointment>()
         getData()
 
         //nav_bar
@@ -77,10 +77,10 @@ class Recycle_book : AppCompatActivity() {
 
     private fun getData(){
         for(i in TitleList.indices){
-            val dataClass = DataClass2(TitleList[i], DetailList[i])
+            val dataClass = DataClass_appointment(TitleList[i], DetailList[i])
             dataList.add(dataClass)
         }
-        recycleView.adapter = AdapterClass2(dataList)
+        recycleView.adapter = AdapterClass_appointment(dataList)
     }
 
 }

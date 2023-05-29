@@ -7,7 +7,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ocs.R
 
-class AdapterClass2(private val dataList: ArrayList<DataClass2>):RecyclerView.Adapter<AdapterClass2.ViewHolderClass>(){
+class AdapterClass_appointment(private val dataList: ArrayList<DataClass_appointment>):RecyclerView.Adapter<AdapterClass_appointment.ViewHolderClass>(){
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolderClass {
         val itemView = LayoutInflater.from(parent.context).inflate(R.layout.doctor_card, parent, false)

@@ -19,7 +19,7 @@ import com.google.android.material.navigation.NavigationView
 class Patient_recycle : AppCompatActivity() {
     private  lateinit var addBtn:FloatingActionButton
     private lateinit var recv:RecyclerView
-    private lateinit var patientList:ArrayList<patientData>
+    private lateinit var patientList:ArrayList<PatientData>
     private lateinit var patientAdapter: PatientAdapter
 
     //nav_bar
@@ -76,7 +76,7 @@ class Patient_recycle : AppCompatActivity() {
                 dialog,
                 id->finish()
             val names = patientName.text.toString()
-            patientList.add(patientData("Name: $names"))
+            patientList.add(PatientData("Name: $names"))
             patientAdapter.notifyDataSetChanged()
             Toast.makeText(this, "Adding patient success",Toast.LENGTH_SHORT).show()
             dialog.dismiss()

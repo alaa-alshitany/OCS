@@ -8,7 +8,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ocs.R
 
-class PatientAdapter(val c:Context, val patientList: ArrayList<patientData>):RecyclerView.Adapter<PatientAdapter.PatientViewHolder>() {
+class PatientAdapter(val c:Context, val patientList: ArrayList<PatientData>):RecyclerView.Adapter<PatientAdapter.PatientViewHolder>() {
 
     inner class PatientViewHolder(val v: View): RecyclerView.ViewHolder(v){
         val name = v.findViewById<TextView>(R.id.pTitle)

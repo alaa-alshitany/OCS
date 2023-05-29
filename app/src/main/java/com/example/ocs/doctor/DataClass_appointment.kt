@@ -1,3 +1,3 @@
 package com.example.ocs.doctor
 
-data class DataClass2(var dataTitle:String, var datadetail:String)
+data class DataClass_appointment(var dataTitle:String, var datadetail:String)
