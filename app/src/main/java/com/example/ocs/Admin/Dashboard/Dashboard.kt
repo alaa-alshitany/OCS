@@ -12,7 +12,6 @@ import com.example.ocs.Admin.Profile
 import com.example.ocs.Login_Register.login.Login
 import com.example.ocs.Login_Register.login.Prefrences
 import com.example.ocs.R
-//import com.example.ocs.Admin.profile
 import com.example.ocs.databinding.ActivityDashboardBinding
 import com.github.mikephil.charting.charts.BarChart
 import com.github.mikephil.charting.charts.PieChart
@@ -28,7 +27,6 @@ import com.google.firebase.database.ValueEventListener
 class Dashboard : AppCompatActivity()  {
 
     lateinit var piechart: PieChart
-
 
     //listener on dashboard_card
     private lateinit var binding: ActivityDashboardBinding
@@ -69,26 +67,21 @@ class Dashboard : AppCompatActivity()  {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 // Initialize a list to hold the BarEntry objects
                 val entries = ArrayList<BarEntry>()
-
                 // Loop through the data and add it to the entries list
                 for (snapshot in dataSnapshot.children) {
                     val oncologytype = snapshot.child("specialization").value.toString()
                     val doctors = snapshot.child("Doctors").value.toString().toFloat()
                     entries.add(BarEntry(entries.size.toFloat(), doctors))
                 }
-
                 // Create a BarDataSet object with the data
                 val dataSet = BarDataSet(entries, "oncology type")
                 dataSet.setColors(*ColorTemplate.COLORFUL_COLORS)
-
                 // Create a BarData object with the BarDataSet
                 val data = BarData(dataSet)
-
                 // Configure the chart view
                 chart.data=data
                 chart.xAxis.setDrawGridLines(false)
                 chart.xAxis.position = XAxis.XAxisPosition.BOTTOM
-
                 // Set the labels for the x-axis using the data from Firebase
                 val labels = ArrayList<String>()
                 for (snapshot in dataSnapshot.children) {
@@ -96,7 +89,6 @@ class Dashboard : AppCompatActivity()  {
                     labels.add(oncologytype)
                 }
                 chart.xAxis.valueFormatter = IndexAxisValueFormatter(labels.toTypedArray())
-
                 chart.description.isEnabled = true
                 chart.legend.isEnabled = false
                 chart.axisLeft.isEnabled = true
@@ -104,7 +96,6 @@ class Dashboard : AppCompatActivity()  {
                 chart.animateY(1000)
                 chart.invalidate()
             }
-
             override fun onCancelled(error: DatabaseError) {
                 // Handle errors
             }

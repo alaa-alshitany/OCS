@@ -5,15 +5,12 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
-import com.example.ocs.Admin.Appointments.Appointments
-import com.example.ocs.Admin.Doctors.Doctors
-import com.example.ocs.Admin.Profile
 import com.example.ocs.Login_Register.login.Login
 import com.example.ocs.Login_Register.login.Prefrences
 import com.example.ocs.R
 import com.example.ocs.databinding.ActivityDoctorDashboardBinding
 
-class doctor_dashboard : AppCompatActivity() {
+class DoctorDashboard : AppCompatActivity() {
 
     private lateinit var binding: ActivityDoctorDashboardBinding
     private lateinit var pref: Prefrences

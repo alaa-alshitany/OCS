@@ -17,8 +17,6 @@
         import android.widget.TextView
         /////////////////////////////////////////////////////
         import com.opencsv.RFC4180ParserBuilder
-        import org.tensorflow.lite.support.tensorbuffer.TensorBuffer
-        import org.tensorflow.lite.DataType
         ////////////////////////////////////////////////////
         import android.widget.Toast
         import com.example.ocs.Login_Register.forgetPassword.ForgetPassword
@@ -29,6 +27,7 @@
         import com.example.ocs.R
         import com.example.ocs.Admin.Dashboard.Dashboard
         import com.example.ocs.Admin.Doctors.DoctorData
+        import com.example.ocs.doctor.DoctorDashboard
         import com.google.android.material.textfield.TextInputLayout
         import com.google.firebase.auth.FirebaseAuth
         import com.google.firebase.auth.ktx.auth
@@ -38,16 +37,7 @@
         //import com.google.firebase.ml.common.modeldownload.FirebaseModelDownloadConditions
         //import com.google.firebase.ml.common.modeldownload.FirebaseModelManager
         //import com.google.firebase.ml.custom.*
-        import com.google.firebase.ml.modeldownloader.CustomModelDownloadConditions
-        import com.google.firebase.ml.modeldownloader.DownloadType
-        import com.google.firebase.ml.modeldownloader.FirebaseModelDownloader
-        import com.google.firebase.storage.FirebaseStorage
         import com.google.firebase.storage.StorageReference
-        import org.tensorflow.lite.Interpreter
-        import org.tensorflow.lite.TensorFlowLite
-        import java.io.File
-        import java.nio.ByteBuffer
-        import kotlin.math.roundToInt
 
         class Login : AppCompatActivity() {
             private lateinit var registerBtn:Button
@@ -72,7 +62,7 @@
                 setContentView(R.layout.activity_login)
                 supportActionBar!!.elevation= 0F
                 init()
-                getIntentExtra()
+                //getIntentExtra()
                 registerBtn.setOnClickListener { register()}
                 forgetPasswordBtn.setOnClickListener { forgetPassword() }
             }
@@ -302,7 +292,6 @@
                     Log.d("this", "model failed to downloaded ")
           */       }
             }
-
             private fun readDoctorData(email: String,password: String) {
                 val auth = Firebase.auth
                 auth.signInWithEmailAndPassword(email, password).addOnCompleteListener {
@@ -319,7 +308,7 @@
                                                 pref.prefLevel = "doctor"
                                                 pref.prefID = doctor?.id
                                                 Toast.makeText(context, R.string.login_success, Toast.LENGTH_LONG).show()
-                                                dashboard()
+                                                doctorDashboard()
                                             } else {
                                                 passwordEdt.setError(getText(R.string.login_failed))
                                             }
@@ -379,8 +368,11 @@
             }
             }
             }
-            private fun dashboard() {
+            private fun adminDashboard() {
             startActivity(Intent(activity, Dashboard::class.java))
+            }
+            private fun doctorDashboard(){
+                startActivity(Intent(activity,DoctorDashboard::class.java))
             }
             private fun patientLogin(){
             email_edt.setHint(R.string.p_email_hint)
@@ -437,7 +429,7 @@
                     pref.prefLevel = "admin"
                     pref.prefID = admin?.id
                     Toast.makeText(context, R.string.login_success, Toast.LENGTH_LONG).show()
-                    dashboard()
+                    adminDashboard()
                 } else {
                     passwordEdt.setError(getText(R.string.login_failed))
                 }
@@ -460,10 +452,9 @@
             if (pref.prefStatus){
             when(pref.prefLevel){
             "patient" -> home()
-            //"doctor" ->
-            "admin" ->dashboard()
+            "admin" ->adminDashboard()
+            "doctor" -> doctorDashboard()
             }
-
             }
             }
             private fun checkEmptyData(email:EditText, password:EditText){
@@ -483,6 +474,7 @@
             }
             }
             private fun init(){
+                getIntentExtra()
             email_edt=findViewById(R.id.email)
             loginTextview=findViewById(R.id.login_text_view)
             registerBtn=findViewById(R.id.register_btn)

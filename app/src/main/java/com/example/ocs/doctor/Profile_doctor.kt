@@ -9,9 +9,6 @@ import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.drawerlayout.widget.DrawerLayout
 import com.example.ocs.Login_Register.login.Login
-import com.example.ocs.Patient.Profile.Profile
-import com.example.ocs.Patient.booking.BookAppointment
-import com.example.ocs.Patient.services.Services
 import com.example.ocs.R
 import com.google.android.material.navigation.NavigationView
 
