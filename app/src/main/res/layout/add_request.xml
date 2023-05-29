@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:background="@drawable/shape_background"
+    android:gravity="center"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp">
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight=".1"></Space>
+
+
+            <EditText
+                android:id="@+id/firstName_R"
+                style="@style/EditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:drawableStart="@drawable/baseline_user_24"
+                android:drawablePadding="20dp"
+                android:ems="10"
+                android:hint="@string/patient_name"
+                android:imeOptions="actionNext"
+                android:inputType="textPersonName"
+                android:textColor="@color/black"
+                tools:ignore="VisualLintTextFieldSize" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="10dp"
+            >
+            <EditText
+                android:id="@+id/phone"
+                style="@style/EditText"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:autofillHints=""
+                android:drawableStart="@drawable/baseline_phone_24"
+                android:ems="10"
+                android:hint="@string/phone"
+                android:inputType="phone"
+                tools:ignore="VisualLintTextFieldSize" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="10dp">
+
+            <EditText
+                android:id="@+id/service_R"
+                style="@style/EditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:drawableStart="@drawable/baseline_house_24"
+                android:ems="10"
+                android:hint="@string/service"
+                android:imeOptions="actionNext"
+                android:inputType="textPersonName"
+                android:textColor="@color/black"
+                tools:ignore="VisualLintTextFieldSize" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+            <EditText
+                android:id="@+id/date_R"
+                style="@style/EditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:clickable="false"
+                android:cursorVisible="false"
+                android:drawableStart="@drawable/baseline_calendar_month_24"
+                android:ems="10"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                android:hint="@string/date"
+                android:imeOptions="actionNext"
+                android:inputType="date"
+                android:textColor="@color/black"
+                tools:ignore="VisualLintTextFieldSize" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="10dp">
+
+        <EditText
+            android:id="@+id/time_R"
+            style="@style/EditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:clickable="false"
+            android:cursorVisible="false"
+            android:drawableStart="@drawable/baseline_access_time_24"
+            android:ems="10"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:hint="@string/Time"
+            android:imeOptions="actionNext"
+            android:inputType="date"
+            android:textColor="@color/black"
+            tools:ignore="VisualLintTextFieldSize" />
+        </com.google.android.material.textfield.TextInputLayout>
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight=".06"></Space>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight=".2"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/sendRequestBtn"
+                style="@style/Widget.AppCompat.Button.Colored"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_weight=".8"
+                android:layout_marginLeft="90dp"
+                android:layout_marginRight="90dp"
+                android:background="@drawable/button_style"
+                android:fontFamily="@font/inter_font"
+                android:text="@string/send_SMs"
+                android:textAllCaps="false"
+                android:textColor="@color/black"
+                android:textStyle="bold"/>
+        </LinearLayout>
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight=".4"></Space>
+
+    </LinearLayout>
+
+</LinearLayout>
