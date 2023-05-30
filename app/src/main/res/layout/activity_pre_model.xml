@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Doctor.Model.Pre_model"
-    android:background="@color/white"
+    tools:context=".doctor.Pre_model"
     >
 
     <GridLayout
@@ -20,7 +19,7 @@
         android:rowCount="2">
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/upload"
+        android:id="@+id/patients"
         android:layout_width="50dp"
         android:layout_height="150dp"
         android:layout_row="1"
@@ -49,7 +48,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:fontFamily="@font/acme_regular"
-                android:text="@string/upload_files"
+                android:text="Upload File "
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 android:textColor="@color/black"
                 android:textStyle="bold" />
@@ -57,7 +56,7 @@
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/predict"
+        android:id="@+id/appointments_d"
         android:layout_width="50dp"
         android:layout_height="150dp"
         android:layout_row="1"
@@ -86,11 +85,10 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:fontFamily="@font/acme_regular"
-                android:text="@string/predict"
+                android:text="Result"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 android:textColor="@color/black"
                 android:textStyle="bold" />
-
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 

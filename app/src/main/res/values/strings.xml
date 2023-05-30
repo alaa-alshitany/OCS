@@ -226,7 +226,7 @@
     <string name="messageConfirm">Message sent Successfully!</string>
 
     <string name="patients">Patients</string>
-    <string name="appointments">Appointment</string>
+    <string name="appointments">Appointments</string>
     <string name="model">Model</string>
     <string name="log_d">Log Out</string>
     <string name="add_patient">Add Patient</string>
@@ -235,6 +235,12 @@
     <string name="save">Save</string>
     <string name="choosePatient">Choose Patient Name</string>
     <string name="uploaded">Uploaded Successfully!</string>
+
+    <string name="profile">Profile</string>
+    <string name="doctors">Doctors</string>
+    <string name="upload_file">Upload File</string>
+    <string name="result">Result</string>
+    <string name="requests">Requests</string>
 
     <string-array name="specializationList">
         <item>Neuro Oncologists</item> <!--specialize in treating nervous system, spine, and brain cancers.-->
@@ -246,6 +252,9 @@
         <item>Urologic Oncologists </item><!--specialize in treating cancers present in the genitourinary system like the penis, kidneys, bladder, testicles, and prostate gland.-->
     </string-array>
 </resources>
+
+
+
 
 
 

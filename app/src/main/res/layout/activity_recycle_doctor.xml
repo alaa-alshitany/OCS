@@ -22,7 +22,7 @@
         android:id="@+id/titleTxt"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Doctors"
+        android:text="@string/doctors"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         android:textStyle="bold"
         android:textColor="@color/blue_500"

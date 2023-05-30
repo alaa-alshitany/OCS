@@ -4,6 +4,8 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
+import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
@@ -15,6 +17,12 @@ import com.example.ocs.R
 import com.google.android.material.navigation.NavigationView
 
 class PatientDetails: AppCompatActivity() {
+
+    private lateinit var Name: EditText
+    private lateinit var email:EditText
+    private lateinit var phone:EditText
+    private lateinit var diagnosis:EditText
+    private lateinit var medicine:EditText
 
     //nav_bar
     lateinit var toggle: ActionBarDrawerToggle
@@ -73,5 +81,25 @@ class PatientDetails: AppCompatActivity() {
             return true
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    private fun init(){
+        var intent2:Intent=intent
+
+        Name=findViewById(R.id.textView43)
+        Name.setText(intent2.getStringExtra("name").toString())
+
+        email=findViewById(R.id.textView44)
+        email.setText(intent2.getStringExtra("email").toString())
+
+        phone=findViewById(R.id.textView45)
+        phone.setText(intent2.getStringExtra("phone").toString())
+
+        diagnosis=findViewById(R.id.textView46)
+        diagnosis.setText(intent2.getStringExtra("phone").toString())
+
+        medicine=findViewById(R.id.textView47)
+        medicine.setText(intent2.getStringExtra("phone").toString())
+
     }
 }

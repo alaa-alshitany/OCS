@@ -73,7 +73,7 @@
                 app:layout_constraintVertical_bias="0.473"
                 tools:text="@string/Patientdetails_name" />
 
-            <TextView
+            <EditText
                 android:id="@+id/textView43"
                 style="@style/EditText"
                 android:layout_width="0dp"
@@ -114,7 +114,7 @@
                 app:layout_constraintVertical_bias="0.473"
                 tools:text="@string/Patientdetails_email" />
 
-            <TextView
+            <EditText
                 android:id="@+id/textView44"
                 style="@style/EditText"
                 android:layout_width="0dp"
@@ -156,7 +156,7 @@
                 app:layout_constraintVertical_bias="0.473"
                 tools:text="@string/Patientdetails_phone" />
 
-            <TextView
+            <EditText
                 android:id="@+id/textView45"
                 style="@style/EditText"
                 android:layout_width="0dp"
@@ -198,7 +198,7 @@
                 app:layout_constraintVertical_bias="0.473"
                 tools:text="@string/Patientdetails_diagnosis" />
 
-            <TextView
+            <EditText
                 android:id="@+id/textView46"
                 style="@style/EditText"
                 android:layout_width="0dp"

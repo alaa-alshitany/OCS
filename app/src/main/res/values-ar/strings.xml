@@ -1,3 +1,4 @@
+
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- Strings related to intro slider -->
@@ -28,7 +29,7 @@
     <!-- Errors related to Login-->
     <string name="emptyEmail">رجاءا أدخل بريدك الإلكتروني</string>
     <string name="emptyPassword">من فضلك أدخل رقمك السري</string>
-    <string name="emptyData"> رجاءا أدخل بريدك الإلكتروني \&amp; كلمة المرور </string>
+    <string name="emptyAllData"> رجاءا أدخل بريدك الإلكتروني \&amp; كلمة المرور </string>
     <string name="userNotFound">لم يتم العثور على المستخدم</string>
     <string name="login_failed">فشل تسجيل الدخول</string>
     <string name="login_success">تم تسجيل الدخول بنجاح</string>
@@ -68,19 +69,29 @@
     <string name="passwordConfirm">تأكيد كلمة المرور</string>
     <string name="oldUser">هل لديك حساب بالفعل؟ </string>
     <string name="cont_register">استكمال التسجيل</string>
+    <string name = "phoneFound"> تم تسجيل هذا الهاتف بالفعل قبل </ string>
+    <string name = "emailFound"> تم تسجيل هذا البريد الإلكتروني بالفعل قبل </ string>
+    <string name = "internetError"> خطأ في الاتصال </ string>
+    <string name = "ageError"> يجب أن يكون عمرك> 15 عامًا </ string>
+    <string name = "requird"> مطلوب </ string>
+    <string name = "specialization"> التخصص </ string>
+    <string name = "add"> Add </string>
+    <string name = "gender"> النوع </ string>
+
+
+
 
     <!-- Errors related to register-->
-    <string name="emptyFields">لو سمحت أملأ كل الحقول</string>
-    <string name="notValidEmail">أدخل بريد إلكتروني متاح</string>
-    <string name="emptyFName">أدخل اسمك الأول</string>
-    <string name="emptyLName">أدخل اسمك العائلة</string>
-    <string name="emptyPhone">أدخل رقم هاتفك</string>
-    <string name="notValidNumber">أدخل رقم هاتفك الصحيح (11 رقم)</string>
-    <string name="register_success">تم التسجيل بنجاح</string>
-    <string name="passwordNotMatch">كلمة المرور غير متطابقة</string>
-    <string name="notValidPassword">يجب أن تكون كلمة المرور الخاصة بك > 8 أحرف</string>
-    <string name="emptyBirthDate">أدخل تاريخ ميلادك</string>
-    <string name="emptyAddress">أدخل عنوانك</string>
+    <string name = "notValidEmail"> أدخل بريدًا إلكترونيًا صالحًا </ string>
+    <string name = "emptyFName"> أدخل الاسم الأول </ string>
+    <string name = "emptyLName"> أدخل اسم العائلة </ string>
+    <string name = "emptyPhone"> أدخل الهاتف </ string>
+    <string name = "notValidNumber"> أدخل رقم هاتف صالح (11 رقمًا) </ string>
+    <string name = "register_success"> تم التسجيل بنجاح </ string>
+    <string name = "passwordNotMatch"> كلمة المرور غير متطابقة </ string>
+    <string name = "notValidPassword"> يجب أن تكون كلمة المرور> 8 أحرف </ string>
+    <string name = "emptyBirthDate"> أدخل تاريخ الميلاد </ string>
+    <string name = "emptyAddress"> أدخل عنوانك </ string>
 
     <!--strings for home -->
     <string name="clinic_service">عيادات الأورام</string>
@@ -160,5 +171,76 @@
     <!--string for drawer-->
     <string name="close">غلق</string>
     <string name="open">فتح</string>
+
+    <!--string for admin-->
+    <string name = "searchHint"> أدخل الاسم هنا </ string>
+    <string name = "noDoctorFound"> لم يتم العثور على بيانات </ string>
+    <string name = "cancel"> إلغاء </ string>
+    <string name = "emptySpecialization"> أدخل التخصص </ string>
+    <string name = "doctorAgeError"> يجب أن يكون العمر> 26 عامًا </ string>
+
+    <!--string for doctor-->
+    <string name = "searchpatientHint"> أدخل اسم المريض هنا </ string>
+    <!--string for add_doctor-->
+    <string name = "add_doctor"> إضافة طبيب </ string>
+    <!--string for send_request-->
+    <string name = "patient_name"> الاسم </ string>
+    <string name = "service"> الخدمة </ string>
+    <string name = "date"> التاريخ </ string>
+    <string name = "Time"> الوقت </ string>
+    <string name = "send_SMs"> إرسال الرسائل القصيرة </ string>
+
+    <string name = "medicalRaysCT"> CT </string>
+    <string name = "medicalRaysMRI"> التصوير بالرنين المغناطيسي </ string>
+    <string name = "medicalRaysUS"> الموجات فوق الصوتية </ string>
+    <string name = "medicalRaysxray"> الأشعة السينية </ string>
+
+    <string name="medicalRaysCTP">440 LE</string>
+    <string name="medicalRaysMRIP">950 LE</string>
+    <string name="medicalRaysUSP">850 LE </string>
+    <string name="medicalRaysxrayP">300 LE</string>
+
+    <string name = "medicalTestCBC"> تعداد الدم الكامل </ string>
+    <string name = "medicalTestLB"> الخزعة السائلة </ string>
+    <string name = "medicalTestIm"> التنميط المناعي </ string>
+    <string name = "medicalTestBC"> اختبار كيمياء الدم </ string>
+
+    <string name="medicalTestCBCP">1500 LE</string>
+    <string name="medicalTestLBP">2000 LE</string>
+    <string name="medicalTestImP">1000 LE </string>
+    <string name="medicalTestBCP">4500 LE</string>
+
+    <string name = "medicalClinicEA"> دكتور / إيمان أحمد </ string>
+    <string name = "medicalClinicWM"> دكتور / وليد محمد </ string>
+    <string name = "medicalClinicHM"> دكتور / حمزة محمود </string>
+    <string name = "medicalClinicMA"> دكتور / محمد علي </ string>
+
+    <string name = "medicalClinicEAT"> من 10 صباحًا إلى 1 مساءً </ string>
+    <string name = "medicalClinicWMT"> من 1 مساءً إلى 5 مساءً </string>
+    <string name = "medicalClinicHMT"> من 5 مساءً إلى 8 مساءً </string>
+    <string name = "medicalClinicMAT"> من الساعة 8 مساءً حتى الساعة 10 مساءً </string>
+
+    <string name = "requestsBtn"> الطلبات </ string>
+    <string name = "approvedBtn"> موافق عليه </ string>
+    <string name = "appointmentsNotFound"> لم يتم العثور على مواعيد </ string>
+    <string name = "confirmAppointment"> تأكيد الموعد </ string>
+    <string name = "timeError"> الوقت المقبول يبدأ فقط من الساعة 12 مساءً </ string>
+    <string name = "messageConfirm"> تم إرسال الرسالة بنجاح! </ string>
+
+    <string name = "patients"> المرضى </ string>
+    <string name = "appointments"> المواعيد </ string>
+    <string name = "model"> Model </string>
+    <string name = "log_d"> تسجيل الخروج </ string>
+    <string name = "add_patient"> إضافة المريض </ string>
+
+
+    <string name = "profile"> الملف الشخصي </ string>
+    <string name = "doctors"> الأطباء </ string>
+    <string name = "upload_file"> تحميل الملف </ string>
+    <string name = "result"> النتيجة </ string>
+    <string name = "requests"> الطلبات </ string>
+
+
+
 
 </resources>

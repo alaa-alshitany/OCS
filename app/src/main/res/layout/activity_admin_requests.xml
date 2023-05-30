@@ -7,7 +7,7 @@
     android:background="@color/white"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".Admin.recycle_approved">
+    tools:context=".Admin.Appointments.Appointments">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
