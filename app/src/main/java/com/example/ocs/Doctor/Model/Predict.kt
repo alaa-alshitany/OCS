@@ -110,6 +110,11 @@ class Predict: AppCompatActivity() {
             override fun onCancelled(error: DatabaseError) {
             }
         })
-
+        drugSpinner=findViewById(R.id.drugsSpinner)
+        ArrayAdapter.createFromResource(this,R.array.drugNames,android.R.layout.simple_spinner_item).also {
+                adapter->
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+            drugSpinner.adapter=adapter
+        }
     }
 }
