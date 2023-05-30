@@ -48,7 +48,6 @@
                 android:layout_height="wrap_content"
                 android:drawableStart="@drawable/baseline_user_24"
                 android:drawablePadding="20dp"
-                android:ems="10"
                 android:hint="@string/first_name"
                 android:imeOptions="actionNext"
                 android:inputType="textPersonName"
@@ -69,9 +68,8 @@
                 style="@style/EditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-
                 android:drawableStart="@drawable/baseline_user_24"
-                android:ems="10"
+
                 android:hint="@string/last_Name"
                 android:imeOptions="actionNext"
                 android:inputType="textPersonName"

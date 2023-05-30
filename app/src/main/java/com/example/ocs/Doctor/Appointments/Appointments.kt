@@ -22,7 +22,6 @@ import com.example.ocs.R
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.database.*
 import com.google.firebase.database.ktx.getValue
-import java.time.LocalDate
 
 class Appointments : AppCompatActivity() {
     private lateinit var recycleView: RecyclerView
@@ -81,7 +80,7 @@ class Appointments : AppCompatActivity() {
     }*/
 
     private fun model() {
-        startActivity(Intent(this, com.example.ocs.Doctor.model::class.java))
+        startActivity(Intent(this, com.example.ocs.Doctor.Model.Predict::class.java))
     }
 
     //nav_bar

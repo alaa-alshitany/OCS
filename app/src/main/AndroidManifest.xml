@@ -19,6 +19,9 @@
         android:windowSoftInputMode="adjustPan"
         tools:targetApi="31">
         <activity
+            android:name=".Doctor.Model.UploadFiles"
+            android:exported="false" />
+        <activity
             android:name=".Doctor.DoctorDashboard.DoctorDashboard"
             android:exported="false" />
         <activity
@@ -56,11 +59,14 @@
         <activity
             android:name=".Patient.Profile.Profile"
             android:exported="false" />
-        <activity android:name=".Doctor.Patients"
-            android:exported="false"/>
+        <activity
+            android:name=".Doctor.Patients"
+            android:exported="false" />
         <activity
             android:name=".Patient.booking.BookAppointment"
             android:exported="false" />
+        <activity android:name=".Doctor.Model.Pre_model"
+            android:exported="false"/>
         <activity
             android:name=".Patient.services.Services"
             android:exported="false"

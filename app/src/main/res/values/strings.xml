@@ -156,11 +156,11 @@
     <string name="Patient_medicine"> Alectinib 150 mg</string>
     <!--model-->
     <string name="Drug_Effectiveness_title"> Drug Effectiveness</string>
-    <string name="Drug_Effectiveness_Gene_expression">Gene expression:</string>
+    <string name="Drug_Effectiveness_Gene_expression">Upload Gene Expression File</string>
     <string name="hint_Drug_Effectiveness">upload file</string>
     <string name="hint_Drug_name">choose</string>
-    <string name="Drug_Effectiveness_Genomic_mutation">Genomic mutation:</string>
-    <string name="Drug_Effectiveness_DNA_methylation">DNA methylation:</string>
+    <string name="Drug_Effectiveness_Genomic_mutation">Upload Genomic Mutation File</string>
+    <string name="Drug_Effectiveness_DNA_methylation">Upload  Methylation File</string>
     <string name="Drug_Effectiveness_drug_name">drug name:</string>
     <string name="Drug_Effectiveness_predict_pn">predict</string>
 
@@ -230,6 +230,11 @@
     <string name="model">Model</string>
     <string name="log_d">Log Out</string>
     <string name="add_patient">Add Patient</string>
+    <string name="upload_files">Upload Files</string>
+    <string name="predict">Predict</string>
+    <string name="save">Save</string>
+    <string name="choosePatient">Choose Patient Name</string>
+    <string name="uploaded">Uploaded Successfully!</string>
 
     <string-array name="specializationList">
         <item>Neuro Oncologists</item> <!--specialize in treating nervous system, spine, and brain cancers.-->

@@ -1,4 +1,4 @@
-package com.example.ocs.Doctor
+package com.example.ocs.Doctor.Model
 
 import android.annotation.SuppressLint
 import android.content.Intent
@@ -14,7 +14,7 @@ import com.example.ocs.Login_Register.login.Login
 import com.example.ocs.R
 import com.google.android.material.navigation.NavigationView
 
-class model: AppCompatActivity() {
+class Predict: AppCompatActivity() {
 
     //nav_bar
     lateinit var toggle: ActionBarDrawerToggle
@@ -65,7 +65,7 @@ class model: AppCompatActivity() {
     }
 
     private fun model() {
-        startActivity(Intent(this, model::class.java))
+        startActivity(Intent(this, Predict::class.java))
     }
     //nav_bar
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

@@ -64,7 +64,7 @@ class Profile : AppCompatActivity() {
     }
 
     private fun model() {
-        startActivity(Intent(this, com.example.ocs.Doctor.model::class.java))
+        startActivity(Intent(this, com.example.ocs.Doctor.Model.Predict::class.java))
     }
 
     //nav_bar
