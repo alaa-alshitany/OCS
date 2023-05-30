@@ -232,13 +232,17 @@
     <string name = "log_d"> تسجيل الخروج </string>
     <string name = "add_patient"> إضافة المريض </string>
 
-<!--
+
     <string name = "profile"> الملف الشخصي </string>
     <string name = "doctors"> الأطباء </string>
-    <string name = "upload_file"> تحميل الملف </string>
+    <string name = "upload_files"> تحميل الملف </string>
     <string name = "result"> النتيجة </string>
     <string name = "requests"> الطلبات </string>
-    -->
+    <string name="predict">تنبأ</string>
+    <string name="save">حفظ</string>
+    <string name="choosePatient">اختر اسم المريض</string>
+    <string name="uploaded">تم الرفع بنجاح</string>
+
 
 
 

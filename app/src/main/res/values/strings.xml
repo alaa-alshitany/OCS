@@ -235,6 +235,10 @@
     <string name="save">Save</string>
     <string name="choosePatient">Choose Patient Name</string>
     <string name="uploaded">Uploaded Successfully!</string>
+    <string name = "profile"> Profile </string>
+    <string name = "doctors"> Doctors </string>
+    <string name = "result"> Result </string>
+    <string name = "requests"> Requests </string>
 
     <string-array name="specializationList">
         <item>Neuro Oncologists</item> <!--specialize in treating nervous system, spine, and brain cancers.-->

@@ -77,7 +77,7 @@
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             android:textColor="@color/black"
             android:textStyle="bold"
-            android:text="@string/chooseDrug"/>
+            android:text="choose Drug"/>
         <androidx.appcompat.widget.AppCompatSpinner
             android:id="@+id/drugsSpinner"
             android:layout_width="match_parent"
