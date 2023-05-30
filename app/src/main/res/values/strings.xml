@@ -235,7 +235,7 @@
     <string name="save">Save</string>
     <string name="choosePatient">Choose Patient Name</string>
     <string name="uploaded">Uploaded Successfully!</string>
-    <string name="chooseDrug">Choose Drug </string>
+
     <string-array name="specializationList">
         <item>Neuro Oncologists</item> <!--specialize in treating nervous system, spine, and brain cancers.-->
         <item>Pediatric Oncologists </item><!--specialize in treating cancers in teens and children. Often, certain types of cancer are prominent in such age groups.-->
@@ -244,42 +244,6 @@
         <item>Hematology Oncologists</item><!--specialize in treating blood cancers like lymphoma, leukemia, and myeloma.-->
         <item>Thoracic Oncologists</item><!--specialize in treating cancers that are present inside the chest area, including the esophagus and lungs.-->
         <item>Urologic Oncologists </item><!--specialize in treating cancers present in the genitourinary system like the penis, kidneys, bladder, testicles, and prostate gland.-->
-    </string-array>
-
-    <string-array name="drugNames">
-        <item>PD173074</item>
-        <item>Bicalutamide</item>
-        <item>Embelin</item>
-        <item>5-Fluorouracil</item>
-        <item>WHI-P97</item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-
     </string-array>
 </resources>
 

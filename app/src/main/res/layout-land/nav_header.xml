@@ -4,7 +4,6 @@
     android:layout_height="wrap_content"
     android:layout_marginStart="16dp"
     android:layout_marginTop="16dp"
-    android:background="@color/white"
     android:orientation="vertical">
 
     <de.hdodenhof.circleimageview.CircleImageView
@@ -17,8 +16,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingTop="8dp"
-        android:text="Admin : 3553098"
-        android:textSize="20dp"
+       android:textColor="@color/black"
         android:textStyle="bold" />
 
     <View

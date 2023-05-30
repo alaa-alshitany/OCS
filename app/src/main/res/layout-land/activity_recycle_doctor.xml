@@ -19,7 +19,6 @@
         android:orientation="vertical">
 
     <TextView
-        android:id="@+id/titleTxt"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/doctors"
@@ -34,7 +33,7 @@
     android:id="@+id/searchDoctor"
     android:layout_width="match_parent"
     android:cursorVisible="false"
-    android:queryHint="@string/searchHint"
+    android:queryHint="@string/searchDocHint"
     android:iconifiedByDefault="false"
     android:layout_height="wrap_content">
 

@@ -59,7 +59,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:fontFamily="@font/acme_regular"
-                    android:text="Profile"
+                    android:text="@string/profile"
                     android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                     android:textColor="@color/black"
                     android:textStyle="bold" />
@@ -96,7 +96,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:fontFamily="@font/acme_regular"
-                    android:text="Appointments"
+                    android:text="@string/appointments"
                     android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                     android:textColor="@color/black"
                     android:textStyle="bold" />
@@ -133,7 +133,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:fontFamily="@font/acme_regular"
-                    android:text="Doctors"
+                    android:text="@string/doctors"
                     android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                     android:textColor="@color/black"
                     android:textStyle="bold" />
@@ -170,7 +170,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:fontFamily="@font/acme_regular"
-                    android:text="Log Out"
+                    android:text="@string/log_d"
                     android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                     android:textColor="@color/black"
                     android:textStyle="bold" />
