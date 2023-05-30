@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawerLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".Admin.Doctors.Doctors"
+    android:orientation="vertical">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+    <LinearLayout
+        android:layout_margin="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/doctors"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textStyle="bold"
+        android:textColor="@color/blue_500"
+        android:fontFamily="@font/acme_regular"
+        android:textAlignment="center"
+         />
+
+<SearchView
+    android:id="@+id/searchDoctor"
+    android:layout_width="match_parent"
+    android:cursorVisible="false"
+    android:queryHint="@string/searchDocHint"
+    android:iconifiedByDefault="false"
+    android:layout_height="wrap_content">
+
+</SearchView>
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_marginTop="5dp"
+        android:layout_height="match_parent"
+        android:id="@+id/recycleview1"
+     />
+    </LinearLayout>
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/addingDoctorBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="15dp"
+            android:contentDescription="add"
+            android:layout_marginEnd="15dp"
+            android:layout_marginBottom="15dp"
+            android:src="@drawable/baseline_add"
+            android:backgroundTint="@color/blue_500"
+            android:tint="@color/white">
+        </com.google.android.material.floatingactionbutton.FloatingActionButton>
+
+</RelativeLayout>
+    <com.google.android.material.navigation.NavigationView
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        app:headerLayout="@layout/nav3_header"
+        app:menu="@menu/admin_navigation"
+        android:id="@+id/nav_view"
+        android:layout_gravity="start"
+        android:fitsSystemWindows="true"/>
+</androidx.drawerlayout.widget.DrawerLayout>
