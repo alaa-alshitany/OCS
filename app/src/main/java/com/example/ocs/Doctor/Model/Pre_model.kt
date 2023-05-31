@@ -14,10 +14,10 @@ class Pre_model : AppCompatActivity() {
         binding = ActivityPreModelBinding.inflate(layoutInflater)
         setContentView(binding.root)
         supportActionBar!!.elevation= 0F
-        binding.predict.setOnClickListener {
+        binding.predict?.setOnClickListener {
             startActivity(Intent(this,Predict::class.java))
         }
-        binding.upload.setOnClickListener {
+        binding.upload?.setOnClickListener {
             startActivity(Intent(this,UploadFiles::class.java))
         }
     }

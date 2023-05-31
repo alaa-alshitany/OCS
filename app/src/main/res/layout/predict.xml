@@ -22,6 +22,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             android:id="@+id/predictingProgressBar"
+            android:indeterminateTint="@color/blue_500"
             />
 
         <LinearLayout
@@ -52,11 +53,11 @@
                 android:layout_weight=".2"
                 android:fontFamily="@font/acme_regular"
                 android:gravity="center"
-                android:text="@string/book_appointment_title"
+                android:text="@string/Drug_Effectiveness_title"
                 android:textAppearance="@style/TextAppearance.AppCompat.Small"
                 android:textColor="@color/blue_500"
                 android:textStyle="bold"
-                tools:text="@string/Drug_Effectiveness_title" />
+                />
 
 
             <Space
@@ -114,7 +115,7 @@
                 android:background="@drawable/button_style"
                 android:fontFamily="@font/inter_font"
                 android:gravity="center"
-                android:text="Button"
+                android:text="@string/Drug_Effectiveness_predict_pn"
                 android:textAllCaps="false"
                 android:textColor="@color/black"
                 android:textStyle="bold"
@@ -125,7 +126,7 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.924"
                 tools:ignore="VisualLintButtonSize,TouchTargetSizeCheck"
-                tools:text="@string/Drug_Effectiveness_predict_pn" />
+                 />
 
         </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

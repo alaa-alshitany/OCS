@@ -72,6 +72,7 @@
             android:id="@+id/geneExpProgress"
             android:layout_width="0dp"
             android:layout_weight="1"
+            android:indeterminateTint="@color/blue_500"
             android:layout_height="match_parent"/>
 
         </LinearLayout>
@@ -100,6 +101,7 @@
              />
             <ProgressBar
                 android:id="@+id/geneMutProgress"
+                android:indeterminateTint="@color/blue_500"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="match_parent"/>
@@ -130,6 +132,7 @@
             <ProgressBar
                 android:id="@+id/geneMethProgress"
                 android:layout_width="0dp"
+                android:indeterminateTint="@color/blue_500"
                 android:layout_weight="1"
                 android:layout_height="match_parent"/>
 
