@@ -30,21 +30,22 @@
         android:textAlignment="center"
          />
 
-<SearchView
-    android:id="@+id/searchDoctor"
-    android:layout_width="match_parent"
-    android:cursorVisible="false"
-    android:queryHint="@string/searchHint"
-    android:iconifiedByDefault="false"
-    android:layout_height="wrap_content">
-
-</SearchView>
+    <SearchView
+       android:id="@+id/searchDoctor"
+       android:layout_width="match_parent"
+       android:cursorVisible="false"
+       android:queryHint="@string/searchHint"
+       android:iconifiedByDefault="false"
+        android:layout_height="wrap_content">
+    </SearchView>
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_marginTop="5dp"
         android:layout_height="match_parent"
-        android:id="@+id/recycleview1"
-     />
+        android:id="@+id/recycleview1">
+
+    </androidx.recyclerview.widget.RecyclerView>
+
     </LinearLayout>
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/addingDoctorBtn"
