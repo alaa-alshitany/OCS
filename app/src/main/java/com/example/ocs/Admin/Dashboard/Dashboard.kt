@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.TextView
 import android.widget.Toast
 import com.example.ocs.Admin.Appointments.Appointments
 import com.example.ocs.Admin.Doctors.Doctors
@@ -26,6 +27,7 @@ import com.github.mikephil.charting.data.*
 import com.github.mikephil.charting.formatter.IndexAxisValueFormatter
 import com.github.mikephil.charting.formatter.ValueFormatter
 import com.github.mikephil.charting.utils.ColorTemplate
+import com.google.android.material.navigation.NavigationView
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
@@ -39,6 +41,9 @@ class Dashboard : AppCompatActivity()  {
     private lateinit var pref: Prefrences
     private lateinit var context: Context
     private lateinit var barChart:HorizontalBarChart
+    private lateinit var viewDash : View
+    private lateinit var userName: TextView
+    private lateinit var dView : View
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         supportActionBar!!.elevation= 0F
@@ -262,6 +267,10 @@ private fun barchartData(){
         setContentView(binding.root)
         barChart = binding.chart
         barChart.visibility=View.INVISIBLE
+        dView = findViewById(R.id.textView_dash)
+        viewDash=dView.getHeaderView(0)
+        userName=viewDash.findViewById(R.id.user_name)
+        userName.setText(pref.userName)
     }
     private fun moveToLogin() {
         startActivity(Intent(this, Login::class.java).putExtra("hint", R.string.a_email_hint.toString()))

@@ -18,6 +18,7 @@ import com.example.ocs.Patient.services.ServiceData
 import com.example.ocs.Admin.Dashboard.Dashboard
 import com.example.ocs.Login_Register.login.Login
 import com.example.ocs.Login_Register.login.Prefrences
+import com.example.ocs.Patient.Profile.Profile
 import com.example.ocs.Patient.services.OnCardItemClickListener
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.database.DatabaseReference
@@ -82,10 +83,6 @@ class Profile : AppCompatActivity(), OnCardItemClickListener {
         }
     }
     //nav_bar
-
-    private fun dashboard() {
-        startActivity(Intent(this, Dashboard::class.java))
-    }
     private fun logout() {
         pref.prefClear()
         moveToLogin()
@@ -95,7 +92,6 @@ class Profile : AppCompatActivity(), OnCardItemClickListener {
         Toast.makeText(this,R.string.logout, Toast.LENGTH_LONG).show()
         finish()
     }
-
     private fun requests() {
         startActivity(Intent(this, Appointments::class.java))
     }
@@ -107,6 +103,10 @@ class Profile : AppCompatActivity(), OnCardItemClickListener {
     private fun doctor() {
         startActivity(Intent(this, Doctors::class.java))
     }
+    private fun dashboard() {
+        startActivity(Intent(this, Dashboard::class.java))
+    }
+
     //nav_bar
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (toggle.onOptionsItemSelected(item)) {
