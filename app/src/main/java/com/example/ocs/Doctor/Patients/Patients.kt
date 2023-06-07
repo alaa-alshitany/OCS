@@ -23,6 +23,9 @@ import androidx.drawerlayout.widget.DrawerLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ocs.Admin.Doctors.DoctorData
+import com.example.ocs.Doctor.Appointments.Appointments
+import com.example.ocs.Doctor.DoctorProfile.Profile
+import com.example.ocs.Doctor.Model.Pre_model
 import com.example.ocs.Doctor.PatientAdapter
 import com.example.ocs.Login_Register.login.Login
 import com.example.ocs.Login_Register.login.Prefrences
@@ -270,17 +273,18 @@ class Patients : AppCompatActivity(),OnPatientListener {
         finish()
     }
     private fun appointment() {
-       // startActivity(Intent(this, Appointments::class.java))
+        startActivity(Intent(this, Appointments::class.java))
     }
+
     private fun doctorProfile() {
-        //startActivity(Intent(this, Profile::class.java))
+        startActivity(Intent(this, Profile::class.java))
     }
     private fun patients() {
         startActivity(Intent(this, Patients::class.java))
     }
 
     private fun model() {
-        //startActivity(Intent(this, model::class.java))
+        startActivity(Intent(this, Pre_model::class.java))
     }
     //nav_bar
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -289,6 +293,7 @@ class Patients : AppCompatActivity(),OnPatientListener {
         }
         return super.onOptionsItemSelected(item)
     }
+
     private fun init(){
         patientRecycle = findViewById(R.id.recycleview1)
         patientRecycle.layoutManager = LinearLayoutManager(this)

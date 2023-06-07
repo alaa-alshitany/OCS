@@ -1,18 +1,24 @@
 package com.example.ocs.Doctor
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
+import android.view.View
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.drawerlayout.widget.DrawerLayout
+import com.example.ocs.Doctor.Appointments.Appointments
+import com.example.ocs.Doctor.DoctorProfile.Profile
+import com.example.ocs.Doctor.Model.Pre_model
 //import com.example.ocs.Doctor.Appointments.Appointments
 //import com.example.ocs.Doctor.DoctorProfile.
 import com.example.ocs.Login_Register.login.Login
+import com.example.ocs.Login_Register.login.Prefrences
 import com.example.ocs.R
 import com.google.android.material.navigation.NavigationView
 
@@ -23,6 +29,12 @@ class PatientDetails: AppCompatActivity() {
     private lateinit var phone:EditText
     private lateinit var diagnosis:EditText
     private lateinit var medicine:EditText
+    private lateinit var pref: Prefrences
+    private lateinit var drawerLayout : DrawerLayout
+    private lateinit var navView : NavigationView
+    private lateinit var context: Context
+    private lateinit var navHeader : View
+    private lateinit var userName: TextView
 
     //nav_bar
     lateinit var toggle: ActionBarDrawerToggle
@@ -31,7 +43,8 @@ class PatientDetails: AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.patient_details)
-
+        supportActionBar!!.elevation=0F
+        init()
         //nav_bar
         val drawerLayout : DrawerLayout = findViewById(R.id.drawerLayout)
         val navView : NavigationView = findViewById(R.id.nav_view)
@@ -55,6 +68,8 @@ class PatientDetails: AppCompatActivity() {
     }
     //nav_bar
     private fun logout() {
+        pref.prefClear()
+        moveToLogin()
     }
     private fun moveToLogin() {
         startActivity(Intent(this, Login::class.java).putExtra("hint",R.string.p_email_hint.toString()))
@@ -62,18 +77,18 @@ class PatientDetails: AppCompatActivity() {
         finish()
     }
     private fun appointment() {
-       // startActivity(Intent(this, Appointments::class.java))
+        startActivity(Intent(this, Appointments::class.java))
     }
 
     private fun doctorProfile() {
-       // startActivity(Intent(this, Profile::class.java))
+        startActivity(Intent(this, Profile::class.java))
     }
     private fun patients() {
-        //startActivity(Intent(this, Patient_recycle::class.java))
+        startActivity(Intent(this, Patients::class.java))
     }
 
     private fun model() {
-      //  startActivity(Intent(this, model::class.java))
+        startActivity(Intent(this, Pre_model::class.java))
     }
     //nav_bar
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -81,6 +96,9 @@ class PatientDetails: AppCompatActivity() {
             return true
         }
         return super.onOptionsItemSelected(item)
+    }
+    override fun onBackPressed() {
+        onBackPressedDispatcher.onBackPressed()
     }
 
     private fun init(){
@@ -100,6 +118,14 @@ class PatientDetails: AppCompatActivity() {
 
         medicine=findViewById(R.id.textView47)
         medicine.setText(intent2.getStringExtra("phone").toString())
+
+        drawerLayout = findViewById(R.id.drawerLayout)
+        navView = findViewById(R.id.nav_view)
+        navHeader=navView.getHeaderView(0)
+        context=this
+        pref= Prefrences(context)
+        userName=navHeader.findViewById(R.id.user_name)
+        userName.setText(pref.userName)
 
     }
 }

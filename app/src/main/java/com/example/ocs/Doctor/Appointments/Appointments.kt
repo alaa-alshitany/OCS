@@ -15,6 +15,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ocs.Admin.Appointments.ApprovedAdapter
 import com.example.ocs.Doctor.DoctorProfile.Profile
+import com.example.ocs.Doctor.Model.Pre_model
+import com.example.ocs.Doctor.Patients
 import com.example.ocs.Login_Register.login.Login
 import com.example.ocs.Login_Register.login.Prefrences
 import com.example.ocs.Patient.booking.AppointmentData
@@ -41,6 +43,7 @@ class Appointments : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_recycle_book)
+        supportActionBar!!.elevation=0F
         init()
         getApprovedData()
         toggle = ActionBarDrawerToggle( this, drawerLayout, R.string.open, R.string.close)
@@ -53,7 +56,7 @@ class Appointments : AppCompatActivity() {
             when(it.itemId){
                 R.id.nau_profile1-> doctorProfile()
                 R.id.nau_booking1-> appointment()
-               // R.id.nau_patient-> patients()
+                R.id.nau_patient-> patients()
                 R.id.nau_model-> model()
                 R.id.nau_logout1-> logout()
             }
@@ -62,9 +65,11 @@ class Appointments : AppCompatActivity() {
     }
     //nav_bar
     private fun logout() {
+        pref.prefClear()
+        moveToLogin()
     }
     private fun moveToLogin() {
-        startActivity(Intent(this, Login::class.java).putExtra("hint",R.string.d_email_hint.toString()))
+        startActivity(Intent(this, Login::class.java).putExtra("hint",R.string.p_email_hint.toString()))
         Toast.makeText(this,R.string.logout, Toast.LENGTH_LONG).show()
         finish()
     }
@@ -75,12 +80,12 @@ class Appointments : AppCompatActivity() {
     private fun doctorProfile() {
         startActivity(Intent(this, Profile::class.java))
     }
-   /* private fun patients() {
-        startActivity(Intent(this, pati::class.java))
-    }*/
+    private fun patients() {
+        startActivity(Intent(this, Patients::class.java))
+    }
 
     private fun model() {
-        startActivity(Intent(this, com.example.ocs.Doctor.Model.Predict::class.java))
+        startActivity(Intent(this, Pre_model::class.java))
     }
 
     //nav_bar
@@ -89,6 +94,9 @@ class Appointments : AppCompatActivity() {
             return true
         }
         return super.onOptionsItemSelected(item)
+    }
+    override fun onBackPressed() {
+        onBackPressedDispatcher.onBackPressed()
     }
     private fun init(){
         drawerLayout = findViewById(R.id.drawerLayout)

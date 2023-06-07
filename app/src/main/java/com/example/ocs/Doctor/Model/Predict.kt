@@ -1,16 +1,13 @@
 package com.example.ocs.Doctor.Model
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.MenuItem
 import android.view.View
-import android.widget.ArrayAdapter
-import android.widget.Button
-import android.widget.ProgressBar
-import android.widget.Spinner
-import android.widget.Toast
+import android.widget.*
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.drawerlayout.widget.DrawerLayout
@@ -18,6 +15,7 @@ import com.example.ocs.Doctor.Appointments.Appointments
 import com.example.ocs.Doctor.DoctorProfile.Profile
 import com.example.ocs.Doctor.Patients
 import com.example.ocs.Login_Register.login.Login
+import com.example.ocs.Login_Register.login.Prefrences
 import com.example.ocs.Patient.PatientData
 import com.example.ocs.R
 import com.google.android.material.navigation.NavigationView
@@ -47,13 +45,20 @@ class Predict: AppCompatActivity() {
     var drugRef = FirebaseStorage.getInstance().getReference("Test_Data/Drug_Data/")
     private lateinit var adapter:ArrayAdapter<String>
     private lateinit var predictBtn: Button
-   private lateinit var progressBar:ProgressBar
+    private lateinit var progressBar:ProgressBar
     lateinit var toggle: ActionBarDrawerToggle
+    private lateinit var pref: Prefrences
+    private lateinit var drawerLayout : DrawerLayout
+    private lateinit var navView : NavigationView
+    private lateinit var context: Context
+    private lateinit var navHeader : View
+    private lateinit var userName: TextView
 
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.predict)
+        supportActionBar!!.elevation=0F
         init()
         //nav_bar
         val drawerLayout: DrawerLayout = findViewById(R.id.drawerLayout)
@@ -1126,11 +1131,11 @@ class Predict: AppCompatActivity() {
     }
     //nav_bar
     private fun logout() {
-
+        pref.prefClear()
+        moveToLogin()
     }
-
     private fun moveToLogin() {
-        startActivity(Intent(this, Login::class.java).putExtra("hint",R.string.d_email_hint.toString()))
+        startActivity(Intent(this, Login::class.java).putExtra("hint",R.string.p_email_hint.toString()))
         Toast.makeText(this,R.string.logout, Toast.LENGTH_LONG).show()
         finish()
     }
@@ -1146,7 +1151,7 @@ class Predict: AppCompatActivity() {
     }
 
     private fun model() {
-        startActivity(Intent(this, Predict::class.java))
+        startActivity(Intent(this, Pre_model::class.java))
     }
     //nav_bar
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -1154,6 +1159,9 @@ class Predict: AppCompatActivity() {
             return true
         }
         return super.onOptionsItemSelected(item)
+    }
+    override fun onBackPressed() {
+        onBackPressedDispatcher.onBackPressed()
     }
     private fun init(){
         patientSpinner=findViewById(R.id.patientsSpinner)
@@ -1184,5 +1192,13 @@ class Predict: AppCompatActivity() {
         predictBtn=findViewById(R.id.predictBtn)
         progressBar=findViewById(R.id.predictingProgressBar)
         progressBar.visibility=View.INVISIBLE
+
+        drawerLayout = findViewById(R.id.drawerLayout)
+        navView = findViewById(R.id.nav_view)
+        navHeader=navView.getHeaderView(0)
+        context=this
+        pref= Prefrences(context)
+        userName=navHeader.findViewById(R.id.user_name)
+        userName.setText(pref.userName)
     }
 }
