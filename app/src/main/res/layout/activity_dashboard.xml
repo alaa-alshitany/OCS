@@ -208,10 +208,10 @@
 
         <com.github.mikephil.charting.charts.PieChart
             android:id="@+id/pie_chart"
-            android:layout_width="388dp"
-            android:layout_height="169dp"
+            android:layout_width="match_parent"
+            android:layout_height="220dp"
             android:layout_marginTop="700dp"
-            android:layout_marginBottom="120dp">
+           >
 
         </com.github.mikephil.charting.charts.PieChart>
 
