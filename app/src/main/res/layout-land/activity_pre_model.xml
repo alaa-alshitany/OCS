@@ -1,97 +1,111 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".Doctor.Model.Pre_model"
     >
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
 
-    <GridLayout
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="170dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginStart="20dp"
-        android:columnCount="2"
-        android:rowCount="2">
+        <GridLayout
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="170dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginStart="20dp"
+            android:columnCount="2"
+            android:rowCount="2">
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/patients"
-        android:layout_width="50dp"
-        android:layout_height="150dp"
-        android:layout_row="1"
-        android:layout_rowWeight="1"
-        android:layout_column="0"
-        android:layout_columnWeight="1"
-        android:layout_margin="10dp"
-        app:cardCornerRadius="15dp"
-        app:cardElevation="12dp">
+            <androidx.cardview.widget.CardView
+                android:id="@+id/upload"
+                android:layout_width="50dp"
+                android:layout_height="150dp"
+                android:layout_row="1"
+                android:layout_rowWeight="1"
+                android:layout_column="0"
+                android:layout_columnWeight="1"
+                android:layout_margin="10dp"
+                app:cardCornerRadius="15dp"
+                app:cardElevation="12dp">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:orientation="vertical">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="vertical">
 
-            <ImageView
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:layout_gravity="center_horizontal"
-                android:src="@drawable/baseline_upload_file_24"
-                app:tint="@color/blue_300" />
+                    <ImageView
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:layout_gravity="center_horizontal"
+                        android:src="@drawable/baseline_upload_file_24"
+                        app:tint="@color/blue_300" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:fontFamily="@font/acme_regular"
-                android:text="@string/upload_files"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                android:textColor="@color/black"
-                android:textStyle="bold" />
-        </LinearLayout>
-    </androidx.cardview.widget.CardView>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:fontFamily="@font/acme_regular"
+                        android:text="@string/upload_files"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                        android:textColor="@color/black"
+                        android:textStyle="bold" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/appointments_d"
-        android:layout_width="50dp"
-        android:layout_height="150dp"
-        android:layout_row="1"
-        android:layout_rowWeight="1"
-        android:layout_column="1"
-        android:layout_columnWeight="1"
-        android:layout_margin="10dp"
-        app:cardCornerRadius="15dp"
-        app:cardElevation="12dp">
+            <androidx.cardview.widget.CardView
+                android:id="@+id/predict"
+                android:layout_width="50dp"
+                android:layout_height="150dp"
+                android:layout_row="1"
+                android:layout_rowWeight="1"
+                android:layout_column="1"
+                android:layout_columnWeight="1"
+                android:layout_margin="10dp"
+                app:cardCornerRadius="15dp"
+                app:cardElevation="12dp">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:orientation="vertical">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="vertical">
 
-            <ImageView
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:layout_gravity="center_horizontal"
-                android:src="@drawable/baseline_display_settings_24"
-                app:tint="@color/blue_300" />
+                    <ImageView
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:layout_gravity="center_horizontal"
+                        android:src="@drawable/baseline_display_settings_24"
+                        app:tint="@color/blue_300" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:fontFamily="@font/acme_regular"
-                android:text="@string/result"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                android:textColor="@color/black"
-                android:textStyle="bold" />
-        </LinearLayout>
-    </androidx.cardview.widget.CardView>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:fontFamily="@font/acme_regular"
+                        android:text="@string/predict"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                        android:textColor="@color/black"
+                        android:textStyle="bold" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
 
 
-</GridLayout>
-</RelativeLayout>
+        </GridLayout>
+    </RelativeLayout>
+    <com.google.android.material.navigation.NavigationView
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        app:headerLayout="@layout/nav2_header"
+        app:menu="@menu/doctor_navigation"
+        android:id="@+id/nav_view"
+        android:layout_gravity="start"
+        android:fitsSystemWindows="true"/>
+</androidx.drawerlayout.widget.DrawerLayout>
