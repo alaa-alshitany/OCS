@@ -62,6 +62,7 @@
             android:layout_height="wrap_content"
             app:boxStrokeWidth="0dp"
             app:boxStrokeWidthFocused="0dp"
+            android:focusableInTouchMode="true"
             app:hintAnimationEnabled="true"
             app:hintEnabled="true">
 
@@ -89,6 +90,7 @@
             android:layout_height="wrap_content"
             app:boxStrokeWidth="0dp"
             app:boxStrokeWidthFocused="0dp"
+            android:focusableInTouchMode="true"
             app:hintAnimationEnabled="true"
             app:hintEnabled="true">
 
@@ -111,6 +113,7 @@
             android:layout_height="wrap_content"
             app:boxStrokeWidth="0dp"
             app:boxStrokeWidthFocused="0dp"
+            android:focusableInTouchMode="true"
             app:hintAnimationEnabled="true"
             app:hintEnabled="true"
             app:passwordToggleEnabled="true"
