@@ -62,10 +62,9 @@ class VerifyOTP : AppCompatActivity() {
                     } else {
                         Toast.makeText(applicationContext, task.exception!!.message, Toast.LENGTH_LONG).show()
                     }
-                }
-            })
+              }
+         })
     }
-
     override fun onRestart() {
         super.onRestart()
         startActivity(Intent(this,this::class.java))

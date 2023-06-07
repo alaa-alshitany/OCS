@@ -41,9 +41,8 @@ class Dashboard : AppCompatActivity()  {
     private lateinit var pref: Prefrences
     private lateinit var context: Context
     private lateinit var barChart:HorizontalBarChart
-    private lateinit var viewDash : View
-    private lateinit var userName: TextView
     private lateinit var dView : View
+    private lateinit var adminName:TextView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         supportActionBar!!.elevation= 0F
@@ -268,9 +267,8 @@ private fun barchartData(){
         barChart = binding.chart
         barChart.visibility=View.INVISIBLE
         dView = findViewById(R.id.textView_dash)
-        viewDash=dView.getHeaderView(0)
-        userName=viewDash.findViewById(R.id.user_name)
-        userName.setText(pref.userName)
+        adminName=findViewById(R.id.adminNameTxt)
+        adminName.setText("Admin: ${pref.userName}")
     }
     private fun moveToLogin() {
         startActivity(Intent(this, Login::class.java).putExtra("hint", R.string.a_email_hint.toString()))

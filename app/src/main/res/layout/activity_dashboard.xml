@@ -191,6 +191,18 @@
         android:fontFamily="@font/acme_regular"
         android:layout_marginTop="30dp"
         />
+        <TextView
+            android:id="@+id/adminNameTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:layout_centerHorizontal="true"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:fontFamily="@font/acme_regular"
+            android:layout_marginTop="65dp"
+            />
 
         <com.github.mikephil.charting.charts.HorizontalBarChart
             android:id="@+id/chart"
