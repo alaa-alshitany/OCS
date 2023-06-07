@@ -7,7 +7,6 @@
     android:background="@color/white"
     tools:context=".Doctor.Model.Pre_model"
     >
-
     <GridLayout
         android:layout_width="100dp"
         android:layout_height="wrap_content"
@@ -18,7 +17,6 @@
         android:layout_marginStart="20dp"
         android:columnCount="2"
         android:rowCount="2">
-
     <androidx.cardview.widget.CardView
         android:id="@+id/upload"
         android:layout_width="50dp"

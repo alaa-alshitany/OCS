@@ -239,6 +239,12 @@
     <string name = "doctors"> Doctors </string>
     <string name = "result"> Result </string>
     <string name = "requests"> Requests </string>
+    <string name="predicting">Predicting..</string>
+    <string name="predictedIC50">IC50</string>
+    <string name="drugName">Drug Name</string>
+    <string name="classification">Classification</string>
+    <string name="saveRecord">Save to Patient Record</string>
+    <string name="TryDrug">Try another Drug..</string>
 
     <string-array name="specializationList">
         <item>Neuro Oncologists</item> <!--specialize in treating nervous system, spine, and brain cancers.-->

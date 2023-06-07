@@ -62,7 +62,6 @@ class Doctors : AppCompatActivity() , OnCardListener {
     private  var currentDate: LocalDate=LocalDate.now()
     private lateinit var dateEntered: LocalDate
    private lateinit var  dialog:Dialog
-   private lateinit var specializationList:Array<String>
     private lateinit var pref: Prefrences
     private lateinit var navHeader : View
     private lateinit var userName:TextView
