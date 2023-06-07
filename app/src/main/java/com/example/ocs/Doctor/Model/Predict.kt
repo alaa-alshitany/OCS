@@ -168,6 +168,7 @@ class Predict: AppCompatActivity() {
                     drugRef = drugRef.child("46931012.csv")
                     hklRef = hklRef.child("46931012.hkl")
                 }
+                ////////////////////////////////////////////////////////
                 "BMS-345541" -> {
                     drugRef = drugRef.child("9813758.csv")
                     hklRef = hklRef.child("9813758.hkl")
