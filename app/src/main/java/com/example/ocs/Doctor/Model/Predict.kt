@@ -1241,17 +1241,33 @@ FirebaseModelDownloader.getInstance().getModel("Classification", DownloadType.LO
         database.child("Patients").addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 adapter.clear()
-                if (snapshot.exists()){
-                    for (patientData in snapshot.children){
+                if (snapshot.exists()) {
+                    for (patientData in snapshot.children) {
                         var patient = patientData.getValue<PatientData>()
-                        val patientName="${patient?.firstName} ${patient?.lastName}"
-                        adapter.add(patientName)
+                        val patientName = "${patient?.firstName} ${patient?.lastName}"
+                        patientRef.child(patientName).listAll().addOnSuccessListener {
+                            val files = it.items
+                            val filenames = mutableListOf<String>()
+                            files.forEach { file ->
+                                filenames.add(file.name)
+                            }
+                            if (filenames.contains("genomic_mutation.csv") && filenames.contains("genomic_expression.csv") && filenames.contains(
+                                    "genomic_methylation.csv"
+                                )
+                            ) {
+                                adapter.add(patientName)
+                            } else {
+                            }
+                        }
                     }
                 }
             }
+
             override fun onCancelled(error: DatabaseError) {
             }
         })
+
+
         drugSpinner=findViewById(R.id.drugsSpinner)
         ArrayAdapter.createFromResource(this,R.array.drugNames,android.R.layout.simple_spinner_item).also {
                 adapter->
