@@ -45,10 +45,12 @@ import java.io.File
 import java.nio.ByteBuffer
 
 class Predict: AppCompatActivity() {
-    private val appointmentRef: DatabaseReference = FirebaseDatabase.getInstance().reference
+    private val databaseRef: DatabaseReference = FirebaseDatabase.getInstance().reference
+
     private lateinit var treatmentID:String
     private lateinit var patientSpinner:Spinner
     private lateinit var drugSpinner:Spinner
+    private lateinit var patientID:String
     val database = FirebaseDatabase.getInstance().reference
     var patientRef = FirebaseStorage.getInstance().getReference("Test_Data/Patient_Data/")
     var hklRef = FirebaseStorage.getInstance().getReference("Test_Data/HKL/")
@@ -1146,8 +1148,28 @@ private fun predictIC50_classification(){
                 ).show()
             }
             saveRecord.setOnClickListener {
-            treatmentID=appointmentRef.push().key!!
-             val treatment=TreatmentData(treatmentID,)
+            treatmentID=databaseRef.push().key!!
+           databaseRef.child("Patients").addValueEventListener(object:ValueEventListener{
+               override fun onDataChange(snapshot: DataSnapshot) {
+                   if (snapshot.exists()) {
+                       for (item in snapshot.children) {
+                           var patient = item.getValue<PatientData>()
+                           if (patient != null) {
+                               if ( "${patient?.firstName.toString()} ${patient?.lastName.toString()}".equals(patientSpinner.selectedItem.toString())) {
+                                   patientID = patient?.id.toString()
+
+                               }
+                           }
+                       }
+                   }
+               }
+
+               override fun onCancelled(error: DatabaseError) {
+                   TODO("Not yet implemented")
+               }
+           })
+             val treatment=TreatmentData(treatmentID,patientID,pref.prefID,selectedPatientName.text.toString(),predictiedIC50.text.toString(),selectedDrugName.text.toString(),classification.text.toString())
+
             }
         }
     }
