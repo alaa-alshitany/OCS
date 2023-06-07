@@ -58,6 +58,9 @@
                 registerBtn.setOnClickListener { register()}
                 forgetPasswordBtn.setOnClickListener { forgetPassword() }
             }
+            override fun onBackPressed() {
+                onBackPressedDispatcher.onBackPressed()
+            }
             private fun checkInternet(context: Context) : Boolean{
                 val connectivityManager = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
