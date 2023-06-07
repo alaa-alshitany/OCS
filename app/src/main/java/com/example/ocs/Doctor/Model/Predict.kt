@@ -46,7 +46,6 @@ import java.nio.ByteBuffer
 
 class Predict: AppCompatActivity() {
     private val databaseRef: DatabaseReference = FirebaseDatabase.getInstance().reference
-
     private lateinit var treatmentID:String
     private lateinit var patientSpinner:Spinner
     private lateinit var drugSpinner:Spinner
@@ -103,45 +102,6 @@ class Predict: AppCompatActivity() {
         predictBtn.setOnClickListener {
             predictIC50_classification()
 
-
-                        /*
-                        FirebaseModelDownloader.getInstance().getModel("Classification", DownloadType.LOCAL_MODEL_UPDATE_IN_BACKGROUND, conditions).addOnSuccessListener {
-                            modelFile = it?.file
-                            if (modelFile != null) {
-                                Toast.makeText(
-                                    this,
-                                    "Classification Model downloaded successfully!",
-                                    Toast.LENGTH_SHORT
-                                ).show()
-                                interpreter = Interpreter(modelFile!!)
-                                outputShape = interpreter.getOutputTensor(0).shape()
-                                outputDataType = interpreter.getOutputTensor(0).dataType()
-                                outputBuffer =
-                                    TensorBuffer.createFixedSize(outputShape, outputDataType)
-                                interpreter.runForMultipleInputsOutputs(inputs, outputs)
-                                output = outputBuffer.floatArray[0]
-                                val roundedOutput = Math.round(output * 1000.0) / 1000.0
-                                val outputBinary = if (roundedOutput >= 0.5) 1 else 0
-                                progressBar.visibility = View.GONE
-                                if (outputBinary == 1) {
-                                    Toast.makeText(
-                                        this,
-                                        "Drug ${drugSpinner.selectedItem.toString()} is Resistance for ${patientSpinner.selectedItem.toString()} with percentage:  ${roundedOutput * 100} %",
-                                        Toast.LENGTH_LONG
-                                    ).show()
-                                } else {
-                                    Toast.makeText(
-                                        this,
-                                        "Drug ${drugSpinner.selectedItem.toString()} is Sensitive for ${patientSpinner.selectedItem.toString()} with percentage:  ${roundedOutput * 100} %",
-                                        Toast.LENGTH_LONG
-                                    ).show()
-
-                                }
-
-                            }
-                        }
-*/
-
         }
     }
 private fun predictIC50_classification(){
@@ -161,9 +121,29 @@ private fun predictIC50_classification(){
     selectedPatientName.setText(patientSpinner.selectedItem.toString())
     selectedDrugName=dialog.findViewById(R.id.drugName)
     selectedDrugName.setText(drugSpinner.selectedItem.toString())
-    preditingProgress=dialog.findViewById(R.id.predictingProgressBar)
+    preditingProgress=dialog.findViewById(R.id.ic50Progress)
+    classification=dialog.findViewById(R.id.classification)
+    classificationProgress=dialog.findViewById(R.id.classificationProgress)
     preditingProgress.progress=0
     classificationProgress.progress=0
+    databaseRef.child("Patients").addValueEventListener(object:ValueEventListener{
+        override fun onDataChange(snapshot: DataSnapshot) {
+            if (snapshot.exists()) {
+                for (patientData in snapshot.children) {
+                    var patient =patientData.getValue(PatientData::class.java)
+                    if (patient != null) {
+                        if ("${patient?.firstName.toString()} ${patient?.lastName.toString()}" == selectedPatientName.text.toString()) {
+                            patientID = patient?.id.toString()
+                        }
+                    }else{
+                    }
+                }
+            }
+        }
+        override fun onCancelled(error: DatabaseError) {
+            TODO("Not yet implemented")
+        }
+    })
     predictiedIC50=dialog.findViewById(R.id.predictiedIC50)
     saveRecord=dialog.findViewById(R.id.saveRecord_btn)
     tryDrug=dialog.findViewById(R.id.tryDrug_btn)
@@ -1140,6 +1120,48 @@ private fun predictIC50_classification(){
                 var output = outputBuffer.floatArray[0]
                 predictiedIC50.setText(output.toString())
                 preditingProgress.visibility=View.GONE
+
+FirebaseModelDownloader.getInstance().getModel("Classification", DownloadType.LOCAL_MODEL_UPDATE_IN_BACKGROUND, conditions).addOnSuccessListener {
+    modelFile = it?.file
+    if (modelFile != null) {
+        Toast.makeText(
+            this,
+            "Classification Model downloaded successfully!",
+            Toast.LENGTH_SHORT
+        ).show()
+        interpreter = Interpreter(modelFile!!)
+        outputShape = interpreter.getOutputTensor(0).shape()
+        outputDataType = interpreter.getOutputTensor(0).dataType()
+        outputBuffer =TensorBuffer.createFixedSize(outputShape, outputDataType)
+        interpreter.runForMultipleInputsOutputs(inputs, outputs)
+        output = outputBuffer.floatArray[0]
+        if (output.toInt() == 1) {
+            classification.setText("Resistance")
+            classificationProgress.visibility=View.INVISIBLE
+        } else if (output.toInt() ==0) {
+            classification.setText("Sensitive")
+            classificationProgress.visibility=View.INVISIBLE
+        }
+
+    }
+}
+                saveRecord.setOnClickListener {
+                    treatmentID=databaseRef.push().key!!
+                    val treatment=TreatmentData(treatmentID,patientID,pref.prefID,selectedPatientName.text.toString(),predictiedIC50.text.toString(),selectedDrugName.text.toString(),classification.text.toString())
+                    databaseRef.child("Treatments").child(treatmentID).setValue(treatment).addOnCompleteListener {
+                        if (it.isSuccessful){
+                            Toast.makeText(applicationContext,R.string.savercordSuccess,Toast.LENGTH_LONG).show()
+                            dialog.dismiss()
+
+                        }else{
+                            Toast.makeText(applicationContext,R.string.savercordFailed,Toast.LENGTH_LONG).show()
+                        }
+                    }
+
+                }
+                tryDrug.setOnClickListener {
+                    dialog.dismiss()
+                }
             } else {
                 Toast.makeText(
                     this,
@@ -1147,30 +1169,7 @@ private fun predictIC50_classification(){
                     Toast.LENGTH_SHORT
                 ).show()
             }
-            saveRecord.setOnClickListener {
-            treatmentID=databaseRef.push().key!!
-           databaseRef.child("Patients").addValueEventListener(object:ValueEventListener{
-               override fun onDataChange(snapshot: DataSnapshot) {
-                   if (snapshot.exists()) {
-                       for (item in snapshot.children) {
-                           var patient = item.getValue<PatientData>()
-                           if (patient != null) {
-                               if ( "${patient?.firstName.toString()} ${patient?.lastName.toString()}".equals(patientSpinner.selectedItem.toString())) {
-                                   patientID = patient?.id.toString()
 
-                               }
-                           }
-                       }
-                   }
-               }
-
-               override fun onCancelled(error: DatabaseError) {
-                   TODO("Not yet implemented")
-               }
-           })
-             val treatment=TreatmentData(treatmentID,patientID,pref.prefID,selectedPatientName.text.toString(),predictiedIC50.text.toString(),selectedDrugName.text.toString(),classification.text.toString())
-
-            }
         }
     }
 }
@@ -1235,6 +1234,7 @@ private fun predictIC50_classification(){
     private fun init(){
         patientSpinner=findViewById(R.id.patientsSpinner)
         drugSpinner=findViewById(R.id.drugsSpinner)
+        dialog=Dialog(this)
         adapter = ArrayAdapter<String>(this, android.R.layout.simple_spinner_item)
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         patientSpinner.adapter = adapter
