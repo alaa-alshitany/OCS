@@ -37,5 +37,6 @@
         app:menu="@menu/doctor_navigation"
         android:id="@+id/nav_view"
         android:layout_gravity="start"
-        android:fitsSystemWindows="true"/>
+        android:fitsSystemWindows="true"
+        app:itemIconTint="@color/blue_500"/>
 </androidx.drawerlayout.widget.DrawerLayout>
