@@ -87,16 +87,8 @@ class Patients : AppCompatActivity(),OnPatientListener {
         drawerLayout.addDrawerListener(toggle)
         toggle.syncState()
 
-        searchView.setOnQueryTextListener(object:SearchView.OnQueryTextListener{
-            override fun onQueryTextSubmit(query: String?): Boolean {
-                return false
-            }
-            override fun onQueryTextChange(newText: String?): Boolean {
-                filterList(newText)
-                return true
-            }
-        })
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.setHomeAsUpIndicator(R.drawable.baseline_menu_24)
         navView.setNavigationItemSelectedListener {
             when(it.itemId){
                 R.id.nau_profile1-> doctorProfile()
@@ -110,6 +102,52 @@ class Patients : AppCompatActivity(),OnPatientListener {
         }
 
         addPatientBtn.setOnClickListener { addPatientDialog()}
+
+        searchView.setOnQueryTextListener(object:SearchView.OnQueryTextListener{
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                return false
+            }
+            override fun onQueryTextChange(newText: String?): Boolean {
+                filterList(newText)
+                return true
+            }
+        })
+    }
+
+    //nav_bar
+    private fun logout() {
+        pref.prefClear()
+        moveToLogin()
+    }
+    private fun moveToLogin() {
+        startActivity(Intent(this, Login::class.java).putExtra("hint",R.string.p_email_hint.toString()))
+        Toast.makeText(this,R.string.logout, Toast.LENGTH_LONG).show()
+        finish()
+    }
+    private fun appointment() {
+        startActivity(Intent(this, Appointments::class.java))
+    }
+
+    private fun doctorProfile() {
+        startActivity(Intent(this, Profile::class.java))
+    }
+    private fun patients() {
+        startActivity(Intent(this, Patients::class.java))
+    }
+
+    private fun model() {
+        startActivity(Intent(this, Pre_model::class.java))
+    }
+
+    //nav_bar
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (toggle.onOptionsItemSelected(item)) {
+            return true
+        }
+        return super.onOptionsItemSelected(item)
+    }
+    override fun onBackPressed() {
+        onBackPressedDispatcher.onBackPressed()
     }
 
     private fun addPatientDialog() {
@@ -263,36 +301,7 @@ class Patients : AppCompatActivity(),OnPatientListener {
         })
 
     }
-    private fun logout() {
-        pref.prefClear()
-        moveToLogin()
-    }
-    private fun moveToLogin() {
-        startActivity(Intent(this, Login::class.java).putExtra("hint",R.string.p_email_hint.toString()))
-        Toast.makeText(this,R.string.logout, Toast.LENGTH_LONG).show()
-        finish()
-    }
-    private fun appointment() {
-        startActivity(Intent(this, Appointments::class.java))
-    }
 
-    private fun doctorProfile() {
-        startActivity(Intent(this, Profile::class.java))
-    }
-    private fun patients() {
-        startActivity(Intent(this, Patients::class.java))
-    }
-
-    private fun model() {
-        startActivity(Intent(this, Pre_model::class.java))
-    }
-    //nav_bar
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if (toggle.onOptionsItemSelected(item)) {
-            return true
-        }
-        return super.onOptionsItemSelected(item)
-    }
 
     private fun init(){
         patientRecycle = findViewById(R.id.recycleview1)
@@ -317,9 +326,7 @@ class Patients : AppCompatActivity(),OnPatientListener {
         title=findViewById(R.id.titleTxt)
         title.setText(R.string.patients)
     }
-    override fun onBackPressed() {
-        onBackPressedDispatcher.onBackPressed()
-    }
+
     private fun addPatient(gender:String) {
         auth.createUserWithEmailAndPassword(email.text.toString(), password.text.toString())
             .addOnCompleteListener {
