@@ -126,7 +126,7 @@ class Doctors : AppCompatActivity() , OnCardListener {
         startActivity(Intent(this, Appointments::class.java))
     }
     private fun adminProfile() {
-        startActivity(Intent(this, Profile::class.java))
+        startActivity(Intent(this, com.example.ocs.Admin.Profile::class.java))
     }
     private fun doctor() {
         startActivity(Intent(this, Doctors::class.java))

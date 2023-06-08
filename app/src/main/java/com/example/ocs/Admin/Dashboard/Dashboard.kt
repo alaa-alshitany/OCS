@@ -4,11 +4,15 @@ import android.annotation.SuppressLint
 import android.content.ContentValues.TAG
 import android.content.Context
 import android.content.Intent
+import android.graphics.Bitmap
+import android.graphics.Canvas
 import android.graphics.Color
+import android.graphics.Paint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.view.ViewTreeObserver
 import android.widget.TextView
 import android.widget.Toast
 import com.example.ocs.Admin.Appointments.Appointments
@@ -18,6 +22,7 @@ import com.example.ocs.Login_Register.login.Login
 import com.example.ocs.Login_Register.login.Prefrences
 import com.example.ocs.R
 import com.example.ocs.databinding.ActivityDashboardBinding
+import com.github.mikephil.charting.animation.Easing
 import com.github.mikephil.charting.charts.HorizontalBarChart
 import com.github.mikephil.charting.charts.PieChart
 import com.github.mikephil.charting.components.AxisBase
@@ -25,6 +30,7 @@ import com.github.mikephil.charting.components.XAxis
 import com.github.mikephil.charting.components.YAxis
 import com.github.mikephil.charting.data.*
 import com.github.mikephil.charting.formatter.IndexAxisValueFormatter
+import com.github.mikephil.charting.formatter.PercentFormatter
 import com.github.mikephil.charting.formatter.ValueFormatter
 import com.github.mikephil.charting.utils.ColorTemplate
 import com.google.android.material.navigation.NavigationView
@@ -43,11 +49,11 @@ class Dashboard : AppCompatActivity()  {
     private lateinit var barChart:HorizontalBarChart
     private lateinit var dView : View
     private lateinit var adminName:TextView
+    private val database = FirebaseDatabase.getInstance()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         supportActionBar!!.elevation= 0F
         init()
-        barchartData()
         //listener on dashboard_card
         binding.profile.setOnClickListener {
             val cardProfileIntent = Intent(this, Profile::class.java)
@@ -66,55 +72,93 @@ class Dashboard : AppCompatActivity()  {
             moveToLogin()
         }
 
-
-
-        //bar_chart
-        /**val chart = findViewById<BarChart>(R.id.chart)
-        val entries = listOf(
-        BarEntry(0f, 10f),
-        BarEntry(1f, 20f),
-        BarEntry(2f, 30f),
-        BarEntry(3f, 40f),
-        BarEntry(4f, 50f),
-        BarEntry(5f, 60f)
-        )
-        val dataSet = BarDataSet(entries, "Values")
-        dataSet.setColors(*ColorTemplate.COLORFUL_COLORS)
-        val data = BarData(dataSet)
-        chart.data = data
-        chart.xAxis.setDrawGridLines(false)
-        chart.xAxis.position = XAxis.XAxisPosition.BOTTOM
-        val labels = arrayOf("Neuro", "pediatric", "Gynecologic", "Hematologists", "Thoracic", "Urologic")
-        chart.xAxis.valueFormatter = IndexAxisValueFormatter(labels)
-        chart.invalidate()**/
-
-
-        //piechart
-        piechart=findViewById(R.id.pie_chart)
-        val list1: ArrayList<PieEntry> = ArrayList()
-        list1.add(PieEntry(100f, "Requests"))
-        list1.add(PieEntry(101f, "Approved"))
-
-        val pieDataSet= PieDataSet(list1, "List")
-        pieDataSet.setColors(ColorTemplate.MATERIAL_COLORS, 255)
-        pieDataSet.valueTextSize=8f
-        pieDataSet.valueTextColor= Color.BLACK
-
-        val pieData= PieData(pieDataSet)
-        piechart.data=pieData
-        piechart.description.text="Pie Chart"
-        piechart.centerText= "List"
-        piechart.animateY(2000)
     }
 
-private fun barchartData(){
-    val database = FirebaseDatabase.getInstance()
+    private fun pieChartData() {
+        val databaseRef=database.getReference("Appointments")
+        databaseRef.addValueEventListener(object:ValueEventListener{
+            override fun onDataChange(snapshot: DataSnapshot) {
+                var approvedCount = 0
+                var unapprovedCount = 0
+                for (appointment in snapshot.children) {
+                    val status = appointment.child("status").value.toString()
+                    if (status == "Approved") {
+                        approvedCount++
+                    } else {
+                        unapprovedCount++
+                    }
+                }
+                createPieChart(approvedCount, unapprovedCount)
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                TODO("Not yet implemented")
+            }
+        })
+    }
+
+    private fun createPieChart(approvedCount: Int, unapprovedCount: Int) {
+        val pieChart = findViewById<PieChart>(R.id.pie_chart)
+        val entries = listOf(
+            PieEntry(approvedCount.toFloat(), "Approved"),
+            PieEntry(unapprovedCount.toFloat(), "unApproved")
+        )
+
+        val colors = listOf(getRandomColor(), getRandomColor())
+
+        val dataSet = PieDataSet(entries, "")
+        dataSet.colors = colors
+        dataSet.valueTextColor = Color.WHITE
+        dataSet.xValuePosition = PieDataSet.ValuePosition.OUTSIDE_SLICE
+        dataSet.setValueTextSize(14f)
+        dataSet.setValueTextColor(Color.BLACK)
+
+        val data = PieData(dataSet)
+        data.setValueFormatter(PercentFormatter(pieChart))
+        data.setValueTextSize(14f)
+
+        pieChart.data = data
+        pieChart.description.isEnabled = false
+        pieChart.legend.isEnabled = false
+        pieChart.setEntryLabelTextSize(14f)
+        pieChart.setEntryLabelColor(Color.BLACK)
+        pieChart.animateY(1000, Easing.EaseInOutQuad)
+
+        // Disable default entry labels
+        pieChart.setDrawEntryLabels(true)
+        pieChart.setDrawCenterText(true)
+        pieChart.centerText = "Requests"
+
+        pieChart.post {
+            // Draw lines between entries
+            val radius = pieChart.radius
+            val centerX = pieChart.width / 2f
+            val centerY = pieChart.height / 2f
+            val linePaint = Paint(Paint.ANTI_ALIAS_FLAG)
+            linePaint.color = Color.BLACK
+            linePaint.strokeWidth = 2f
+            var currentAngle = pieChart.rotationAngle
+            val canvas = Canvas()
+            pieChart.draw(canvas)
+            for (i in 0 until entries.size) {
+                val value = entries[i].value
+                val sliceAngle = 360f * (value / data.yValueSum)
+                val startX = centerX + (radius * 0.9f * Math.cos(Math.toRadians(currentAngle + sliceAngle / 2f.toDouble()))).toFloat()
+                val startY = centerY + (radius * 0.9f * Math.sin(Math.toRadians(currentAngle + sliceAngle / 2f.toDouble()))).toFloat()
+                val stopX = centerX + (radius * 1.1f * Math.cos(Math.toRadians(currentAngle + sliceAngle / 2f.toDouble()))).toFloat()
+                val stopY = centerY + (radius * 1.1f * Math.sin(Math.toRadians(currentAngle + sliceAngle / 2f.toDouble()))).toFloat()
+                canvas.drawLine(startX, startY, stopX, stopY, linePaint)
+                currentAngle += sliceAngle
+            }
+        }
+    }
+
+    private fun barchartData(){
     val dataRef = database.getReference("Doctors")
 
     dataRef.addListenerForSingleValueEvent(object : ValueEventListener {
         override fun onDataChange(snapshot: DataSnapshot) {
             val specializationCountMap = mutableMapOf<String, Int>()
-
             for (doctorSnapshot in snapshot.children) {
                 val specialization = doctorSnapshot.child("specialization").value.toString()
                 specializationCountMap[specialization] = specializationCountMap.getOrDefault(specialization, 0) + 1
@@ -266,9 +310,12 @@ private fun barchartData(){
         setContentView(binding.root)
         barChart = binding.chart
         barChart.visibility=View.INVISIBLE
+        barchartData()
+        pieChartData()
         dView = findViewById(R.id.textView_dash)
         adminName=findViewById(R.id.adminNameTxt)
         adminName.setText("Admin: ${pref.userName}")
+
     }
     private fun moveToLogin() {
         startActivity(Intent(this, Login::class.java).putExtra("hint", R.string.a_email_hint.toString()))

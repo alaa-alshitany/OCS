@@ -103,7 +103,7 @@ class Appointments : AppCompatActivity()  {
     }
 
     private fun adminProfile() {
-        startActivity(Intent(this, Profile::class.java))
+        startActivity(Intent(this, com.example.ocs.Admin.Profile::class.java))
     }
 
     private fun doctor() {
@@ -196,7 +196,7 @@ class Appointments : AppCompatActivity()  {
     }
 
     private fun getApprovedData(){
-        database.child("Appoin  tments").addValueEventListener(object : ValueEventListener {
+        database.child("Appointments").addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 approvedList.clear()
                 if (snapshot.exists()){

@@ -88,7 +88,7 @@ class Profile : AppCompatActivity(), OnCardItemClickListener {
         moveToLogin()
     }
     private fun moveToLogin() {
-        startActivity(Intent(this, Login::class.java).putExtra("hint",R.string.p_email_hint.toString()))
+        startActivity(Intent(this, Login::class.java).putExtra("hint",R.string.a_email_hint.toString()))
         Toast.makeText(this,R.string.logout, Toast.LENGTH_LONG).show()
         finish()
     }
@@ -134,7 +134,6 @@ class Profile : AppCompatActivity(), OnCardItemClickListener {
         navHeader=navView.getHeaderView(0)
         userName=navHeader.findViewById(R.id.user_name)
         userName.setText(pref.userName)
-
         getAdminData()
     }
 }
