@@ -197,7 +197,7 @@
             android:layout_height="wrap_content"
             android:text=""
             android:layout_centerHorizontal="true"
-            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             android:textStyle="bold"
             android:textColor="@color/white"
             android:fontFamily="@font/acme_regular"

@@ -229,7 +229,7 @@ class Dashboard : AppCompatActivity()  {
             setPosition(YAxis.YAxisLabelPosition.INSIDE_CHART)
             setDrawLabels(true)
             valueFormatter = LabelValueFormatter(labels)
-            axisMinimum = 0f // set minimum value to 0
+            axisMinimum = 0.5f // set minimum value to 0
             axisMaximum = Math.ceil(counts.maxOrNull()?.toDouble() ?: 0.0).toInt().toFloat() // set maximum value to highest value rounded up to the nearest whole number
             granularity = 1f // set interval to 1
         }
