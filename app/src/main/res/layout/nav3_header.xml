@@ -17,8 +17,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingTop="8dp"
-        android:text="Admin : 3553098"
-        android:textSize="20dp"
+        android:textColor="@color/black"
         android:textStyle="bold" />
 
     <View
