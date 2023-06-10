@@ -140,7 +140,7 @@ class Doctors : AppCompatActivity() , OnCardListener {
     }
 
     override fun onBackPressed() {
-        onBackPressedDispatcher.onBackPressed()
+        startActivity(Intent(this,Dashboard::class.java))
     }
     private fun filterList(query: String?) {
         if (query!=null){
@@ -302,14 +302,10 @@ class Doctors : AppCompatActivity() , OnCardListener {
                 phone.setError(getText(R.string.notValidNumber))
                 Toast.makeText(this, R.string.notValidNumber, Toast.LENGTH_SHORT).show()
             }
-            /*else if (specialization.selectedItem.toString().isEmpty()){
-                specialization.setError(getText(R.string.requird))
-                Toast.makeText(this,R.string.emptySpecialization,Toast.LENGTH_SHORT)
-            }*/
             else if (birthDate.text.toString().isEmpty()) {
                 birthDate.setError(getText(R.string.requird))
                 Toast.makeText(applicationContext,R.string.emptyBirthDate,Toast.LENGTH_LONG).show()
-            }else if (Period.between(dateEntered,currentDate).years <15){
+            }else if (Period.between(dateEntered,currentDate).years <26){
                 birthDate.setError(getText(R.string.doctorAgeError))
                 Toast.makeText(applicationContext,R.string.doctorAgeError,Toast.LENGTH_LONG).show()
             }
