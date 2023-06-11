@@ -75,7 +75,7 @@ class Patients : AppCompatActivity(),OnPatientListener {
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_recycle_doctor)
+        setContentView(R.layout.activity_patient_recycle)
         supportActionBar!!.elevation= 0F
         init()
         getPatientsData()

@@ -4,6 +4,8 @@ import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
+import android.widget.TextView
 import android.widget.Toast
 import com.example.ocs.Doctor.Appointments.Appointments
 import com.example.ocs.Doctor.Patients
@@ -18,6 +20,8 @@ class DoctorDashboard : AppCompatActivity() {
     private lateinit var binding: ActivityDoctorDashboardBinding
     private lateinit var pref: Prefrences
     private lateinit var context: Context
+    
+    private lateinit var doctorName: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -49,6 +53,9 @@ class DoctorDashboard : AppCompatActivity() {
     private fun init() {
         context = this
         pref = Prefrences(context)
+        doctorName=findViewById(R.id.textView_doctordash)
+        doctorName.setText("${pref.userName}")
+        
     }
     private fun moveToLogin() {
         startActivity(Intent(this, Login::class.java).putExtra("hint", R.string.d_email_hint.toString()))
