@@ -132,6 +132,7 @@
                     android:layout_weight="1.5"
                     android:gravity="center"
                     android:layout_height="match_parent"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small"
                     android:text="@string/classification"
                     android:autofillHints=""
                     android:textColor="@color/black"

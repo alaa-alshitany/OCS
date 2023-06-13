@@ -70,7 +70,6 @@ class Patients : AppCompatActivity(),OnPatientListener {
     private lateinit var userName: TextView
     private lateinit var context: Context
     private lateinit var toggle: ActionBarDrawerToggle
-    private lateinit var title:TextView
 
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -304,14 +303,14 @@ class Patients : AppCompatActivity(),OnPatientListener {
 
 
     private fun init(){
-        patientRecycle = findViewById(R.id.recycleview1)
+        patientRecycle = findViewById(R.id.pRecycler)
         patientRecycle.layoutManager = LinearLayoutManager(this)
         patientRecycle.setHasFixedSize(true)
         patientList = arrayListOf<PatientData>()
         drawerLayout = findViewById(R.id.drawerLayout)
         navView = findViewById(R.id.nav_view)
         navHeader=navView.getHeaderView(0)
-        searchView=findViewById(R.id.searchDoctor)
+        searchView=findViewById(R.id.searchPatient)
         auth = FirebaseAuth.getInstance()
         toggle = ActionBarDrawerToggle( this, drawerLayout, R.string.open, R.string.close)
         drawerLayout.addDrawerListener(toggle)
@@ -323,8 +322,6 @@ class Patients : AppCompatActivity(),OnPatientListener {
         pref= Prefrences(context)
         userName=navHeader.findViewById(R.id.user_name)
         userName.setText(pref.userName)
-        title=findViewById(R.id.titleTxt)
-        title.setText(R.string.patients)
     }
 
     private fun addPatient(gender:String) {

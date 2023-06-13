@@ -1138,10 +1138,10 @@ FirebaseModelDownloader.getInstance().getModel("Classification", DownloadType.LO
         output = outputBuffer.floatArray[0]
         if (output.toInt() == 1) {
             classification.setText("Resistance")
-            classificationProgress.visibility=View.INVISIBLE
+            classificationProgress.visibility=View.GONE
         } else if (output.toInt() ==0) {
             classification.setText("Sensitive")
-            classificationProgress.visibility=View.INVISIBLE
+            classificationProgress.visibility=View.GONE
         }
 
     }
@@ -1162,6 +1162,7 @@ FirebaseModelDownloader.getInstance().getModel("Classification", DownloadType.LO
                 }
                 tryDrug.setOnClickListener {
                     dialog.dismiss()
+                    startActivity(Intent(this,this::class.java))
                 }
             } else {
                 Toast.makeText(
