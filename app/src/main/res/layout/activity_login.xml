@@ -6,7 +6,9 @@
     android:layout_height="match_parent"
     android:background="@color/white"
     tools:context=".Login_Register.login.Login">
-
+<FrameLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
     <LinearLayout
         android:id="@+id/first_linear"
         android:layout_width="match_parent"
@@ -193,5 +195,12 @@
 
         </Space>
     </LinearLayout>
-
+    <ProgressBar
+        android:id="@+id/progress_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:indeterminateTint="@color/blue_500"
+        android:visibility="gone"/>
+</FrameLayout>
 </LinearLayout>

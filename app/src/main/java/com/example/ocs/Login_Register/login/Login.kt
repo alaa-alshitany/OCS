@@ -13,6 +13,7 @@
         import android.widget.Button
         import android.widget.EditText
         import android.widget.ImageView
+        import android.widget.ProgressBar
         import android.widget.TextView
         import android.widget.Toast
         import com.example.ocs.Login_Register.forgetPassword.ForgetPassword
@@ -48,6 +49,7 @@
             private lateinit var patientID:String
             private lateinit var auth: FirebaseAuth
             private val database:DatabaseReference=FirebaseDatabase.getInstance().reference
+            private lateinit var progress:ProgressBar
 
             override fun onCreate(savedInstanceState: Bundle?) {
                 super.onCreate(savedInstanceState)
@@ -119,13 +121,14 @@
                 forgetPasswordBtn.visibility=View.INVISIBLE
 
                 loginBtn.setOnClickListener {
+                    progress.visibility=View.VISIBLE
                     if (checkInternet(this)){
                         checkEmptyData(email_edt,passwordEdt)
                         readDoctorData(email_edt.text.toString(),passwordEdt.text.toString())
                     }else {
                         Toast.makeText(applicationContext, R.string.internetError, Toast.LENGTH_LONG).show()
                     }
-                                   }
+                }
             }
             private fun readDoctorData(email: String,password: String) {
                 val auth = Firebase.auth
@@ -142,6 +145,7 @@
                                                 pref.prefStatus = true
                                                 pref.prefLevel = "doctor"
                                                 pref.prefID = doctor?.id
+                                                progress.visibility=View.GONE
                                                 Toast.makeText(context, R.string.login_success, Toast.LENGTH_LONG).show()
                                                 doctorDashboard()
                                             } else {
@@ -173,6 +177,7 @@
             forgetPasswordBtn.visibility = View.INVISIBLE
             emailLayout.isPasswordVisibilityToggleEnabled = true
             loginBtn.setOnClickListener {
+            progress.visibility=View.VISIBLE
             if (checkInternet(this)){
             checkEmptyData(email_edt,passwordEdt)
             readAdminData(email_edt.text.toString(),passwordEdt.text.toString())
@@ -188,8 +193,10 @@
                 startActivity(Intent(activity, DoctorDashboard::class.java))
             }
             private fun patientLogin(){
+
             email_edt.setHint(R.string.p_email_hint)
             loginBtn.setOnClickListener {
+            progress.visibility=View.VISIBLE
             if(checkInternet(this)){
             checkEmptyData(email_edt,passwordEdt)
             readPatientData(email_edt.text.toString(),passwordEdt.text.toString())
@@ -211,6 +218,7 @@
                     pref.prefLevel="patient"
                     pref.prefID=patientID
                     pref.userName=patient?.firstName.toString().plus(" ${patient?.lastName.toString()}")
+                    progress.visibility=View.GONE
                     Toast.makeText(context, R.string.login_success, Toast.LENGTH_LONG).show()
                     home()
                 }else{
@@ -241,6 +249,7 @@
                     pref.prefStatus = true
                     pref.prefLevel = "admin"
                     pref.prefID = admin?.id
+                    progress.visibility=View.GONE
                     Toast.makeText(context, R.string.login_success, Toast.LENGTH_LONG).show()
                     adminDashboard()
                 } else {
@@ -296,6 +305,7 @@
             emailLayout=findViewById(R.id.email_input_layout)
             forgetPasswordBtn=findViewById(R.id.forgetPass_btn)
             passwordEdt=findViewById(R.id.password_edt)
+            progress=findViewById(R.id.progress_bar)
             context=this
             pref= Prefrences(context)
             intent2=intent
