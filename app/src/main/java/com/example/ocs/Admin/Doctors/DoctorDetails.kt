@@ -14,6 +14,7 @@ import com.example.ocs.R
 import com.example.ocs.Admin.Dashboard.Dashboard
 import com.example.ocs.Admin.Doctors.DoctorData
 import com.example.ocs.Admin.Doctors.Doctors
+import com.example.ocs.Login_Register.login.Login
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.database.*
@@ -80,6 +81,13 @@ class DoctorDetails: AppCompatActivity() {
         startActivity(Intent(this, Dashboard::class.java))
     }
     private fun logout() {
+        pref.prefClear()
+        moveToLogin()
+    }
+    private fun moveToLogin() {
+        startActivity(Intent(this, Login::class.java).putExtra("hint",R.string.p_email_hint.toString()))
+        Toast.makeText(this,R.string.logout, Toast.LENGTH_LONG).show()
+        finish()
     }
 
     private fun requests() {
