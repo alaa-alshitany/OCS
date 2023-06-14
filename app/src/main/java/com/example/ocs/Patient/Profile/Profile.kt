@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
 import android.view.View
+import android.widget.ProgressBar
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
@@ -34,7 +35,7 @@ class Profile : AppCompatActivity() {
     private lateinit var  drawerLayout : DrawerLayout
     private lateinit var  navView : NavigationView
     private lateinit var userName:TextView
-    // navigation bar
+    private lateinit var progress: ProgressBar
     lateinit var toggle: ActionBarDrawerToggle
 
     @SuppressLint("MissingInflatedId")
@@ -99,10 +100,12 @@ class Profile : AppCompatActivity() {
         phone=findViewById(R.id.phone_txt)
         email=findViewById(R.id.email_txt)
         address=findViewById(R.id.address_txt)
+        progress=findViewById(R.id.progress_bar)
         context=this
         pref= Prefrences(context)
         userName=navHeader.findViewById(R.id.user_name)
         userName.setText(pref.userName)
+        progress.visibility=View.VISIBLE
         dataBase.child("Patients").child(pref.prefID.toString()).get().addOnSuccessListener {
             if (it.exists()){
                 name.text = it.child("firstName").value.toString().plus(" ").plus(it.child("lastName").value.toString())
@@ -110,6 +113,7 @@ class Profile : AppCompatActivity() {
                 birthDate.text = it.child("birthDate").value.toString()
                 phone.text = it.child("phone").value.toString()
                 email.text = it.child("email").value.toString()
+                progress.visibility=View.GONE
             }
         }
     }

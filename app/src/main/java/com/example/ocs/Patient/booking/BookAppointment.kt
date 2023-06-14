@@ -39,6 +39,7 @@ class BookAppointment : AppCompatActivity() {
     private lateinit var navView : NavigationView
     private lateinit var userName: TextView
     private lateinit var navHeader : View
+    private lateinit var progress:ProgressBar
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -61,6 +62,7 @@ class BookAppointment : AppCompatActivity() {
             true
         }
         bookBtn.setOnClickListener {
+            progress.visibility=View.VISIBLE
             sendRequest()
         }
     }
@@ -72,6 +74,7 @@ class BookAppointment : AppCompatActivity() {
         val appointment= AppointmentData(appointmentID,null,null,pref.prefID.toString(), serviceType.toString(),null,fullName.text.toString(), phoneNumber = phone.text.toString() )
         database2.child(appointmentID).setValue(appointment).addOnCompleteListener {
             if (it.isSuccessful){
+                progress.visibility=View.GONE
                 Toast.makeText(applicationContext,R.string.successRequest,Toast.LENGTH_LONG).show()
                 home()
             }else{
@@ -121,6 +124,7 @@ class BookAppointment : AppCompatActivity() {
         clinics=findViewById(R.id.medical_clinics)
         phone =findViewById(R.id.phone_edt)
         fullName=findViewById(R.id.fullName_edt)
+        progress=findViewById(R.id.progress_bar)
         fullName.setText(pref.userName)
         userName=navHeader.findViewById(R.id.user_name)
         userName.setText(pref.userName)
