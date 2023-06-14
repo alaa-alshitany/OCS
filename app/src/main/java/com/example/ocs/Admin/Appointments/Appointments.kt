@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.view.MenuItem
 import android.view.View
 import android.widget.Button
+import android.widget.ProgressBar
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
@@ -49,6 +50,7 @@ class Appointments : AppCompatActivity()  {
     private lateinit var pref: Prefrences
     private lateinit var navHeader : View
     private lateinit var userName:TextView
+    private lateinit var progress: ProgressBar
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -78,11 +80,12 @@ class Appointments : AppCompatActivity()  {
             true
         }
         requestsBtn.setOnClickListener {
-            //Toast.makeText(context,doctorList.size,Toast.LENGTH_LONG).show()
+            progress.visibility=View.VISIBLE
             layoutTitle.setText(R.string.requestsBtn)
             getRequestsData()
         }
         approvedBtn.setOnClickListener {
+            progress.visibility=View.VISIBLE
             layoutTitle.setText(R.string.approvedBtn)
             getApprovedData()
         }
@@ -135,6 +138,7 @@ class Appointments : AppCompatActivity()  {
         doctorList= mutableMapOf<String,String>()
         drawerLayout = findViewById(R.id.drawerLayout)
         navView = findViewById(R.id.nav_view)
+        progress=findViewById(R.id.progress_bar)
         navHeader=navView.getHeaderView(0)
         toggle = ActionBarDrawerToggle( this, drawerLayout, R.string.open, R.string.close)
         drawerLayout.addDrawerListener(toggle)
@@ -179,12 +183,12 @@ class Appointments : AppCompatActivity()  {
                     for (appData in snapshot.children){
                         var appointment = appData.getValue<AppointmentData>()
                         if(appointment?.status.equals("unApproved")){
-                            //val patientName=appData.getValue(AppointmentData::class.java)
                             requestsList.add(appointment!!)
                         }
                     }
                     requestsAdapter= RequestsAdapter(context,requestsList,doctorList)
                     requestsRecycle.adapter=requestsAdapter
+                    progress.visibility=View.GONE
                 }
             }
             override fun onCancelled(error: DatabaseError) {
@@ -208,7 +212,7 @@ class Appointments : AppCompatActivity()  {
                     }
                     approvedAdapter= ApprovedAdapter(context,approvedList,doctorList)
                     requestsRecycle.adapter=approvedAdapter
-
+                    progress.visibility=View.GONE
                 }
             }
             override fun onCancelled(error: DatabaseError) {

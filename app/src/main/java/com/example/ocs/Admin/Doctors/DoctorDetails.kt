@@ -1,5 +1,6 @@
 package com.example.ocs.Admin
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
@@ -15,6 +16,7 @@ import com.example.ocs.Admin.Dashboard.Dashboard
 import com.example.ocs.Admin.Doctors.DoctorData
 import com.example.ocs.Admin.Doctors.Doctors
 import com.example.ocs.Login_Register.login.Login
+import com.example.ocs.Login_Register.login.Prefrences
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.database.*
@@ -32,7 +34,8 @@ class DoctorDetails: AppCompatActivity() {
     private lateinit var updateBtn:FloatingActionButton
     private lateinit var toggle: ActionBarDrawerToggle
     private  var database:DatabaseReference=FirebaseDatabase.getInstance().reference
-
+    private lateinit var pref:Prefrences
+    private lateinit var context: Context
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -103,7 +106,8 @@ class DoctorDetails: AppCompatActivity() {
     }
     private fun init(){
         var intent2:Intent=intent
-
+        context=this
+        pref= Prefrences(context)
         fullName=findViewById(R.id.doctorDetailsNameTxt)
         fullName.setText(intent2.getStringExtra("name").toString())
 

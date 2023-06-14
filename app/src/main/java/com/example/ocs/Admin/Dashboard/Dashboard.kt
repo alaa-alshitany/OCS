@@ -13,6 +13,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.view.ViewTreeObserver
+import android.widget.ProgressBar
 import android.widget.TextView
 import android.widget.Toast
 import com.example.ocs.Admin.Appointments.Appointments
@@ -50,6 +51,7 @@ class Dashboard : AppCompatActivity()  {
     private lateinit var dView : View
     private lateinit var adminName:TextView
     private val database = FirebaseDatabase.getInstance()
+    private lateinit var progress: ProgressBar
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         supportActionBar!!.elevation= 0F
@@ -308,14 +310,16 @@ class Dashboard : AppCompatActivity()  {
         pref = Prefrences(context)
         binding = ActivityDashboardBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        progress=findViewById(R.id.progress_bar)
         barChart = binding.chart
         barChart.visibility=View.INVISIBLE
+        progress.visibility=View.VISIBLE
         barchartData()
         pieChartData()
+        progress.visibility=View.GONE
         dView = findViewById(R.id.textView_dash)
         adminName=findViewById(R.id.adminNameTxt)
         adminName.setText("Admin: ${pref.userName}")
-
     }
     private fun moveToLogin() {
         startActivity(Intent(this, Login::class.java).putExtra("hint", R.string.a_email_hint.toString()))
