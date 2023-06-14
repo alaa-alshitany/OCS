@@ -135,6 +135,8 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:focusable="false"
+                android:cursorVisible="false"
                 android:textColor="@color/black"
                 />
         </LinearLayout>
@@ -168,6 +170,8 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:focusable="false"
+                android:cursorVisible="false"
                 android:textColor="@color/black"
                 />
         </LinearLayout>
@@ -200,9 +204,10 @@
                 android:id="@+id/patientDetailsGenderTxt"
                 style="@style/EditText"
                 android:layout_width="0dp"
-                android:focusable="false"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:focusable="false"
+                android:cursorVisible="false"
                 android:textColor="@color/black"
                 />
         </LinearLayout>
@@ -238,6 +243,7 @@
                 android:focusable="false"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:cursorVisible="false"
                 android:textColor="@color/black"
                 />
         </LinearLayout>

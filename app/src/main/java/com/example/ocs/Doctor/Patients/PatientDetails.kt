@@ -20,6 +20,7 @@ import com.example.ocs.Doctor.Model.Pre_model
 import com.example.ocs.Login_Register.login.Login
 import com.example.ocs.Login_Register.login.Prefrences
 import com.example.ocs.R
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.database.*
 import com.google.firebase.database.ktx.getValue
@@ -41,10 +42,11 @@ class PatientDetails: AppCompatActivity() {
     private lateinit var navHeader : View
     private lateinit var userName: TextView
     private val database: DatabaseReference = FirebaseDatabase.getInstance().reference
-
+    private lateinit var updateBtn:FloatingActionButton
     //nav_bar
     lateinit var toggle: ActionBarDrawerToggle
-
+    private lateinit var patientID:String
+    private lateinit var treatmentID:String
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -71,7 +73,16 @@ class PatientDetails: AppCompatActivity() {
 
             true
         }
-    }
+        updateBtn.setOnClickListener {
+            var ref= database.child("Treatments").child(treatmentID)
+            ref.child("drugName").setValue( medicine.text.toString()).addOnSuccessListener {
+                ref.child("IC50").setValue(ic50.text.toString()).addOnSuccessListener {
+                            Toast.makeText(baseContext, "All Data has been updated!", Toast.LENGTH_LONG).show()
+                            patients()
+                        }
+                    }
+                }
+            }
     //nav_bar
     private fun logout() {
         pref.prefClear()
@@ -132,8 +143,8 @@ class PatientDetails: AppCompatActivity() {
 
         birthdate=findViewById(R.id.patientDetailsBirthTxt)
         birthdate.setText(intent2.getStringExtra("birthdate").toString())
-         var id=intent2.getStringExtra("id")
-        database.child("Treatments").orderByChild("patientID").equalTo(id).addListenerForSingleValueEvent(object :
+        patientID= intent2.getStringExtra("id").toString()
+        database.child("Treatments").orderByChild("patientID").equalTo(patientID).addListenerForSingleValueEvent(object :
             ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 if (snapshot.exists()) {
@@ -142,6 +153,7 @@ class PatientDetails: AppCompatActivity() {
                         if (treatment != null) {
                             ic50.setText(treatment.IC50.toString())
                             medicine.setText(treatment.drugName.toString())
+                            treatmentID=treatment.treatmentID.toString()
                         }
                     }
                 }
@@ -157,6 +169,7 @@ class PatientDetails: AppCompatActivity() {
         pref= Prefrences(context)
         userName=navHeader.findViewById(R.id.user_name)
         userName.setText(pref.userName)
+        updateBtn=findViewById(R.id.updateBtn)
 
     }
 }
