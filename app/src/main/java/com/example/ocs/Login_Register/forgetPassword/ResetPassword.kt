@@ -2,8 +2,10 @@ package com.example.ocs.Login_Register.forgetPassword
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.ocs.Patient.PatientData
@@ -18,6 +20,7 @@ class ResetPassword : AppCompatActivity() {
     private lateinit var intent2: Intent
     private lateinit var phoneNumber:String
     private val database: DatabaseReference = FirebaseDatabase.getInstance().reference
+    private lateinit var progress: ProgressBar
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,6 +29,7 @@ class ResetPassword : AppCompatActivity() {
         init()
         getIntentExtra()
         updateBtn.setOnClickListener {
+            progress.visibility= View.VISIBLE
             if(checkPassword()){
                 updateDB()
                 login()
@@ -33,6 +37,7 @@ class ResetPassword : AppCompatActivity() {
         }
     }
     private fun login() {
+        progress.visibility=View.GONE
         startActivity(Intent(this, com.example.ocs.Login_Register.login.Login::class.java).putExtra("hint",R.string.p_email_hint.toString()))
         Toast.makeText(this,R.string.updateSuccess,Toast.LENGTH_LONG).show()
         finish()
@@ -46,7 +51,6 @@ class ResetPassword : AppCompatActivity() {
                     var patientID= patient?.id.toString()
                     database.child("Patients").child(patientID).child("password").setValue(passwordEdt.text.toString())
 
-                    //var patientAuth:FirebaseUser
                 }
             }
 
@@ -55,19 +59,6 @@ class ResetPassword : AppCompatActivity() {
             }
 
         })
-/*
-        patient?.updatePassword(passwordEdt.text.toString())?.addOnCompleteListener {
-            if (it.isSuccessful){
-                var map = mapOf(
-                    "password" to passwordEdt.text.toString()
-                )
-
-                databaseRef.updateChildren(map)
-                Toast.makeText(applicationContext,"Password Updated Successfully.",Toast.LENGTH_LONG).show()
-            }else{
-                Toast.makeText(applicationContext,"Password Update Failed.",Toast.LENGTH_LONG).show()
-            }
-        }*/
     }
 
     private fun getIntentExtra() {
@@ -95,5 +86,6 @@ class ResetPassword : AppCompatActivity() {
         passwordConfirmationEdt=findViewById(R.id.passwordConfirmation)
         updateBtn=findViewById(R.id.update_btn)
         intent2=intent
+        progress=findViewById(R.id.progress_bar)
     }
 }

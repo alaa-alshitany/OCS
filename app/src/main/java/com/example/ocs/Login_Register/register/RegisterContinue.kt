@@ -8,8 +8,10 @@ import android.net.NetworkCapabilities
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ProgressBar
 import android.widget.Toast
 import com.example.ocs.Patient.PatientData
 import com.example.ocs.R
@@ -35,7 +37,7 @@ class RegisterContinue : AppCompatActivity() {
     private lateinit var gender: String
     private lateinit var currentDate: LocalDate
     private lateinit var dateEntered:LocalDate
-
+    private lateinit var progress: ProgressBar
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_continue_register)
@@ -44,6 +46,7 @@ class RegisterContinue : AppCompatActivity() {
         init()
         getIntentExtra()
         registerBtn.setOnClickListener {
+            progress.visibility= View.VISIBLE
             if (checkInternet(this)) {
                 if (validateInputData()) {
                     register()
@@ -133,6 +136,7 @@ class RegisterContinue : AppCompatActivity() {
                         passwordEdt.text.toString()
                     )
                     database.child(patientId).setValue(patient).addOnSuccessListener {
+                        progress.visibility=View.GONE
                         Toast.makeText(this, R.string.register_success, Toast.LENGTH_LONG).show()
                         login()
                     }.addOnFailureListener { err ->
@@ -198,6 +202,7 @@ class RegisterContinue : AppCompatActivity() {
         passwordConfEdt = findViewById(R.id.passwordConfirmation)
         auth = FirebaseAuth.getInstance()
         currentDate= LocalDate.now()
+        progress=findViewById(R.id.progress_bar)
     }
     override fun onBackPressed() {
         onBackPressedDispatcher.onBackPressed()
