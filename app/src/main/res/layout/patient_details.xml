@@ -6,267 +6,320 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/white"
     tools:context=".Doctor.PatientDetails">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_margin="25dp"
+        android:layout_margin="10dp"
         android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.508"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-
+        >
         <TextView
-            android:id="@+id/textView31"
             style="@style/TextAppearance.Material3.TitleLarge"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_gravity="center"
-            android:layout_weight=".5"
+            android:layout_weight="2"
             android:fontFamily="@font/acme_regular"
             android:gravity="center"
             android:textAppearance="@style/TextAppearance.AppCompat.Small"
             android:textColor="@color/blue_500"
             android:textStyle="bold"
-            tools:text="@string/PatientRecord_title" />
+            android:text="@string/PatientRecord_title"
+            />
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
 
+        </Space>
 
         <Space
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight=".1">
+            android:layout_weight=".5">
 
         </Space>
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/textView28"
-                style="@style/EditText"
+                android:id="@+id/editTextTextPersonName3"
+                android:gravity="center"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight=".5"
-                android:text="TextView"
                 android:textColor="@color/black"
-                android:textSize="20sp"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.072"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.473"
-                tools:text="@string/Patientdetails_name" />
+                android:text="@string/fullName_inp" />
 
             <EditText
-                android:id="@+id/textView43"
+                android:id="@+id/patientDetailsNameTxt"
                 style="@style/EditText"
                 android:layout_width="0dp"
+                android:focusable="false"
+                android:cursorVisible="false"
                 android:layout_height="match_parent"
-                android:layout_weight="1.3"
-                android:text="TextView"
-                android:textSize="17sp"
-                tools:text="@string/Patient_name" />
+                android:layout_weight="1"
+                android:textColor="@color/black"
+                />
         </LinearLayout>
-
         <Space
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight=".1">
-
+            android:layout_weight=".5">
         </Space>
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/textView27"
-                style="@style/EditText"
+                android:gravity="center"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight=".5"
-                android:text="TextView"
                 android:textColor="@color/black"
-                android:textSize="20sp"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.072"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.473"
-                tools:text="@string/Patientdetails_email" />
+                android:text="@string/doctordetais_email" />
 
             <EditText
-                android:id="@+id/textView44"
+                android:id="@+id/patientDetailsEmailTxt"
                 style="@style/EditText"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1.3"
-                android:text="TextView"
-                android:textSize="17sp"
-                tools:text="@string/Patient_email" />
+                android:layout_weight="1"
+                android:focusable="false"
+                android:cursorVisible="false"
+                android:textColor="@color/black"
+                />
         </LinearLayout>
-
         <Space
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight=".1">
-
+            android:layout_weight=".5">
         </Space>
-
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/textView25"
-                style="@style/EditText"
+                android:gravity="center"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight=".5"
-                android:text="TextView"
                 android:textColor="@color/black"
-                android:textSize="20sp"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.072"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.473"
-                tools:text="@string/Patientdetails_phone" />
+                android:text="@string/doctordetails_phone" />
 
             <EditText
-                android:id="@+id/textView45"
+                android:id="@+id/patientDetailsPhoneTxt"
                 style="@style/EditText"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1.3"
-                android:text="TextView"
-                android:textSize="17sp"
-                tools:text="@string/Patient_phone" />
+                android:layout_weight="1"
+                android:textColor="@color/black"
+                />
         </LinearLayout>
-
         <Space
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight=".1">
-
+            android:layout_weight=".5">
         </Space>
-
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/textView26"
-                style="@style/EditText"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight=".5"
-                android:text="TextView"
                 android:textColor="@color/black"
-                android:textSize="20sp"
+                android:gravity="center"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.072"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.473"
-                tools:text="@string/Patientdetails_diagnosis" />
+                tools:ignore="VisualLintTextFieldSize"
+                tools:layout_editor_absoluteY="79dp"
+                android:text="@string/doctordetails_birthdate" />
 
             <EditText
-                android:id="@+id/textView46"
+                android:id="@+id/patientDetailsBirthTxt"
                 style="@style/EditText"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight=".8"
-                android:text="TextView"
-                android:textSize="17sp"
-                tools:text="@string/Patient_diagnosis" />
+                android:layout_weight="1"
+                android:textColor="@color/black"
+                />
         </LinearLayout>
-
         <Space
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight=".1">
-
+            android:layout_weight=".5">
         </Space>
-
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/textView29"
-                style="@style/EditText"
+                android:gravity="center"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight=".5"
-                android:text="TextView"
                 android:textColor="@color/black"
-                android:textSize="20sp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Small"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
+                app:boxStrokeWidthFocused="0dp"
+                app:hintEnabled="true"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.072"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.473"
-                tools:text="@string/Patientdetails_medicine" />
+                android:text="@string/gender" />
+
+            <EditText
+                android:id="@+id/patientDetailsGenderTxt"
+                style="@style/EditText"
+                android:layout_width="0dp"
+                android:focusable="false"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:textColor="@color/black"
+                />
+        </LinearLayout>
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight=".5">
+        </Space>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/textView47"
+                android:gravity="center"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight=".5"
+                android:textColor="@color/black"
+                android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                android:textStyle="bold"
+                app:boxStrokeWidthFocused="0dp"
+                app:hintEnabled="true"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                android:text="@string/address" />
+
+            <EditText
+                android:id="@+id/patientDetailsAddressTxt"
+                style="@style/EditText"
+                android:layout_width="0dp"
+                android:focusable="false"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:textColor="@color/black"
+                />
+        </LinearLayout>
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight=".5">
+        </Space>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight=".5"
+                android:gravity="center"
+                android:text="@string/drugName"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <EditText
+                android:id="@+id/patientDetailsdrugNameTxt"
                 style="@style/EditText"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight=".8"
-                android:text="TextView"
-                android:textSize="17sp"
-                tools:text="@string/Patient_medicine" />
+                android:layout_weight="1"
+                android:textColor="@color/black"
+                />
         </LinearLayout>
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight=".5">
+        </Space>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
 
+            <TextView
+                android:gravity="center"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight=".5"
+                android:textColor="@color/black"
+                android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                android:textStyle="bold"
+                app:boxStrokeWidthFocused="0dp"
+                app:hintEnabled="true"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                android:text="@string/predictedIC50" />
+
+            <EditText
+                android:id="@+id/patientDetailsIC50Txt"
+                style="@style/EditText"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:textColor="@color/black"
+                />
+        </LinearLayout>
         <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/floatingActionButton"
             style="@style/Widget.AppCompat.Button"
+            android:id="@+id/updateBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|center"
-            android:layout_margin="16dp"
             android:contentDescription="save"
             android:gravity="center"
             android:src="@drawable/baseline_check_blue"
             app:backgroundTint="#A6CFF5"
-            tools:layout_editor_absoluteX="117dp"
-            tools:layout_editor_absoluteY="386dp"
-            tools:srcCompat="@tools:sample/avatars[0]" />
+            tools:srcCompat="@tools:sample/avatars[0]"
+            />
     </LinearLayout>
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
     <com.google.android.material.navigation.NavigationView
         android:layout_width="wrap_content"
         android:layout_height="match_parent"

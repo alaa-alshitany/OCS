@@ -35,6 +35,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
+import com.google.firebase.database.ktx.getValue
 import java.time.LocalDate
 import java.time.Period
 import java.util.*
@@ -70,7 +71,8 @@ class Patients : AppCompatActivity(),OnPatientListener {
     private lateinit var userName: TextView
     private lateinit var context: Context
     private lateinit var toggle: ActionBarDrawerToggle
-
+    //private lateinit var drugName:String
+    //private lateinit var ic50:String
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -417,22 +419,22 @@ class Patients : AppCompatActivity(),OnPatientListener {
         var id=c?.id
         var email=c?.email
         var gender = c?.gender
-        var password=c?.password
         var birthDate=c?.birthDate
         var address=c?.address
+
+
 
         var intentDetails=Intent(this, PatientDetails::class.java)
 
         intentDetails.putExtra("name",patientName)
         intentDetails.putExtra("phone",phone)
-        intentDetails.putExtra("id",id)
         intentDetails.putExtra("email",email)
         intentDetails.putExtra("address",address)
         intentDetails.putExtra("gender",gender)
-        intentDetails.putExtra("password",password)
         intentDetails.putExtra("birthdate",birthDate)
+       intentDetails.putExtra("id",id)
 
-        startActivity(intentDetails)
+       startActivity(intentDetails)
 
     }
 }

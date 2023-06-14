@@ -21,20 +21,26 @@ import com.example.ocs.Login_Register.login.Login
 import com.example.ocs.Login_Register.login.Prefrences
 import com.example.ocs.R
 import com.google.android.material.navigation.NavigationView
+import com.google.firebase.database.*
+import com.google.firebase.database.ktx.getValue
 
 class PatientDetails: AppCompatActivity() {
 
     private lateinit var Name: EditText
     private lateinit var email:EditText
     private lateinit var phone:EditText
-    private lateinit var diagnosis:EditText
     private lateinit var medicine:EditText
+    private lateinit var address:EditText
+    private lateinit var ic50:EditText
+    private lateinit var birthdate:EditText
+    private lateinit var gender:EditText
     private lateinit var pref: Prefrences
     private lateinit var drawerLayout : DrawerLayout
     private lateinit var navView : NavigationView
     private lateinit var context: Context
     private lateinit var navHeader : View
     private lateinit var userName: TextView
+    private val database: DatabaseReference = FirebaseDatabase.getInstance().reference
 
     //nav_bar
     lateinit var toggle: ActionBarDrawerToggle
@@ -104,21 +110,46 @@ class PatientDetails: AppCompatActivity() {
     private fun init(){
         var intent2:Intent=intent
 
-        Name=findViewById(R.id.textView43)
+        Name=findViewById(R.id.patientDetailsNameTxt)
         Name.setText(intent2.getStringExtra("name").toString())
 
-        email=findViewById(R.id.textView44)
+        email=findViewById(R.id.patientDetailsEmailTxt)
         email.setText(intent2.getStringExtra("email").toString())
 
-        phone=findViewById(R.id.textView45)
+        phone=findViewById(R.id.patientDetailsPhoneTxt)
         phone.setText(intent2.getStringExtra("phone").toString())
 
-        diagnosis=findViewById(R.id.textView46)
-        diagnosis.setText(intent2.getStringExtra("phone").toString())
+        medicine=findViewById(R.id.patientDetailsdrugNameTxt)
 
-        medicine=findViewById(R.id.textView47)
-        medicine.setText(intent2.getStringExtra("phone").toString())
 
+        address=findViewById(R.id.patientDetailsAddressTxt)
+        address.setText(intent2.getStringExtra("address").toString())
+
+        ic50=findViewById(R.id.patientDetailsIC50Txt)
+
+        gender=findViewById(R.id.patientDetailsGenderTxt)
+        gender.setText(intent2.getStringExtra("gender").toString())
+
+        birthdate=findViewById(R.id.patientDetailsBirthTxt)
+        birthdate.setText(intent2.getStringExtra("birthdate").toString())
+         var id=intent2.getStringExtra("id")
+        database.child("Treatments").orderByChild("patientID").equalTo(id).addListenerForSingleValueEvent(object :
+            ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                if (snapshot.exists()) {
+                    for (item in snapshot.children) {
+                        var treatment = item.getValue<TreatmentData>()
+                        if (treatment != null) {
+                            ic50.setText(treatment.IC50.toString())
+                            medicine.setText(treatment.drugName.toString())
+                        }
+                    }
+                }
+            }
+            override fun onCancelled(error: DatabaseError) {
+                Toast.makeText(applicationContext,"canceled",Toast.LENGTH_LONG)
+            }
+        })
         drawerLayout = findViewById(R.id.drawerLayout)
         navView = findViewById(R.id.nav_view)
         navHeader=navView.getHeaderView(0)

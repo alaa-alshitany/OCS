@@ -32,6 +32,7 @@ class DoctorDetails: AppCompatActivity() {
     private lateinit var toggle: ActionBarDrawerToggle
     private  var database:DatabaseReference=FirebaseDatabase.getInstance().reference
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.doctor_details)

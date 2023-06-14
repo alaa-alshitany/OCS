@@ -82,6 +82,8 @@
             android:name=".Login_Register.register.Register"
             android:exported="false"
             android:theme="@style/Theme.OCS" />
+        <activity android:name=".Doctor.PatientDetails"
+            android:exported="false"/>
         <activity
             android:name=".Login_Register.login.Login"
             android:exported="false"
