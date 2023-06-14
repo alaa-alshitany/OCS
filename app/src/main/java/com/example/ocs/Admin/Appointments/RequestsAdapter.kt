@@ -128,8 +128,10 @@ class RequestsAdapter (var context: Context, private var dataList: ArrayList<App
             cancelBtn.setOnClickListener {
                 dialog.dismiss()
             }
+           var progress:ProgressBar=dialog.findViewById(R.id.progress_bar)
             var sendSMS: Button = dialog.findViewById(R.id.sendSMSBtn)
             sendSMS.setOnClickListener {
+                progress.visibility=View.VISIBLE
                 var doctorIDSelected:String?=null
                 for ((k,v) in doctorList){
                     if (k==spinner.selectedItem){
@@ -143,6 +145,7 @@ class RequestsAdapter (var context: Context, private var dataList: ArrayList<App
                  ref.child("time").setValue(time.text.toString()).addOnSuccessListener {
                      ref.child("doctorID").setValue(doctorIDSelected).addOnSuccessListener {
                          smsManager.sendTextMessage("${phone.text}",null,"Hi ${fullName.text}, Your Request has been approved. Visit our Center at $dateEntered on ${time.text}",null,null)
+                         progress.visibility=View.GONE
                          Toast.makeText(context,R.string.messageConfirm,Toast.LENGTH_LONG).show()
                          dialog.dismiss()
                      }

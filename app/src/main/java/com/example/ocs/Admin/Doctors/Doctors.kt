@@ -66,7 +66,7 @@ class Doctors : AppCompatActivity() , OnCardListener {
     private lateinit var navHeader : View
     private lateinit var userName:TextView
     private lateinit var context: Context
-
+    private lateinit var progress:ProgressBar
     //nav_bar
     private lateinit var toggle: ActionBarDrawerToggle
 
@@ -191,6 +191,7 @@ class Doctors : AppCompatActivity() , OnCardListener {
         birthDate.setOnClickListener { calenderShow() }
         cancelBtn.setOnClickListener { dialog.dismiss() }
         addBtn.setOnClickListener {
+            progress.visibility=View.VISIBLE
             if (checkInternet(this)){
                if(checkEmptyFields()){
                    var selectedGender:Int=genderRadio!!.checkedRadioButtonId
@@ -233,6 +234,7 @@ class Doctors : AppCompatActivity() , OnCardListener {
                         password.text.toString()
                     )
                     database.child("Doctors").child(doctorId).setValue(doctor).addOnSuccessListener {
+                        progress.visibility=View.GONE
                         Toast.makeText(this, R.string.register_success, Toast.LENGTH_SHORT).show()
                         dialog.dismiss()
                     }.addOnFailureListener { err ->
@@ -358,6 +360,7 @@ class Doctors : AppCompatActivity() , OnCardListener {
         navHeader=navView.getHeaderView(0)
         searchView=findViewById(R.id.searchDoctor)
         auth = FirebaseAuth.getInstance()
+        progress=findViewById(R.id.progress_bar)
         toggle = ActionBarDrawerToggle( this, drawerLayout, R.string.open, R.string.close)
         drawerLayout.addDrawerListener(toggle)
         toggle.syncState()
@@ -387,6 +390,7 @@ class Doctors : AppCompatActivity() , OnCardListener {
         })
     }
     private fun getDoctorsData(){
+        progress.visibility=View.VISIBLE
     database.child("Doctors").addValueEventListener(object : ValueEventListener{
         override fun onDataChange(snapshot: DataSnapshot) {
            doctorList.clear()
@@ -397,6 +401,7 @@ class Doctors : AppCompatActivity() , OnCardListener {
                 }
                 dAdapter= DoctorAdapter(doctorList, listener = this@Doctors)
                 doctorRecycle.adapter=dAdapter
+                progress.visibility=View.GONE
             }
         }
         override fun onCancelled(error: DatabaseError) {

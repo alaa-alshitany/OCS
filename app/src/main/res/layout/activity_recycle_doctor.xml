@@ -12,41 +12,53 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
-    <LinearLayout
-        android:layout_margin="20dp"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <LinearLayout
+                android:layout_margin="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/titleTxt"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/doctors"
-        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-        android:textStyle="bold"
-        android:textColor="@color/blue_500"
-        android:fontFamily="@font/acme_regular"
-        android:textAlignment="center"
-         />
+                <TextView
+                    android:id="@+id/titleTxt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/doctors"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    android:textStyle="bold"
+                    android:textColor="@color/blue_500"
+                    android:fontFamily="@font/acme_regular"
+                    android:textAlignment="center"
+                    />
 
-    <SearchView
-       android:id="@+id/searchDoctor"
-       android:layout_width="match_parent"
-       android:cursorVisible="false"
-       android:queryHint="@string/searchHint"
-       android:iconifiedByDefault="false"
-        android:layout_height="wrap_content">
-    </SearchView>
-    <androidx.recyclerview.widget.RecyclerView
-        android:layout_width="match_parent"
-        android:layout_marginTop="5dp"
-        android:layout_height="match_parent"
-        android:id="@+id/recycleview1">
+                <SearchView
+                    android:id="@+id/searchDoctor"
+                    android:layout_width="match_parent"
+                    android:cursorVisible="false"
+                    android:queryHint="@string/searchHint"
+                    android:iconifiedByDefault="false"
+                    android:layout_height="wrap_content">
+                </SearchView>
+                <androidx.recyclerview.widget.RecyclerView
+                    android:layout_width="match_parent"
+                    android:layout_marginTop="5dp"
+                    android:layout_height="match_parent"
+                    android:id="@+id/recycleview1">
 
-    </androidx.recyclerview.widget.RecyclerView>
+                </androidx.recyclerview.widget.RecyclerView>
 
-    </LinearLayout>
+            </LinearLayout>
+            <ProgressBar
+                android:id="@+id/progress_bar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:indeterminateTint="@color/blue_500"
+                android:visibility="gone"/>
+        </FrameLayout>
+
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/addingDoctorBtn"
             android:layout_width="wrap_content"

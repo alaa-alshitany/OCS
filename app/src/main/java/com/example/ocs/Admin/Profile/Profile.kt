@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
 import android.view.View
+import android.widget.ProgressBar
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
@@ -36,7 +37,7 @@ class Profile : AppCompatActivity(), OnCardItemClickListener {
     private lateinit var navView : NavigationView
     private lateinit var navHeader : View
     private lateinit var userName:TextView
-
+    private lateinit var progress: ProgressBar
 
     //nav_bar
     lateinit var toggle: ActionBarDrawerToggle
@@ -73,12 +74,14 @@ class Profile : AppCompatActivity(), OnCardItemClickListener {
     }
 
     private fun getAdminData() {
+        progress.visibility=View.VISIBLE
         dataBase.child("Admins").child(pref.prefID.toString()).get().addOnSuccessListener {
             if (it.exists()){
                 adminName.text = it.child("name").value.toString()
                 adminCode.text = it.child("code").value.toString()
                 adminPhone.text = it.child("phone").value.toString()
                 adminEmail.text = it.child("email").value.toString()
+                progress.visibility=View.GONE
             }
         }
     }
@@ -134,6 +137,7 @@ class Profile : AppCompatActivity(), OnCardItemClickListener {
         navHeader=navView.getHeaderView(0)
         userName=navHeader.findViewById(R.id.user_name)
         userName.setText(pref.userName)
+        progress=findViewById(R.id.progress_bar)
         getAdminData()
     }
 }
