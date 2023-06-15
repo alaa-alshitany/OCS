@@ -6,9 +6,9 @@
     <string name="slider1_title"> مرحبًا بكم في مركز الأورام</string>
     <string name="slider1_description">أطباء محترفين,\n طرق الفحص الحديثة\n,المواعيد الثابتة والمنظمة</string>
     <string name="slider2_title">الأشعة الطبية</string>
-    <string name="slider2_description">التصوير المقطعي المحوسب (CT) \ n المسح الضوئي ، مسح العظام ، \ n التصوير بالرنين المغناطيسي (MRI) ، \ n التصوير المقطعي بالإصدار البوزيتروني (PET) ، \ n الموجات الصوتية والأشعة السينية ،</string>
+    <string name="slider2_description">التصوير المقطعي المحوسب (CT) \n المسح الضوئي ، مسح العظام ، \n التصوير بالرنين المغناطيسي (MRI) ، \n التصوير المقطعي بالإصدار البوزيتروني (PET) ، \n الموجات الصوتية والأشعة السينية ،</string>
     <string name="slider3_title">فحوصات طبية</string>
-    <string name="slider3_description">تعداد الدم الكامل (CBC). \ n محددات الورم. \ n اختبار بروتين الدم. \ n تعميم اختبارات الخلايا السرطانية</string>
+    <string name="slider3_description">تعداد الدم الكامل (CBC). \n محددات الورم. \n اختبار بروتين الدم. \n تعميم اختبارات الخلايا السرطانية</string>
     <string name="next">التالي</string>
     <string name="get_started">البدء!</string>
 
