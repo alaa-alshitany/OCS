@@ -18,6 +18,8 @@
         android:theme="@style/Theme.OCS"
         android:windowSoftInputMode="adjustPan"
         tools:targetApi="31">
+        <activity android:name=".Doctor.PatientDetails"
+            android:exported="false"/>
         <activity android:name=".Doctor.Model.Predict"
             android:exported="false"/>
         <activity

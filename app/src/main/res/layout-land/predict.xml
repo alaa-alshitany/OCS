@@ -6,188 +6,132 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/white"
     tools:context=".Doctor.Model.Predict">
 
-    <LinearLayout
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:layout_margin="8dp">
+        android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/textView32"
-            style="@style/TextAppearance.Material3.TitleLarge"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_gravity="center"
-            android:layout_weight=".1"
-            android:fontFamily="@font/acme_regular"
-            android:gravity="center"
-            android:text="@string/book_appointment_title"
-            android:textAppearance="@style/TextAppearance.AppCompat.Small"
-            android:textColor="@color/blue_500"
-            android:textStyle="bold"
-            tools:text="@string/Drug_Effectiveness_title" />
+            android:layout_height="match_parent">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/textView33"
-            style="@style/TextAppearance.MaterialComponents.Subtitle1"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_margin="2dp"
-            android:layout_weight=".3"
-            android:fontFamily="@font/inter_font"
-            android:text="TextView"
-            android:textColor="@color/black"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            tools:ignore="HardcodedText"
-            tools:text="@string/Drug_Effectiveness_Gene_expression" />
+            <LinearLayout
+                android:id="@+id/linearLayout2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                android:layout_margin="25dp"
+                android:layout_marginBottom="25dp"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.508"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="MissingConstraints">
 
-        <EditText
-            android:id="@+id/editTextTextPersonName5"
-            style="@style/EditText"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_margin="2dp"
-            android:layout_weight=".6"
-            android:autofillHints=""
-            android:drawableEnd="@drawable/baseline_upload_file_24"
-            android:hint="@string/hint_Drug_Effectiveness"
-            android:inputType="text"
-            android:textColor="@color/black"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.284" />
 
-        <TextView
-            android:id="@+id/textView34"
-            style="@style/TextAppearance.MaterialComponents.Subtitle1"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_margin="2dp"
-            android:layout_weight=".3"
-            android:fontFamily="@font/inter_font"
-            android:text="TextView"
-            android:textColor="@color/black"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            tools:text="@string/Drug_Effectiveness_Genomic_mutation" />
+                <TextView
+                    android:id="@+id/textView32"
+                    style="@style/TextAppearance.Material3.TitleLarge"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight=".2"
+                    android:fontFamily="@font/acme_regular"
+                    android:gravity="center"
+                    android:text="@string/Drug_Effectiveness_title"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                    android:textColor="@color/blue_500"
+                    android:textStyle="bold"
+                    />
 
-        <EditText
-            android:id="@+id/editTextTextPersonName6"
-            style="@style/EditText"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_margin="2dp"
-            android:layout_weight=".6"
-            android:autofillHints=""
-            android:drawableEnd="@drawable/baseline_upload_file_24"
-            android:hint="@string/hint_Drug_Effectiveness"
-            android:inputType="text"
-            android:textColor="@color/black"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.284" />
-    </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1" />
 
-        <TextView
-            android:id="@+id/textView35"
-            style="@style/TextAppearance.MaterialComponents.Subtitle1"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_margin="2dp"
-            android:layout_weight=".4"
-            android:fontFamily="@font/inter_font"
-            android:text="TextView"
-            android:textColor="@color/black"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            tools:text="@string/Drug_Effectiveness_DNA_methylation" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight=".6"
+                    android:gravity="center_vertical"
+                    android:text="@string/choosePatient"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    android:textColor="@color/black"
+                    android:textStyle="bold" />
 
-        <EditText
-            android:id="@+id/editTextTextPersonName7"
-            style="@style/EditText"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_margin="2dp"
-            android:layout_weight=".5"
-            android:autofillHints=""
-            android:drawableEnd="@drawable/baseline_upload_file_24"
-            android:hint="@string/hint_Drug_Effectiveness"
-            android:inputType="text"
-            android:textColor="@color/black"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.284" />
+                <androidx.appcompat.widget.AppCompatSpinner
+                    android:id="@+id/patientsSpinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight=".6" />
 
-        <TextView
-            android:id="@+id/textView36"
-            style="@style/TextAppearance.MaterialComponents.Subtitle1"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_margin="2dp"
-            android:layout_weight=".3"
-            android:fontFamily="@font/inter_font"
-            android:text="TextView"
-            android:textColor="@color/black"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            tools:text="@string/Drug_Effectiveness_drug_name" />
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1" />
 
-        <EditText
-            android:id="@+id/editTextTextPersonName8"
-            style="@style/EditText"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_margin="2dp"
-            android:layout_weight=".6"
-            android:autofillHints=""
-            android:drawableEnd="@drawable/baseline_arrow_drop_down_24"
-            android:hint="@string/hint_Drug_name"
-            android:inputType="text"
-            android:textColor="@color/black"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.284" />
-    </LinearLayout>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight=".6"
+                    android:gravity="center_vertical"
+                    android:text="choose Drug"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    android:textColor="@color/black"
+                    android:textStyle="bold" />
 
-    <Button
-            android:id="@+id/button6"
+                <androidx.appcompat.widget.AppCompatSpinner
+                    android:id="@+id/drugsSpinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight=".6" />
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1" />
+
+                <Button
+                    android:id="@+id/predictBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:background="@drawable/button_style"
+                    android:fontFamily="@font/inter_font"
+                    android:gravity="center"
+                    android:text="@string/Drug_Effectiveness_predict_pn"
+                    android:textAllCaps="false"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.498"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.924"
+                    tools:ignore="VisualLintButtonSize,TouchTargetSizeCheck"
+                    />
+
+            </LinearLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <ProgressBar
+            android:id="@+id/progress_bar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/button_style"
-            android:fontFamily="@font/inter_font"
-            android:gravity="center"
-            android:text="Button"
-            android:textAllCaps="false"
-            android:textColor="@color/black"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.924"
-            tools:ignore="VisualLintButtonSize,TouchTargetSizeCheck"
-            tools:text="@string/Drug_Effectiveness_predict_pn"
-            android:layout_gravity="center"/>
-
-    </LinearLayout>
+            android:layout_gravity="center"
+            android:indeterminateTint="@color/blue_500"
+            android:visibility="gone"/>
+    </FrameLayout>
     <com.google.android.material.navigation.NavigationView
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
@@ -198,4 +142,3 @@
         android:fitsSystemWindows="true"
         app:itemIconTint="@color/blue_500"/>
 </androidx.drawerlayout.widget.DrawerLayout>
-

@@ -311,6 +311,7 @@
             intent2=intent
             activity=this
             auth = FirebaseAuth.getInstance()
+
             }
             override fun onCreateOptionsMenu(menu: Menu?): Boolean {
             menuInflater.inflate(R.menu.menu,menu)

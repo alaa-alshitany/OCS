@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
 import android.view.View
+import android.widget.ProgressBar
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
@@ -38,6 +39,8 @@ class Appointments : AppCompatActivity() {
     private lateinit var navHeader : View
     private lateinit var userName: TextView
     lateinit var toggle: ActionBarDrawerToggle
+    private lateinit var progress: ProgressBar
+
 
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -111,6 +114,7 @@ class Appointments : AppCompatActivity() {
         pref= Prefrences(context)
         userName=navHeader.findViewById(R.id.user_name)
         userName.setText(pref.userName)
+        progress=findViewById(R.id.progress_bar)
     }
     private fun getApprovedData(){
         database.child("Appointments").addValueEventListener(object : ValueEventListener {

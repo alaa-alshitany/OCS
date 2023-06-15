@@ -44,6 +44,7 @@ class UploadFiles : AppCompatActivity() {
     private lateinit var progressBar1:ProgressBar
     private lateinit var progressBar2:ProgressBar
     private lateinit var progressBar3:ProgressBar
+    private lateinit var progress: ProgressBar
 
     lateinit var toggle: ActionBarDrawerToggle
     private lateinit var pref: Prefrences
@@ -200,6 +201,7 @@ class UploadFiles : AppCompatActivity() {
         adapter = ArrayAdapter<String>(this, android.R.layout.simple_spinner_item)
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         patientNamesSpinner.adapter = adapter
+        progress=findViewById(R.id.progress_bar)
         database.child("Patients").addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 adapter.clear()
@@ -209,6 +211,7 @@ class UploadFiles : AppCompatActivity() {
                         val patientName="${patient?.firstName} ${patient?.lastName}"
                         adapter.add(patientName)
                     }
+
                 }
             }
             override fun onCancelled(error: DatabaseError) {

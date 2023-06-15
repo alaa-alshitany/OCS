@@ -72,6 +72,7 @@ class Predict: AppCompatActivity() {
     private lateinit var classificationProgress:ProgressBar
     private lateinit var saveRecord:Button
     private lateinit var tryDrug:Button
+    private lateinit var progress: ProgressBar
 
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -1240,6 +1241,7 @@ FirebaseModelDownloader.getInstance().getModel("Classification", DownloadType.LO
         adapter = ArrayAdapter<String>(this, android.R.layout.simple_spinner_item)
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         patientSpinner.adapter = adapter
+        progress=findViewById(R.id.progress_bar)
         database.child("Patients").addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 adapter.clear()

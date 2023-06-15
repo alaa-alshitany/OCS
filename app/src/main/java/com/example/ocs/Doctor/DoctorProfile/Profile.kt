@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
 import android.view.View
+import android.widget.ProgressBar
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
@@ -36,6 +37,7 @@ class Profile : AppCompatActivity() {
     private lateinit var phone: TextView
     private lateinit var address: TextView
     private lateinit var email: TextView
+    private lateinit var progress: ProgressBar
 
     //nav_bar
     lateinit var toggle: ActionBarDrawerToggle
@@ -111,6 +113,7 @@ class Profile : AppCompatActivity() {
         navHeader=navView.getHeaderView(0)
         context=this
         pref= Prefrences(context)
+        progress=findViewById(R.id.progress_bar)
         userName=navHeader.findViewById(R.id.user_name)
         userName.setText(pref.userName)
         name=findViewById(R.id.doctorName)
@@ -128,6 +131,7 @@ class Profile : AppCompatActivity() {
                 birthDate.text = it.child("birthDate").value.toString()
                 phone.text = it.child("phone").value.toString()
                 email.text = it.child("email").value.toString()
+                progress.visibility=View.GONE
 
             }
         }

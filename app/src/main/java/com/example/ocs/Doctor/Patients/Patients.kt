@@ -71,6 +71,7 @@ class Patients : AppCompatActivity(),OnPatientListener {
     private lateinit var userName: TextView
     private lateinit var context: Context
     private lateinit var toggle: ActionBarDrawerToggle
+    private lateinit var progress:ProgressBar
     //private lateinit var drugName:String
     //private lateinit var ic50:String
     @SuppressLint("MissingInflatedId")
@@ -324,6 +325,7 @@ class Patients : AppCompatActivity(),OnPatientListener {
         pref= Prefrences(context)
         userName=navHeader.findViewById(R.id.user_name)
         userName.setText(pref.userName)
+        progress=findViewById(R.id.progress_bar)
     }
 
     private fun addPatient(gender:String) {
