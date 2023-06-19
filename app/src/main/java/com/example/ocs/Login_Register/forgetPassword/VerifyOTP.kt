@@ -48,9 +48,7 @@ class VerifyOTP : AppCompatActivity() {
            signInWithPhoneAuthCredential(credential)
 
         }
-       /* else{
-            Toast.makeText(applicationContext,R.string.codeWrong,Toast.LENGTH_LONG).show()
-        }*/
+
     }
     private fun signInWithPhoneAuthCredential(credential: PhoneAuthCredential) {
         auth.signInWithCredential(credential)

@@ -20,14 +20,18 @@
         tools:targetApi="31">
 
         <activity android:name=".Doctor.PatientDetails"
+            android:windowSoftInputMode="adjustPan"
             android:exported="false"/>
         <activity android:name=".Doctor.Model.Predict"
+            android:windowSoftInputMode="adjustPan"
             android:exported="false"/>
         <activity
             android:name=".Doctor.Model.UploadFiles"
+            android:windowSoftInputMode="adjustPan"
             android:exported="false" />
         <activity
             android:name=".Doctor.DoctorDashboard.DoctorDashboard"
+            android:windowSoftInputMode="adjustPan"
             android:exported="false" />
         <activity
             android:name=".Admin.Doctors.Doctors"
@@ -35,45 +39,60 @@
             android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".Admin.Dashboard.Dashboard"
+            android:windowSoftInputMode="adjustPan"
             android:exported="false" />
         <activity
             android:name=".Admin.DoctorDetails"
+            android:windowSoftInputMode="adjustPan"
             android:exported="false" />
         <activity
             android:name=".Patient.services.MedicalClinic"
+            android:windowSoftInputMode="adjustPan"
             android:exported="false" />
         <activity
             android:name=".Patient.services.MedicalTests"
+            android:windowSoftInputMode="adjustPan"
             android:exported="false" />
         <activity
             android:name=".Patient.services.MedicalRays"
+            android:windowSoftInputMode="adjustPan"
             android:exported="false" />
         <activity
             android:name=".Admin.Appointments.Appointments"
+            android:windowSoftInputMode="adjustPan"
             android:exported="false"
             android:theme="@style/Theme.OCS" />
         <activity
             android:name=".Admin.Profile"
+            android:windowSoftInputMode="adjustPan"
             android:exported="false" />
         <activity
             android:name=".Doctor.Appointments.Appointments"
+            android:windowSoftInputMode="adjustPan"
             android:exported="false" />
         <activity
             android:name=".Doctor.DoctorProfile.Profile"
+            android:windowSoftInputMode="adjustPan"
             android:exported="false" />
         <activity
             android:name=".Patient.Profile.Profile"
+            android:windowSoftInputMode="adjustPan"
             android:exported="false" />
         <activity
             android:name=".Doctor.Patients"
+            android:windowSoftInputMode="adjustPan"
             android:exported="false" />
         <activity
             android:name=".Patient.booking.BookAppointment"
+            android:windowSoftInputMode="adjustPan"
             android:exported="false" />
-        <activity android:name=".Doctor.Model.Pre_model"
+        <activity
+            android:name=".Doctor.Model.Pre_model"
+            android:windowSoftInputMode="adjustPan"
             android:exported="false"/>
         <activity
             android:name=".Patient.services.Services"
+            android:windowSoftInputMode="adjustPan"
             android:exported="false"
             android:theme="@style/Theme.OCS" />
         <activity
@@ -85,14 +104,17 @@
         <activity
             android:name=".Login_Register.register.Register"
             android:exported="false"
+            android:windowSoftInputMode="adjustPan"
             android:theme="@style/Theme.OCS" />
         <activity
             android:name=".Login_Register.login.Login"
             android:exported="false"
+            android:windowSoftInputMode="adjustPan"
             android:theme="@style/Theme.OCS" />
         <activity
             android:name=".IntroSlider.IntroSlider"
             android:exported="false"
+            android:windowSoftInputMode="adjustPan"
             android:theme="@style/splash" />
         <activity
             android:name=".Login_Register.forgetPassword.ForgetPassword"
@@ -112,7 +134,6 @@
             android:theme="@style/splash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
