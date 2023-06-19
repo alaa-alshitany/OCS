@@ -1122,7 +1122,7 @@ private fun predictIC50_classification(){
                 var output = outputBuffer.floatArray[0]
                 predictiedIC50.setText(output.toString())
                 preditingProgress.visibility=View.GONE
-                if (output> 0.8f){
+                if (output.toFloat()> 1.0f){
                     classification.setText("Resistance")
                     classificationProgress.visibility=View.GONE
                 }else{
@@ -1150,7 +1150,6 @@ private fun predictIC50_classification(){
 
                         }
                     }
-
                 }
 
                 saveRecord.setOnClickListener {
