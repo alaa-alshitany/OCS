@@ -1122,31 +1122,37 @@ private fun predictIC50_classification(){
                 var output = outputBuffer.floatArray[0]
                 predictiedIC50.setText(output.toString())
                 preditingProgress.visibility=View.GONE
+                if (output.toString()> 0.9.toString()){
+                    classification.setText("Resistance")
+                    classificationProgress.visibility=View.GONE
+                }else{
+                    FirebaseModelDownloader.getInstance().getModel("Classification", DownloadType.LOCAL_MODEL_UPDATE_IN_BACKGROUND, conditions).addOnSuccessListener {
+                        modelFile = it?.file
+                        if (modelFile != null) {
+                            Toast.makeText(
+                                this,
+                                "Classification Model downloaded successfully!",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                            interpreter = Interpreter(modelFile!!)
+                            outputShape = interpreter.getOutputTensor(0).shape()
+                            outputDataType = interpreter.getOutputTensor(0).dataType()
+                            outputBuffer =TensorBuffer.createFixedSize(outputShape, outputDataType)
+                            interpreter.runForMultipleInputsOutputs(inputs, outputs)
+                            output = outputBuffer.floatArray[0]
+                            if (output.toInt() == 1) {
+                                classification.setText("Resistance")
+                                classificationProgress.visibility=View.GONE
+                            } else if (output.toInt() ==0) {
+                                classification.setText("Sensitive")
+                                classificationProgress.visibility=View.GONE
+                            }
 
-FirebaseModelDownloader.getInstance().getModel("Classification", DownloadType.LOCAL_MODEL_UPDATE_IN_BACKGROUND, conditions).addOnSuccessListener {
-    modelFile = it?.file
-    if (modelFile != null) {
-        Toast.makeText(
-            this,
-            "Classification Model downloaded successfully!",
-            Toast.LENGTH_SHORT
-        ).show()
-        interpreter = Interpreter(modelFile!!)
-        outputShape = interpreter.getOutputTensor(0).shape()
-        outputDataType = interpreter.getOutputTensor(0).dataType()
-        outputBuffer =TensorBuffer.createFixedSize(outputShape, outputDataType)
-        interpreter.runForMultipleInputsOutputs(inputs, outputs)
-        output = outputBuffer.floatArray[0]
-        if (output.toInt() == 1) {
-            classification.setText("Resistance")
-            classificationProgress.visibility=View.GONE
-        } else if (output.toInt() ==0) {
-            classification.setText("Sensitive")
-            classificationProgress.visibility=View.GONE
-        }
+                        }
+                    }
 
-    }
-}
+                }
+
                 saveRecord.setOnClickListener {
                     treatmentID=databaseRef.push().key!!
                     val treatment=TreatmentData(treatmentID,patientID,pref.prefID,selectedPatientName.text.toString(),predictiedIC50.text.toString(),selectedDrugName.text.toString(),classification.text.toString())
