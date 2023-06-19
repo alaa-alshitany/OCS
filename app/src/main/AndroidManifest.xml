@@ -18,6 +18,7 @@
         android:theme="@style/Theme.OCS"
         android:windowSoftInputMode="adjustPan"
         tools:targetApi="31">
+
         <activity android:name=".Doctor.PatientDetails"
             android:exported="false"/>
         <activity android:name=".Doctor.Model.Predict"
@@ -78,14 +79,13 @@
         <activity
             android:name=".Login_Register.register.RegisterContinue"
             android:exported="false"
+            android:windowSoftInputMode="adjustPan"
             android:parentActivityName=".Login_Register.register.Register"
             android:theme="@style/Theme.OCS" />
         <activity
             android:name=".Login_Register.register.Register"
             android:exported="false"
             android:theme="@style/Theme.OCS" />
-        <activity android:name=".Doctor.PatientDetails"
-            android:exported="false"/>
         <activity
             android:name=".Login_Register.login.Login"
             android:exported="false"
