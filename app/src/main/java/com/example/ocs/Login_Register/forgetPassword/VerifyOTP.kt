@@ -65,9 +65,10 @@ class VerifyOTP : AppCompatActivity() {
               }
          })
     }
-    override fun onRestart() {
-        super.onRestart()
-
+    override fun onStart() {
+        super.onStart()
+        init()
+        getIntentExtra()
     }
     private fun resetPassword(phone: String){
         startActivity(Intent(applicationContext, ResetPassword::class.java).putExtra("phone",phone))
