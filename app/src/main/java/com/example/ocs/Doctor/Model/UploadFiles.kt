@@ -197,6 +197,8 @@ class UploadFiles : AppCompatActivity() {
         }
     }
     private fun init(){
+        progress=findViewById(R.id.progress_bar)
+        progress.visibility=View.VISIBLE
         patientNamesSpinner=findViewById(R.id.patientsSpinner)
         adapter = ArrayAdapter<String>(this, android.R.layout.simple_spinner_item)
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
@@ -234,5 +236,6 @@ class UploadFiles : AppCompatActivity() {
         pref= Prefrences(context)
         userName=navHeader.findViewById(R.id.user_name)
         userName.setText(pref.userName)
+        progress.visibility=View.GONE
     }
 }
