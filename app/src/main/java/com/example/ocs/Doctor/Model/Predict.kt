@@ -1240,13 +1240,15 @@ private fun predictIC50_classification(){
         onBackPressedDispatcher.onBackPressed()
     }
     private fun init(){
+        progress=findViewById(R.id.progress_bar)
+        progress.visibility=View.VISIBLE
         patientSpinner=findViewById(R.id.patientsSpinner)
         drugSpinner=findViewById(R.id.drugsSpinner)
         dialog=Dialog(this)
         adapter = ArrayAdapter<String>(this, android.R.layout.simple_spinner_item)
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         patientSpinner.adapter = adapter
-        progress=findViewById(R.id.progress_bar)
+
         database.child("Patients").addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 adapter.clear()
@@ -1276,7 +1278,6 @@ private fun predictIC50_classification(){
             }
         })
 
-
         drugSpinner=findViewById(R.id.drugsSpinner)
         ArrayAdapter.createFromResource(this,R.array.drugNames,android.R.layout.simple_spinner_item).also {
                 adapter->
@@ -1291,5 +1292,6 @@ private fun predictIC50_classification(){
         pref= Prefrences(context)
         userName=navHeader.findViewById(R.id.user_name)
         userName.setText(pref.userName)
+        progress.visibility=View.GONE
     }
 }
