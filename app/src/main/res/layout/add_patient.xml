@@ -15,10 +15,6 @@
         android:paddingLeft="8dp"
         android:paddingRight="8dp">
 
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight=".4"></Space>
 
         <TextView
             android:id="@+id/add_doctor_view"
@@ -27,6 +23,7 @@
             android:layout_weight=".5"
             android:fontFamily="@font/acme_regular"
             android:text="@string/add_patient"
+            android:layout_marginTop="5dp"
             android:textAlignment="center"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             android:textColor="@color/blue_500"
@@ -62,13 +59,11 @@
             app:boxStrokeWidthFocused="0dp"
             app:hintAnimationEnabled="true"
             app:hintEnabled="true">
-
             <EditText
                 android:id="@+id/lastName_d"
                 style="@style/EditText"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-
+                android:layout_height="match_parent"
                 android:drawableStart="@drawable/baseline_user_24"
                 android:ems="10"
                 android:hint="@string/last_Name"
@@ -90,7 +85,7 @@
                 android:id="@+id/birthdate_d"
                 style="@style/EditText"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:clickable="false"
                 android:cursorVisible="false"
                 android:drawableStart="@drawable/baseline_calendar_month_24"
@@ -115,8 +110,8 @@
                 android:id="@+id/address"
                 style="@style/EditText"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="5dp"
+                android:layout_height="match_parent"
+
                 android:drawableStart="@drawable/baseline_house_24"
                 android:ems="10"
                 android:hint="@string/address"
@@ -207,7 +202,7 @@
                 android:id="@+id/email_d"
                 style="@style/EditText"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:drawableStart="@drawable/baseline_email_24"
                 android:ems="10"
                 android:hint="@string/p_email_hint"
@@ -244,7 +239,6 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight=".4">
-
         </Space>
         <LinearLayout
             android:layout_width="match_parent"
@@ -291,7 +285,7 @@
         <Space
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight=".4"></Space>
+            android:layout_weight=".2"></Space>
 
     </LinearLayout>
 </LinearLayout>

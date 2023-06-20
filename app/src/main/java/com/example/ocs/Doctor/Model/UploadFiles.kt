@@ -2,23 +2,19 @@ package com.example.ocs.Doctor.Model
 
 import android.annotation.SuppressLint
 import android.app.Activity
-import android.content.ContentValues.TAG
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.OpenableColumns
-import android.util.Log
 import android.view.MenuItem
 import android.view.View
 import android.widget.*
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.drawerlayout.widget.DrawerLayout
-import com.example.ocs.Admin.Doctors.DoctorData
 import com.example.ocs.Doctor.Appointments.Appointments
 import com.example.ocs.Doctor.DoctorProfile.Profile
-import com.example.ocs.Doctor.PatientAdapter
 import com.example.ocs.Doctor.Patients
 import com.example.ocs.Login_Register.login.Login
 import com.example.ocs.Login_Register.login.Prefrences
@@ -45,7 +41,6 @@ class UploadFiles : AppCompatActivity() {
     private lateinit var progressBar2:ProgressBar
     private lateinit var progressBar3:ProgressBar
     private lateinit var progress: ProgressBar
-
     lateinit var toggle: ActionBarDrawerToggle
     private lateinit var pref: Prefrences
     private lateinit var drawerLayout : DrawerLayout
@@ -60,7 +55,7 @@ class UploadFiles : AppCompatActivity() {
         init()
         geneExp.setOnClickListener {
             patientName=patientNamesSpinner.selectedItem.toString()
-            launchFilePicker(100,progressBar1)
+            launchFilePicker(123,progressBar1)
         }
         geneMut.setOnClickListener {
             patientName=patientNamesSpinner.selectedItem.toString()
@@ -94,8 +89,6 @@ class UploadFiles : AppCompatActivity() {
         }
 
     }
-
-    //nav_bar
     private fun logout() {
         pref.prefClear()
         moveToLogin()
@@ -108,19 +101,15 @@ class UploadFiles : AppCompatActivity() {
     private fun appointment() {
         startActivity(Intent(this, Appointments::class.java))
     }
-
     private fun doctorProfile() {
         startActivity(Intent(this, Profile::class.java))
     }
     private fun patients() {
         startActivity(Intent(this, Patients::class.java))
     }
-
     private fun model() {
         startActivity(Intent(this, Pre_model::class.java))
     }
-
-    //nav_bar
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (toggle.onOptionsItemSelected(item)) {
             return true
@@ -140,59 +129,61 @@ class UploadFiles : AppCompatActivity() {
     @SuppressLint("Range")
     private fun getFileNameFromUri(uri: Uri?): String {
         val cursor = contentResolver.query(uri!!, null, null, null, null)
-        cursor!!.moveToFirst()
-        val fileName = cursor.getString(cursor.getColumnIndex(OpenableColumns.DISPLAY_NAME))
-        cursor.close()
-        return fileName
+        try {
+            if (cursor != null && cursor.moveToFirst()) {
+                val fileName = cursor.getString(cursor.getColumnIndex(OpenableColumns.DISPLAY_NAME))
+                return fileName ?: throw IllegalStateException("Could not load file name from uri")
+            } else {
+                throw IllegalStateException("Could not load file name from uri")
+            }
+        } finally {
+            cursor?.close()
+        }
     }
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        val progressBar: ProgressBar // Declare a progress bar object
-        val button:Button
-        // Determine which progress bar to update based on the request code
+        // Determine which button and progress bar to update based on the request code
+        val button: Button
+        val progressBar: ProgressBar
         when (requestCode) {
-            100 -> progressBar = progressBar1
-            101 -> progressBar = progressBar2
-            102 -> progressBar = progressBar3
+            123 -> {
+                button = geneExp
+                progressBar = progressBar1
+            }
+            101 -> {
+                button = geneMut
+                progressBar = progressBar2
+            }
+            102 -> {
+                button = geneMeth
+                progressBar = progressBar3
+            }
             else -> return
         }
-        when (requestCode) {
-            100 -> button = geneExp
-            101 -> button = geneMut
-            102 -> button = geneMeth
-            else -> return
-        }
-
         if (resultCode == Activity.RESULT_OK) {
             // Get the file URI from the result
-            val fileUri =data?.data
-
+            val fileUri = data?.data
             // Create a storage reference to the file you want to upload
             val fileName = getFileNameFromUri(fileUri) // Implement this function to get the file name from the file URI
             val fileRef = storageRef.child(patientName).child(fileName)
-
             // Upload the file to Firebase Storage
             val uploadTask = fileRef.putFile(fileUri!!)
-
             // Monitor the upload progress using a progress listener
             uploadTask.addOnProgressListener { taskSnapshot ->
                 // Update the UI with the upload progress
                 val progress = (100.0 * taskSnapshot.bytesTransferred) / taskSnapshot.totalByteCount
                 progressBar.progress = progress.toInt()
-                //Toast.makeText(this, "${fileName}: Upload is $progress% done",Toast.LENGTH_SHORT).show()
             }
             // Handle any errors that occur during the upload process
             uploadTask.addOnFailureListener { exception ->
                 // Handle the failure
-                Toast.makeText(this, "${fileName}: Upload failed: ${exception.message}",Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "${fileName}: Upload failed: ${exception.message}", Toast.LENGTH_SHORT).show()
             }
-
             uploadTask.addOnSuccessListener { taskSnapshot ->
                 progressBar.progress = progressBar.max
                 progressBar.visibility = View.GONE
                 button.setText(R.string.uploaded)
-                // Handle successful uploads
-               Toast.makeText(this, "${fileName}: Upload successful",Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "${fileName}: Upload successful", Toast.LENGTH_SHORT).show()
             }
         }
     }
