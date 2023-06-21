@@ -75,13 +75,22 @@ class PatientDetails: AppCompatActivity() {
         }
         updateBtn.setOnClickListener {
             var ref= database.child("Treatments").child(treatmentID)
-            ref.child("drugName").setValue( medicine.text.toString()).addOnSuccessListener {
-                ref.child("IC50").setValue(ic50.text.toString()).addOnSuccessListener {
-                            Toast.makeText(baseContext, "All Data has been updated!", Toast.LENGTH_LONG).show()
-                            patients()
-                        }
+            if (medicine.text.toString().isEmpty()){
+                ref.child("drugName").setValue("Not added").addOnSuccessListener {
+                    ref.child("IC50").setValue("Not added").addOnSuccessListener {
+                        Toast.makeText(baseContext, "All Data has been updated!", Toast.LENGTH_LONG).show()
+                        patients()
                     }
                 }
+            }else{
+                ref.child("drugName").setValue( medicine.text.toString()).addOnSuccessListener {
+                    ref.child("IC50").setValue(ic50.text.toString()).addOnSuccessListener {
+                        Toast.makeText(baseContext, "All Data has been updated!", Toast.LENGTH_LONG).show()
+                        patients()
+                    }
+                }
+            }
+            }
             }
     //nav_bar
     private fun logout() {
@@ -154,6 +163,9 @@ class PatientDetails: AppCompatActivity() {
                             ic50.setText(treatment.IC50.toString())
                             medicine.setText(treatment.drugName.toString())
                             treatmentID=treatment.treatmentID.toString()
+                        }else{
+                            medicine.setText("Not added")
+                           ic50.setText("Not added")
                         }
                     }
                 }

@@ -88,7 +88,7 @@
                 android:id="@+id/btn_specialize"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="1"
+                android:layout_weight="1.4"
                 android:drawableStart="@drawable/baseline_user_24"
                 android:drawablePadding="20dp"
                 android:inputType="text"
@@ -97,7 +97,7 @@
             <Space
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight=".4">
+                android:layout_weight=".3">
 
             </Space>
 
@@ -105,7 +105,7 @@
                 android:id="@+id/btn_calender"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="1"
+                android:layout_weight="1.4"
                 android:drawableStart="@drawable/baseline_calendar_month_24"
                 android:drawablePadding="20dp"
                 android:inputType="text"
@@ -114,7 +114,7 @@
             <Space
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight=".4">
+                android:layout_weight=".3">
 
             </Space>
 
@@ -123,7 +123,7 @@
                 android:id="@+id/btn_call"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="1"
+                android:layout_weight="1.4"
                 android:drawableStart="@drawable/baseline_phone_24"
                 android:drawablePadding="20dp"
                 android:inputType="phone"
@@ -133,14 +133,14 @@
             <Space
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight=".4">
+                android:layout_weight=".3">
 
             </Space>
             <TextView
                 android:id="@+id/btn_email"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="1"
+                android:layout_weight="1.4"
                 android:drawableStart="@drawable/baseline_email_24"
                 android:drawablePadding="20dp"
                 android:inputType="textEmailAddress"
@@ -150,26 +150,12 @@
             <Space
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight=".4">
+                android:layout_weight=".3">
 
             </Space>
 
-            <TextView
-                android:id="@+id/btn_address"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:drawableStart="@drawable/baseline_location_on_24"
-                android:drawablePadding="20dp"
-                android:inputType="text"
-                style="@style/EditText"
-                android:textStyle="bold"/>
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight=".4">
 
-            </Space>
+
         </LinearLayout>
     </LinearLayout>
 

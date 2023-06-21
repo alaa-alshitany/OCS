@@ -7,6 +7,7 @@ import android.content.Intent
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Environment
 import android.provider.OpenableColumns
 import android.view.MenuItem
 import android.view.View
@@ -120,8 +121,9 @@ class UploadFiles : AppCompatActivity() {
         onBackPressedDispatcher.onBackPressed()
     }
     private fun launchFilePicker(requestCode: Int, progressBar: ProgressBar) {
+        val downloadUri = Uri.parse(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).absolutePath)
         val intent = Intent(Intent.ACTION_GET_CONTENT)
-        intent.type = "text/csv" // Set the MIME type of the file you want to select
+        intent.setDataAndType(downloadUri, "*/*")
         intent.addCategory(Intent.CATEGORY_OPENABLE)
         startActivityForResult(intent, requestCode)
         progressBar.visibility = View.VISIBLE

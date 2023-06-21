@@ -28,9 +28,7 @@ class Pre_model : AppCompatActivity() {
     private lateinit var context: Context
     private lateinit var navHeader : View
     private lateinit var userName: TextView
-    //nav_bar
     lateinit var toggle: ActionBarDrawerToggle
-
     private lateinit var binding: ActivityPreModelBinding
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {

@@ -18,6 +18,7 @@ import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.drawerlayout.widget.DrawerLayout
 import com.example.ocs.Doctor.Appointments.Appointments
+import com.example.ocs.Doctor.DoctorDashboard.DoctorDashboard
 import com.example.ocs.Doctor.DoctorProfile.Profile
 import com.example.ocs.Doctor.Patients
 import com.example.ocs.Doctor.TreatmentData
@@ -1159,6 +1160,7 @@ private fun predictIC50_classification(){
                         if (it.isSuccessful){
                             Toast.makeText(applicationContext,R.string.savercordSuccess,Toast.LENGTH_LONG).show()
                             dialog.dismiss()
+                            dashboard()
 
                         }else{
                             Toast.makeText(applicationContext,R.string.savercordFailed,Toast.LENGTH_LONG).show()
@@ -1181,6 +1183,11 @@ private fun predictIC50_classification(){
         }
     }
 }
+
+    private fun dashboard() {
+        startActivity(Intent(this,DoctorDashboard::class.java))
+    }
+
     private fun extractNumericValuesFromCsvRow(csvRef: StorageReference, shape: IntArray): FloatArray {
         val task = csvRef.getBytes(Long.MAX_VALUE)
         while (!task.isComplete); // wait until the task completes

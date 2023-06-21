@@ -35,7 +35,6 @@ class Profile : AppCompatActivity() {
     private lateinit var name: TextView
     private lateinit var birthDate: TextView
     private lateinit var phone: TextView
-    private lateinit var address: TextView
     private lateinit var email: TextView
     private lateinit var progress: ProgressBar
 
@@ -121,13 +120,11 @@ class Profile : AppCompatActivity() {
         birthDate=findViewById(R.id.btn_calender)
         phone=findViewById(R.id.btn_call)
         email=findViewById(R.id.btn_email)
-        address=findViewById(R.id.btn_address)
         dataBase.child("Doctors").child(pref.prefID.toString()).get().addOnSuccessListener {
             if (it.exists()) {
                 name.text = it.child("firstName").value.toString().plus(" ")
                     .plus(it.child("lastName").value.toString())
                 specialize.text = it.child("specialization").value.toString()
-                address.text = it.child("address").value.toString()
                 birthDate.text = it.child("birthDate").value.toString()
                 phone.text = it.child("phone").value.toString()
                 email.text = it.child("email").value.toString()
